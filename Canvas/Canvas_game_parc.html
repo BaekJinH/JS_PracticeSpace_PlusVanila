@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        var utl = {};
+
+        class Menu {
+            constructor (setting , lineSynthesis) {
+                this.alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ?!():'";
+                this.size = setting.size; 
+                this.touch = [] ;
+                this.zoom = 1 ; 
+                this.lineSynthesis = lineSynthesis ; 
+                this.level = Math.round(utl.random(0, this,level.length -1 ));
+
+                if (localStorage.dungeon) {
+                    console.log("reclaimed memory") ;
+                    this.memory = JSON.parse ( localStorage.dungeon) ;
+                }
+                else {
+                    localStorage.setItem(
+                        "dungeon" ,
+                        JSON.stringify
+                    )
+                }
+
+                let buttons = [
+                    {
+                        title : "Start Game" ,
+                        value : "Start"
+                    } ,
+                    {
+                        title : "How To Play" ,
+                        value : "Info"
+                    } ,
+                    {
+                        title : "About Game" ,
+                        value : "Back Info"
+                    }
+                ]
+                this.menu = new Menu (this , this.L / 2, 140 , buttons) ;
+            }
+            moveMent (keyCode) {
+                if (keyCode === 38) {
+
+                }
+
+                else if (keyCode === 40) {
+                    
+                }
+                
+                else if (keyCode === 88) {
+                    
+                }
+            }  
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            overflow:hidden;
+        }
+        div {
+            position:absolute;
+            top: 50%;
+            left:80%;
+            transform: translate(-50%,-50%);
+            pointer-events: none;
+        }
+        #canvas {
+            border: 1px solid #252525
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="800" ></canvas>
+    <div>
+        <p>
+            <b>
+                Press Enter
+            </b>
+        </p>
+    </div>
+
+    <script>
+        // Canvas
+        var canvas = document.querySelector('#canvas');
+        var context = canvas.getContext('2d');
+        var x = canvas.width / 2;
+        var y = canvas.height / 2;
+        // />
+
+
+        // Movement
+        var rightMove = false;
+        var leftMove = false;
+        var upMove = false;
+        var downMove = false;
+        // />
+
+        // 움직일 도형 크기
+        var rectWidth = 20;
+        var rectHeight = 20;
+        // />
+
+        // 도형 시작점
+        var rectX = (canvas.width - rectWidth) / 2;
+        var rectY = (canvas.width - rectHeight) / 2 ;
+        // />
+
+        document.addEventListener('keydown' , keyDownHandle , false);
+        document.addEventListener('keyup', keyUpHandle , false)
+        
+        // Key Down Function
+        function keyDownHandle (e) {
+            if (e.key == 65 || e.key == 'a' || e.key == 'A' || e.key == 37 || e.key == 'ArrowLeft') {
+                leftMove = true ; 
+                console.log(`${e.key} Down !`)
+
+            }
+
+            // D
+            else if (e.key === 68 || e.key == 'd' || e.key == 'D' || e.key == 39 || e.key == 'ArrowRight') {
+                rightMove = true ; 
+                console.log(`${e.key} Down !`)
+                goRight()
+            }
+            
+            // W
+            else if (e.key === 87 || e.key == 'w' || e.key == 'W' || e.key == 38 || e.key == 'ArrowUp') {
+                upMove = true ; 
+                console.log(`${e.key} Down !`)
+
+            }
+            
+            // S
+            else if (e.key === 83 || e.key == 's' || e.key == 'S' || e.key == 40 || e.key == 'ArrowDown') {
+                downMove = true ; 
+                console.log(`${e.key} Down !`)
+
+            }
+        }
+        // />
+
+        // Key Up Function 
+        function keyUpHandle (e) {
+            if (e.key == 65 || e.key == 'a' || e.key == 'A' || e.key == 37 || e.key == 'ArrowLeft') {
+                leftMove = false ; 
+                console.log(`${e.key} UP !`)
+            }  
+
+            // D
+            else if (e.key === 68 || e.key == 'd' || e.key == 'D' || e.key == 39 || e.key == 'ArrowRight') {
+                rightMove = false ; 
+                console.log(`${e.key} UP !`)
+            }
+
+            // W
+            else if (e.key === 87 || e.key == 'w' || e.key == 'W' || e.key == 38 || e.key == 'ArrowUp') {
+                upMove = false ; 
+                console.log(`${e.key} UP !`)
+
+            }
+
+            // S
+            else if (e.key === 83 || e.key == 's' || e.key == 'S' || e.key == 40 || e.key == 'ArrowDown') {
+                downMove = false ; 
+                console.log(`${e.key} UP !`)
+
+            }
+        }
+
+        function drawRect () {
+            document.addEventListener('keydown' , (e) => {
+                if(e.key == 13 || e.key == 'Enter') {
+                    context.beginPath();
+                    context.rect(rectX , rectY , rectWidth , rectHeight )
+                    context.fillStyle='#252525';
+                    context.fill()
+                    context.closePath();
+                    
+                    console.log("Create Element !")
+                }
+            })
+        }
+
+        function draw () {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            
+            drawRect ();
+
+            // if(rightMove === true) {
+            //     console.log('Err !')
+            //     rectX += 100;
+            // }
+            // else if(leftMove && rectX > 0) {
+            //     rectX -= 5;
+            // }
+            // else if(downMove && rectY < canvas.height - rectHeight) {
+            //     rectY += 5;
+            // }
+            // else if(upMove && rectY > 0) {
+            //     rectY -= 5;
+            // }
+        }
+        draw()
+        
+        function goRight () {
+            rectX += 100;
+            console.log('Err !')
+        }
+
+        function drawing () {
+            if(rightMove === true) {
+                console.log('Err !')
+                rectX += 100;
+            }
+            else if(leftMove && rectX > 0) {
+                rectX -= 5;
+            }
+            else if(downMove && rectY < canvas.height - rectHeight) {
+                rectY += 5;
+            }
+            else if(upMove && rectY > 0) {
+                rectY -= 5;
+            }
+        }
+    </script>
+</body>
+</html>

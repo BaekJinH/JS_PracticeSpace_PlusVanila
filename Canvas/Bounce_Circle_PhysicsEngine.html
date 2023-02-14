@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () { // 스크립트 로딩이 완료된 후부터 내용을 시작
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            class Ball{
+                constructor(x,y){ // ball의 기본 속성들을 정의 
+                    this.x = x; // x좌표
+                    this.y = y; // y좌표 
+                    this.c = 'red'; // 시작할때 공의 색깔
+                    this.size = 20; // 공의 반지름
+                    this.power = 5; // 공의 움직임 세기
+                    this.gravity = this.power; // 공이 상하로 움직이는 값
+                    this.directionX = 5; // 공이 좌우로 움직이는 값
+                }
+
+                update(){ // 프레임마다 속성들을 변화시킴 
+                    // y값의 변동을 계산
+                    this.y += this.gravity; 
+                    this.gravity += 0.2 // 중력 값
+                    console.log(this.gravity)
+                    if(this.y+this.size >= canvas.height || this.y-this.size <= 0){ // 상하 바운드 처리
+                    this.gravity *= -0.9; // 상하에 닿으면 방향을 전환
+                    }
+
+                    // x값의 변동을 계산
+                    this.x += this.directionX;
+                    this.directionX *= 0.995;
+                    if(this.x+this.size > canvas.width || this.x-this.size<0){
+                    this.directionX *= -1;
+                    }
+                }
+
+                draw(){ // 넘어온 속성값대로 캔버스에 원을 그려줌
+                    ctx.fillStyle= this.c;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI*2, true);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+            }
+
+            function init(){ // 그려질 공의 초기 좌표 설정
+                ball1 = new Ball(canvas.width*0.5, canvas.height*0.5)
+            }
+
+            function animate(){ // 매 프레임마다 벌어지는 일들
+            ctx.fillStyle='rgba(255,255,255,0.5)';
+            ctx.fillRect(0,0,canvas.width,canvas.height); // 캔버스 전체를 색칠해서 내용을 지워준다
+            ball1.update(); // ball1의 좌표 등을 업데이트 한다
+            ball1.draw(); // 업데이트된 내용으로 ball을 새로 그린다.
+            requestAnimationFrame(animate);
+            }
+
+            init(); // 공의 초기 좌표를 설정하고, 
+            animate(); // 프레임마다 공을 그려준다. 
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+</html>

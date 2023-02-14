@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        var canvas = document.querySelector('#canvas');
+        var context = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        document.addEventListener('keydown' , keyDownHandle , false);
+        document.addEventListener('keyup', keyUpHandle , false)
+
+        // Movement
+        var leftMove ;
+        var rightMove ;
+        var upMove ;
+        var downMove ;
+        // />
+
+        window.addEventListener('keydown' , (e) => {
+            // Enter key
+            if(e.keyCode === 13) {
+                context.beginPath();
+                context.arc(100 , 100 , 20 , 0 , Math.PI * 2 , false)
+                context.fillStyle='#252525';
+                context.fill()
+                context.closePath();
+            }
+            // />
+
+            // Anthor Key W , A , S , D
+
+            // A 
+            // else if (e.key == 65 || e.key == 'a' || e.key == 'A') {
+            //     console.log(e.key)
+
+            // }
+
+            // // D
+            // else if (e.key === 68 || e.key == 'd' || e.key == 'D') {
+            //     console.log(e.key)
+
+            // }
+            
+            // // W
+            // else if (e.key === 87 || e.key == 'w' || e.key == 'W') {
+            //     console.log(e.key)
+
+            // }
+            
+            // // S
+            // else if (e.key === 83 || e.key == 's' || e.key == 'S') {
+            //     console.log(e.key)
+
+            // }
+            
+            // Another Key />
+        })
+
+        // Key Down Function
+        function keyDownHandle (e) {
+            if (e.key == 65 || e.key == 'a' || e.key == 'A') {
+                console.log(e.key)
+
+            }
+
+            // D
+            else if (e.key === 68 || e.key == 'd' || e.key == 'D') {
+                console.log(e.key)
+
+            }
+            
+            // W
+            else if (e.key === 87 || e.key == 'w' || e.key == 'W') {
+                console.log(e.key)
+
+            }
+            
+            // S
+            else if (e.key === 83 || e.key == 's' || e.key == 'S') {
+                console.log(e.key)
+
+            }
+        }
+
+        // />
+
+        // Key Up Function 
+        function keyUpHandle (e) {
+            if (e.keyCode === 65) {
+
+            }
+
+            // D
+            else if (e.keyCode === 68) {
+
+            }
+
+            // W
+            else if (e.keyCode === 87) {
+
+            }
+
+            // S
+            else if (e.keyCode === 83) {
+
+            }
+        }
+        // />
+    </script>
+</body>
+</html>

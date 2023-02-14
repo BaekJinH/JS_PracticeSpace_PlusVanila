@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Person({name, age}) {
+            this.name = name;
+            this.age = age;
+        }
+            
+        Person.prototype.introduce = function() {
+            return `안녕하세요, 제 이름은 ${this.name} , ${this.age}입니다. <br>`;
+        };
+        
+        const person = new Person({name: '윤아준', age: 19});
+        document.write(person.introduce());
+
+        
+        class Me {
+            constructor ({name , age}) {
+                this.name = name;
+                this.age = age;
+            }
+            self () {
+                return `my name and age ${this.name} , ${this.age} <br>`;
+            }
+        }
+        const me = new Me ({name : 'my' , age : 15});
+        document.write(me.self())
+
+        
+        class Test  {
+            height = 120 ;
+
+            constructor({ name , age }) {
+                this.name = name;
+                this.age = age;
+            }
+            result ( ) {
+                return ` Test text ${this.name} , ${this.age} , ${test.height}`
+            }
+        }
+
+        const test = new Test ({name : 'aaa' , age : 12})
+        document.write(test.result())
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // 미리 받아와야 하는 값이면 전역 변수로 최상위에 미리 선언을 해두고 값을 저장하는 형식으로 하자
+        var pointerX = 0;
+        var pointerY = 0;
+        // />
+
+        // Ball MoveMent
+        var leftMove = false;
+        var rightMove = false;
+        var upMove = false;
+        var downMove = false;
+        // />
+
+        document.addEventListener('click' , (e) => {
+            pointerX = e.clientX ;
+            pointerY = e.clientY ;
+
+            console.log(pointerX , pointerY);
+        })
+
+        document.addEventListener('keydown' , keydownHandelr) ;
+        document.addEventListener('keyup' , keyUpHandler) ;
+
+        class Ball{
+            constructor(x , y , power ,gravity , directionX){  // Ball Default Property
+                this.x = x; // X 좌표
+                this.y = y; // Y 좌표
+                this.c = '#252525'; 
+                this.size = 20; // Ball Size
+                this.power = 5; // Ball Movement Power
+                this.gravity = this.power; // Ball Up and Down Move Value
+                this.directionX = 5; // Ball Left and Right Move Value
+            }
+
+            update(){ 
+                
+                this.y += this.gravity; 
+                this.gravity += 0.5 // Ball Gravity Value
+                // console.log(this.gravity) // Ball Gravity Value Confirm
+                if(this.y+this.size >= canvas.height || this.y-this.size <= 0){ 
+                this.gravity *= -0.9; // Y 벽에 바운딩 당했을 때 반대 방향으로 나아가는 속도
+                }
+
+                
+                this.x += this.directionX;
+                this.directionX *= 0.999;
+                if(this.x+this.size > canvas.width || this.x-this.size<0){
+                this.directionX *= -1; // X 벽에 바운딩 당했을 때 반대 방향으로 나아가는 속도
+                }
+            }
+
+            draw () {
+                ctx.beginPath() ;
+                ctx.fillStyle = this.c;
+                ctx.arc(this.x , this.y, this.size, 0, Math.PI*2, true)
+                ctx.fill()
+                ctx.closePath() ;
+            }
+
+            // draw(){
+            //     document.addEventListener('keydown' , (e) => {
+            //         if(e.keyCode == 13 || e.keyCode == 'Enter'){
+
+            //             ctx.beginPath();
+            //             ctx.fillStyle= this.c;
+            //             ctx.arc(this.x, this.y, this.size, 0, Math.PI*2, true);
+            //             ctx.fill();
+            //             ctx.closePath();
+            //         }
+
+            //     })
+            // }
+        }
+
+        function keydownHandelr (e) {
+            if(e.key == 65 || e.key == 'a' || e.key == 'A' || e.key == 37 || e.key == 'ArrowLeft') {
+                leftMove = true ;
+                console.log(`${e.key} Down !`)
+
+            }
+
+            else if (e.key === 68 || e.key == 'd' || e.key == 'D' || e.key == 39 || e.key == 'ArrowRight') {
+                rightMove = true ;
+                console.log(`${e.key} Down !`)
+
+            }
+
+            else if (e.key === 87 || e.key == 'w' || e.key == 'W' || e.key == 38 || e.key == 'ArrowUp') {
+                upMove = true ;
+                console.log(`${e.key} Down !`)
+
+            }
+
+            else if (e.key === 83 || e.key == 's' || e.key == 'S' || e.key == 40 || e.key == 'ArrowDown') {
+                downMove = true ;
+                console.log(`${e.key} Down !`)
+            }   
+        }
+
+        function keyUpHandler (e) {
+            if(e.key == 65 || e.key == 'a' || e.key == 'A' || e.key == 37 || e.key == 'ArrowLeft') {
+                leftMove = false ;
+                console.log(`${e.key} Up !`)
+                
+            }
+
+            else if (e.key === 68 || e.key == 'd' || e.key == 'D' || e.key == 39 || e.key == 'ArrowRight') {
+                rightMove = false ;
+                console.log(`${e.key} Up !`)
+
+            }
+
+            else if (e.key === 87 || e.key == 'w' || e.key == 'W' || e.key == 38 || e.key == 'ArrowUp') {
+                upMove = false ;
+                console.log(`${e.key} Up !`)
+
+            }
+
+            else if (e.key === 83 || e.key == 's' || e.key == 'S' || e.key == 40 || e.key == 'ArrowDown') {
+                downMove = false ;
+                console.log(`${e.key} Up !`)
+
+            }   
+        }
+
+        function init(){    // 공의 초기 좌표 값    
+            ball1 = new Ball(canvas.width*0.5, canvas.height*0.5)
+        }
+
+        function move () {
+            if(rightMove === true) {
+                
+            }
+        }
+
+        function animate(){ 
+            ctx.fillStyle='rgba(255,255,255,0.5)';
+            ctx.fillRect(0,0,canvas.width,canvas.height);
+            ball1.update(); 
+            ball1.draw(); 
+            move()
+            requestAnimationFrame(animate);
+        }
+
+        init(); // Ball early Coordinate
+        animate(); // Each Frame Drawing Ball
+    </script>
+</body>
+</html>

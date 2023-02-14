@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            margin : 0;
+            overflow-y: hidden;;
+        }
+        div { 
+            width:50px;
+            height:50px;
+            background : black;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            transition:all 0.2s;    
+            border-radius: 50%;
+        }
+        #hide {
+            display:none;
+        }
+        canvas {
+            width: 100%;
+            height:100%;
+
+        }
+    </style>
+    <script>
+        $(function () {
+            // Canvas 설정
+            let canvas = document.getElementById('canvas');
+            let ctx = canvas.getContext('2d');
+            // Canvas />
+
+            // Mouse Pointer
+            let pointerX = 0;
+            let PointerY = 0;
+            // 
+
+            // input안에 키보드 값을 넣기 위해 초기 설정
+            let $input = $('#hide')
+            $input.val('');
+
+            // WASD 와 방향키의 키코드는 같음
+            const leftKey = 65;
+            const rightKey = 68;
+            const upKey = 87;
+            const DownKey = 83;
+            // input />
+
+            // Left , Right , Top , Bot 위치 값
+            let left = 0 
+            let right = 0 
+            let top = 0 
+            let down = 0
+            // />
+            window.addEventListener ("click" , (e) => {
+                let x = e.clientX ;
+                let y = e.clientY ;
+                
+                // 좌표 클릭 테스트용
+                console.log (x, y)
+                // />
+
+            })
+
+            window.addEventListener ("keydown" , (e) => {
+                // 실험용
+                let div = document.getElementsByTagName('div')[0]
+                // 실험 />
+
+                // < 확인용 
+                // console.log(e)
+                // if(e.keyCode === 13) {
+                //     console.log('err')
+                // }
+                // 확인용 />
+
+
+                if(e.keyCode === 65 || e.keyCode === 68 || e.keyCode === 87 || e.keyCode === 83) {
+                    $input.val(e.keyCode);
+                }
+                // 키보드 방향표는 wasd의 값과 같다. / 잠시 보류 
+                else if (e.keyCode === 37 || e.keyCode === 39 || e.keyCode === 38 || e.keyCode === 40) {
+                    
+                    if (e.keyCode === 37) {
+                        $input.val(leftKey)
+                    }
+                    else if (e.keyCode === 39){
+                        $input.val(rightKey)
+                    }
+                    else if (e.keyCode === 38){
+                        $input.val(upKey)
+                    }
+                    else {
+                        $input.val(DownKey)
+                    }
+                }
+
+                // Left
+                if(e.keyCode === 65 || e.keyCode === 37) {
+                    console.log('left')
+                    left = left - 50
+
+                    // Margin으로 움직이는 게 아닌 거 같음. div가 자꾸 처음 위치에서 움직이기 때문? div의 width값으로 ??
+                    $(div).stop().css({'marginLeft' : left})
+                    div.style.background = "lightgreen"
+                }
+            
+                // Right
+                else if (e.keyCode === 68 || e.keyCode === 39) {
+                    console.log('Right')
+                    // right = right + 50
+                    left = left + 50
+
+                    $(div).stop().css({'marginLeft' : left})
+                    div.style.background = "lightpink"
+                    
+                }
+
+                // Up
+                else if (e.keyCode === 87 || e.keyCode === 38) {
+                    console.log('Up')
+                    top = top - 50
+
+                    $(div).stop().css({'marginTop' : top})
+                    div.style.background = "lightblue"
+                    
+                }
+
+                // Down
+                else if (e.keyCode === 83 || e.keyCode === 40) {
+                    console.log('Down')
+                    top = top + 50
+
+                    $(div).stop().css({'marginTop' : top})
+                    div.style.background = "#777"
+
+                }
+                
+                // F5는 살려놓기
+                else if (e.keyCode === 116) {
+                    e.defaultPrevented()
+                }
+
+            // e.prevntDefault 이벤트 막기
+
+                // Ctrl Block
+                else if(e.keyCode === 17){
+                    e.preventDefault();
+                    console.log('Ctrl has block')
+
+                }
+
+                // Enter Block
+                else if (e.keyCode === 13) {
+                    e.preventDefault() ;
+                    console.log('Enter has block');
+                }
+
+                else {
+                    e.preventDefault();
+                }
+
+            // />   
+
+
+
+
+ 
+           
+                // Canvas용 하나 , 일반 body 영역 하나
+
+                class Left {
+                    constructor(leftPx) {
+                        this.leftPx = leftPx;
+                    }
+                    moveLeft () {
+
+                    }
+                }
+                // let left = new Left ({}) ; 
+                // console.log(left.moveLeft())
+
+                class Right {
+                    constructor(rightPx) {
+                        this.rightPx = rightPx;                 
+                    }
+                }
+                class Up {
+                    constructor(upPx) {
+                        this.upPx = upPx;
+                    }
+                }
+                class Down {
+                    constructor(downPx) {
+                        this.downPx = downPx;
+                    }
+                }
+
+                
+            })
+        })
+
+    </script>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div></div>
+    <input type="text" class="hide" id="hide">
+    <p></p>
+</body>
+</html>

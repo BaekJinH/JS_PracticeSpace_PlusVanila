@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .banner_wraper { height: 60px; width: 1130px; position: absolute; overflow: hidden; }
+        .banner_wraper div { width: 45px; height: 45px; position: absolute; background-color: black; }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+         //client rolling banner
+   window.onload = function() {
+            var bannerLeft=0;
+            var first=1;
+            var last;
+            var imgCnt=0;
+            var $img = $(".banner_wraper div");
+            var $first;
+            var $last;
+
+            $img.each(function(){   // 5px 간격으로 배너 처음 위치 시킴
+                $(this).css("left",bannerLeft);
+                bannerLeft += $(this).width()+5;
+                $(this).attr("id", "banner"+(++imgCnt));  // img에 id 속성 추가
+            });
+
+            
+            if( imgCnt > 9){                //배너 9개 이상이면 이동시킴
+
+
+
+                last = imgCnt;
+
+                setInterval(function() {
+                    $img.each(function(){
+                        $(this).css("left", $(this).position().left-1); // 1px씩 왼쪽으로 이동
+                    });
+                    $first = $("#banner"+first);
+                    $last = $("#banner"+last);
+                    if($first.position().left < -200) {    // 제일 앞에 배너 제일 뒤로 옮김
+                        $first.css("left", $last.position().left + $last.width()+5 );
+                        first++;
+                        last++;
+                        if(last > imgCnt) { last=1; }   
+                        if(first > imgCnt) { first=1; }
+                    }
+                }, 50);   //여기 값을 조정하면 속도를 조정할 수 있다.(위에 1px 이동하는 부분도 조정하면 
+
+//깔끔하게 변경가능하다           
+
+ }
+
+};
+    </script>
+</head>
+<body>
+    <div class="banner_wraper">
+        <div class="colorBox"></div>
+        <div class="colorBox"></div>
+        <div class="colorBox"></div>
+        <div class="colorBox"></div>
+        <div class="colorBox"></div>
+        <div class="colorBox"></div>
+        <div class="colorBox"></div>
+        <div class="colorBox"></div>
+        <div class="colorBox"></div>
+        <div class="colorBox"></div>
+    </div>
+</body>
+</html>

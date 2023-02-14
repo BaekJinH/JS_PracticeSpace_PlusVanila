@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div class="title">
+    <strong>Welcome to JS_Drawing Zone :)</strong>
+    <p>방향키로 도형을 움직여보세요!</p>
+    <a href="https://haeeeell.tistory.com/54">https://haeeeell.tistory.com/54</a>
+  </div>
+  <canvas id="canvas" width="300" height="300"></canvas>
+  
+    <script>
+        // canvas에 그림을 그리려면 먼저 context를 가져와야 함
+// context에 대한 참조는 getContext() 메서드에 context 이름을 넘김
+// 좌표는 canvas 요소 왼쪽 위에서 시작하며, 이 지점을 (0, 0)으로 간주
+// x는 오른쪽, y는 아래쪽으로 픽셀 단위로 증가
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+ 
+// canvas 가로 및 세로의 반값 > 150
+let x = canvas.width / 2;
+let y = canvas.height / 2;
+ 
+// 움직일 도형의 크기
+let rectWidth = 10;
+let rectHeight = 10;
+ 
+// 움직일 도형의 시작점 정의 > 145 (중앙위치)
+let rectX = (canvas.width - rectWidth) / 2;
+let rectY = (canvas.height - rectHeight) / 2;
+ 
+// 초기화, true로 되면 해당 방향으로 이동
+// 이벤트 객체의 keyCode 속성에서 눌려진 키의 코드를 얻을 수 있고, 어떤 키인지 확인한 다음 적절한 변수 설정
+let rightPressed = false;
+let leftPressed = false;
+let upPressed = false;
+let downPressed = false;
+// 먼저 눌린 키를 수신할 이벤트 리스너 필요
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+ 
+// 키보드가 눌렸을 때 일어나는 함수 (매개변수: e)
+// 각 방향키의 keycode와 방향이 맞다면, 해당 변수들 true 
+function keyDownHandler(e) {
+	if(e.key == 37 || e.key == "ArrowRight") {
+		rightPressed = true;
+	}
+	else if(e.key == 39 || e.key == "ArrowLeft") {
+	  leftPressed = true;
+  }
+  else if(e.key == 38 || e.key == "ArrowUp") {
+	  upPressed = true;
+  }
+  else if(e.key == 40 || e.key == "ArrowDown") {
+	  downPressed = true;
+  }
+}
+ 
+ 
+// 키보드가 안 눌렸을 때 일어나는 함수 (매개변수: e)
+// 각 방향키의 keycode와 방향이 맞다면, 해당 변수들 false > 초기화
+function keyUpHandler(e) {
+	if(e.key == 37 || e.key == "ArrowRight") {
+	  rightPressed = false;
+  }
+  else if(e.key == 39 || e.key == "ArrowLeft") {
+	  leftPressed = false;
+  }
+  else if(e.key == 38 || e.key == "ArrowUp") {
+	  upPressed = false;
+  }
+  else if(e.key == 40 || e.key == "ArrowDown") {
+	  downPressed = false;
+  }
+}
+// 움직일 도형을 그리는 함수
+function drawRect() {
+	ctx.beginPath();
+  ctx.rect(rectX, rectY, rectWidth, rectHeight); //--2번째의 Y좌표가 지정이 안 되어 있어서, 위아래 이동이 안됐었음 
+  ctx.strokeStyle = "lightgreen";
+ 
+  // 채우기는 도형의 내부를 color나 gradient, img로 채움
+  // stroke는 외곽선에 색을 칠함
+  ctx.stroke(); 
+  ctx.closePath();
+}
+ 
+ 
+// 먼저 전체 Canvas를 지움 > 모든 단일 프레임에 처음부터 모든 것을 그림 > 눌려진 키 변수 확인 
+// 사각형을 그릴 때는 fillRect(), strokeRect(), clearRect()의 메서드 사용
+// 모두 매개변수로 사각형의 x/y좌표, 너비/높이 4가지를 받음 (픽셀단위)
+function draw() {
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	
+	drawRect();
+  
+	if(rightPressed && rectX < canvas.width - rectWidth) {
+	  rectX += 5;
+  }
+  else if(leftPressed && rectX > 0) {
+	  rectX -= 5;
+  }
+  else if(downPressed && rectY < canvas.height - rectHeight) {
+	  rectY += 5;
+  }
+  else if(upPressed && rectY > 0) {
+	  rectY -= 5;
+  }
+}
+ 
+ 
+// setInterval > 캔버스 내의 움직이는 오브젝트가 있을 때 사용하는 내장함수
+setInterval(draw, 10);
+    </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            overflow:hidden;
+        }
+        div {
+            position:absolute;
+            top: 50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            pointer-events: none;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // $(function () {
+        //     // Canvas
+        //     const canvas = document.getElementById('canvas') ;
+        //     const ctx = canvas.getContext('2d') ;
+        //     // />
+        //     canvas.width = window.innerWidth;
+        //     canvas.height = window.innerHeight;
+        //     // var canvasX = canvas.width/2;
+        //     // var canvasY = canvas.height - 30;
+
+        //     // 초기 Circle Position 위치 값 / 사용하지 않을 예정
+        //     let circlePositionX = 50 + '%';
+        //     let circlePositionY = 50 + '%';
+        //     // /> 
+
+        //     window.addEventListener ("click" , (e) => {
+
+        //         // Mouse Pointer 
+        //         var x = e.clientX ;
+        //         var y = e.clientY ;
+        //         // />
+
+        //         // Circle X , Y 
+        //         var cx = 1;
+        //         var cy = 1;
+        //         //  / >
+
+        //         // Enter 
+        //         window.addEventListener('keydown' , (e) => {
+        //             if(e.keyCode === 13) {
+        //                 ctx.clearRect(0, 0, canvas.width, canvas.height) ; 
+                        
+        //                 ctx.beginPath()
+        //                 let circle = ctx.arc(x,y,20,0 , Math.PI * 2 , false);         
+        //                 ctx.fillStyle = "#252525"
+        //                 ctx.fill()
+        //                 ctx.closePath()
+        //             }
+        //         })
+        //         // Move Circle
+        //         window.addEventListener('keydown' , (e) => {
+        //             if(e.keyCode === 65 || e.keyCode === 37) {
+                        
+        //             }
+
+        //             else if (e.keyCode === 68 || e.keyCode === 39) {
+
+        //             }
+
+        //             else if (e.keyCode === 87 || e.keyCode === 38) {
+
+        //             }
+
+        //             else if (e.keyCode === 83 || e.keyCode === 40) {
+
+        //             }
+        //         })
+        //     })
+        // })
+    </script>
+</head>
+<body>
+    <canvas id="canvas" ></canvas>
+    <div>
+        <p>
+            <b>
+                Click and Press Enter
+            </b>
+        </p>
+    </div>
+
+    <script>
+        // Canvas
+        const canvas = document.getElementById('canvas') ;
+        const ctx = canvas.getContext('2d') ;
+        // />
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        // var canvasX = canvas.width/2;
+        // var canvasY = canvas.height - 30;
+
+        // 초기 Circle Position 위치 값 / 사용하지 않을 예정
+        let circlePositionX = 50 + '%';
+        let circlePositionY = 50 + '%';
+        // /> 
+
+        window.addEventListener ("click" , (e) => {
+
+            // Mouse Pointer 
+            var x = e.clientX ;
+            var y = e.clientY ;
+            // />
+
+            // Circle X , Y 
+            var cx = 1;
+            var cy = 1;
+            //  / >
+            console.log(x , y)
+            // Enter 
+            window.addEventListener('keydown' , (e) => {
+                if(e.keyCode === 13) {
+                    // Canvas Format
+                    ctx.clearRect(0, 0, canvas.width, canvas.height) ; 
+                    // />
+
+                    // Start Drawing Circle
+                    ctx.beginPath()
+                    let circle = ctx.arc(x,y,20,0 , Math.PI * 2 , false);         
+                    ctx.fillStyle = "#252525"
+                    ctx.fill()
+                    ctx.closePath()
+                    // End />
+                }
+            })
+            // Move Circle
+            window.addEventListener('keydown' , (e) => {
+                if(e.keyCode === 65 || e.keyCode === 37) {
+                    
+                }
+
+                else if (e.keyCode === 68 || e.keyCode === 39) {
+
+                }
+
+                else if (e.keyCode === 87 || e.keyCode === 38) {
+
+                }
+
+                else if (e.keyCode === 83 || e.keyCode === 40) {
+
+                }
+            })
+        })
+    </script>
+</body>
+</html>

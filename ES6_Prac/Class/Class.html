@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // class Car {
+        //     constructor(name) {
+        //         this.brand = name;
+        //     }
+        // }
+        // const myCar = new Car ('Ford');
+        // document.write(myCar.brand)
+
+        // class car {
+        //     constructor(name) {
+        //         this.brand = name;
+        //     }
+        //     present() {
+        //         return "I have a " + this.brand;
+        //     }
+        // }
+        // const myCar = new car ("ford");
+        // document.write(myCar.present())
+
+        class Car {
+            constructor ( name ) {
+                this.brand = name;
+            }
+            present ( ) {
+                return "I have a " + this.brand;
+            }
+        }
+        class Model extends Car {
+            constructor (name , mod) {
+                super (name) ;
+                this.model = mod;
+            }
+            show () {
+                return this.present() + ' , it is a ' + this.model;
+            }
+        }
+        const myCar = new Model ("ford" , "mustang");
+        document.write(myCar.show())
+    </script>
+</body>
+</html>
