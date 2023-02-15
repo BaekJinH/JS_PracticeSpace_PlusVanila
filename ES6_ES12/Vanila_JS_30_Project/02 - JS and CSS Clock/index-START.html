@@ -19,11 +19,11 @@
 
   <style>
     html {
-      background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
+      /* background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
       background-size: cover;
       font-family: 'helvetica neue';
       text-align: center;
-      font-size: 10px;
+      font-size: 10px; */
     }
 
     body {
@@ -63,13 +63,37 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
 
   </style>
 
   <script>
+    const sH = document.querySelector('.second-hand')
+    const mH = document.querySelector('.min-hand')
+    const hH = document.querySelector('.hour-hand')
+    
+    function setDate () {
+      const now = new Date() ;
 
+      const second = now.getSeconds()
+      const secDegrees = ((second / 60) * 360) + 90 ;
+      sH.style.transform = `rotate(${secDegrees}deg)`
 
+      const min = now.getMinutes()
+      const minDegrees = ((min / 60) * 360) + ((second / 60) * 6) + 90;
+      mH.style.transform = `rotate(${minDegrees}deg)`
+
+      const hour = now.getHours()
+      const hourDegrees = ((hour / 12) * 360) + ((min / 60) * 30) + 90
+      hH.style.transform = `rotate(${hourDegrees}deg)`
+
+    }
+    setInterval(setDate , 1000) ;
+    setDate ()
   </script>
 </body>
 </html>

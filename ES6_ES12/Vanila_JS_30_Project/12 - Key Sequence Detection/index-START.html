@@ -8,6 +8,18 @@
 </head>
 <body>
 <script>
+  const array = [] ;
+  const secretCode = 'loveit' ;
+  window.addEventListener ('keydown' , (e) => {
+    console.log(`${e.key}   ${e.keyCode}`)
+    array.push(e.key)
+    array.splice(-secretCode.length -1 , array.length - secretCode.length) ;
+    if(array.join('').includes(secretCode)) {
+      console.log('LoveIt')
+      cornify_add();
+    }
+    console.log(array)
+  })
 </script>
 </body>
 </html>

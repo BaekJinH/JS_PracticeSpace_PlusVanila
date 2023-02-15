@@ -76,9 +76,13 @@
   const hourHand = document.querySelector('.hour-hand');
 
   function setDate() {
+    // 상수 now에 Date 객체 집어넣음
     const now = new Date();
 
+
+    // Date 객체 getSeconds 메서드로 현재 초 가져오기
     const seconds = now.getSeconds();
+    // 현재 초에 대한 각도를 360도로 나누어 시계의 각도 Degree 값 도출
     const secondsDegrees = ((seconds / 60) * 360) + 90;
     secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
 
@@ -93,7 +97,6 @@
 
   setInterval(setDate, 1000);
 
-  setDate();
 
 </script>
 </body>

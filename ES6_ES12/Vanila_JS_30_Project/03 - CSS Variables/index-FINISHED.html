@@ -61,10 +61,13 @@
   </style>
 
   <script>
+    //  리스트 형식으로 가져옴
     const inputs = document.querySelectorAll('.controls input');
 
     function handleUpdate() {
+      // 데이터 속성값이 sizing인 값이 존재한다면 가져오고 아니라면 빈 문자열
       const suffix = this.dataset.sizing || '';
+      // 사용자 지정 속성 값을 이벤트가 일어난 엘리먼트 이름 속성에 값 설정
       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
     }
 
