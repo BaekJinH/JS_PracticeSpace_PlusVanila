@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <title>Key Detection</title>
+    <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+    <link rel="icon" href="https://fav.farm/✅" />
+    </head>
+    <body>
+    <script>
+        const pressed = [];
+        const secretCode = "loveit";
+
+        window.addEventListener('keydown' , e => {
+            console.log(e.key)
+            pressed.push(e.key);
+            // 맨 처음 변수 secretCode 앞에 - 를 붙이는 이유는 입력 시마다 맨 앞에서 글자를 빼기 위함
+            // 사용 안 하면 뒤에서 빠짐 
+            pressed.splice(-secretCode.length -1 , pressed.length - secretCode.length)
+            if(pressed.join('').includes(secretCode)) {
+                console.log('You Find It !')
+                cornify_add()
+                addFunc()
+            }
+            console.log(pressed)
+        })
+    </script>
+  </body>
+</html>
