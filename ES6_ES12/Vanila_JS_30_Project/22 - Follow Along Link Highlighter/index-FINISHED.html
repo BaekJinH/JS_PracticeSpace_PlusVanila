@@ -26,24 +26,25 @@
     </div>
 
 <script>
-  const triggers = document.querySelectorAll('a');
-  const highlight = document.createElement('span');
-  highlight.classList.add('highlight');
-  document.body.appendChild(highlight);
+  const triggers = document.querySelectorAll('a'); // 상수 trigger 생성
+  const highlight = document.createElement('span'); // span 태그 생성을 상수 highlight에 담음
+  highlight.classList.add('highlight'); // 상수 highlight .highlight 클래스 추가
+  document.body.appendChild(highlight); // body 마지막에 highlight 추가
 
-  function highlightLink() {
-    const linkCoords = this.getBoundingClientRect();
+  function highlightLink() { // 함수 선언
+    const linkCoords = this.getBoundingClientRect(); // DOM 함수 getBoundingClientRect() 사용하여 위치 구하기
     console.log(linkCoords);
-    const coords = {
+    const coords = { // 객체
       width: linkCoords.width,
       height: linkCoords.height,
-      top: linkCoords.top + window.scrollY,
-      left: linkCoords.left + window.scrollX
+      top: linkCoords.top + window.scrollY,  // 이동해야 할 top 값 
+      left: linkCoords.left + window.scrollX // 이동해야 할 left 값 
     };
 
     highlight.style.width = `${coords.width}px`;
     highlight.style.height = `${coords.height}px`;
     highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
+    // 위의 transform 코드가 없으면 top과 left 값이 없어 이동하지 않음
 
   }
 
