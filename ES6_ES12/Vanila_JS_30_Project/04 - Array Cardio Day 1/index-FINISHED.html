@@ -58,6 +58,7 @@
     // });
 
     const ordered = inventors.sort((a, b) => a.year > b.year ? 1 : -1);
+    // const order = inventors.sort((a,b) => (a.passed - a.year) > (b.passed - b.year) ? -1 : 1); // 나이 많았던 순
     console.table(ordered);
 
     // Array.prototype.reduce()
@@ -93,8 +94,8 @@
       return aLast > bLast ? 1 : -1;
     });
     console.log(alpha);
-
-    // 8. Reduce Exercise
+    // 7 ~ 8 문제 아직도 고난
+    // 8. Reduce Exercise 
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck', 'pogostick'];
 

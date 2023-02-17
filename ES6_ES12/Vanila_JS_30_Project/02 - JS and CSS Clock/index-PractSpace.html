@@ -66,32 +66,32 @@
         transform-origin: 100%;
         transform: rotate(90deg);
         transition: all 0.05s;
-        transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+        transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1); 
+        /* 전환(transition) 효과의 시간당 속도를 설정함. */
       }
   
     </style>
     <script>
-        const sH = document.querySelector('.second-hand')
-        const mH = document.querySelector('.min-hand')
-        const hH = document.querySelector('.hour-hand')
+      const secondHandle = document.querySelector('.second-hand') ;
+      const minHandle = document.querySelector('.min-hand') ;
+      const hourHandle = document.querySelector('.hour-hand') ;
 
-        function setDate () {
-            const now = new Date();
+      function timeHandle () {
+        const second = new Date().getSeconds() ;
+        const min = new Date().getMinutes() ;
+        const hour = new Date().getHours() ;
 
-            const seconds = now.getSeconds()
-            const secDegrees = ((seconds / 60) * 360) + 90  ;     
-            sH.style.transform = ` rotate(${secDegrees}deg) `
+        const secondDegree = ((second / 60) * 360) + 90;
+        const minDegree = ((min / 60) * 360) + ((second / 60) * 6) + 90 ;
+        const hourDegree = ((hour / 12) * 360) + ((min / 60) * 30) + 90 ;
 
-            const min = now.getMinutes() ;
-            const minDegrees = ((min / 60) * 360 + (seconds / 60) * 6) + 90 ;
-            mH.style.transform = ` rotate(${minDegrees}deg) `
-            
-            const hour = now.getHours() ;
-            const hourDegrees = ((hour / 12) * 360 + (min / 60) * 30) + 90 ;
-            hH.style.transform = ` rotate(${hourDegrees}deg) `
-        }
+        secondHandle.style.transform = `rotate(${secondDegree}deg)`
+        minHandle.style.transform = `rotate(${minDegree}deg)`
+        hourHandle.style.transform = `rotate(${hourDegree}deg)`
+      }
 
-        setInterval(setDate , 1000)
-    </script>
+      setInterval(timeHandle , 1000)
+      timeHandle()
+  </script>
 </body>
 </html>

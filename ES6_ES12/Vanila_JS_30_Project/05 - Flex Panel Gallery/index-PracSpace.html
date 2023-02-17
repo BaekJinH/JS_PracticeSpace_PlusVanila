@@ -146,23 +146,19 @@
     </div>
 
     <script>
-        const panels = document.querySelectorAll('.panel') ; 
+      const panel = document.querySelectorAll('.panel')
 
-        function toggleOpen () {
-            // console.log('Hello')
-            this.classList.toggle('open')
+      function toggle (e) {
+        this.classList.toggle('open')
+      }
+      function toggleActive (e) {
+        console.log(e)
+        if (e.propertyName.includes('flex')) {
+          this.classList.toggle('open-active')
         }
-
-        function toggleAction (e) {
-            // console.log(e.propertyName)
-            if(e.propertyName.includes('flex')) {
-                this.classList.toggle('open-active')
-                console.log(this)
-            }
-        }
-
-        panels.forEach(panels => panels.addEventListener('click' , toggleOpen))
-        panels.forEach(panels => panels.addEventListener('transitionend' , toggleAction))
+      }
+      panel.forEach(ele => ele.addEventListener('click' , toggle))
+      panel.forEach(ele => ele.addEventListener('transitionend' , toggleActive))
     </script>
   </body>
 </html>
