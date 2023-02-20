@@ -1,3 +1,5 @@
+// const { current } = require("@reduxjs/toolkit");
+
 // local reviews data
 const reviews = [
   {
@@ -29,3 +31,54 @@ const reviews = [
     text: 'Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic. ',
   },
 ];
+
+
+const img = document.querySelector('#person-img') ;
+const author = document.querySelector('#author') ;
+const job = document.querySelector('#job') ;
+const info = document.querySelector('#info') ;
+
+const prevBtn = document.querySelector('.prev-btn') ;
+const nextBtn = document.querySelector('.next-btn') ;
+const random = document.querySelector('.random-btn') ;
+
+let currentItem = 0;
+
+window.addEventListener('DOMContentLoaded' , () => {
+  const item = reviews[currentItem]
+  img.src = item.img ;
+  author.textContent = item.name;
+  job.textContent = item.job;
+  info.textContent = item.text;
+})
+
+function showPerson (person) {
+  const item = reviews[person]
+  img.src = item.img ;
+  author.textContent = item.name;
+  job.textContent = item.job;
+  info.textContent = item.text;
+}
+
+nextBtn.addEventListener('click' , () => {
+  console.log(currentItem)
+  currentItem++ ;
+  if(currentItem > reviews.length -1) {
+    currentItem = 0;
+  }
+  showPerson(currentItem)
+})
+
+prevBtn.addEventListener('click' , () => {
+  console.log(currentItem)
+  currentItem--
+  if(currentItem < 0) {
+    currentItem = reviews.length -1
+  }
+  showPerson(currentItem)
+})
+
+random.addEventListener('click' , () => {
+  currentItem = Math.floor(Math.random() * reviews.length)
+  showPerson(currentItem)
+})
