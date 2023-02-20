@@ -72,26 +72,28 @@
   
     </style>
     <script>
-      const secondHandle = document.querySelector('.second-hand') ;
-      const minHandle = document.querySelector('.min-hand') ;
-      const hourHandle = document.querySelector('.hour-hand') ;
+      const secondHand = document.querySelector('.second-hand')
+      const minHand = document.querySelector('.min-hand')
+      const hourHand = document.querySelector('.hour-hand')
 
-      function timeHandle () {
-        const second = new Date().getSeconds() ;
-        const min = new Date().getMinutes() ;
-        const hour = new Date().getHours() ;
+      function updateTime () {
+        const now = new Date() ;
+        
+        const second = now.getSeconds() ;
+        const min = now.getMinutes() ;
+        const hour = now.getHours() ;
 
-        const secondDegree = ((second / 60) * 360) + 90;
-        const minDegree = ((min / 60) * 360) + ((second / 60) * 6) + 90 ;
-        const hourDegree = ((hour / 12) * 360) + ((min / 60) * 30) + 90 ;
+        const secDegree = (second / 60) * 360 ;
+        const minDegree = (min / 60) * 360  + ((second / 60)*6) + 90 ;
+        const hourDegree = (hour / 12) * 360 + (min / 60) * 6 + 90 ;
 
-        secondHandle.style.transform = `rotate(${secondDegree}deg)`
-        minHandle.style.transform = `rotate(${minDegree}deg)`
-        hourHandle.style.transform = `rotate(${hourDegree}deg)`
+        secondHand.style.transform = `rotate(${secDegree}deg)` ;
+        minHand.style.transform = `rotate(${minDegree}deg)` ;
+        hourHand.style.transform = `rotate(${hourDegree}deg)`
       }
 
-      setInterval(timeHandle , 1000)
-      timeHandle()
-  </script>
+      setInterval(updateTime , 1000)
+      updateTime()
+    </script>
 </body>
 </html>

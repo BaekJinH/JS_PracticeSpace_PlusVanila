@@ -31,6 +31,7 @@ function findMatches(wordToMatch, cities) {
 }
 
 function numberWithCommas(x) {
+  // \d는 숫자를 의미하고, {} 안의 숫자는 갯수를 의미한다. + ?! 부정 앞쪽 일치
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
