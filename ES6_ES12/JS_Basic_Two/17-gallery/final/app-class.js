@@ -8,6 +8,8 @@ function getElement(selection) {
   );
 }
 
+// getElement()에 대한 개인적 의견은 찾고자 하는 개체가 하나 있을 때 사용하는 듯. 
+// document.querySelector와 비슷하지만 document를 사용하지 않고 html에서 맨 처음 나오는 요소를 선택함
 class Gallery {
   constructor(element) {
     this.container = element;
