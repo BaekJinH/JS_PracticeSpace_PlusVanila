@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="title" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Script &verbar; guide</title>
+<link rel="shortcut icon" type="image/x-icon" href="/static/images/common/favicon.ico">
+<link rel="stylesheet" href="/static/css/reset.css">
+<link rel="stylesheet" href="/static/css/modules.css">
+<link rel="stylesheet" href="/static/guide/css/guide.css">
+<script src="/static/js/jquery-1.12.4.min.js" type="text/javascript"></script>
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shCore.css" rel="stylesheet">
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shThemeRDark.css" rel="stylesheet">
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
+</head>
+<body>
+<div class="guide">
+	<div class="cont-wrap">
+	<div class="guide-gnb">
+		<h2>K-DATA Guide</h2>
+		<script src="/static/guide/js/menu_inc.js"></script>
+	</div>
+    <div class="contents">
+        <h3 class="tit"></h3>
+        <section>
+			<article>
+				<h2 class="display-ib bgnone left">Swiper 4.5.1</h2>
+				<section>
+					<ul class="scr">
+						<li>메인 배너, 데이터 제공기관에 사용</li>
+						<li>각 옵션값을 통해 다양한 기능 제어 가능
+							<ul class="lists2">
+								<li>effect : 슬라이드 방향, 효과 설정<strong class="emp">(slide, cube, fade 등)</strong></li>
+								<li>speed : 이동 속도를 설정<strong class="emp">(1000 = 1초)</strong></li>								
+								<li>spaceBetween : 슬라이드 간 공간<strong class="emp">(px)</strong></li>
+								<li>loop : 반복여부<strong class="emp">(true, false)</strong></li>
+								<li>autoplay : 자동실행 여부 설정<strong class="emp">(true, false)</strong></li>
+							</ul>
+						</li>
+						<li> https://swiperjs.com/api/ 참조</li>
+					</ul>
+				</section>
+			</article>
+			<article>
+				<h2 class="display-ib bgnone left">jQuery UI 1.12.1</h2>
+				<section>
+					<ul class="scr">
+						<li>온라인심의 심의요청목록에 datepicker 사용</li>
+						<li>각 옵션값을 통해 다양한 기능 제어 가능
+							<ul class="lists2">
+								<li>dateFormat: 'yy-mm-dd' // 텍스트 필드에 입력되는 날짜 형식.</li>
+								<li>showMonthAfterYear: true //년도 먼저 나오고, 뒤에 월 표시</li>
+								<li>yearSuffix: '년' //달력의 년도 부분 뒤에 붙는 텍스트</li>
+								<li>monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] // 월의 한글 형식.</li>
+								<li>monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트</li>
+								<li>dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트</li>
+								<li>dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'] // 요일의 한글 형식.</li>
+								<li>nextText: '다음 달' // next 아이콘의 툴팁.</li>
+								<li>prevText: '이전 달' // prev 아이콘의 툴팁.</li>
+								<li>showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시</li>
+								<li>showOn: 'button' // both 버튼과 텍스트 필드 모두 캘린더를 보여준다.</li>
+								<li>buttonImage: "/static/images/common/btn_calendar.png" // 버튼 이미지</li>
+								<li>buttonText: "날짜 선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트</li>
+								<li>buttonImageOnly: true // 버튼에 있는 이미지만 표시한다.</li>
+								<li>showButtonPanel: true // 캘린더 하단에 버튼 패널을 표시한다.</li>
+								<li>currentText: '오늘' // 오늘 날짜로 이동하는 버튼 패널</li>
+								<li>closeText: '닫기'  // 닫기 버튼 패널</li>
+								<li>minDate: "-1M" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)</li>
+								<li>maxDate: "today" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)</li>
+								<li>changeMonth: true // 월을 바꿀수 있는 셀렉트 박스를 표시한다.</li>
+								<li>changeYear: true // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.</li>
+								<li>changeYear: true //콤보박스에서 년 선택 가능</li>
+								<li>changeMonth: true //콤보박스에서 월 선택 가능</li> 
+								<li>numberOfMonths: [1,1] // 한번에 얼마나 많은 월을 표시할것인가. [2,3] 일 경우, 2(행) x 3(열) = 6개의 월을 표시한다.</li>
+								<li>stepMonths: 3 // next, prev 버튼을 클릭했을때 얼마나 많은 월을 이동하여 표시하는가.</li>
+								<li>yearRange: 'c-100:c+10' // 년도 선택 셀렉트박스를 현재 년도에서 이전, 이후로 얼마의 범위를 표시할것인가.</li>
+								<li>showAnim: "slide" //애니메이션을 적용한다.</li>	
+							</ul>
+						</li>
+					</ul>
+				</section>
+			</article>
+
+        </section>
+    </div>
+</div>
+<script>
+SyntaxHighlighter.all();
+$(function(){
+    navMenu(3,0);
+});
+</script>
+<script src="/static/guide/js/guide.js"></script>
+</body>
+</html>

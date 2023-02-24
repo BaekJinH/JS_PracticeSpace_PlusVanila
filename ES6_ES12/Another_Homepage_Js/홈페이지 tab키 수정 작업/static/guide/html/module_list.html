@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="title" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Font &lt; Module &verbar; guide</title>
+<link rel="shortcut icon" type="image/x-icon" href="/static/images/common/favicon.ico">
+<link rel="stylesheet" href="/static/css/reset.css">
+<link rel="stylesheet" href="/static/css/modules.css">
+<link rel="stylesheet" href="/static/guide/css/guide.css">
+<script src="/static/js/jquery-1.12.4.min.js" type="text/javascript"></script>
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shCore.css" rel="stylesheet">
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shThemeRDark.css" rel="stylesheet">
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
+<style>
+	.base-color:after {content:""; display:block; clear:both;}
+	.base-color > span {float:left; margin:5px; min-width:100px; height:30px; line-height:30px; color:#fff; text-align:center;}
+</style>
+</head>
+<body>
+<div class="guide">
+	<div class="cont-wrap">
+	<div class="guide-gnb">
+		<h2>K-DATA Guide</h2>
+		<script src="/static/guide/js/menu_inc.js"></script>
+	</div>
+	<div class="contents">
+		<h3 class="tit"></h3>
+		<section>
+			<article>	
+				<h2 class="display-ib bgnone left">Font</h2>
+				<section>
+					<ul class="scr">
+						<li>기본서체는 Noto Sans CJK를 적용</li>
+						<!-- <li>ie8, ie9에서는 노토폰트를 맑은고딕으로 대체하고, 폰트의 사이즈를 한단계 하향시켜 적용</li>
+						<li>ie의 경우는 페이지의 로딩시 html태그에 ie7,ie8 ... ie11, edge등의 분별가능한 클래스를 적용</li>
+						<li>ie9이하는 노토폰트를 호출하지 않고 맑은고딕으로 대체(ie9이하는 웹폰트로 .eot만 지원)</li> -->
+					</ul>
+					<div class="rendering">
+						<h3>Screen Rendering</h3>
+						<p class="stit">Point Color</p>
+						<div class="base-color">
+							<span style="background-color:#00accd;">.blue</span>
+							<span style="background-color:#f04c23;">.red</span>							
+						</div><br>
+						<div>
+							<span class="blue">.blue - #00accd</span><br>
+							<span class="red">.red - #f04c23</span><br>
+							<span class="link-text"><a href="#">라인링크 - class="link-text"</a></span>
+						</div>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false">
+							<span class="blue">.blue - #00accd</span><br>
+							<span class="red">.red - #f04c23</span><br>
+							<span class="link-text"><a href="#">라인링크 - class="link-text"</a></span>
+						</pre>
+						<pre class="brush: css; gutter: false; toolbar:false">						
+						// 웹폰트 설정
+						@font-face{font-family:noto;font-weight:300;src:url('/static/css/fonts/NotoSans-DemiLight.eot');/* ie호환성 */src:url('/static/css/fonts/NotoSans-DemiLight.eot?#iefix') format('embedded-opentype');src:local('☺'),url('/static/css/fonts/NotoSans-DemiLight.woff') format('woff'),url('/static/css/fonts/NotoSans-DemiLight.otf') format('truetype')}
+						@font-face{font-family:noto;font-weight:400;src:url('/static/css/fonts/NotoSans-Regular.eot');/* ie호환성 */src:url('/static/css/fonts/NotoSans-Regular.eot?#iefix') format('embedded-opentype');src:local('☺'), url('/static/css/fonts/NotoSans-Regular.woff') format('woff'),url('/static/css/fonts/NotoSans-Regular.otf') format('truetype')}
+						@font-face{font-family:noto;font-weight:500;src:url('/static/css/fonts/NotoSans-Medium.eot');/* ie호환성 */src:url('/static/css/fonts/NotoSans-Medium.eot?#iefix') format('embedded-opentype');src:local('☺'), url('/static/css/fonts/NotoSans-Medium.woff') format('woff'),url('/static/css/fonts/NotoSans-Medium.otf') format('truetype')}
+						@font-face{font-family:noto;font-weight:700;src:url('/static/css/fonts/NotoSans-Bold.eot');/* ie호환성 */src:url('/static/css/fonts/NotoSans-Bold.eot?#iefix') format('embedded-opentype');src:local('☺'), url('/static/css/fonts/NotoSans-Bold.woff') format('woff'),url('/static/css/fonts/NotoSans-Bold.otf') format('truetype')}
+						@font-face{font-family:noto;font-weight:900;src:url('/static/css/fonts/NotoSans-Black.eot');/* ie호환성 */src:url('/static/css/fonts/NotoSans-Black.eot?#iefix') format('embedded-opentype');src:local('☺'), url('/static/css/fonts/NotoSans-Black.woff') format('woff'),url('/static/css/fonts/NotoSans-Black.otf') format('truetype')}
+						</pre>
+					</div>
+				</section>		
+			</article>
+		</section>
+	</div>
+	</div>
+</div>
+<script>
+SyntaxHighlighter.all();
+$(function(){
+	navMenu(2,6);
+});
+</script>
+<script src="/static/guide/js/guide.js"></script>
+</body>
+</html>

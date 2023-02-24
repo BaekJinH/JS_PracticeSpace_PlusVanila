@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="title" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>guide</title>
+<link rel="stylesheet" href="/static/css/reset.css">
+<!-- <link rel="stylesheet" href="/static/css/style.css"> -->
+<link rel="stylesheet" href="/static/guide/css/guide.css">
+<script src="/static/js/jquery-1.12.4.min.js" type="text/javascript"></script>
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shCore.css" rel="stylesheet">
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shThemeRDark.css" rel="stylesheet">
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
+<style>
+	.thumb-list{max-width:690px}
+</style>
+</head>
+<body>
+<div class="guide">
+	<div class="cont-wrap">
+	<div class="guide-gnb">
+		<h2>K-DATA Guide</h2>
+		<script src="/static/guide/js/menu_inc.js"></script>
+	</div>
+    <div class="contents">
+        <h3 class="tit"></h3>
+        <section>
+            <article>
+                <h2>Images</h2>
+                <section>
+                    <ul class="scr">
+                        <li>기본적으로 대체텍스트 제공하며 다만, alt로 구현하기 힘든 경우 ir기법을 사용하여 이미지에 대한 상세 설명 제공
+						<li>class="blind" 로 제공</li>
+                        </li>
+                        <li>도식화표를 구조적으로 어려움이 있는 경우는 케이스별로 나열하는 형태로 제공</li>
+                    </ul>
+                    <div class="rendering">
+                    	<h3>Screen Rendering</h3>
+						<div class="image-wrap">
+							<img src="/static/images/fda/img_fda05_01.png" class="web" alt="안심구역 데이터 분석 플랫폼(하단참조)">
+							<div class="blind">							
+								<ul>
+									<li>클라우드 기반 분석용 인프라 자원(KT Public Cloud)
+										<ul>
+											<li>분석용 가상서버</li>
+											<li>분석용 GPU 자원</li>
+										</ul>								
+									</li>
+									<li>데이터 분석 서비스(안심구역 제공)
+										<ul>
+											<li>분석 데이터</li>
+											<li>분석 도구</li>
+											<li>분석 실행 환경</li>
+										</ul>
+									</li>
+									<li>서비스 사용자
+										<ul>
+											<li>데이터 분석 서비스를 이용한 분석작업</li>
+										</ul>								
+									</li>
+								</ul>
+							</div>                    
+						</div>
+					</div>
+
+                    <div class="exp">
+                        <h3>code pattern</h3>
+                        <pre class="brush: xhtml; gutter: false; toolbar:false">
+							<img src="/static/images/fda/img_fda05_01.png" class="web" alt="안심구역 데이터 분석 플랫폼(하단참조)">
+							<div class="blind">							
+								<ul>
+									<li>클라우드 기반 분석용 인프라 자원(KT Public Cloud)
+										<ul>
+											<li>분석용 가상서버</li>
+											<li>분석용 GPU 자원</li>
+										</ul>								
+									</li>
+									<li>데이터 분석 서비스(안심구역 제공)
+										<ul>
+											<li>분석 데이터</li>
+											<li>분석 도구</li>
+											<li>분석 실행 환경</li>
+										</ul>
+									</li>
+									<li>서비스 사용자
+										<ul>
+											<li>데이터 분석 서비스를 이용한 분석작업</li>
+										</ul>								
+									</li>
+								</ul>
+							</div>   
+                        </pre>
+                    </div>
+                </section>
+            </article>
+        </section>
+    </div>
+    </div>
+</div>
+<script>
+SyntaxHighlighter.all();
+$(function(){
+    navMenu(2,3);
+});
+</script>
+<script src="/static/guide/js/guide.js"></script>
+</body>
+</html>

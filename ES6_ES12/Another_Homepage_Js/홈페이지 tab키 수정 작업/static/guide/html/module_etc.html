@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="title" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Etc &lt; Module &verbar; guide</title>
+<link rel="shortcut icon" type="image/x-icon" href="/static/images/common/favicon.ico">
+<link rel="stylesheet" href="/static/css/reset.css">
+<link rel="stylesheet" href="/static/css/modules.css">
+<link rel="stylesheet" href="/static/guide/css/guide.css">
+<script src="/static/js/jquery-1.12.4.min.js" type="text/javascript"></script>
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shCore.css" rel="stylesheet">
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shThemeRDark.css" rel="stylesheet">
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
+</head>
+<body>
+<div class="guide">
+	<div class="cont-wrap">
+	<div class="guide-gnb">
+		<h2>K-DATA Guide</h2>
+		<script src="/static/guide/js/menu_inc.js"></script>
+	</div>
+	<div class="contents">
+		<h3 class="tit"></h3>
+		<section>
+			<article>			
+				<h2 class="display-ib bgnone left">Step</h2>
+				<section>
+					<ul class="scr">
+						<li>스텝 단계에 따라 완료된 상태는 .step에 pass 추가</li>
+						<li>스텝 단계에 따라 현재상태는 .step에 on 추가</li>
+						<li>현재 상태의 .on클래스가 적용된 부분에 접근성을 위해 title="" 정보를 제공</li>
+					</ul>
+					<div class="rendering">
+						<h3>Screen Rendering</h3>
+						<div class="step-area mb00">
+							<span class="step-box">
+								<ol class="step-list"><!-- 스텝 단계에 따라 .step에 on, pass 추가 -->
+									<li class="step pass"><em>1</em><span class="blind">본인인증</span></li>
+									<li class="step on" title="현재 진행중"><em>2</em><span class="blind">약관동의</span></li>
+									<li class="step"><em>3</em><span class="blind">회원정보 입력</span></li>
+									<li class="step"><em>4</em><span class="blind">완료</span></li>  									
+								</ol>
+							</span>
+						</div>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false;">
+							<div class="step-area">
+								<span class="step-box">
+									<ol class="step-list row4">
+										<li class="step pass"><em>1</em>본인인증</li>
+										<li class="step on" title="현재 진행중"><em>2</em>약관동의</li>
+										<li class="step"><em>3</em>회원정보 입력</li>
+										<li class="step"><em>4</em>완료</li>
+									</ol>
+								</span>
+							</div>
+						</pre>
+					</div>
+				</section>
+				
+				<h2 class="display-ib bgnone left">Pagination</h2>
+				<section>
+					<ul class="scr">
+						<li>페이지 처리의 비활성상태의 hover는 css셀렉터 처리로 모던 브라우저 기반(ie8에서는 호버효과 제외)</li>
+						<li>현재페이지 넘버의 활성상태는 <em>.on</em>를 적용</li>
+					</ul>
+					<div class="rendering">
+						<h3>Screen Rendering</h3>
+						<div class="paging">
+							<a href="#" class="navi-first">처음</a>
+							<a href="#" class="navi-prev">이전</a>
+							<a href="#" class="on" title="선택됨">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
+							<a href="#">5</a>
+							<a href="#">6</a>
+							<a href="#">7</a>
+							<a href="#">8</a>
+							<a href="#">9</a>
+							<a href="#">10</a>
+							<a href="#" class="navi-next">다음</a>
+							<a href="#" class="navi-last">마지막</a>
+						</div>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false;">
+						&lt;div class=&quot;paging&quot;&gt;
+							&lt;a href=&quot;#&quot; class=&quot;navi-first&quot;&gt;처음&lt;/a&gt;
+							&lt;a href=&quot;#&quot; class=&quot;navi-prev&quot;&gt;이전&lt;/a&gt;
+							&lt;a href=&quot;#&quot; class=&quot;on&quot; title=&quot;선택됨&quot;&gt;1&lt;/a&gt;
+							&lt;a href=&quot;#&quot;&gt;2&lt;/a&gt;
+							&lt;a href=&quot;#&quot;&gt;3&lt;/a&gt;
+							&lt;a href=&quot;#&quot;&gt;4&lt;/a&gt;
+							&lt;a href=&quot;#&quot;&gt;5&lt;/a&gt;
+							&lt;a href=&quot;#&quot;&gt;6&lt;/a&gt;
+							&lt;a href=&quot;#&quot;&gt;7&lt;/a&gt;
+							&lt;a href=&quot;#&quot;&gt;8&lt;/a&gt;
+							&lt;a href=&quot;#&quot;&gt;9&lt;/a&gt;
+							&lt;a href=&quot;#&quot;&gt;10&lt;/a&gt;
+							&lt;a href=&quot;#&quot; class=&quot;navi-next&quot;&gt;다음&lt;/a&gt;
+							&lt;a href=&quot;#&quot; class=&quot;navi-last&quot;&gt;마지막&lt;/a&gt;
+						&lt;/div&gt;
+						</pre>
+					</div>
+				</section>	
+				
+				<!-- <h2>동영상</h2>
+				<section>
+					<ul class="scr">
+						<li>video 태그를 사용</li>
+						<li>브라우져별 각기 다른 영상포맷 사용  - webm(크롬, 파이어폭스, 오페라등 ), mp4(익스플로어9 이상), wmv(익스플로어 8) </li>
+						<li>캡션 영역을 별도로 제공(접근성 준수)</li>
+						<li>ie8에서는 이미지를 클릭하면 다운로드하고 로컬에서 미디어플레이어로 재생가능</li>
+					</ul>
+					<div class="rendering">
+						<h3>Screen Rendering</h3>
+						<div class="video-wrap type02">
+							<video preload="" controls="" width="540" height="304" poster="/resource/video/add_edit.jpg">
+								&lt;source src="/resource/video/add_edit.mp4" type="video/mp4"&gt;
+								&lt;source src="/resource/video/add_edit.webm" type="video/webm"&gt;
+								&lt;a href="/resource/video/add_edit.wmv" title="윈도우 미디어 플레이어로 재생하기(새창열림)"&gt;&lt;img src="/resource/video/add_edit.jpg" alt="일임형 ISA 제도 개요 - 투자자 보호를 중심으로"&gt;</a>
+							</video>
+							
+							<div class="caption-area">
+								<div class="cont">
+									<p>국민체감, 금융관행개혁 (두 번째 이야기)</p>
+									<p>금융거래주소 일괄변경 서비스 편</p>
+									<br>
+									<p>당신에게 금융이란?</p>
+									<p>신혼부부 김남철, 임은영</p>
+									<br>
+									<p>임은영 멘트</p>
+									<p>미로 같아요. 결혼 전에는 예금, 적금 그런 기본적인 것들만 신경 썼었는데, 이제는 전세자금대출이니</p> 
+									<p>공과금에 보험가입에.. 금융이 이렇게 복잡한 거였나?</p>
+									<br>
+									<p>이사 후 금융회사 주소변경은?</p>
+									<br>
+									<p>김남철 멘트</p>
+									<p>아직까지는 가지고 있는 카드나 가입한 보험회사 홈페이지에 일일이 들러서 주소변경을 해야 했는데</p>
+									<p>아내가 먼저 알고 얘기해 주더라고요.</p>
+									<p>거래 중인 금융회사 한 군데에서만 주소변경 신청하고, 다른 금융회사들을 선택하기만 하면 단 한번에 끝!</p>
+									<p>알아서 주소가 척척 바뀌니까 얼마나 편한지 모르겠어요.</p>
+									<br>
+									<p>임은영 멘트</p>
+									<p>똑똑한 아내랑 결혼하니까 좋지?</p>
+									<br>
+									<p>금융생활의 효율성, 금융관행개혁으로 향상됩니다.</p>
+									<br>
+									<p>불편했던 금융서비스를 쉽고 편리하게!</p>
+									<p>금융거래주소 일괄변경 서비스</p>
+									<p>각 금융회사 홈페이지나 창구를 통해 주소변경을 한 번에 할 수 있습니다.</p>
+									<br>
+									<p>시원하게 달라지는 금융서비스!</p>
+									<p>금융개혁으로 안전하고 편리한 금융생활이 펼쳐집니다.</p>
+									<br>
+									<p>자세한 내용은 금융감독원 홈페이지 ‘금융관행개혁’을 참조하세요.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false;">
+							&lt;div class="video-wrap type02"&gt;
+								&lt;video preload="" controls="" width="540" height="304" poster="/resource/video/add_edit.jpg"&gt;
+									&lt;source src="/resource/video/add_edit.mp4" type="video/mp4"&gt;
+									&lt;source src="/resource/video/add_edit.webm" type="video/webm"&gt;
+									&lt;a href="/resource/video/add_edit.wmv" title="윈도우 미디어 플레이어로 재생하기(새창열림)"&gt;&lt;img src="/resource/video/add_edit.jpg" alt="일임형 ISA 제도 개요 - 투자자 보호를 중심으로"&gt;&lt;/a&gt;
+								&lt;/video&gt;
+								
+								&lt;div class="caption-area"&gt;
+									&lt;div class=&quot;cont&quot;&gt;
+										...omitted...
+									&lt;/div&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+						</pre>
+					</div>
+				</section>	
+				
+				<h2>인쇄</h2>
+				<section>
+					<ul class="scr">
+						<li>페이지의 인쇄는 1080px최적화된 페이지로 제공(html에서는 일부가 짤려보이나 jsp에서는 printPage.css를 호출하여 짤림현상 없음)<br>
+						전체적으로 printPage.css를 호출할 경우 ie8에서는 한장만 한장만 되는 버그로 인해 디바이스체크로 인해 jsp에서(개발기) 확인가능</li>
+						<li>ie8에서 인쇄할때 페이지에 맞게 축소가 되지 않는 부분으로 인해 인쇄시 미리보기 창으로 변경()하여  activeX형태로 팝업이 되게 변경하였으며, 신뢰할 수 있는 사이트를 등록하면 결과 확인가능</li>
+						<li>이체확인증(페이지당 4건), 간편거래내역(페이지당 6건) 인쇄관련은 솔루션으로 변경</li>
+						<li>그리드가 포함된 인쇄페이지의 경우는 폰트의 해석불가(ps방식의 프린터에서 본고딕을 인식못하고 프린터 오류가 발생)로 인해 솔루션으로 변경</li>
+						<li>중요페이지의 경우는 현재 솔루션으로 변경작업이 완료된 상태입니다. 기본 페이지의 인쇄는 기본 css에서 관여하고 있음</li>
+						<li>기본 인쇄관련 css는 moduel.css의 프린트쿼리 부분을 참조하며, 레이어팝업의 인쇄관련 css는 printDynamic.css를 참조</li>
+						<li>그리드관련 인쇄가 솔루션으로 변경되기는 하였으나, as-is버젼은 그리드가 존재할 경우는 그리드에서 페이지를 새롭게 그리면서 외부 자원의 css를 로드하지 못하고 내부에 적용되어 있어야 하기에 .../main/ibsheet.css를 참조</li>
+						<li><strike>인쇄팝업에서 하단의 버튼영역을 화면에서 안보이게 설정<em>(&lt;div class="btns-wrap by-print-hide"&gt;) by-print-hide 클래스를 추가적용</em></strike> 솔루션으로 변경되어 삭제됨</li>
+					</ul>
+					<div class="rendering">
+					</div>
+					<div class="exp">
+						<h3>code pattern - css</h3>						
+						<p class="stit">printPage.css에서 인쇄화면 최적화(ie8 제외)</p>
+						<pre class="brush: css; gutter: false; toolbar:false;">
+						// printPage.css
+						@charset "utf-8";
+						@page {
+							size:A4;
+							margin:34px;
+						}
+						</pre>
+						
+						<h3>code pattern - js</h3>
+						<p class="stit">printForm.html에서 ie8에서 미리보기 스크립트</p>
+						<pre class="brush: js; gutter: false; toolbar:false;">
+						var browser = navigator.userAgent.toLowerCase();
+						if ( -1 != browser.indexOf('trident') && (Browser.ie8)) {
+							try {
+								var webBrowser = '<OBJECT ID="previewWeb" width="0" height="0" CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
+								document.body.insertAdjacentHTML('beforeEnd', webBrowser);
+								previewWeb.ExecWB(7,1);
+								previewWeb.outerHTML ="";
+								//pagePreview();
+							} catch (e){
+								alert("인터넷 익스플로러 8을 이용하시는 고객께서는 정보보안을 위해  광주은행을 신뢰할 수 있는 사이트에 등록하여 주시기 바랍니다.");
+							}
+						}
+						</pre>
+						
+						<h3>code pattern - js</h3>
+						<p class="stit">ui.js에서 ie8에서 미리보기 스크립트를 함수화</p>
+						<pre class="brush: js; gutter: false; toolbar:false;">		
+						//ActiveX 신뢰할 수 있는 사이트 등록시 ie8에서 인쇄미리보기
+						function pagePreview(){
+							var browser = navigator.userAgent.toLowerCase();
+							if ( -1 != browser.indexOf('chrome')){
+								window.print();
+							} else if ( -1 != browser.indexOf('trident') && (Browser.ie8)) {
+								try {
+									var webBrowser = '<OBJECT ID="previewWeb" width="0" height="0" CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
+									document.body.insertAdjacentHTML('beforeEnd', webBrowser);
+									previewWeb.ExecWB(7,1);
+									previewWeb.outerHTML ="";
+								} catch (e){
+									Message.printDialog();
+								}
+							}
+						}
+						</pre>
+						<pre class="brush: html; gutter: false; toolbar:false;">
+						// 레이어팝업내에서는 알럿으로 인쇄 안내노출
+						alert("인터넷 익스플로러 8을 이용하시는 고객께서는 정보보안을 위해  광주은행을 신뢰할 수 있는 사이트에 등록하여 주시기 바랍니다.");
+						
+						// 페이지에서는 레이어 팝업으로 인쇄 안내노출		
+						resource/html/cmm/print_info.html						
+						</pre>
+					</div>
+				</section> -->
+				
+			</article>
+		</section>
+	</div>
+	</div>
+</div>
+<script>
+SyntaxHighlighter.all();
+$(function(){
+	navMenu(2,8);
+});
+</script>
+<script src="/static/guide/js/guide.js"></script>
+</body>
+</html>

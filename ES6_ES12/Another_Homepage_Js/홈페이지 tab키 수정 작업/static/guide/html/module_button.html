@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="title" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Button &lt; Module &verbar; guide</title>
+<link rel="shortcut icon" type="image/x-icon" href="/static/images/common/favicon.ico">
+<link rel="stylesheet" href="/static/css/reset.css">
+<link rel="stylesheet" href="/static/css/modules.css">
+<link rel="stylesheet" href="/static/guide/css/guide.css">
+<script src="/static/js/jquery-1.12.4.min.js" type="text/javascript"></script>
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shCore.css" rel="stylesheet">
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shThemeRDark.css" rel="stylesheet">
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
+<style>
+	.thumb-list{max-width:690px}
+	.aEle{display:none}
+</style>
+<script>
+function aaa(flag , action){
+	$("."+flag).addClass("on");
+}
+</script>
+</head>
+<body>
+<div class="guide">
+	<div class="cont-wrap">
+	<div class="guide-gnb">
+		<h2>K-DATA Guide</h2>
+		<script src="/static/guide/js/menu_inc.js"></script>
+	</div>
+	<div class="contents">
+		<h3 class="tit"></h3>
+		<section>
+			<article>
+				<h2 class="display-ib bgnone left">Button Style</h2>
+				<section>
+					<ul class="scr">
+						<li>버튼의 기본은 주컬러인 블루계열의 중간사이즈 버튼 .btns</li>
+						<li>사이즈는 기본 클래스에 [.la, .md, .sm]로 구분하며 중간사이즈는 미기입</li>
+						<li>컬러는 기본 클래스에 [.white, .gray]로 구분</li>
+					</ul>
+					<div class="rendering">
+						<h3>Screen Rendering</h3>
+						<p class="stit">Button type - Anchor</p>
+						<a href="#none" class="btns la">앵커버튼</a>
+						<a href="#none" class="btns">앵커버튼</a>
+						<a href="#none" class="btns md">앵커버튼</a>
+						<a href="#none" class="btns sm">앵커버튼</a>
+
+						<p class="stit">Button type - Button</p>
+						<button type="button" class="btns la">버튼태그</button>
+						<button type="button" class="btns">버튼태그</button>
+						<button type="button" class="btns md">버튼태그</button>
+						<button type="button" class="btns sm">버튼태그</button>
+						
+						<p class="stit">Button opt. - Color</p>
+						<a href="#none" class="btns">앵커버튼</a>
+						<a href="#none" class="btns white">앵커버튼</a>
+						<a href="#none" class="btns gray">앵커버튼</a>
+					</div>				
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false">
+							<!-- 앵커버튼 -->
+							&lt;a href=&quot;#none&quot; class=&quot;btns la&quot;&gt;앵커버튼&lt;/a&gt;
+							&lt;a href=&quot;#none&quot; class=&quot;btns&quot;&gt;앵커버튼&lt;/a&gt;
+							&lt;a href=&quot;#none&quot; class=&quot;btns md&quot;&gt;앵커버튼&lt;/a&gt;
+							&lt;a href=&quot;#none&quot; class=&quot;btns sm&quot;&gt;앵커버튼&lt;/a&gt;
+	
+							<!-- 버튼태그 -->
+							&lt;button type=&quot;button&quot; class=&quot;btns la&quot;&gt;버튼태그&lt;/button&gt;
+							&lt;button type=&quot;button&quot; class=&quot;btns&quot;&gt;버튼태그&lt;/button&gt;
+							&lt;button type=&quot;button&quot; class=&quot;btns md&quot;&gt;버튼태그&lt;/button&gt;
+							&lt;button type=&quot;button&quot; class=&quot;btns sm&quot;&gt;버튼태그&lt;/button&gt;
+							
+							<!-- 색상별 -->
+							&lt;a href=&quot;#none&quot; class=&quot;btns&quot;&gt;앵커버튼&lt;/a&gt;
+							&lt;a href=&quot;#none&quot; class=&quot;btns white&quot;&gt;앵커버튼&lt;/a&gt;
+							&lt;a href=&quot;#none&quot; class=&quot;btns gray&quot;&gt;앵커버튼&lt;/a&gt;
+						</pre>
+					</div>
+				</section>
+
+				<h2 class="display-ib bgnone left">Buton 정렬</h2>
+				<section>
+					<ul class="scr">
+						<li>.btns-wrap의 기본은 중앙정렬이며, 버튼의 TOP마진 기본은 60px</li>
+						<li>버튼끼리의 좌우공백은 기본공백에 좌우3px으로 설정(기본스페이스 4px)하여 10px이 최종적용됨</li>
+						<li><em>좌우버튼만 존재하는 경우는 플로팅</em>으로 처리하고, <em>가운데버튼까지 존재하면, 좌우버튼을 플로팅이 아닌 포지션으로 변경(.pos)</em></li>
+					</ul>
+					<div class="rendering">
+						<h3>Screen Rendering</h3>
+						<p class="stit">align center - .btns-wrap</p>
+						<div class="btns-wrap">
+							<a href="#none" class="btns gray">취소</a>
+							<a href="#none" class="btns">확인</a>
+						</div>
+						<p class="stit">align justify - .btns-wrap > .loc-left|.loc-right</p>
+						<div class="btns-wrap">
+							<div class="loc-left">
+								<a href="#none" class="btns">좌측버튼</a>
+							</div>
+							<div class="loc-right">
+								<a href="#none" class="btns gray">우측버튼1</a>
+								<a href="#none" class="btns">우측버튼2</a>
+							</div>
+						</div>
+						<p class="stit">align union - .btns-wrap > .loc-left.pos|.loc-right.pos</p>
+						<div class="btns-wrap">
+							<div class="loc-left pos">
+								<a href="#none" class="btns">좌측버튼</a>
+							</div>
+							<a href="#none" class="btns">확인</a>
+							<div class="loc-right pos">
+								<a href="#none" class="btns gray">우측버튼1</a>
+								<a href="#none" class="btns white">우측버튼2</a>
+							</div>
+						</div>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false;">
+							<!-- 기본 정렬 -->
+							&lt;div class=&quot;btns-wrap&quot;&gt;
+								&lt;a href=&quot;#none&quot; class=&quot;btns gray&quot;&gt;취소&lt;/a&gt;
+								&lt;a href=&quot;#none&quot; class=&quot;btns&quot;&gt;확인&lt;/a&gt;
+							&lt;/div&gt;
+							
+							<!-- 양쪽 정렬 -->
+							&lt;div class=&quot;btns-wrap&quot;&gt;
+								&lt;div class=&quot;loc-left&quot;&gt;
+									&lt;a href=&quot;#none&quot; class=&quot;btns&quot;&gt;좌측버튼&lt;/a&gt;
+								&lt;/div&gt;
+								&lt;div class=&quot;loc-right&quot;&gt;
+									&lt;a href=&quot;#none&quot; class=&quot;btns gray&quot;&gt;우측버튼1&lt;/a&gt;
+									&lt;a href=&quot;#none&quot; class=&quot;btns white&quot;&gt;우측버튼2&lt;/a&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+							
+							<!-- 양쪽 정렬, 가운데 정렬 -->
+							&lt;div class=&quot;btns-wrap&quot;&gt;
+								&lt;div class=&quot;loc-left pos&quot;&gt;
+									&lt;a href=&quot;#none&quot; class=&quot;btns&quot;&gt;좌측버튼&lt;/a&gt;
+								&lt;/div&gt;
+								&lt;a href=&quot;#none&quot; class=&quot;btns&quot;&gt;확인&lt;/a&gt;
+								&lt;div class=&quot;loc-right pos&quot;&gt;
+									&lt;a href=&quot;#none&quot; class=&quot;btns gray&quot;&gt;우측버튼1&lt;/a&gt;
+									&lt;a href=&quot;#none&quot; class=&quot;btns white&quot;&gt;우측버튼2&lt;/a&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+						</pre>
+					</div>
+				</section>
+				<!-- <h2>아이콘+text 버튼</h2>
+				<section>
+					<ul class="scr">
+						<li>텍스트아이콘은 기본 <em>.btn-ico-text</em>에 해당 이미지의 멀티클래스 적용</li>
+						<li>ex : .btn-ico-text.btn-down</li>
+					</ul>
+					<div class="rendering">
+						<a href="#none" class="btn-ico-text btn-down">거래내역다운로드</a>
+						<a href="#none" class="btn-ico-text btn-print">거래내역인쇄</a>
+						<a href="#none" class="btn-ico-text btn-down">상품설명서</a>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false;">
+						<a href="#none" class="btn-ico-text btn-down">거래내역다운로드</a>
+						<a href="#none" class="btn-ico-text btn-print">거래내역인쇄</a>
+						<a href="#none" class="btn-ico-text btn-down">상품설명서</a>
+						</pre>
+					</div>
+				</section>
+				<h2>아이콘형 버튼</h2>
+				<section>
+					<ul class="scr">
+						<li>텍스트아이콘은 기본 <em>.btn-ico</em>에 해당 이미지의 멀티클래스 적용</li>
+						<li>ex : class="btn-ico btn-excel"</li>
+					</ul>
+					<div class="rendering">
+						<a href="#none" class="btn-ico btn-like">상품<br>담기</a>
+						<a href="#none" class="btn-ico btn-like on">상품<br>담기</a>
+						<a href="#none" class="btn-ico btn-cart">비교함<br>닫기</a>
+						<a href="#none" class="btn-ico btn-excel">엑셀 다운로드</a>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false;">
+						<a href="#none" class="btn-ico btn-like">상품<br>담기</a>
+						<a href="#none" class="btn-ico btn-like on">상품<br>담기</a>
+						<a href="#none" class="btn-ico btn-cart">비교함<br>닫기</a>
+						<a href="#none" class="btn-ico btn-excel">엑셀 다운로드</a>
+						</pre>
+					</div>
+				</section> -->
+			</article>
+		</section>
+	</div>
+	</div>
+</div>
+<script>
+SyntaxHighlighter.all();
+$(function(){
+	navMenu(2,2);
+});
+</script>
+<script src="/static/guide/js/guide.js"></script>
+</body>
+</html>

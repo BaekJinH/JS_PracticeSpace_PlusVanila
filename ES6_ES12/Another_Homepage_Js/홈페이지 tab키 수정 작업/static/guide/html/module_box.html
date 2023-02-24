@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="title" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Box &lt; Module &verbar; guide</title>
+<link rel="shortcut icon" type="image/x-icon" href="/static/images/common/favicon.ico">
+<link rel="stylesheet" href="/static/css/reset.css">
+<link rel="stylesheet" href="/static/css/modules.css">
+<link rel="stylesheet" href="/static/guide/css/guide.css">
+<script src="/static/js/jquery-1.12.4.min.js" type="text/javascript"></script>
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shCore.css" rel="stylesheet">
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shThemeRDark.css" rel="stylesheet">
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="/static/js/ui_pub.js"></script>
+</head>
+<body>
+<div class="guide notice" id="wrap">
+	<div class="cont-wrap">
+	<div class="guide-gnb">
+		<h2>K-DATA Guide</h2>
+		<script src="/static/guide/js/menu_inc.js"></script>
+	</div>
+	<div class="contents">
+		<h3 class="tit"></h3>
+		<section>
+			<article>
+				<h2 class="display-ib bgnone left">메시지 박스</h2>
+				<section>
+					<ul class="scr">
+						<li>컨텐츠 유형에 따른 분류</li>
+					</ul>
+					<div class="rendering">
+						<p class="stit">결과 조회 완료 메시지 박스</p>
+						<h3>Screen Rendering</h3>
+						<div class="result-box">
+							<p class="m00 blue">asdfgh*******</p>
+						</div>						
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false;">
+							&lt;div class=&quot;result-box&quot;&gt;
+								&lt;p class=&quot;blue&quot;&gt;asdfgh*******&lt;/p&gt;
+							&lt;/div&gt;
+						</pre>
+					</div>
+					<div class="rendering">
+						<p class="stit">컨텐츠 상단 메시지 박스</p>
+						<ul class="scr">
+							<li><em>.la</em> class로 큰 글씨</li>
+						</ul>
+						<h3>Screen Rendering</h3>
+						<div class="message-box">
+							<p class="txt la">회원가입정보를 입력해 주세요.</p>
+						</div>				
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false;">
+							<div class="message-box">
+								<p class="txt la">회원가입정보를 입력해 주세요.</p>
+							</div>
+						</pre>
+					</div>
+					<div class="rendering">
+						<p class="stit">컨텐츠 상단 메시지 박스2</p>
+						<ul class="scr">
+							<li>공통 class로 폰트 조절</li>
+						</ul>
+						<h3>Screen Rendering</h3>
+						<div class="message-box">
+							<p class="txt gray-79 fs18">안전한 서비스 이용을 위해 비밀번호를 한번 더 입력해 주세요.</p>
+						</div>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false;">
+							<div class="message-box">
+								<p class="txt gray-79 fs18">안전한 서비스 이용을 위해 비밀번호를 한번 더 입력해 주세요.</p>
+							</div>
+						</pre>
+					</div>
+					<div class="rendering">
+						<p class="stit">내용 안내 메시지 박스</p>
+						<h3>Screen Rendering</h3>
+						<div class="message-box pb00 left">
+							<p class="txt dark-45 fs18">
+								입력하신 정보로 아이디를 찾았습니다.<br>
+								개인정보보호를 위해 일부는 **로 표시하였습니다.                            
+							</p>
+						</div>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false;">
+							&lt;div class=&quot;message-box pb00 left&quot;&gt;
+								&lt;p class=&quot;txt dark-45 fs18&quot;&gt;입력하신 정보로 아이디를 찾았습니다.<br>개인정보보호를 위해 일부는 **로 표시하였습니다. &lt;/p&gt;
+							&lt;/div&gt;
+						</pre>
+					</div>
+				</section>
+				
+				<h2 class="display-ib bgnone left">검색박스</h2>
+				<section class="cont-wrap total">
+					<div class="rendering">
+						<h3>Screen Rendering</h3>
+						<!--search area-->
+						<div class="search-wrap">
+							<div class="ele-wrap ">
+								<label for="srch01" class="blind">검색어입력</label>
+								<input type="text" name="srch01" id="srch01" placeholder="검색어 입력" class="has-clear">
+								<button type="button" class="btn-cont-srch"><span class="blind">검색</span></button>
+							</div>
+							<div class="auto-wrap" style="display:none"><!--자동완성-->
+								<ul>
+									<li><a href="#none" class="diminish"><span class="blue">신용카드</span> 범죄</a></li>
+									<li><a href="#none" class="diminish"><span class="blue">신용카드</span> 서비스</a></li>
+									<li><a href="#none" class="diminish"><span class="blue">신용카드</span>형 시스템</a></li>
+									<li><a href="#none" class="diminish"><span class="blue">신용카드</span> 범죄</a></li>
+									<li><a href="#none" class="diminish"><span class="blue">신용카드</span> 서비스</a></li>
+									<li><a href="#none" class="diminish"><span class="blue">신용카드</span>형 시스템</a></li>
+									<li><a href="#none" class="diminish">아이들 <span class="blue">신용카드</span> 서비스</a></li>
+									<li><a href="#none" class="diminish">20대 <span class="blue">신용카드</span>형 시스템</a></li>
+									<li><a href="#none" class="diminish">40대 <span class="blue">신용카드</span> 범죄</a></li>
+									<li><a href="#none" class="diminish">50대 <span class="blue">신용카드</span> 서비스</a></li>
+									<li><a href="#none" class="diminish">60대 <span class="blue">신용카드</span>형 시스템</a></li>
+								</ul>
+							</div>
+						</div>
+						<!--//search area-->
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false;">
+							&lt;div class="search-wrap"&gt;
+								&lt;div class="ele-wrap "&gt;
+									&lt;label for="srch01" class="blind"&gt;검색어입력&lt;/label&gt;
+									&lt;input type="text" name="srch01" id="srch01" placeholder="검색어 입력" class="has-clear"&gt;
+									&lt;button type="button" class="btn-cont-srch"&gt;&lt;span class="blind"&gt;검색&lt;/span&gt;&lt;/button&gt;
+								&lt;/div&gt;
+								&lt;div class="auto-wrap"&gt;&lt;!--자동완성--&gt;
+									&lt;ul&gt;
+										&lt;li&gt;&lt;a href="#none" class="diminish"&gt;&lt;span class="blue"&gt;신용카드&lt;/span&gt; 범죄&lt;/a&gt;&lt;/li&gt;&lt;a&gt;
+										&lt;li&gt;&lt;a href="#none" class="diminish"&gt;&lt;span class="blue"&gt;신용카드&lt;/span&gt; 서비스&lt;/a&gt;&lt;/li&gt;&lt;a&gt;
+										&lt;li&gt;&lt;a href="#none" class="diminish"&gt;&lt;span class="blue"&gt;신용카드&lt;/span&gt;형 시스템&lt;/a&gt;&lt;/li&gt;&lt;a&gt;
+										&lt;li&gt;&lt;a href="#none" class="diminish"&gt;&lt;span class="blue"&gt;신용카드&lt;/span&gt; 범죄&lt;/a&gt;&lt;/li&gt;&lt;a&gt;
+										&lt;li&gt;&lt;a href="#none" class="diminish"&gt;&lt;span class="blue"&gt;신용카드&lt;/span&gt; 서비스&lt;/a&gt;&lt;/li&gt;&lt;a&gt;
+										&lt;li&gt;&lt;a href="#none" class="diminish"&gt;&lt;span class="blue"&gt;신용카드&lt;/span&gt;형 시스템&lt;/a&gt;&lt;/li&gt;&lt;a&gt;
+										&lt;li&gt;&lt;a href="#none" class="diminish"&gt;아이들 &lt;span class="blue"&gt;신용카드&lt;/span&gt; 서비스&lt;/a&gt;&lt;/li&gt;&lt;a&gt;
+										&lt;li&gt;&lt;a href="#none" class="diminish"&gt;20대 &lt;span class="blue"&gt;신용카드&lt;/span&gt;형 시스템&lt;/a&gt;&lt;/li&gt;&lt;a&gt;
+										&lt;li&gt;&lt;a href="#none" class="diminish"&gt;40대 &lt;span class="blue"&gt;신용카드&lt;/span&gt; 범죄&lt;/a&gt;&lt;/li&gt;&lt;a&gt;
+										&lt;li&gt;&lt;a href="#none" class="diminish"&gt;50대 &lt;span class="blue"&gt;신용카드&lt;/span&gt; 서비스&lt;/a&gt;&lt;/li&gt;&lt;a&gt;
+										&lt;li&gt;&lt;a href="#none" class="diminish"&gt;60대 &lt;span class="blue"&gt;신용카드&lt;/span&gt;형 시스템&lt;/a&gt;&lt;/li&gt;&lt;a&gt;
+									&lt;/ul&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+						</pre>
+					</div>
+				</section>	
+			
+			</article>
+		</section>
+	</div>
+	</div>
+</div>
+
+<script>
+    SyntaxHighlighter.all();
+    $(function(){
+		navMenu(2,5);
+                //자동완성 입력필드 노출
+                var $auto = $('.search-wrap .ele-wrap').find('input.has-clear');
+                $auto.on('propertychange change keyup paste input focusin', function(){
+                    $auto.addClass("active");
+                    $('.auto-wrap').show();
+                });             
+                $auto.on('focusout', function(){
+                    $auto.removeClass("active");
+                    $('.auto-wrap').hide();
+                }); 		
+    });
+</script>
+<script src="/static/guide/js/guide.js"></script>
+</body>
+</html>

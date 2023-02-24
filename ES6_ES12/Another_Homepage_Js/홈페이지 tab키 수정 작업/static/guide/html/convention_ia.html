@@ -1,0 +1,1282 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="title" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Information Architecture &lt; Convention &verbar; guide</title>
+<link rel="shortcut icon" type="image/x-icon" href="/static/images/common/favicon.ico">
+<link rel="stylesheet" href="/static/css/reset.css">
+<link rel="stylesheet" href="/static/css/modules.css">
+<link rel="stylesheet" href="/static/guide/css/guide.css">
+<script src="/static/js/jquery-1.12.4.min.js" type="text/javascript"></script>
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shCore.css" rel="stylesheet">
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shThemeRDark.css" rel="stylesheet">
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
+<style>
+	.contents .s-tit1{margin:30px 0 10px;font-size:1em;text-decoration:underline}
+	.contents article div.scr{margin-top:30px;}
+	.contents article div.scr:first-child{margin-top:0}
+	.count{display:table;width:100%;border: 1px solid #2b333d;background-color:#47505a;font-size:12px}
+	.count a{float:left;width:20%;padding:10px;color:#ccc;text-align:center}	
+	.count a.selected{color:#0fC3ff}	
+	table{width:100%;border-top:1px solid #999;font-size:14px;font-weight: 300;}
+	table thead th{padding:10px 0;border-bottom:1px solid #999;background-color:#dfdfdf;vertical-align:middle}
+	table tbody th{padding:10px;border-bottom:1px solid #eee;text-align:left;vertical-align:middle}	
+	table tbody td{padding:5px 10px;border-right:1px solid #ccc;border-bottom:1px solid #ccc;border-left:1px solid #ccc;text-align:left;vertical-align:top}/*vertical-align:middle*/	
+	table tbody td:first-child{text-align:center} /*border-left:0; */
+	table tbody td.tl{text-align:left}	
+	table tbody td .b-small{display:block;margin-top:3px;color:#aaa;font-size:11px}	
+	.link-pass td,td.link-pass{background-color:#eee;}
+	.link.red a,.link.ing a{color:red;text-decoration:underline}
+	.del{color:#ccc !important;text-decoration:line-through}
+	.del a{color:#ccc !important}
+	em{color:red}
+	.bl-none{border-left:0 none}
+	.br-none{border-right:0 none}
+</style>
+<script>
+$(function() {
+	// link column
+	var linkLen = $('table td.link');
+	$(linkLen).each(function() {
+		if ($(this).text().length > 1) {
+			var getTag = $(this).wrapInner("<a href='#' class='complete' rel='external'></a>");
+			var getLink = $(this).text();
+			$(this).children("a").attr('href', getLink);
+			//$(this).css('background' ,'#efefef');
+		}
+	});
+	var frt_tbl_tr = function frt_tbl_tr(frt_tbl) {
+		$(frt_tbl).find('table > tbody > tr').each(function(i) {
+			$("td:first", this).html(i + 1);
+		});
+		// indexing
+		var fileTot = $(frt_tbl).find('tbody > tr').not(".link-pass").length;
+		var fileWork = $(frt_tbl).find('tbody > tr .link a').closest("td").not(".del").length;
+		var fileWork2 = $(frt_tbl).find('tbody > tr .del').length;
+		fileWork = fileWork + fileWork2;
+		var fileProgress = parseInt((fileWork / fileTot) * 100) + "%";
+		//$("table tbody td.ing").next('td').html('진행중').css("color", "red").parent("tr").css("background-color", "#efefef");
+
+		$(frt_tbl).prepend('<p style="text-align:right; padding:5px; float:right; margin-top:15px;">front indexing : working <em><strong>' + fileWork + '</strong></em> of total ' + fileTot + ' progress <em><strong style="font-size:25px">' + fileProgress + '</strong></em></p>');
+		$('a[rel~=external]').attr('target', '_blank');
+	};
+
+	$('.link a').click(function() {
+		$('.link').removeClass('red');
+		$(this).parent('.link').addClass('red');
+	});
+
+	frt_tbl_tr('.frt_tbl01');
+	//frt_tbl_tr('.frt_tbl02');
+
+	$(".shot").trigger("click");
+});
+</script>
+</head>
+<body>
+	<div class="guide">
+		<div class="cont-wrap">
+			<div class="guide-gnb">
+				<section>
+					<a href="#" class="on">ESC :: easter egg</a>
+				</section>
+				<h2>K-DATA Guide</h2>
+				<script src="/static/guide/js/menu_inc.js"></script>
+			</div>
+			<div class="contents">
+				<h3 class="tit"></h3>
+				<section>
+					<article>
+						<div class="as-tab">
+							<ul class="ia-tab area-tab-mnu flexible">
+								<li><a href="#" class="shot">K-DATA(사용자)</a></li>
+							</ul>
+							<div class="tab-inner area-tab-cont">
+								<!-- 01 -->
+								<div class="frt_tbl01 frt_tbl tab-ele">
+									<table>
+										<colgroup>
+											<col width="4%">
+											<col width="13%">
+											<col width="13%">
+											<col width="12%">
+											<col width="13%">
+											<col width="17%">
+											<col width="*">
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">No</th>
+												<th scope="col">1Depth</th>
+												<th scope="col">2Depth</th>
+												<th scope="col">3Depth</th>
+												<th scope="col">4Depth</th>
+												<th scope="col">Page</th>
+												<th scope="col">비고</th>
+											</tr>
+										</thead>
+										<tbody class="cklist">
+											<!-- 1. layout -->
+											<tr>
+												<td></td>
+												<td rowspan="2">1. layout</td>
+												<td rowspan="2">GNB &amp; footer</td>
+												<td>로그인 전</td>
+												<td></td>
+												<td class="link">/html/layout.html</td>
+												<td>데이터 분석실습 메뉴 추가, footer 연계사이트 추가, 전화걸기 추가<br>2020.01.29 데이터 요청 메뉴 추가</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>로그인 후</td>
+												<td></td>
+												<td class="link">/html/layout_login.html</td>
+												<td>데이터 분석실습 메뉴 추가, footer 연계사이트 추가, 전화걸기 추가<br>2020.01.29 데이터 요청 메뉴 추가</td>
+											</tr>
+											<!-- //1. layout -->
+											<!-- 2. 메인 -->											
+											<tr>
+												<td></td>
+												<td rowspan="8">2. 메인</td>
+												<td rowspan="2">최종</td rowspan="8">
+												<td rowspan="2"></td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FHO01V03.html</td>
+												<td class="del">배너 위치 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FHO01V04.html</td>
+												<td>추가 콘텐츠</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="4">비쥬얼 슬라이드 버튼 방식</td>
+												<td rowspan="2">슬라이드 마다 버튼 보유</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FHO01V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FHO01V02.html</td>
+												<td>레이아웃 변경, 이미지 교체, 활용가이드 디자인변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">기본 버튼 상시 노출</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FHO01-1V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FHO01-1V02.html</td>
+												<td>레이아웃 변경, 이미지 교체, 활용가이드 디자인변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>홈 팝업창</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FHO02V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>활용가이드 동영상</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FHO03V01.html</td>
+												<td>신규</td>
+											</tr>
+											<!-- //2. 메인 -->									
+											<!-- 3. 이용신청 -->
+											<tr>
+												<td></td>
+												<td rowspan="37">3. 이용신청</td>
+												<td>3-1. 이용절차안내 (FST)</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FST/FST01V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>												
+												<td rowspan="21">3-2. 신청서작성 (FAP)</td>
+												<td rowspan="4">이용신청안내</td>
+												<td></td>
+												<td class="link">/html/FAP/FAP01V01.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>브라우저 버전 안내</td>
+												<td class="link">/html/FAP/FAP02V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>이용신청 불가안내</td>
+												<td class="link">/html/FAP/FAP03V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>최대 신청 건수 초과안내</td>
+												<td class="link">/html/FAP/FAP04V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="4">신청자료선택</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FAP/FAP05V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FAP/FAP05V02.html</td>
+												<td>레이아웃 변경, 안내문구 추가</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>신청자료선택 안내</td>
+												<td class="link">/html/FAP/FAP06V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>자료상세정보</td>
+												<td class="del">/html/FAP/FAP07V01.html</td>
+												<td>팝업, 2019.11.20</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="8">신청서 작성</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FAP/FAP08V01.html</td>
+												<td>GPU 사용여부 추가</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FAP/FAP08V02.html</td>
+												<td>레이아웃 변경, 안내문구 추가</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>자료이용목적 안내</td>
+												<td class="link">/html/FAP/FAP09V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>공동연구자 선택</td>
+												<td class="link">/html/FAP/FAP10V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>보안서약서 등록</td>
+												<td class="link">/html/FAP/FAP11V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>반입자료 안내</td>
+												<td class="link">/html/FAP/FAP12V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>반입자료</td>
+												<td class="link">/html/FAP/FAP13V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>참고자료</td>
+												<td class="link">/html/FAP/FAP14V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="3">이용기간선택</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FAP/FAP15V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FAP/FAP15V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>좌석유형 안내</td>
+												<td class="link">/html/FAP/FAP16V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">이용신청완료</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FAP/FAP17V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FAP/FAP17V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="15">3-3. 나의 신청관리 (FMA)</td>
+												<td rowspan="4">이용신청목록</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FMA/FMA01V01.html</td>
+												<td></td>
+											<tr>
+												<td></td>
+												<td class="link">/html/FMA/FMA01V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">신청목록 없음</td>
+												<td class="del">/html/FMA/FMA01-1V01.html</td>
+												<td>신규</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FMA/FMA01-1V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="11">이용신청상세</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FMA/FMA02V01.html</td>
+												<td>GPU 사용여부 추가</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FMA/FMA02V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>신청상세 상태별</td>
+												<td class="link">/html/FMA/FMA02-1V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>반출신청안내</td>
+												<td class="link">/html/FMA/FMA03V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>반려사유</td>
+												<td class="link">/html/FMA/FMA04V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>신청자료</td>
+												<td class="link">/html/FMA/FMA05V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>공동연구자</td>
+												<td class="link">/html/FMA/FMA06V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>반입자료</td> 
+												<td class="link">/html/FMA/FMA07V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>참고자료</td>
+												<td class="link">/html/FMA/FMA08V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>반출신청자료</td>
+												<td class="link">/html/FMA/FMA09V01.html</td>
+												<td>팝업</td>
+											</tr>										
+											<tr>
+												<td></td>
+												<td>수정요청안내</td>
+												<td class="link">/html/FMA/FMA10V01.html</td>
+												<td>신규, 팝업</td>
+											</tr>										
+											<!-- //3. 이용신청 -->
+											<!-- 4. 활용가이드 -->
+											<tr>
+												<td></td>
+												<td rowspan="5">4. 활용가이드 (FGU)</td>
+												<td rowspan="2">4-1. 데이터 분석사례</td>
+												<td rowspan="2">탭 메뉴</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FGU/FGU01V01.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FGU/FGU01V02.html</td>
+												<td>2020.01.28 콘텐츠 변경, 레이아웃 변경(미정)<br>2020.03.11 콘텐츠 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">4-2. 데이터 분석실습</td>
+												<td rowspan="2"></td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FGU/FGU04V01.html</td>
+												<td>신규</td>
+											</tr>											
+											<tr>
+												<td></td>
+												<td class="link">/html/FGU/FGU04V02.html</td>
+												<td>분석도구 추가</td>
+											</tr>											
+											<tr>
+												<td></td>
+												<td>4-3. 활용가이드</td>
+												<td></td>
+												<td></td>
+												<td class=""></td>
+												<td>미정</td>
+											</tr>
+											<!-- //4. 활용가이드 -->
+											<!-- 5. 제공서비스  -->
+											<tr>
+												<td></td>
+												<td rowspan="12">5. 제공서비스 (FDA)</td>
+												<td class="link-pass">제공데이터소개</td>
+												<td class="link-pass"></td>
+												<td class="link-pass"></td>
+												<td class="link-pass del">/html/FDA/FDA01V01.html</td>
+												<td class="link-pass"></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">5-1. 안심구역소개</td>
+												<td rowspan="2"></td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FDA/FDA04V01.html</td>
+												<td>제공 데이터 변경, 데이터 제공기관 추가, 데이터 제공기관 추가삭제</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FDA/FDA04V02.html</td>
+												<td>2020.01.22 데이터 제공기관 추가<br>2020.02.21 데이터 제공기관 추가<br>2020.02.24 데이터 제공기관 수정</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">5-2. 분석환경소개</td>
+												<td rowspan="2"></td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FDA/FDA05V01.html</td>
+												<td></td>
+											</tr>											
+											<tr>
+												<td></td>
+												<td class="link">/html/FDA/FDA05V02.html</td>
+												<td>레이아웃 변경<br>2020.02.21 이미지변경</td>
+											</tr>											
+											<tr>
+												<td></td>
+												<td rowspan="7">5-3. 제공 데이터 조회</td>
+												<td rowspan="2">분류별</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FDA/FDA02V01.html</td>
+												<td>2019.11.13</td>
+											</tr>											
+											<tr>
+												<td></td>
+												<td class="link">/html/FDA/FDA02V02.html</td>
+												<td>전체항목 삭제<br>2020.04.23 코드정보 추가</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">제공기관별</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FDA/FDA02-1V01.html</td>
+												<td>2019.11.13</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FDA/FDA02-1V02.html</td>
+												<td>전체항목 삭제</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>제공 데이터 상세정보</td>
+												<td></td>
+												<td class="link">/html/FDA/FDA06V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>검색 결과 없음</td>
+												<td></td>
+												<td class="link">/html/FDA/FDA03V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>코드 정보</td>
+												<td></td>
+												<td class="link">/html/FDA/FDA07V01.html</td>
+												<td>신규<br>팝업</td>
+											</tr>
+											<!-- //5. 제공서비스 -->
+											<!-- 6. 고객지원 -->
+											<tr>
+												<td></td>
+												<td rowspan="22">6. 고객지원 (FCU)</td>
+												<td rowspan="5">6-1. 공지사항</td>
+												<td rowspan="2">목록</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FCU/FCU01V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FCU/FCU01V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="3">상세</td>
+												<td rowspan="3"></td>
+												<td class="del">/html/FCU/FCU02V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="del">/html/FCU/FCU02V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FCU/FCU02V03.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link-pass" rowspan="2">자료실</td>
+												<td class="link-pass">목록</td>
+												<td class="link-pass"></td>
+												<td class="link-pass del">/html/FCU/FCU03V01.html</td>
+												<td class="link-pass"></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link-pass">상세</td>
+												<td class="link-pass"></td>
+												<td class="link-pass del">/html/FCU/FCU04V01.html</td>
+												<td class="link-pass"></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>6-2. 오시는 길</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FCU/FCU11V01.html</td>
+												<td>주소, 전화번호 변경, 전화걸기 추가</td>
+											</tr>											
+											<tr>
+												<td></td>
+												<td rowspan="3">6-3. 자주 묻는 질문</td>
+												<td rowspan="3">탭 메뉴</td>
+												<td rowspan="3"></td>
+												<td class="del">/html/FCU/FCU05V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="del">/html/FCU/FCU05V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FCU/FCU05V03.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="8">6-4. 1:1문의</td>
+												<td rowspan="3">목록</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FCU/FCU06V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FCU/FCU06V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>문의내역 없음</td>
+												<td class="link">/html/FCU/FCU06-1V01.html</td>
+												<td>신규</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="3">상세</td>
+												<td rowspan="3"></td>
+												<td class="del">/html/FCU/FCU07V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="del">/html/FCU/FCU07V02.html</td>
+												<td>답변 첨부파일</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FCU/FCU07V03.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">문의하기</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FCU/FCU08V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FCU/FCU08V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>6-5. 데이터 요청</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FCU/FCU12V01.html</td>
+												<td>2020.01.29 신규</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>6-6. 이용약관</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FCU/FCU09V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>6-7. 개인정보처리방침</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FCU/FCU10V01.html</td>
+												<td>table형식 변경</td>
+											</tr>
+											<!-- //6. 고객지원 -->
+											<!-- 7. 온라인심의 -->
+											<tr>
+												<td></td>
+												<td rowspan="10">7. 온라인심의 (FDE)</td>
+												<td rowspan="2">7-1. 심의요청목록</td>
+												<td rowspan="2"></td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FDE/FDE01V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FDE/FDE01V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="4">7-2. 이용심의요청 상세</td>
+												<td rowspan="2"></td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FDE/FDE02V01.html</td>
+												<td>2019.11.11</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FDE/FDE02V02.html</td>
+												<td>페이징 삭제, 테이블 스크롤</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">이용심의결과서</td>
+												<td>입력</td>
+												<td class="link">/html/FDE/FDE03V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>마감</td>
+												<td class="link">/html/FDE/FDE03-1V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="4">7-2. 반출심의요청 상세</td>
+												<td rowspan="2"></td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FDE/FDE04V01.html</td>
+												<td>2019.11.13</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FDE/FDE04V02.html</td>
+												<td>페이징 삭제, 테이블 스크롤</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">반출심의결과서</td>
+												<td>입력</td>
+												<td class="link">/html/FDE/FDE05V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>마감</td>
+												<td class="link">/html/FDE/FDE05-1V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<!-- //7. 온라인심의 -->
+											<!-- 8. MY ACCOUNT -->
+											<tr>
+												<td></td>
+												<td rowspan="34">8. MY ACCOUNT (FME)</td>												
+												<td rowspan="12">8-1. 회원가입</td>
+												<td rowspan="2">본인인증</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FME/FME01V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FME/FME01V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="5">약관동의</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FME/FME02V01.html</td>
+												<td>이용약관, 개인정보수집&middot;활용 내용 추가</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FME/FME02V02.html</td>
+												<td>약관내용변경, 레이아웃 변경, 팝업 수정</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>이용약관</td>
+												<td class="del">/html/FME/FME03V01.html</td>
+												<td>팝업, 내용 추가, FME02V02.html 내부팝업 참조</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">개인정보수집</td>
+												<td class="del">/html/FME/FME3-1V01.html</td>
+												<td>팝업, 내용 추가</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="del">/html/FME/FME20V01.html</td>
+												<td>IA_ID 부여, 약관내용변경, FME02V02.html 내부팝업 참조</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="3">회원가입정보</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FME/FME04V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FME/FME04V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>이메일인증</td>
+												<td class="link">/html/FME/FME05V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">회원가입완료</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FME/FME06V01.html</td>
+												<td>홈으로가기 버튼 컬러 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FME/FME06V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="10">8-2. 회원정보변경</td>
+												<td rowspan="2">비밀번호확인</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FME/FME07V01.html</td>
+												<td></td>
+											</tr>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FME/FME07V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="6">회원정보변경</td>
+												<td rowspan="2">기본정보변경</td>
+												<td class="del">/html/FME/FME08V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FME/FME08V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">비밀번호변경</td>
+												<td class="del">/html/FME/FME09V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FME/FME09V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">이메일변경</td>
+												<td class="del">/html/FME/FME10V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FME/FME10V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">회원탈퇴</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FME/FME11V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FME/FME11V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="12">8-3. 로그인</td>
+												<td rowspan="2">로그인</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FME/FME12V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FME/FME12V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">휴면회원해제</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FME/FME13V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FME/FME13V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">비밀번호변경(안내)</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FME/FME14V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FME/FME14V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>아이디찾기</td>
+												<td></td>
+												<td class="link">/html/FME/FME15V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">아이디찾기안내</td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FME/FME16V01.html</td>
+												<td>결과안내</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FME/FME16V02.html</td>
+												<td>레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="3">비밀번호찾기</td>
+												<td>아이디입력</td>
+												<td class="link">/html/FME/FME17V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>이름/이메일인증</td>
+												<td class="link">/html/FME/FME18V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>비밀번호변경</td>
+												<td class="link">/html/FME/FME19V01.html</td>
+												<td></td>
+											</tr>
+											<!-- //8. MY ACCOUNT -->
+											<!-- 9. 통합검색 -->
+											<tr>
+												<td></td>
+												<td rowspan="13">9. 통합검색 (FSE)</td>
+												<td>검색 전</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FSE/FSE01V01.html</td>
+												<td>자동완성 스크립트</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">검색 후</td>
+												<td rowspan="2"></td>
+												<td rowspan="2"></td>
+												<td class="del">/html/FSE/FSE02V01.html</td>
+												<td>2019.11.12</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link">/html/FSE/FSE02V02.html</td>
+												<td>설명글, 첨부파일 추가,자동완성 스크립트, 자주 찾는 질문 전체보기 추가, 첨부파일 아이콘 추가</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>검색 결과 없음</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FSE/FSE03V01.html</td>
+												<td>전체보기 삭제, 자동완성 스크립트</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">제공 데이터</td>
+												<td></td>
+												<td></td>
+												<td class="del">/html/FSE/FSE04V01.html</td>
+												<td>2019.11.12</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>탭</td>
+												<td></td>
+												<td class="link">/html/FSE/FSE04V02.html</td>
+												<td>설명글, 첨부파일 추가, 자동완성 스크립트, 자주 찾는 질문 전체보기 추가, 첨부파일 아이콘 추가</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="3">자주 찾는 질문</td>
+												<td></td>
+												<td></td>
+												<td class="del">/html/FSE/FSE05V01.html</td>
+												<td>2019.11.12</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td class="del">/html/FSE/FSE05V02.html</td>
+												<td>설명글, 첨부파일 추가, 자동완성 스크립트</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>탭</td>
+												<td></td>
+												<td class="link">/html/FSE/FSE05V03.html</td>
+												<td>전체보기 추가, 첨부파일 아이콘 추가</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td class="link-pass">자료실</td>
+												<td class="link-pass"></td>
+												<td class="link-pass"></td>
+												<td class="link-pass del">/html/FSE/FSE06V01.html</td>
+												<td class="link-pass"></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">공지사항</td>
+												<td></td>
+												<td></td>
+												<td class="del">/html/FSE/FSE07V01.html</td>
+												<td>2019.11.12</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>탭</td>
+												<td></td>
+												<td class="link">/html/FSE/FSE07V02.html</td>
+												<td>설명글, 첨부파일 추가, 자동완성 스크립트, 자주 찾는 질문 전체보기 추가, 첨부파일 아이콘 추가</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>검색 결과 없음</td>
+												<td>탭</td>
+												<td></td>
+												<td class="link">/html/FSE/FSE08V01.html</td>
+												<td>전체보기 텍스트링크 삭제, 자동완성 스크립트</td>
+											</tr>
+											<!-- //9. 통합검색 -->
+											<!-- 10. 이메일 -->
+											<tr>
+												<td></td>
+												<td rowspan="10">10. 이메일 (FEM)</td>
+												<td>이메일인증</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FEM/FEM01V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>회원가입완료안내</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FEM/FEM02V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>이용신청완료안내</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FEM/FEM03V01.html</td>
+												<td>이메일, footer변경, 이미지 삭제, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="4">심의완료안내</td>
+												<td rowspan="2">이용신청</td>
+												<td>승인</td>
+												<td class="link">/html/FEM/FEM04V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>반려</td>
+												<td class="link">/html/FEM/FEM05V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">반출신청</td>
+												<td>승인</td>
+												<td class="link">/html/FEM/FEM06V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>반려</td>
+												<td class="link">/html/FEM/FEM07V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>기간변경완료안내</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FEM/FEM08V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>휴면회원전환안내</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FEM/FEM09V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>개인정보 이용내역 통지</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FEM/FEM10V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>											
+											<!-- //10. 이메일 -->
+											<!-- 11. 이메일 AEM -->
+											<tr>
+												<td></td>
+												<td rowspan="9">11. 이메일 (AEM)</td>
+												<td>비밀번호초기화</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/AEM/AEM01V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>탈퇴안내</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/AEM/AEM02V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>불량회원설정안내</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/AEM/AEM03V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>1:1문의답변안내</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/AEM/AEM04V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td rowspan="2">심의지연안내</td>
+												<td>관리자</td>
+												<td></td>
+												<td class="link">/html/AEM/AEM05V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>심의위원</td>
+												<td></td>
+												<td class="link">/html/AEM/AEM06V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>심의요청안내</td>
+												<td>심의위원</td>
+												<td></td>
+												<td class="link">/html/AEM/AEM07V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>1:1문의접수안내</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/AEM/AEM08V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>수정요청안내</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/AEM/AEM09V01.html</td>
+												<td>이메일, footer변경, 레이아웃 변경</td>
+											</tr>
+											<!-- //11. 이메일 AEM -->	
+											<!-- 12. 설문조사 -->
+											<tr>
+												<td></td>
+												<td>12. 설문조사 (FSU)</td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FSU/FSU01V01.html</td>
+												<td>비 상설, 레이아웃 변경</td>
+											</tr>
+											<!-- //12. 설문조사 -->											
+											<!-- 13. 공통 -->
+											<tr>
+												<td></td>
+												<td rowspan="2">13. 공통</td>
+												<td>404 페이지오류 (FCO)</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FCO/FCO01V01.html</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>이메일 무단수집거부 (FFO)</td>
+												<td></td>
+												<td></td>
+												<td class="link">/html/FFO/FFO01V01.html</td>
+												<td>팝업</td>
+											</tr>
+											<!-- //13. 공통 -->											
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</article>
+				</section>
+			</div>
+		</div>
+	</div>
+	<div class="noti-box">
+		<div class="box-cont">
+			<h3>작업중 임시노트</h3>
+			<ul>
+				<li>ia 2019.11.13 update</li>
+			</ul>
+		</div>
+	</div>
+<script type="text/javascript">
+	SyntaxHighlighter.all()
+	$(function() {
+		navMenu(0,5);
+	});
+</script>
+<script src="/static/guide/js/guide.js"></script>
+</body>
+</html>

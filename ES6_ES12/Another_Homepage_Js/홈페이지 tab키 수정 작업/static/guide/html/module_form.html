@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="title" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Form &lt; Module &verbar; guide</title>
+<link rel="shortcut icon" type="image/x-icon" href="/static/images/common/favicon.ico">
+<link rel="stylesheet" href="/static/css/reset.css">
+<link rel="stylesheet" href="/static/css/modules.css">
+<link rel="stylesheet" href="/static/guide/css/guide.css">
+<script src="/static/js/jquery-1.12.4.min.js" type="text/javascript"></script>
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shCore.css" rel="stylesheet">
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shThemeRDark.css" rel="stylesheet">
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="/static/js/ui_pub.js"></script>
+</head>
+<body>
+<div class="guide">
+	<div class="cont-wrap">
+	<div class="guide-gnb">
+		<h2>K-DATA Guide</h2>
+		<script src="/static/guide/js/menu_inc.js"></script>
+	</div>
+	<div class="contents">
+		<h3 class="tit"></h3>
+		<section>
+			<article>
+				<h2 class="display-ib bgnone left">Checkbox & radio Elements</h2>
+				<section>
+					<ul class="scr">(.ele-chk | .ele-rdo)
+						<li>인풋요소를 투명처리하고 포커스, 선택 상태를 디자인으로 대체</li>
+						<li>개별적용은 인풋요소에 <em>.dsgn-ele</em>, 그룹적용은 상위 노드<em>.dsgn-form</em>에 적용</li>
+						<li>체크박스, 라디오버튼을 페이지에서 추가 할 경우<br>
+						<em>&lt;span class="ele-chk">&lt;input type="checkbox" class="dsgn-ele">&lt;/span></em><br>
+						<em>&lt;span class="ele-rdo">&lt;input type="radio" class="dsgn-ele">&lt;/span></em>를 각각 적용</li>
+						<li>스크립트 부분은 개발 ext_grud.js로 이관됨(createCheck 참조)</li>
+						<li>체크박스, 라디오버튼의 기본형 <em>KDATA.dsgnForm()</em>적용</li>
+						<li>라디오버튼의 박스형 <em>KDATA.dsgnRdo()</em>적용</li>
+					</ul>
+					<div class="rendering dsgn-form">
+						<h3>Screen Rendering</h3>
+						<p>checkbox</p>
+						<span class="ele-chk"><input type="checkbox" id="checkbox01"></span>
+						<label for="checkbox01">기본상태</label>
+						<span class="ele-chk checked"><input type="checkbox" id="checkbox02" checked></span>
+						<label for="checkbox02">체크상태</label>
+						<span class="ele-chk square"><input type="checkbox" id="checkbox05"></span>
+						<label for="checkbox05">기본상태(square)</label>
+						<span class="ele-chk square checked"><input type="checkbox" id="checkbox06" checked></span>
+						<label for="checkbox06">체크상태(square)</label>
+						<!-- <span class="ele-chk la"><input type="checkbox" id="checkbox05"></span>
+						<label for="checkbox05">기본상태(large)</label>
+						<span class="ele-chk la checked"><input type="checkbox" id="checkbox06" checked></span>
+						<label for="checkbox06">체크상태(large)</label> -->
+						<span class="ele-chk disabled"><input type="checkbox" id="checkbox03" disabled></span>
+						<label for="checkbox03">불능상태(미정)</label>
+						<span class="ele-chk checked disabled"><input type="checkbox" id="checkbox04" checked disabled></span>
+						<label for="checkbox04">불가상태(미정)</label>
+						<p>radio</p>
+						<span class="ele-rdo"><input type="radio" name="radio" id="radio01" class="dsgn-ele"></span>
+						<label for="radio01">기본상태</label>
+						<span class="ele-rdo checked"><input type="radio" name="radio" id="radio02" class="dsgn-ele" checked></span>
+						<label for="radio02">체크상태</label>
+						<span class="ele-rdo disabled"><input type="radio" name="radio" id="radio03" class="dsgn-ele" disabled></span>
+						<label for="radio03">불능상태(미정)</label>
+						<span class="ele-rdo checked disabled"><input type="radio" name="radioA" id="radio04" class="dsgn-ele" checked disabled></span>
+						<label for="radio04">불가상태(미정)</label>
+						<p>레벨없이 개별적용</p>
+						<span class="ele-chk"><input type="checkbox" id="checkboxETc"></span>
+						<span class="ele-chk square"><input type="checkbox" id="checkboxETc02"></span>
+						<!-- <span class="ele-chk la"><input type="checkbox" id="checkboxETc02"></span> -->
+						<span class="ele-rdo"><input type="radio" name="radioEtc" id="radioEtc01"></span>
+						<!-- <p>radio 박스형</p>
+						<span class="ele-rdo2">
+							<span class="rdo-item">
+								<input type="radio" name="Group" id="Radio01">
+								<label for="Radio01">전체</label>
+							</span>
+							<span class="rdo-item check">
+								<input type="radio" name="Group" id="Radio02" checked>
+								<label for="Radio02">출금</label>
+							</span>
+							<span class="rdo-item">
+								<input type="radio" name="Group" id="Radio03">
+								<label for="Radio03">입금</label>
+							</span>
+						</span> -->
+					</div>
+
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false">
+						<!--checkbox 공통적용-->
+						<div class="dsgn-form">
+							<span class="ele-chk"><input type="checkbox" id="checkbox01"></span>
+							<label for="checkbox01">기본상태</label>
+							<span class="ele-chk checked"><input type="checkbox" id="checkbox02" checked></span>
+							<label for="checkbox02">체크상태</label>
+							<span class="ele-chk square"><input type="checkbox" id="checkbox05"></span>
+							<label for="checkbox05">기본상태(square)</label>
+							<span class="ele-chk square checked"><input type="checkbox" id="checkbox06" checked></span>
+							<label for="checkbox06">체크상태(square)</label>
+							<span class="ele-chk disabled"><input type="checkbox" id="checkbox03" disabled></span>
+							<label for="checkbox03">불능상태(미정)</label>
+							<span class="ele-chk checked disabled"><input type="checkbox" id="checkbox04" checked disabled></span>
+							<label for="checkbox04">불가상태(미정)</label>
+						</div>
+
+						<!--radio 개별적용-->
+						<span class="ele-rdo">&lt;input type="radio" name="radio" id="radio01" class="dsgn-ele" checked></span>
+						<label for="radio01">기본</label>
+
+						<!--레벨없이 개별적용-->
+						<span class="ele-chk"><input type="checkbox" id="checkboxETc"></span>
+						<span class="ele-chk la"><input type="checkbox" id="checkboxETc02"></span>
+						<span class="ele-rdo"><input type="radio" name="radioEtc" id="radioEtc01"></span>
+						</pre>
+						
+						<pre class="brush: js; gutter: false; toolbar:false">
+						KDATA.dsgnForm();	// 기본형 체크박스 및 라디오
+						KDATA.dsgnRdo();  // 박스형 라디오 버튼
+						</pre>
+					</div>
+				</section>
+
+				<h2 class="display-ib bgnone left">Select box</h2>
+				<section>
+					<ul class="scr">
+						<li>기본셀렉트의 투명도로 선택된 부분을 디자인으로 대체</li>
+						<li>셀렉트태그를 <em>.ele-select</em>로 감싼다</li>
+						<li>onChange이벤트로 보여지는 영역 <em>&lt;span class="select-indi"&gt;선택값&lt;/span&gt;</em>에 텍스트를 전달(구현은 개발단에서 처리)</li>
+						<li>셀렉트의 사이즈는 <em>기본사이즈와 100%를 제외한 사이즈는 인라인스타일로 추가</em>(빈도수에 따라 사이즈는 클래스화 가능)</li>
+						<li>셀렉트 선택시의 .ele-select의 보더색상을 스크립트에서 바꾸면서 .select-indi태그에 focus클래스가 적용되면서 2픽셀의 강조라인으로 변경</li>
+					</ul>
+					<div class="rendering">
+						<h3>Screen Rendering</h3>
+						<p>기본 사이즈 정의 - 100%</p>
+						<span class="ele-select">
+							<select id="" name="" class="select" title="">
+								<option value="">셀렉트 선택값1</option>
+								<option value="" selected>셀렉트 선택값2</option>
+								<option value="">셀렉트 선택값3</option>
+								<option value="">셀렉트 선택값4</option>
+							</select>
+							<span class="select-indi">셀렉트 선택값</span>
+						</span>
+						<p>인라인으로 사이즈를 개별 정의 - 300px</p>
+						<span class="ele-select" style="width:300px;">
+							<select id="" name="" class="select" title="">
+								<option value="">셀렉트 선택값1</option>
+								<option value="">셀렉트 선택값2</option>
+								<option value="">셀렉트 선택값3</option>
+								<option value="">셀렉트 선택값4</option>
+							</select>
+							<span class="select-indi">셀렉트 선택값</span>
+						</span>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false; highlight: [1,8]">
+						&lt;span class="ele-select"&gt;
+							&lt;select id="" name="" class="select" title="">
+								<option value="">셀렉트 선택값1</option>
+								<option value="">셀렉트 선택값2</option>
+								<option value="">셀렉트 선택값3</option>
+								<option value="">셀렉트 선택값4</option>
+							&lt;/select>
+							<span class="select-indi">셀렉트 선택값</span>
+						&lt;/span&gt;
+						</pre>
+					</div>
+				</section>
+
+				<h2 class="display-ib bgnone left">Placeholder</h2>
+				<section>
+					<ul class="scr">
+						<li>시스템 기본 placeholder를 사용하며, 플러그인의 사용은 안함</li>
+					</ul>
+					<div class="rendering">
+						<h3>Screen Rendering</h3>
+						<input type="text" id="userAddr" placeholder="Placeholder check...">
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false; highlight:[0]">
+						&lt;input type="text" id="userAddr" placeholder="Placeholder check..."&gt;
+						</pre>
+					</div>
+				</section>
+			</article>
+		</section>
+	</div>
+	</div>
+</div>
+<script>
+SyntaxHighlighter.all();
+$(function(){
+	navMenu(2,1);
+});
+</script>
+<script src="/static/guide/js/guide.js"></script>
+</body>
+</html>

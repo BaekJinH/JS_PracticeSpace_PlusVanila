@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="title" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>CSS &lt; Convention &verbar; guide</title>
+<link rel="shortcut icon" type="image/x-icon" href="/static/images/common/favicon.ico">
+<link rel="stylesheet" href="/static/css/reset.css">
+<link rel="stylesheet" href="/static/css/modules.css">
+<link rel="stylesheet" href="/static/guide/css/guide.css">
+<script src="/static/js/jquery-1.12.4.min.js" type="text/javascript"></script>
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shCore.css" rel="stylesheet">
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shThemeRDark.css" rel="stylesheet">
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
+</head>
+<body>
+<div class="guide">
+    <div class="cont-wrap">
+    <div class="guide-gnb">
+        <h2>K-DATA Guide</h2>
+        <script src="/static/guide/js/menu_inc.js"></script>
+    </div>
+    <div class="contents">
+        <h3 class="tit"></h3>
+        <section>
+            <article>
+                <h2 class="display-ib bgnone left">General Formatting Rules</h2>
+                <section>
+                    <ul class="scr">
+                        <li>모든 속성은 영문 소문자로만 작성</li>
+                        <li>공백이 포함된 폰트명, 한글 폰트명, 문자열 데이터 타입, filter 속성의 파라미터값은 작은따옴표(' ')로 감싸며, @charset 선언 시에는 속성 값을 큰따옴표(" ")로 감싼다. 그 외의 경우에는 따옴표를 사용하지 않음</li>
+                        <li>마지막 속성의 세미콜론(;)은 삭제</li>
+                        <li>CSS 코드를 작성할 때는 들여쓰기를 하지 않는다. <em>단, 중괄호”{}”가 중첩되는 경우 예외</em></li>
+                        <li><em>들여쓰기는 하드탭으로 변경</em> 1탭 4스페이스로 적용은 탭으로 적용</li>
+                        <li>각각 속성 선언 콜론(:)뒤에는 공백, 쉼표로 구분되는 선택자 간 공백, 속성 간 공백 및 속성 값 사이 공백, 중괄호 좌, 우 공백은 제거</li> 
+                        <li>속성값들과 색상값들에 <em>소숫점이 필요할 경우 0.를 사용하지 않음</em> (예: .5 또는 -.5px)</li>
+                        <li>16진수 값들은 소문자로 표현하며 축약형태로 사용</li>
+                        <li>0값들에서는 단위생략. (예: margin:0;)</li>
+                        <li>폰트의 기본 단위는 px을 사용하며, %, em은 선택적으로 사용가능</li>
+                    </ul>
+                    <div class="exp">
+                        <h3>code pattern</h3>
+                        <pre class="brush: css; gutter: false; toolbar:false">
+                        .selector[type=text],.selector-secondary{margin-bottom:15px;padding:15px;background-color:rgba(0,0,0,.5);box-shadow:0 1px 2px #ccc,inset 0 1px 0 #fff}
+                        </pre>
+                    </div>
+                </section>
+                <h2 class="display-ib bgnone left">속성 선언 순서</h2>
+                <section>
+                    <ul class="scr">
+                        <li>속성에 선언순서는 <em>포지션 관련 &gt; 박스 모델 &gt; 시각 효과 &gt; 타이포그라피 &gt; 기타</em></li>
+                    </ul>
+                    <blockquote>포지션 관련 선언들이 가장 먼저 옵니다. 문서의 정상적인 흐름에서 엘리먼트들을 없앨 수 있고, 박스 모델 관련 스타일들을 재정의할 수 있기 때문입니다.<br>박스 모델이 그 다음으로 오는데, 이것은 해당 엘리먼트의 크기와 위치를 지정하기 때문입니다.<br>나머지는 이 앞의 두 섹션에 영향을 주지 않거나 해당 엘리먼트의 내부에서만 일어나기 때문에 나중에 배치 시킵니다.</blockquote>
+                    <div class="exp">
+                        <h3>code pattern</h3>
+                        <pre class="brush: css; gutter: false; toolbar:false">
+                        .declaration-order{
+                        /* Positioning */
+                        position:absolute;top:0;right:0;bottom:0;left:0;
+
+                        /* Box-model */
+                        display:block;float:right;width:100px;height:100px;margin:10px;padding:20px;
+
+                        /* Visual */
+                        border:1px solid #e5e5e5;border-radius:3px;background-color:#f5f5f5;
+                                                
+                        /* Typography */
+                        color:#333;font:normal 14px artial,sans-serif;text-align:center;line-height:1.3;
+                        
+                        /* Misc */
+                        opacity:1;z-index:100
+                        </pre>
+                    </div>
+                </section>
+                
+                <h2 class="display-ib bgnone left">@import 사용 금지</h2>
+                <section>
+                    <p>&lt;link>에 비해 @import는 <em>상대적으로 느리고 추가 페이지 요청을 필요</em>로 하기 때문에 <em>로딩관련하여 예측할 수 없는 문제</em>를 야기할 수 경우가 있어 @import의 사용을 피하고 &lt;link&gt;를 사용</p>
+                    <div class="exp">
+                        <h3>code pattern</h3>
+                        <pre class="brush: xhtml; gutter: false; toolbar:false">
+                        <!-- Use link elements -->
+                        &lt;link rel="stylesheet" href="/contents.css"&gt;
+                        </pre>
+                    </div>
+                </section>
+                
+                <h2 class="display-ib bgnone left">Class Naming</h2>
+                <section>
+                    <ul class="scr">
+                        <li>클래스 이름은 소문자와 하이픈(-)을 사용하며, 하이픈은 관련 클래스에서 자연스러운 단어별브레이크를 제공(editplus의 경우 js지원, 서브라임 텍스트는 모든형식지원)</li>
+                        <li>의미없는 클래스명 보다는 명시적으로 선언</li>
+                        <li>클래스 이름은 축약형태로 선언하며, 과도한 축약은 피한다(ex. .a)</li>
+                        <li>의미 있는 이름을 사용하여 <em>표현보다는 구조라든가 목적을 나타내는 네이밍</em>으로 표현</li>
+                        <li>prefix는 베이스나 가장 가까운 부모를 바탕으로 네이밍</li>
+                    </ul>
+                </section>
+                
+                <h2 class="display-ib bgnone left">구성</h2>
+                <section>
+                    <ul class="scr">
+                        <li>콤포넌트 및 모듈 그룹에 맞춰 코드를 구성</li>
+                        <li>일관적인 상하관계에 맞추어 개발</li>
+                        <li>페이지 대신 콤포넌트 및 모듈별로 그룹핑</li>
+                    </ul>
+                </section>
+                
+                <h2 class="display-ib bgnone left">에디터 설정</h2>
+                <section>
+                    <ul class="scr">
+                        <li>파일 저장시 utf-8 인코딩으로 저장</li>
+                        <li>하드탭 설정을 공백 문자 네개로 구성된 1Tab으로 세팅</li>
+                    </ul>
+                </section>
+            </article>
+        </section>
+    </div>
+    </div>
+</div>
+<script>
+SyntaxHighlighter.all();
+$(function(){
+    navMenu(0,1);
+});
+</script>
+<script src="/static/guide/js/guide.js"></script>
+</body>
+</html>

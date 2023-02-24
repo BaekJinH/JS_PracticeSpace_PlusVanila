@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+.blockUI.blockMsg.blockPage {
+  border: 0 !important;
+  background-color: transparent !important;
+}
+
+.blockUI.blockMsg.blockPage .lds-roller {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.blockUI.blockMsg.blockPage .lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 32px 32px;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: yellow;
+  margin: -3px 0 0 -3px;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:nth-child(1):after {
+  top: 50px;
+  left: 50px;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:nth-child(2):after {
+  top: 54px;
+  left: 45px;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:nth-child(3):after {
+  top: 57px;
+  left: 39px;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:nth-child(4):after {
+  top: 58px;
+  left: 32px;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:nth-child(5):after {
+  top: 57px;
+  left: 25px;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:nth-child(6):after {
+  top: 54px;
+  left: 19px;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:nth-child(7):after {
+  top: 50px;
+  left: 14px;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.blockUI.blockMsg.blockPage .lds-roller div:nth-child(8):after {
+  top: 45px;
+  left: 10px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+pre.content {
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+pre.content img {
+  max-width: 100%;
+  height: auto;
+}
+:focus {
+  /* 21.09 outline: 0; */
+}

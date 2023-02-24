@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="title" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>HTML5 &lt; Convention &verbar; guide</title>
+<link rel="shortcut icon" type="image/x-icon" href="/static/images/common/favicon.ico">
+<link rel="stylesheet" href="/static/css/reset.css">
+<link rel="stylesheet" href="/static/css/modules.css">
+<link rel="stylesheet" href="/static/guide/css/guide.css">
+<script src="/static/js/jquery-1.12.4.min.js" type="text/javascript"></script>
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shCore.css" rel="stylesheet">
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shThemeRDark.css" rel="stylesheet">
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
+</head>
+<body>
+<div class="guide">
+    <div class="cont-wrap">
+    <div class="guide-gnb">
+        <h2>K-DATA Guide</h2>
+        <script src="/static/guide/js/menu_inc.js"></script>
+    </div>
+    <div class="contents">
+        <h3 class="tit"></h3>
+        <section>
+            <article>
+                <h2 class="display-ib bgnone left">General Formatting Rules</h2>
+                <section>
+                    <ul class="scr">                        
+						<li><em>들여쓰기는 하드탭으로 변경</em> 1탭 4스페이스로 적용은 탭으로 적용</li>
+                        <li>속성값을 지정할 때에는 작은 따옴표 대신 항상 <em>큰 따옴표</em>를 사용</li>
+                        <li><em>단독 태그 엘리먼트들는 닫는태그를 생략</em> – <a href="http://dev.w3.org/html5/spec-author-view/syntax.html#syntax-start-tag" rel="external">HTML5 스펙에서는 선택 사항</a></li>
+                        <li>소스상의 tag, 속성(&values), css셀렉터(&property)등은 소문자만 사용(문자열 제외)</li>
+                        <li>html5에서의 숫자의 무조건인 링크는 메타 포맷으로 방지(계좌번호, 전화번호등)</li>
+                    </ul>
+                    <div class="exp">
+                        <h3>code pattern</h3>
+                        <pre class="brush: xhtml; gutter: false; toolbar:false">
+                            &lt;!DOCTYPE html&gt;
+                            &lt;html lang="ko"&gt;
+                            &lt;head&gt;
+                            &lt;meta charset="UTF-8"&gt;
+                            &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+							&lt;meta name="title" content=""&gt;
+							&lt;meta name="description" content=""&gt;
+							&lt;meta name="keywords" content=""&gt;
+							&lt;meta name="format-detection" content="telephone=no"&gt;
+                            &lt;title&gt;Page title&lt;/title&gt;
+                            &lt;/head&gt;
+                            &lt;body&gt;
+                                &lt;img src="/logo.png" alt="K-DATA 로고">
+                                <h1>K-DATA</h1>
+                            &lt;/body&gt;
+                            &lt;/html&gt;
+                        </pre>
+                    </div>
+                </section>
+
+                <h2 class="display-ib bgnone left">HTML5 DOCTYPE</h2>
+                <section>
+                    <ul class="scr">
+                        <li>문서형식 선언을 HTML5로 지정함(htmlShiv사용하지 않음)</li>
+                        <li>문서 타입을 선언함으로써, 표준 모드로 렌더링되어 브라우저에서 일관적으로 렌더링을 보장</li>
+                    </ul>
+                    <div class="exp">
+                        <h3>code pattern</h3>
+                        <pre class="brush: xhtml; gutter: false; toolbar:false">
+                        &lt;!DOCTYPE html&gt;
+                        </pre>
+                    </div>
+                </section>
+
+                <h2 class="display-ib bgnone left">언어 속성</h2>
+                <section>
+                    <div class="scr">
+                    HTML5 스펙의 정의
+                        <blockquote>작성자는 문서에 쓰인 언어를 알리기 위해 lang 속성을 루트의 html 엘리먼트에 명시하는 것이 좋다. 이것은 텍스트 리더기와 같은 도구들이 어떤 언어와 발음를 써야 하는지, 어떤 번역 도구를 써야 하는지 등에 대해 내부적으로 결정할 수 있게 도와준다.</blockquote>
+                    </div>
+                    <div class="exp">
+                        <h3>code pattern</h3>
+                        <pre class="brush: xhtml; gutter: false; toolbar:false">
+                        &lt;html lang="en"&gt;
+                        &lt;html lang="ko"&gt;
+                        </pre>
+                    </div>
+                </section>
+
+                <h2 class="display-ib bgnone left">Encoding</h2>
+                <section>
+                    <ul class="scr">
+                        <li>문자열의 명시적인 선언으로 컨텐츠의 빠르고 렌더링하는 목적으로 상단에 선언</li>
+                    </ul>
+                    <div class="exp">
+                        <h3>code pattern</h3>
+                        <pre class="brush: xhtml; gutter: false; toolbar:false">
+                        &lt;meta charset="UTF-8">
+                        </pre>
+                    </div>
+                </section>
+
+                <h2 class="display-ib bgnone left">인터넷 익스플로러 호환 모드</h2>
+                <section>
+                    <ul class="scr">
+                        <li>인터넷 익스플로러는 <meta> 태그를 통해 어떤 버전의 인터넷 익스플로러를 사용해야 하는지를 명시함으로써 문서의 호환성을 지원합니다. 딱히 특별한 상황이 아니라면 엣지 모드를 사용하여 인터넷 익스플로러에게 가장 최신 버전을 사용하라고 하면 됩니다.</li>                        
+                    </ul>
+                    <div class="exp">
+                        <h3>code pattern</h3>
+                        <pre class="brush: xhtml; gutter: false; toolbar:false">
+                        &lt;meta http-equiv="X-UA-Compatible" content="ie=edge">
+                        </pre>
+                    </div>
+                </section>
+
+                <h2 class="display-ib bgnone left">Docu. Title</h2>
+                <section>
+                    <ul class="scr">
+                        <li>동일한 규칙으로 문서의 제목을 일원화하여 SEO최적화</li>
+                        <li>문서의 타이틀태그에 컨텐츠의 제목을 포함시켜 검색서비스 노출에 유리</li>
+                        <li>타이틀에 사용된 <em>특수문자는 기호가 아닌 Entity코드(<xmp style="display:inline">&lt;, &ndash; &verbar;</xmp>)</em>를 사용</li>
+                    </ul>
+                    <blockquote>crawling : 많은 컴퓨터에 분산 저장되어 있는 문서를 수집하여 검색대상의 색인으로 포함시키는 기술</blockquote>
+                    <div class="exp">
+                        <h3>code pattern</h3>
+                        <pre class="brush: xhtml; gutter: false; toolbar:false">
+                        &lt;title>활용가이드 &ndash; 메뉴얼 &verbar; K-DATA&lt;/title>
+                    </div>
+                </section>
+
+                <h2 class="display-ib bgnone left">External Link</h2>
+                <section>
+                    <p class="scr">HTML5 스펙에 따르면 css와 js파일을 불러올 때 type 속성을 생략가능 <em>text/css 와 text/javascript 속성값이 각각 기본값</em>(선택적용)</p>
+                    <div class="exp">
+                    <h3>code pattern</h3>
+                    <pre class="brush: xhtml; gutter: false; toolbar:false">
+                    <!-- External CSS -->
+                    &lt;link rel="stylesheet" href="common.css">
+                    <!-- JavaScript -->
+                    &lt;script src="common.js"></script>
+                    </pre>
+                    </div>
+                </section>
+
+                <h2 class="display-ib bgnone left">Boolean Attr.</h2>
+                <section>
+                    <p class="scr">불리언 속성값은 생략가능 XHTML에서는 속성값 지정이 필요했지만 HTML5에서는 그런 제약이 없음(선택적용)</p>
+                    <blockquote><em>불리언 태그 속성이 태그 안에 존재한다는 것 자체가 true를 의미</em>한다.<br>반대로 불리언 태그 속성이 태그 안에 선언되지 않았다면 그것은 false를 의미한다.</blockquote>
+                    <div class="exp">
+                        <h3>code pattern</h3>
+                        <pre class="brush: xhtml; gutter: false; toolbar:false">
+                        &lt;input type="text" disabled>
+                        &lt;input type="checkbox" checked>
+                        &lt;select>
+                        &lt;option value="1" selected></option>
+                        &lt;/select>
+                        </pre>
+                    </div>
+                </section>
+
+                <h2 class="display-ib bgnone left">Entity Code</h2>
+                <section>
+                    <p class="scr">모든 문자를 entity로 변환할 필요는 없으며, 아래의 케이스만 적용</blockquote>
+                    <div class="rendering">
+                        <h3>code pattern</h3>
+                        <pre class="brush: xhtml; gutter: false; toolbar:false">
+                        <!--middot(&middot)-->
+                        &amp;middot;
+                        <!--Less Than(&lt)-->
+                        &amp;lt;
+                        <!--Greater Than(&gt)-->
+                        &amp;gt;
+                        <!--Ampersand(&amp)-->
+                        &amp;amp;
+                        </pre>
+                    </div>
+                </section>
+            </article>
+        </section>
+    </div>
+    </div>
+</div>
+<script>
+    SyntaxHighlighter.all();
+    $(function(){
+        navMenu(0,0);
+    });
+</script>
+<script src="/static/guide/js/guide.js"></script>
+</body>
+</html>

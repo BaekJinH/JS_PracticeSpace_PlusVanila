@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="title" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>popup &lt; Module &verbar; guide</title>
+<link rel="shortcut icon" type="image/x-icon" href="/static/images/common/favicon.ico">
+<link rel="stylesheet" href="/static/css/reset.css">
+<link rel="stylesheet" href="/static/css/modules.css">
+<link rel="stylesheet" href="/static/guide/css/guide.css">
+<script src="/static/js/jquery-1.12.4.min.js" type="text/javascript"></script>
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shCore.css" rel="stylesheet">
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shThemeRDark.css" rel="stylesheet">
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="/static/js/ui_pub.js"></script>
+<style>
+	.layer-popup .pop-area.type-alert01 .message-area .text{margin:0}
+</style>
+</head>
+<body>
+<div class="guide">
+	<div class="cont-wrap">
+	<div class="guide-gnb">
+		<h2>K-DATA Guide</h2>
+		<script src="/static/guide/js/menu_inc.js"></script>
+	</div>
+	<div class="top-sec" style="display:none">달력클릭스 .top-sec를 참조하면 임시로 코드에 삽입</div>
+	<div class="contents">
+		<h3 class="tit"></h3>
+		<section>
+			<article>	
+				<h2 class="display-ib bgnone left">레이어팝업</h2>
+				<section>
+					<ul class="scr">
+						<li>.pop-area의 기본 레이어 팝업</li>
+						<li>.pop-area에서 팝업시의 사이즈기입 사이즈가 없을 경우는 기본이 520px</li>
+						<li>레이어팝업의 컨텐츠 영역 <em>.pop-content</em></li>
+					</ul>
+					<div class="rendering">
+						<h3>Screen Rendering</h3>
+
+						<!--인증메일을 받지 못하셨나요? 내용 popup-->
+						<div class="layer-popup" id="email01" style="display:block; position:relative !important">
+							<div class="pop-area" style="width:520px; position:relative; left:0 !important;">
+								<h3 class="pop-tit" style="color:#454545">인증메일을 받지 못하셨나요?</h3>								
+								<div class="pop-content">
+									<div class="in-sec">
+										<p>
+											입력하신 이메일이 정확한지,<br>혹시 스팸 메일함에 있는지 우선 확인해 주세요.<br><br>
+											계속해서 메일이 오지 않으면 다시 한번 요청해 주세요.
+										</p>
+									</div>
+								</div>
+								<hr>
+								<div class="btns-wrap" style="padding-bottom:40px">
+									<button type="button" onclick="KDATA.modalLayer.close(); return false;" class="btns gray">인증 메일 재발송</button>
+									<button type="button" onclick="KDATA.modalLayer.close(); return false;" class="btns">다른 이메일 인증</button>
+								</div>            
+							</div>
+						</div>
+						<!--//인증메일을 받지 못하셨나요? 내용 popup-->							
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false;">
+							<div class="layer-popup" id="email01">
+								<div class="dimmed"></div>
+								<div class="pop-area">
+									<h3 class="pop-tit">인증메일을 받지 못하셨나요?</h3>
+									<div class="pop-content">
+										<div class="in-sec">
+											<p>
+												입력하신 이메일이 정확한지,<br>혹시 스팸 메일함에 있는지 우선 확인해 주세요.<br><br>
+												계속해서 메일이 오지 않으면 다시 한번 요청해 주세요.
+											</p>
+										</div>
+									</div>
+									<hr>
+									<div class="btns-wrap">
+										<button type="button" onclick="KDATA.modalLayer.close(); return false;" class="btns gray">인증 메일 재발송</button>
+										<button type="button" onclick="KDATA.modalLayer.close(); return false;" class="btns">다른 이메일 인증</button>
+									</div>            
+								</div>
+							</div>
+						</pre>
+					</div>
+				</section>
+
+				<h2 class="display-ib bgnone left">레이어팝업의 [modal]</h2>
+				<section>
+					<ul class="scr">
+						<li>모달레이어의 기본사이즈는 520px</li>
+						<li>첫번째 인자는 클릭요소의 <em>this</em>를 넘겨주며, <em>클릭 이벤트 없이 팝업되는 레이어팝업의 경우는 첫번째 인자를 null적용</em></li>
+						<li>두번째 인자는 레이어의 <em>아이디와 연결</em></li>
+						<li>창의 크기조절은 3번째인자에서 px단위 숫자로 지정 </li>
+						<li>함수로 닫기 : 액션처리 후 <em>KDATA.modalLayer.close()</em> 함수호출</li>
+					</ul>
+					<div class="rendering">
+						<h3>Screen Rendering</h3>
+						<div><a href="#" onclick="KDATA.modalLayer.open($(this), 'modalType01'); return false;">기본레이어</a></div>
+						<div><a href="#" onclick="KDATA.modalLayer.open($(this), 'modalType01', '1000px'); return false;">고정사이즈 레이어</a></div>
+						<div><a href="#" onclick="KDATA.modalLayer.open('', 'modalType01'); return false;">클릭이벤트 없이 노출(함수호출)되거나 트리거 발생</a></div>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false;">
+						<!--css에서 지정된 기본 가로사이즈 520px-->
+						<a href="#" onclick="KDATA.modalLayer.open($(this), 'modalType01')">기본레이어</a>
+
+						<!--3번째 인자에서 전달된 값으로 가로사이즈-->
+						<a href="#" onclick="KDATA.modalLayer.open($(this), 'modalType01', '1000ㅔㅌ')">고정사이즈 레이어</a>
+
+						<!--이벤트가 없이 레이어를 띄우는 경우 1번째 인자를 null처리-->
+						KDATA.modalLayer.open('', 'modalType01');
+
+						<!--함수 적용시 닫기적용-->
+						<a href="#" onclick="KDATA.modalLayer.close()">확인</a>
+						</pre>
+					</div>
+				</section>
+			</article>
+		</section>
+	</div>
+	</div>
+</div>
+
+<!-- modalLayer popup -->
+<div class="layer-popup" id="modalType01">
+	<div class="dimmed"></div>
+	<div class="pop-area">
+		<h3 class="pop-tit left">브라우저 버전 안내</h3>
+		<div class="pop-content">
+			<div class="in-sec">
+				<img class="mt05" src="/static/images/fap/icon_browser.png" alt="explorer, chrom, firefox 브라우저 아이콘">
+				<!--p 클래스명 주의 -->
+				<p class="left pt00">이용 신청서 작성 시 <span class="blue fw5">파일 업로드를 하시려면 최소 IE11 이상 또는 크롬, 파이어폭스에서 이용</span>하실 수 있습니다.</p>
+				<p class="left pt10">현재 회원님이 사용하고 계신 브라우저에서는 파일 업로드가 불가능 합니다.</p>
+				<p class="left pt10 pb40 bb-gray-d8">IE11 이상 또는 크롬, 파이어폭스를 이용해 주시기 바랍니다.</p>
+			</div>
+			<div class="btns-wrap">
+				<a href="#" class="btns" onclick="KDATA.modalLayer.close(); return false;">확인</a>
+			</div>  				
+		</div>          
+	</div>
+</div>
+
+<script>
+	SyntaxHighlighter.all();
+	$(function(){
+		navMenu(2,7);
+	});
+	</script>
+	<script src="/static/guide/js/guide.js"></script>
+</body>
+</html>

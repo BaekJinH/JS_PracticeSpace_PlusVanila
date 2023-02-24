@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="title" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Table &lt; Module &verbar; guide</title>
+<link rel="shortcut icon" type="image/x-icon" href="/static/images/common/favicon.ico">
+<link rel="stylesheet" href="/static/css/reset.css">
+<link rel="stylesheet" href="/static/css/modules.css">
+<link rel="stylesheet" href="/static/guide/css/guide.css">
+<script src="/static/js/jquery-1.12.4.min.js" type="text/javascript"></script>
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shCore.css" rel="stylesheet">
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shThemeRDark.css" rel="stylesheet">
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
+<style>
+.thumb-list {max-width:690px;}
+</style>
+</head>
+<body>
+<div class="guide">
+	<div class="cont-wrap">
+	<div class="guide-gnb">
+		<h2>K-DATA Guide</h2>
+		<script src="/static/guide/js/menu_inc.js"></script>
+	</div>
+	<div class="contents">
+		<h3 class="tit"></h3>
+		<section>
+			<article>
+				<h2 class="display-ib bgnone left">기본테이블</h2>
+				<section>
+					<ul class="scr">
+						<li>테이블단독이 아닌 타이틀, 해드노트, 풋노트가 존재하는 테이블의 경우 <em>.tbl-wrap</em>로 wrapping</li>
+						<li>해드노트가 텍스트일 경우는 <em>.type-txt</em>를 적용</li>
+						<li><strike>해드셀과 데이터셀의 연결은 header를 원칙</strike>으로 하나 scope으로 사용해도 무관</li>
+						<li>colgroup의 해당 columns의 단위는 px | % 선택적 사용가능하나 되도록이면 유동적인 %를 지향하며, 속성 및 속성값은 인스타일로 정의</li>
+						<li>summary를 사용하지 않고 캡션으로 대체하고 <em><strong>&lt;strong&gt;, &lt;p&gt;</strong></em>에 각각 테이블 제목과 테이블의 필드명을 제공<br>(필드명 제공은 <em>필드명을 콤마로 나열하고 마지막에 정보를 제공</em>으로 동일하게 적용)</li>
+						<li>&lt;tr&gt; 클릭 이벤트 테이블의 경우 <em>.data</em>를 적용 <em><strong>&lt;div class="tbl-list data"&gt;</strong></em></li>
+						<li>필드명 제공의 동적구현은 스크립트에서 처리하며 <em>KDATA.notCaption()</em>, 적용 제외대상은 테이블 태그에 클래스 부여 <em>&lt;table class="not-caption"&gt;</em></li>
+					</ul>
+					
+					<h2 class="display-ib bgnone left">가로형 테이블은 <em>.tbl-list</em>를 적용</h2>
+					<ul class="scr">
+						<li>해드노트(.tbl-headnote), 풋노트(.tbl-footnote)가 존재</li>
+						<li>해드노트영역에 버튼이 기본형이며, 텍스트의 경우는 <em>.type-txt</em></li>
+					</ul>
+					<div class="rendering">
+						<h3 class="tbl-tit">Screen Rendering</h3>
+						<div class="tbl-wrap">
+							<p class="tbl-tit m00">제목부분</p>
+							<div class="tbl-headnote type-txt tit_dot">전체 <span class="blue">2</span>건</div>
+							<div class="tbl-list data">
+								<table>
+									<caption>
+										<strong>심의 대기중인 신청 정보</strong>
+										<p>신청번호,구분,심의결과서,심의요청일,심의마감일,심의완료일 정보를 제공</p>
+									</caption>
+									<colgroup>
+										<col style="width:13%;">
+										<col>
+										<col style="width:18%;">
+										<col style="width:18%;">
+										<col style="width:18%;">
+										<col style="width:18%;">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">신청번호</th>
+											<th scope="col">구분</th>
+											<th scope="col">심의결과서</th>
+											<th scope="col">심의요청일</th>
+											<th scope="col">심의마감일</th>
+											<th scope="col">심의완료일</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>이용심의</td>
+											<td class="blue">미제출</td>
+											<td>2019-09-16</td>
+											<td class="blue">2019-09-16</td>
+											<td>2019-09-16</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>반출심의</td>
+											<td class="blue">미제출</td>
+											<td>2019-09-16</td>
+											<td class="blue">2019-09-16</td>
+											<td>2019-09-16</td>
+										</tr>
+										<tr class="no-data">
+											<td colspan="6">심의요청 건이 없습니다.</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="tbl-footnote">
+									- 하나의 문단이 있는 경우 텍스트노드를 바로 사용
+								</div>								
+							</div>
+						</div>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false">
+							<div class="tbl-wrap">
+								<p class="tbl-tit">제목부분</p>
+								<div class="tbl-headnote type-txt tit_dot">전체 <span class="blue">2</span>건</div>
+								<div class="tbl-list data">
+									<table>
+										<caption>
+											<strong>심의 대기중인 신청 정보</strong>
+											<p>신청번호,구분,심의결과서,심의요청일,심의마감일,심의완료일 정보를 제공</p>
+										</caption>
+										<colgroup>
+											<col style="width:13%;">
+											<col>
+											<col style="width:18%;">
+											<col style="width:18%;">
+											<col style="width:18%;">
+											<col style="width:18%;">
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">신청번호</th>
+												<th scope="col">구분</th>
+												<th scope="col">심의결과서</th>
+												<th scope="col">심의요청일</th>
+												<th scope="col">심의마감일</th>
+												<th scope="col">심의완료일</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td>이용심의</td>
+												<td class="blue">미제출</td>
+												<td>2019-09-16</td>
+												<td class="blue">2019-09-16</td>
+												<td>2019-09-16</td>
+											</tr>
+											<tr>
+												<td>2</td>
+												<td>반출심의</td>
+												<td class="blue">미제출</td>
+												<td>2019-09-16</td>
+												<td class="blue">2019-09-16</td>
+												<td>2019-09-16</td>
+											</tr>
+											<tr class="no-data">
+												<td colspan="6">심의요청 건이 없습니다.</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="tbl-footnote">
+										- 하나의 문단이 있는 경우 텍스트노드를 바로 사용
+									</div>									
+								</div>
+							</div>
+						</pre>
+					</div>
+
+					<h2 class="display-ib bgnone left">세로형 테이블에서 데이터셀, 헤드셀이 왼쪽 정렬인 경우 <em>.tbl-list.type02</em>를 적용</h2>					
+					<div class="rendering">
+						<h3>Screen Rendering</h3>
+						<div class="tbl-wrap">
+							<p class="tbl-tit type02 m00">신청자료(제목부분-type02)</p>
+							<div class="tbl-list type02">
+								<table>
+									<caption>
+										<strong>심의 대기중인 신청 정보</strong>
+										<p>구분,신청자 소속기관,심의요청일,심의마감일,심의결과서,심의완료일 정보를 제공</p>
+									</caption>
+									<colgroup>
+										<col style="width:16%;">
+										<col style="width:16%;">
+										<col style="width:18%;">
+										<col>
+										<col style="width:16%;">
+										<col style="width:16%;">
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">구분</th>
+											<td>이용심의</td>
+											<th scope="row">신청자 소속기관</th>
+											<td>금융</td>
+											<th scope="row">심의요청일</th>
+											<td>2019-09-16</td>
+										</tr>
+										<tr>
+											<th scope="row">심의마감일</th>
+											<td class="blue">2019-09-16</td>
+											<th scope="row">심의결과서</th>
+											<td class="blue">미제출</td>
+											<th scope="row">심의완료일</th>
+											<td>2019-09-16</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false">
+							<div class="tbl-wrap">
+								<p class="tbl-tit type02">신청자료</p>
+								<div class="tbl-list type02">
+									<table>
+										<caption>
+											<strong>심의 대기중인 신청 정보</strong>
+											<p>구분,신청자 소속기관,심의요청일,심의마감일,심의결과서,심의완료일 정보를 제공</p>
+										</caption>
+										<colgroup>
+											<col style="width:16%;">
+											<col style="width:16%;">
+											<col style="width:18%;">
+											<col>
+											<col style="width:16%;">
+											<col style="width:16%;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">구분</th>
+												<td>이용심의</td>
+												<th scope="row">신청자 소속기관</th>
+												<td>금융</td>
+												<th scope="row">심의요청일</th>
+												<td>2019-09-16</td>
+											</tr>
+											<tr>
+												<th scope="row">심의마감일</th>
+												<td class="blue">2019-09-16</td>
+												<th scope="row">심의결과서</th>
+												<td class="blue">미제출</td>
+												<th scope="row">심의완료일</th>
+												<td>2019-09-16</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</pre>
+					</div>					
+
+					<h2 class="display-ib bgnone left">테이블위에 좌우버튼이 존재하는 경우</h2>
+					<div class="rendering">
+						<h3>Screen Rendering</h3>
+						<div class="tbl-wrap">
+							<div class="btns-wrap mb15">
+								<div class="loc-left">
+									<a href="#" class="btns sm white">죄측버튼</a>
+								</div>
+								<div class="loc-right">
+									<a href="#" class="btns sm white">우측버튼1</a>
+									<a href="#" class="btns sm white">우측버튼2</a>
+								</div>
+							</div>
+							<div class="tbl-list type02">
+								<table>
+									<caption>
+										<strong>심의 대기중인 신청 정보</strong>
+										<p>구분,신청자 소속기관,심의요청일,심의마감일,심의결과서,심의완료일 정보를 제공</p>
+									</caption>
+									<colgroup>
+										<col style="width:16%;">
+										<col style="width:16%;">
+										<col style="width:18%;">
+										<col>
+										<col style="width:16%;">
+										<col style="width:16%;">
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">구분</th>
+											<td>이용심의</td>
+											<th scope="row">신청자 소속기관</th>
+											<td>금융</td>
+											<th scope="row">심의요청일</th>
+											<td>2019-09-16</td>
+										</tr>
+										<tr>
+											<th scope="row">심의마감일</th>
+											<td class="blue">2019-09-16</td>
+											<th scope="row">심의결과서</th>
+											<td class="blue">미제출</td>
+											<th scope="row">심의완료일</th>
+											<td>2019-09-16</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false">
+							<div class="tbl-wrap">
+								<div class="btns-wrap mb15">
+									<div class="loc-left">
+										<a href="#" class="btns sm white">죄측버튼</a>
+									</div>
+									<div class="loc-right">
+										<a href="#" class="btns sm white">우측버튼1</a>
+										<a href="#" class="btns sm white">우측버튼2</a>
+									</div>
+								</div>
+								<div class="tbl-list type02">
+									<table>
+										<caption>
+											<strong>심의 대기중인 신청 정보</strong>
+											<p>구분,신청자 소속기관,심의요청일,심의마감일,심의결과서,심의완료일 정보를 제공</p>
+										</caption>
+										<colgroup>
+											<col style="width:16%;">
+											<col style="width:16%;">
+											<col style="width:18%;">
+											<col>
+											<col style="width:16%;">
+											<col style="width:16%;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">구분</th>
+												<td>이용심의</td>
+												<th scope="row">신청자 소속기관</th>
+												<td>금융</td>
+												<th scope="row">심의요청일</th>
+												<td>2019-09-16</td>
+											</tr>
+											<tr>
+												<th scope="row">심의마감일</th>
+												<td class="blue">2019-09-16</td>
+												<th scope="row">심의결과서</th>
+												<td class="blue">미제출</td>
+												<th scope="row">심의완료일</th>
+												<td>2019-09-16</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</pre>
+					</div>
+				</section>
+			</article>
+		</section>
+	</div>
+	</div>
+</div>
+<script>
+	SyntaxHighlighter.all();
+	$(function(){
+		navMenu(2,0);
+	});
+	</script>
+	<script src="/static/guide/js/guide.js"></script>
+</body>
+</html>

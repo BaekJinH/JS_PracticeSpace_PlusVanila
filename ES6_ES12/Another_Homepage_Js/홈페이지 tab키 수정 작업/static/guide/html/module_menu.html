@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="title" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Menu &lt; Module &verbar; guide</title>
+<link rel="shortcut icon" type="image/x-icon" href="/static/images/common/favicon.ico">
+<link rel="stylesheet" href="/static/css/reset.css">
+<link rel="stylesheet" href="/static/css/modules.css">
+<link rel="stylesheet" href="/static/guide/css/guide.css">
+<script src="/static/js/jquery-1.12.4.min.js" type="text/javascript"></script>
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shCore.css" rel="stylesheet">
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shThemeRDark.css" rel="stylesheet">
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="/static/js/ui_pub.js"></script>
+<style>
+	.temp-gnb-fpm.gnb-sec{width:100%; background:#00a1d6 url(/resource/img/common/image/gnb_fpm.png) no-repeat center top}
+</style>
+</head>
+<body>
+<div class="guide">
+	<div class="cont-wrap">
+	<div class="guide-gnb">
+		<h2>K-DATA Guide</h2>
+		<script src="/static/guide/js/menu_inc.js"></script>
+	</div>
+	<div class="top-sec" style="display:none; width:1080px;"></div>
+	<div class="contents">
+		<h3 class="tit"></h3>
+		<section>
+			<article>
+
+				
+				<h2 class="display-ib bgnone left">Accordion</h2>
+				<section>
+					<ul class="scr">
+						<li><em>.as-accordion</em> 적용시 디자인과 무관하게 아코디언기능 스크립트적용</li>
+						<li><em>.sync</em>클래스를 적용하면 인터렉션적용</li>
+						<li>첫번째 글을 오픈이 기본기능이며, 오픈하지 않을 경우 <em>.as-no</em>적용</li>
+					</ul>
+					<div class="rendering">
+						<p class="stit">[기본 인터렉션이 없는 경우 - 해당글만 열리고 보이고  다른 글에 영향을 주지않음]</p>
+						<ul class="scr">
+							<li><em>.as-accordion</em> 클래스만 적용</li>
+						</ul>
+						<h3>Screen Rendering</h3>
+						<ul class="acco-faq as-accordion">
+							<li>
+								<div class="title">
+									<a href="#" class="toggle-btn" title="답변열기">아코디언 테스트1</a>
+								</div>
+								<div class="toggle-ele" >
+									<div class="text">
+										아코디언 테스트1 내용
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="title">
+									<a href="#" class="toggle-btn" title="답변열기">아코디언 테스트2</a>
+								</div>
+								<div class="toggle-ele" >
+									<div class="text">
+										아코디언 테스트2 내용
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="title">
+									<a href="#" class="toggle-btn" title="답변열기">아코디언 테스트3</a>
+								</div>
+								<div class="toggle-ele" >
+									<div class="text">
+										아코디언 테스트3 내용
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false">
+							&lt;ul class=&quot;acco-faq as-accordion&quot;&gt;
+								&lt;li&gt;
+									&lt;div class=&quot;title&quot;&gt;
+										&lt;a href=&quot;#&quot; class=&quot;toggle-btn&quot; title=&quot;답변열기&quot;&gt;아코디언 테스트1&lt;/a&gt;
+									&lt;/div&gt;
+									&lt;div class=&quot;toggle-ele&quot;&gt;
+										&lt;div class=&quot;text&quot;&gt;
+											아코디언 테스트1 내용
+										&lt;/div&gt;
+									&lt;/div&gt;
+								&lt;/li&gt;
+								&lt;li&gt;
+									&lt;div class=&quot;title&quot;&gt;
+										&lt;a href=&quot;#&quot; class=&quot;toggle-btn&quot; title=&quot;답변열기&quot;&gt;아코디언 테스트2&lt;/a&gt;
+									&lt;/div&gt;
+									&lt;div class=&quot;toggle-ele&quot;&gt;
+										&lt;div class=&quot;text&quot;&gt;
+											아코디언 테스트2 내용
+										&lt;/div&gt;
+									&lt;/div&gt;
+								&lt;/li&gt;
+								&lt;li&gt;
+									&lt;div class=&quot;title&quot;&gt;
+										&lt;a href=&quot;#&quot; class=&quot;toggle-btn&quot; title=&quot;답변열기&quot;&gt;아코디언 테스트3&lt;/a&gt;
+									&lt;/div&gt;
+									&lt;div class=&quot;toggle-ele&quot;&gt;
+										&lt;div class=&quot;text&quot;&gt;
+											아코디언 테스트3 내용
+										&lt;/div&gt;
+									&lt;/div&gt;
+								&lt;/li&gt;
+							&lt;/ul&gt;
+						</pre>
+					</div>
+					<div class="rendering">
+						<p class="stit">[인터렉션이 있는 경우, 첫번째 글 비노출]</p>
+						<ul class="scr">
+							<li><em>.sync</em>클래스를 적용. 인터렉션 적용</li>
+							<li>첫번째 글을 오픈하지 않는 경우 <em>.as-no</em>클래스를 적용</li>
+						</ul>
+						<h3>Screen Rendering</h3>
+						<ul class="acco-faq as-accordion sync as-no">
+							<li>
+								<div class="title">
+									<a href="#" class="toggle-btn" title="답변열기">아코디언 테스트1</a>
+								</div>
+								<div class="toggle-ele" >
+									<div class="text">
+										아코디언 테스트1 내용
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="title">
+									<a href="#" class="toggle-btn" title="답변열기">아코디언 테스트2</a>
+								</div>
+								<div class="toggle-ele" >
+									<div class="text">
+										아코디언 테스트2 내용
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="title">
+									<a href="#" class="toggle-btn" title="답변열기">아코디언 테스트3</a>
+								</div>
+								<div class="toggle-ele" >
+									<div class="text">
+										아코디언 테스트3 내용
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false">
+							// 클릭시 다른 글을 닫지 않고 현재글만 오픈
+							&lt;ul class=&quot;acco-faq as-accordion&quot;&gt;
+							
+							// 클릭시 다른 글을 닫지 않고 현재글만 오픈하며, 첫번째 글을 오픈하지 않음
+							&lt;ul class=&quot;acco-faq as-accordion as-no&quot;&gt;
+							
+							// 클릭시 다른 글을 닫고 현재글만 오픈
+							&lt;ul class=&quot;acco-faq as-accordion as-no sync&quot;&gt;
+						</pre>
+					</div>
+				</section>
+				
+				<h2 class="display-ib bgnone left">Tab menu (tab-type01)</h2>
+				<section>
+					<ul class="scr">
+						<li><em>.as-tab선언시</em> 메뉴의 기본크기는 갯수에 따라서 자동으로 계산하여 퍼센트로 자동크기 적용, 자동크기가 아닌 메뉴명의 크기에 맞게 왼쪽으로 붙는 형태는 <em>.flexible</em>를 적용</li>
+					</ul>
+					<div class="rendering">
+						<h3>Screen Rendering</h3>
+						<p class="stit">플렉서블 사이즈</p>
+						<div class="as-tab">
+							<ul class="tab-type01 area-tab-mnu flexible">
+								<li><a href="#">메뉴하나</a></li>
+								<li class="active"><a href="#">메뉴둘</a></li>
+								<li><a href="#">메뉴셋</a></li>
+								<li><a href="#">메뉴넷</a></li>
+								<li><a href="http://www.google.com">링크연결</a></li>
+							</ul>
+						</div>
+						<p class="stit">고정 사이즈</p>
+						<div class="as-tab">
+							<ul class="tab-type01 area-tab-mnu">
+								<li><a href="#">메뉴하나</a></li>
+								<li class="active"><a href="#">메뉴둘</a></li>
+								<li><a href="#">메뉴셋</a></li>
+								<li><a href="#">메뉴넷</a></li>
+								<li><a href="http://www.google.com">링크연결</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="exp">
+						<h3>code pattern - html</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false">
+							&lt;div class=&quot;as-tab&quot;&gt;
+								&lt;ul class=&quot;tab-type01 area-tab-mnu flexible&quot;&gt;
+									&lt;li&gt;&lt;a href=&quot;#&quot;&gt;메뉴하나(&lt;i&gt;13&lt;/i&gt;)&lt;/a&gt;&lt;/li&gt;
+									&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;메뉴둘(&lt;i&gt;13&lt;/i&gt;)&lt;/a&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href=&quot;#&quot;&gt;메뉴셋(&lt;i&gt;13&lt;/i&gt;)&lt;/a&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href=&quot;#&quot;&gt;메뉴넷(&lt;i&gt;13&lt;/i&gt;)&lt;/a&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href=&quot;http://www.naver.com&quot;&gt;링크연결&lt;/a&gt;&lt;/li&gt;
+								&lt;/ul&gt;
+							&lt;/div&gt;
+						</pre>
+						<pre class="brush: xhtml; gutter: false; toolbar:false">
+							// 플렉서블 사이즈
+							&lt;ul class=&quot;tab-type01 area-tab-mnu flexible&quot;&gt;
+							
+							// 고정 사이즈
+							&lt;ul class=&quot;tab-type01 area-tab-mnu&quot;&gt;
+						</pre>
+					</div>
+				</section>
+				
+				<h2 class="display-ib bgnone left">Tab menu (tab-type02)</h2>
+				<section>
+					<div class="rendering">
+						<h3>Screen Rendering</h3>
+						<p class="stit">플렉서블 사이즈</p>
+						<div class="white-box02">
+							<nav class="tab-wrap as-tab">
+								<ul class="tab-type02 area-tab-mnu flexible">
+									<li><a href="#">제공기관</a></li>
+									<li class="active"><a href="#">제공기관-11</a></li>
+									<li><a href="#">제공기관-2</a></li>
+									<li><a href="#">제공기관-3</a></li>
+								</ul>
+							</nav>
+						</div>
+						<p class="stit">고정 사이즈</p>
+						<div class="white-box02">
+							<nav class="tab-wrap as-tab">
+								<ul class="tab-type02 area-tab-mnu">
+									<li><a href="#">제공기관</a></li>
+									<li class="active"><a href="#">제공기관-11</a></li>
+									<li><a href="#">제공기관-2</a></li>
+									<li><a href="#">제공기관-3</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+					<div class="exp">
+						<h3>code pattern</h3>
+						<pre class="brush: xhtml; gutter: false; toolbar:false">
+							&lt;div class=&quot;white-box02&quot;&gt;
+								&lt;nav class=&quot;tab-wrap as-tab&quot;&gt;
+									&lt;ul class=&quot;tab-cs area-tab-mnu flexible&quot;&gt;
+										&lt;li&gt;&lt;a href=&quot;#&quot;&gt;제공기관&lt;/a&gt;&lt;/li&gt;
+										&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;제공기관-11&lt;/a&gt;&lt;/li&gt;
+										&lt;li&gt;&lt;a href=&quot;#&quot;&gt;제공기관-2&lt;/a&gt;&lt;/li&gt;
+										&lt;li&gt;&lt;a href=&quot;#&quot;&gt;제공기관-3&lt;/a&gt;&lt;/li&gt;
+									&lt;/ul&gt;
+								&lt;/nav&gt;
+							&lt;/div&gt;
+						</pre>
+					</div>
+				</section>
+
+				
+			</article>
+		</section>
+	</div>
+	
+
+</div>
+<script>
+SyntaxHighlighter.all();
+$(function(){
+	navMenu(2,4);
+});
+</script>
+<script src="/static/guide/js/guide.js"></script>
+</body>
+</html>

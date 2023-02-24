@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="title" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Image &lt; Convention &verbar; guide</title>
+<link rel="shortcut icon" type="image/x-icon" href="/static/images/common/favicon.ico">
+<link rel="stylesheet" href="/static/css/reset.css">
+<link rel="stylesheet" href="/static/css/modules.css">
+<link rel="stylesheet" href="/static/guide/css/guide.css">
+<script src="/static/js/jquery-1.12.4.min.js" type="text/javascript"></script>
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shCore.css" rel="stylesheet">
+<link href="/static/guide/plugin/syntaxhighlighter_3.0.83/styles/shThemeRDark.css" rel="stylesheet">
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushCss.js"></script>
+<script src="/static/guide/plugin/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
+</head>
+<body>
+<div class="guide">
+    <div class="cont-wrap">
+    <div class="guide-gnb">
+        <h2>K-DATA Guide</h2>
+        <script src="/static/guide/js/menu_inc.js"></script>
+    </div>
+    <div class="contents">
+        <h3 class="tit"></h3>
+        <section>
+            <article>
+                <h2 class="display-ib bgnone left">이미지에 대해 가능한 많은 정보를 제공</h2>
+                <section>
+                    <ul class="scr">
+                        <li>구체적인 파일 이름을 제공하면 이미지를 찾은 페이지에서 적합한 텍스트를 찾을 수 없는 경우에는 검색결과에서 파일 이름을 이미지의 발췌문으로 사용하여 정보제공에 유용함</li>
+                        <li>사용자 검색에 가장 적합한 이미지를 표시하기 위해 이 정보를 사용합니다.</li>
+                        <li>시각 장애인이나 스크린 리더 또는 저대역폭 연결을 사용하는 사람들은 웹 페이지에서 이미지를 보지 못할 수도 있으므로 구체적인 대체텍스트를 통해 중요한 정보를 제공</li>
+                        <li>대체텍스트로 제공하기에 많은 양의 내용은 블라인드 영역으로 제공</li>
+                    </ul>
+                    <div class="exp">
+                        <h3>code pattern</h3>
+                        <pre class="brush: xhtml; gutter: false; toolbar:false">
+                            &lt;img src="organization.jpg" alt="조직도">
+
+                            <!--이미지를 서술하여 전달력을 높인다-->
+                            &lt;img src="organization.jpg" alt="주주총회, 이사회, 은행장으로 구성된 조직도로 상세안내는 하단참조">
+                            
+                            <!--화면에는 노출이 안되고 음성매체에서만 지원-->
+                            <ul class="blind">
+                            	<li>주주총회</li>
+                            	<li>이사회</li>
+                            	<li>은행장
+                            		<ol>
+                            			...omitted...
+		                            	<li>영업전략본부</li>
+		                            	<li>디지털본부</li>
+		                            	<li>경영기획본부</li>
+		                            	...omitted...
+                            		</ol>
+                            	</li>
+                            </ul>
+                        </pre>
+                    </div>
+                </section>
+                
+                <h2 class="display-ib bgnone left">사용자 만족도 향상</h2>
+                <section>
+                    <p class="scr">이미지를 게시할 때 최고의 사용자 만족도를 이끌어 낼 수 있는 방법모색</p>
+                    <ul class="scr">
+                        <li>색상정보가 많은 이미지는 png, jpg로 서비스 하며, 기본적으로 압축을 사용하지 않는다.</li>
+                    </ul>
+                </section>
+            </article>
+        </section>
+    </div>
+    </div>
+</div>
+<script>
+SyntaxHighlighter.all();
+$(function(){
+    navMenu(0,4);
+});
+</script>
+<script src="/static/guide/js/guide.js"></script>
+</body>
+</html>

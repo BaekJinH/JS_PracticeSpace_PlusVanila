@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="title" content="">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>데이터안심구역 홈</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/images/common/favicon.ico">
+    <link rel="stylesheet" href="/static/css/reset.css">
+    <link rel="stylesheet" href="/static/css/modules.css">
+    <link rel="stylesheet" href="/static/css/contents.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/dummy.css"><!-- 신규 콘텐츠 용, 꼭 마지막에 호출한다 -->
+    <link rel="stylesheet" href="/static/css/swiper.min.css">
+
+    <!-- </script> -->
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <script src="/static/js/swiper.min.js"></script>
+    <script src="/static/js/ui_pub.js"></script>
+    <script src="/static/js/cookies.js"></script>
+    <script src="/static/js/main.js"></script>
+
+    <!--[if lte ie 9]>
+    <script src="/static/js/css3-mediaqueries.min.js"></script>
+<![endif]-->
+
+    <link rel="stylesheet" href="/static-dev/css/portal.css">
+    <script src="/static/js/jquery.mCustomScrollbar.js"></script>
+    <script src="jquery.mousewheel.min.js"></script>
+    <script src="/static-dev/js/portal.js"></script>
+    <script src="/static-dev/js/jquery.blockUI.js"></script>
+    <script src="/static-dev/js/mustache.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155313055-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-155313055-1');
+
+    </script>
+
+    <meta name="keywords" content="데이터안심구역, 미개방데이터,분석센터,분석사례,데이터시각화,데이터코리아,분석플랫폼, 22222">
+    <script>
+        function moveBanner(targetUrl, newWin) {
+            if (newWin == true) {
+                window.open(targetUrl);
+            } else {
+                document.location = targetUrl;
+            }
+        }
+
+        function nextUrl(val) {
+            location.href = "/svc/data/search.do?page=1&keyword=" + encodeURI(val);
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <div id="wrap" class="main">
+
+        <!-- start: header area -->
+        <div id="header">
+
+            <script>
+                $(function() {
+                    // 메뉴 선택이 된 경우
+                    if ($(".gnb li.always").length > 0) {
+                        // GNB 메뉴에 always 가 있으면 title 에 해당 메뉴 까지를 작성 하고 페이지 별로 추가 작업 진행
+                        var title = "홈";
+                        var addTitle = "";
+
+                        $(".gnb li.always").each(function() {
+                            title += " > " + $(this).attr("title");
+
+                            if ($(this).data("id") == "USE_ADD") {
+                                addTitle = " > 신청자료선택";
+                            } else if ($(this).data("id") == "USE_INST_ADD") {
+                                addTitle = " > 신청서작성";
+                            }
+                        });
+
+                        $("title").html(title + addTitle);
+                    }
+
+                    $("#keyword").keyup(function() {
+                        $("#header_return_key").html("");
+                        $("#header_return_key").hide();
+                        var html = "";
+                        html = "<ul>";
+                        $.ajax({
+                            type: 'get',
+                            url: "/svc/search/auto.do",
+                            dataType: "json",
+                            data: {
+                                keyword: $("#keyword").val()
+                            },
+                            success: function(data) {
+                                $("#header_return_key").show();
+                                $.each(data, function(index, item) {
+                                    console.log('item keyword  : ' + item.keyword);
+                                    var key = item.keyword;
+                                    html += "<li><a href='#none' onclick=keyword('" + item.keyword + "'); class='diminish'><span class='blue'>" + item.keyword + "</span></a></li>";
+                                });
+                                html += "<ul>";
+                                $("#header_return_key").html(html);
+                            }
+                        });
+
+                    });
+                });
+
+                function keyword(str) {
+                    $("#keyword").val(str);
+                    $("#header_return_key").hide();
+                }
+
+            </script>
+
+            <!-- 21.11.30 콘솔 디버그 차단 -->
+            <script>
+                function clearConsole() {
+                    console = {};
+                    console.log = function() {};
+                    console.warn = function() {};
+                    console.error = function() {};
+                    console.debug = function() {};
+                    console.info = function() {};
+                    console.dir = function() {};
+                    console.table = function() {};
+                    console.count = function() {};
+                }
+
+                function debuggerWindowsBlock() {
+                    try {
+                        (function functlon1(counter) {
+                            if (201 >= 200) {
+                                try {
+                                    (function functionX() {
+                                        try {
+                                            (function functlon2() {
+                                                if (Math.floor(Math.random() * 100000) % 5 == 0 && Math.floor(Math.random() * 100000) % 10 == 0) {
+                                                    (function() {} ['constructor']('debugger')());
+                                                }
+                                                functlon2();
+                                            })();
+                                        } catch (ax) {
+                                            setTimeout(functionX, /constructor/i.test(window.HTMLElement) || (function(p) {
+                                                return p.toString() === '[object SafariRemoteNotification]';
+                                            })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification)) ? 3500 : typeof InstallTrigger !== 'undefined' ? 4000 : !!window.chrome && !!window.chrome.webstore ? 1500 : (false || !!document.documentMode) ? (/msie /gi.test(navigator.userAgent.toLowerCase()) ? 1500 : 1500) : 1500);
+                                        }
+                                    })();
+                                } catch (ax) {
+                                    setTimeout(function() {
+                                        window.location.reload();
+                                    }, 5000);
+                                }
+                            } else {
+                                functlon1(counter + 1);
+                            }
+                        })(0)
+                    } catch (ax) {
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 5000);
+                    }
+                }
+
+
+                //debug 모드 동작 못하게 막는 스크립트
+                clearConsole();
+                //debuggerWindowsBlock();
+
+            </script>
+
+            <div id="skip">
+                <a href="https://dsz.kdata.or.kr/svc/main/main.do#contents" >본문 콘텐츠 바로가기</a>
+            </div>
+
+            <!-- start: nav bar area -->
+            <div class="user_info_area">
+                <!-- start: 로그인 전 -->
+                <!--<ul class="gnb_top">
+                    <li><a href="https://dsz.kdata.or.kr/component/login.do">로그인</a></li>
+                    <li><a href="https://dsz.kdata.or.kr/svc/signup/identity_index.do">회원가입</a></li>
+                </ul>-->
+                <!-- end: 로그인 전 -->
+                <!-- start: 로그인 후 -->
+                <ul class="gnb_top">
+                    <li class="login_welcome_text"><span>박성원</span>님 반갑습니다!</li>
+                    <li><a href="/member/profile/index.do">회원정보관리</a></li>
+
+                    <li><a href="/member/apply/mine/index.do">나의신청관리<span class="noti_box">12</span></a></li>
+                    <li><a href="/component/qna/1to1/mine.do">1:1 문의내역<span class="noti_box">1</span></a></li>
+                    <li><a href="/component/logout.do">로그아웃</a></li>
+                </ul>
+                <!-- end: 로그인 후 -->
+            </div>
+            <div id="nav_menu">
+                <h1 class="logo"><a href="https://dsz.kdata.or.kr/" aria-label="메인으로 이동">데이터안심구역</a></h1>
+                <div class="nav_list_bg"></div>
+                <ul class="nav_list">
+                    <li>
+                        <a href=""><span>서비스안내</span></a>
+                        <ul>
+                            <li><a href="">안심구역소개</a></li>
+                            <li><a href="">서울센터소개</a></li>
+                            <li><a href="">대전센터소개</a></li>
+                            <li><a href="">분석환경소개</a></li>
+                            <li><a href="">이용절차소개</a></li>
+                            <li><a href="">제공데이터조회</a></li>
+                            <li><a href="">센터 오시는길</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=""><span>이용신청</span></a>
+                        <ul>
+                            <li><a href="">이용신청안내</a></li>
+                            <li><a href="">안심구역 이용신청</a></li>
+                            <li><a href="">연계기관 이용신청</a></li>
+                            <li><a href="">체험프로그램 신청</a></li>
+                            <li><a href="">분석캠프 참가신청</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=""><span>활용사례</span></a>
+                        <ul>
+                            <li><a href="">주요분석사례</a></li>
+                            <li><a href="">활용사례</a></li>
+                            <li><a href="">데이터시각화사례</a></li>
+                            <li><a href="">데이터분석방법</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=""><span>참여소통</span></a>
+                        <ul>
+                            <li><a href="">공지사항</a></li>
+                            <li><a href="">자주묻는질문</a></li>
+                            <li><a href="">1:1문의</a></li>
+                            <li><a href="">데이터요청</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="gnb2">
+                    <li class="menu-toggle">
+                        <a href="#none" aria-haspopup="true" aria-controls="totalmenu" aria-expanded="false" class="tab-closebtn">모든 메뉴 열기</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="totalmenu" class="all-sec">
+                <div class="user_mobile">
+                    <!-- start: 로그인 전 -->
+                    <!--<ul>
+                        <li><a href="https://dsz.kdata.or.kr/component/login.do">로그인</a></li>
+                        <li><a href="https://dsz.kdata.or.kr/svc/signup/identity_index.do">회원가입</a></li>
+                    </ul>-->
+                    <!-- end: 로그인 전 -->
+                    <!-- start: 로그인 후 -->
+                    <ul>
+                        <li class="login_welcome_text"><span>박성원</span>님 반갑습니다!</li>
+                        <li><a href="/member/profile/index.do">회원정보관리</a></li>
+                        <li><a href="/member/apply/mine/index.do">나의신청관리<span class="noti_box">12</span></a></li>
+                        <li><a href="/component/qna/1to1/mine.do">1:1 문의내역<span class="noti_box">1</span></a></li>
+                        <li><a href="/component/logout.do">로그아웃</a></li>
+                    </ul>
+                    <!-- end: 로그인 후 -->
+                </div>
+                <div class="in-wrap">
+                    <ul>
+                        <li><a href="https://dsz.kdata.or.kr/svc/page/intro/safezone.do">서비스안내</a>
+                            <ul>
+                                <li><a href="https://dsz.kdata.or.kr/svc/page/intro/safezone.do">안심구역소개</a></li>
+                                <li><a href="">서울센터소개</a></li>
+                                <li><a href="">대전센터소개</a></li>
+                                <li><a href="https://dsz.kdata.or.kr/svc/page/intro/analysis.do">분석환경소개</a></li>
+                                <li><a href="https://dsz.kdata.or.kr/svc/page/apply/add/procedure_guide.do">이용절차안내</a></li>
+                                <li><a href="https://dsz.kdata.or.kr/svc/data/search.do">제공데이터조회</a></li>
+                                <li><a href="https://dsz.kdata.or.kr/svc/page/support/location.do">센터 오시는길</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="https://dsz.kdata.or.kr/svc/page/apply/add/index.do">이용신청</a>
+                            <ul>
+                                <li><a href="https://dsz.kdata.or.kr/svc/page/apply/add/index.do">이용신청안내</a></li>
+                                <li><a href="https://dsz.kdata.or.kr/member/apply/add/data_index.do">안심구역 이용신청</a></li>
+                                <li><a href="https://dsz.kdata.or.kr/member/apply/add/fillout_linkInstitution_index.do">연계기관 이용신청</a></li>
+                                <li><a href="">체험프로그램 신청</a></li>
+                                <li><a href="">분석캠프 참가신청</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="https://dsz.kdata.or.kr/svc/page/intro/data_analysis_list.do">활용사례</a>
+                            <ul>
+                                <li><a href="https://dsz.kdata.or.kr/svc/page/intro/data_analysis_list.do">주요분석사례</a></li>
+                                <li><a href="https://dsz.kdata.or.kr/component/bbs/dataAnalysis/index.do">활용사례</a></li>
+                                <li><a href="https://dsz.kdata.or.kr/svc/page/application/data_visualize.do">데이터시각화사례</a></li>
+                                <li><a href="https://dsz.kdata.or.kr/svc/page/application/data_practice.do">데이터분석방법</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="https://dsz.kdata.or.kr/component/bbs/notice/index.do">참여소통</a>
+                            <ul>
+                                <li><a href="https://dsz.kdata.or.kr/component/bbs/notice/index.do">공지사항</a></li>
+                                <li><a href="https://dsz.kdata.or.kr/component/bbs/faq/index.do">자주묻는질문</a></li>
+                                <li><a href="https://dsz.kdata.or.kr/component/qna/1to1/mine.do">1:1문의</a></li>
+                                <li><a href="https://dsz.kdata.or.kr/svc/data/ask_index.do">데이터요청</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end: nav bar area -->
+        </div>
+        <!-- end: header area -->
+
+        <!-- start: contents area -->
+        <div id="contents" class="main_area">
+
+            <h2 class="blind">메인화면</h2>
+
+            <!-- start: 메인배너 area -->
+            <div class="banner-wrap">
+                <div class="visual-data">
+                    <section class="visual_wrap">
+                        <h3 class="blind">배너영역</h3>
+                        <div class="swiper-container">
+
+                            <button class="swiper-button-prev swiper-button-white"></button>
+
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide" tabindex="-1">
+                                    <div class="swiper_text-container">
+                                        <div class="swiper_text_box">
+                                            <div class="swiper_text_box_s">이제 희소가치 높은 유용한 비공개 데이터를 <br>대전센터에서 만나볼 수 있습니다.</div>
+                                            <div class="swiper_text_box_b">데이터안심구역 <br>대전센터 오픈</div>
+                                        </div>
+                                        <div class="swiper_text_box_btn">
+                                            <div class="btn"><a href="" >상세보기</a></div>
+
+                                        </div>
+                                    </div>
+                                    <div class="image-container box01" style="background-image: url(/static/images/main/sample/sample1.jpg);"></div>
+                                </div>
+
+                                <div class="swiper-slide" tabindex="-1">
+                                    <div class="swiper_text-container">
+                                        <div class="swiper_text_box">
+                                            <div class="swiper_text_box_s">데이터 안심구역을 <br>제대로 활용하는 방법</div>
+                                            <div class="swiper_text_box_b">데이터 분석 사례</div>
+                                        </div>
+                                        <div class="swiper_text_box_btn">
+                                            <div class="btn"><a href="" >상세보기</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="image-container box01" style="background-image: url(/static/images/main/sample/sample2.jpg);"></div>
+                                </div>
+
+                                <div class="swiper-slide" tabindex="-1">
+                                    <div class="swiper_text-container">
+                                        <div class="swiper_text_box">
+                                            <div class="swiper_text_box_s">데이터를 그림으로 쉽게 <br>요약 정보로 간단하게</div>
+                                            <div class="swiper_text_box_b">데이터 시각화</div>
+                                        </div>
+                                        <div class="swiper_text_box_btn">
+                                            <div class="btn"><a href="" >상세보기</a></div>
+
+                                        </div>
+                                    </div>
+                                    <div class="image-container box01" style="background-image: url(/static/images/main/sample/sample3.jpg);"></div>
+                                </div>
+
+                            </div>
+
+                            <div class="banner_quick_container">
+                                <div class="control_wrap">
+                                    <!-- Add Pagination -->
+                                    <div class="swiper-pagination"></div>
+                                    <!-- Add Arrows -->
+                                    <div class="swiper-control"><button type="button" class="btn_ctr2" aria-pressed="true" aria-label="play"></button></div>
+                                </div>
+                                <div class="banner_quick_box">
+                                    <a href="">
+                                        <div class="banner_btn_full b_i_d">
+                                            <div class="banner_btn_text">안심구역 이용신청</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="banner_quick_box">
+                                    <a href="">
+                                        <div class="banner_btn_full b_i_p">
+                                            <div class="banner_btn_text">연계기관 이용신청</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="banner_quick_box">
+                                    <a href="">
+                                        <div class="banner_btn_half">
+                                            <div class="banner_btn_text">분석캠프<br>참가신청</div>
+                                        </div>
+                                    </a>
+                                    <a href="">
+                                        <div class="banner_btn_half mr0">
+                                            <div class="banner_btn_text">체험프로그램<br>신청</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <button class="swiper-button-next swiper-button-white"></button>
+
+                        </div>
+
+                        <script>
+                            $("document").ready(function () {
+                                var swiper2 = new Swiper(".visual_wrap .swiper-container", {
+                                    effect: 'fade',
+                                    loop: true,
+                                    autoplay: {
+                                        delay: 4000,
+                                        disableOnInteraction: false,
+                                    },
+                                    keyboard: {
+                                        enabled: true,
+                                    },
+                                    pagination: {
+                                        el: '.visual_wrap .swiper-pagination',
+                                        clickable: true,
+                                    },
+                                    navigation: {
+                                        nextEl: '.visual_wrap .swiper-button-next',
+                                        prevEl: '.visual_wrap .swiper-button-prev',
+                                    },
+                                });
+
+                                // swipe control play/pause
+                                var ctrEvt = function() {
+                                    var $btnCtr2 = $('.visual_wrap .btn_ctr2'),
+                                        st = swiper2.autoplay.running;
+
+                                    function autoPlay() {
+                                        // $btnCtr2.removeClass('play').addClass('play');
+                                        ($btnCtr2.hasClass('play')) ? $(this).removeClass('play'): $btnCtr2.addClass('play');
+                                        swiper2.autoplay.start();
+                                        st = true;
+                                        $btnCtr2.attr('aria-pressed', st);
+                                        //console.log('true');
+                                    }
+
+                                    function autoStop() {
+                                        $btnCtr2.removeClass('play');
+                                        swiper2.autoplay.stop();
+                                        st = false;
+                                        $btnCtr2.attr('aria-pressed', st);
+                                        //console.log('false');
+                                    }
+
+                                    $btnCtr2.on('click', function() {
+                                        st == false ? autoPlay() : autoStop();
+                                    });
+                                    //init
+                                    $btnCtr2.addClass('play');
+                                }();
+                            });
+
+
+                        </script>
+
+                        <!--<script>
+                            var arrBgAni = [];
+
+                            if ($.isMobile()) {                           $('#MainEvent_banner_b4024033d83d47168b5ff44817d3e052').css('background-image', "url('/component/banner/mobile_image.do?bannerId=banner_b4024033d83d47168b5ff44817d3e052')");
+                            } else { $('#MainEvent_banner_b4024033d83d47168b5ff44817d3e052').css('background-image', "url('/component/banner/pc_image.do?bannerId=banner_b4024033d83d47168b5ff44817d3e052')");
+                            }
+                            arrBgAni[arrBgAni.length] = true;
+
+                            if ($.isMobile()) { $('#MainEvent_banner_7a1509b5f3104f74bee4aead42a668ec').css('background-image', "url('/component/banner/mobile_image.do?bannerId=banner_7a1509b5f3104f74bee4aead42a668ec')");
+                            } else {                             $('#MainEvent_banner_7a1509b5f3104f74bee4aead42a668ec').css('background-image', "url('/component/banner/pc_image.do?bannerId=banner_7a1509b5f3104f74bee4aead42a668ec')");
+                            }
+
+                            arrBgAni[arrBgAni.length] = true;
+
+                            if ($.isMobile()) { $('#MainEvent_banner_f247baa4d9ad4805a6506ef8f8525112').css('background-image', "url('/component/banner/mobile_image.do?bannerId=banner_f247baa4d9ad4805a6506ef8f8525112')");
+                            } else {   $('#MainEvent_banner_f247baa4d9ad4805a6506ef8f8525112').css('background-image', "url('/component/banner/pc_image.do?bannerId=banner_f247baa4d9ad4805a6506ef8f8525112')");
+                            }
+
+                            arrBgAni[arrBgAni.length] = true;
+
+                            if (arrBgAni.length > 1) {
+                                var swiper2 = new Swiper('.visual_wrap .swiper-container', {
+                                    //spaceBetween: 3000,
+                                    effect: 'fade',
+                                    loop: false,
+                                    autoplay: {
+                                        delay: 3000,
+                                        disableOnInteraction: false,
+                                    },
+                                    keyboard: {
+                                        enabled: true,
+                                    },
+                                    pagination: {
+                                        el: '.visual_wrap .swiper-pagination',
+                                        clickable: true,
+                                    },
+                                    navigation: {
+                                        nextEl: '.visual_wrap .swiper-button-next',
+                                        prevEl: '.visual_wrap .swiper-button-prev',
+                                    },
+                                });
+                                swiper2.on('slideChange', function() {
+                                    if (arrBgAni[swiper2.realIndex] == true) {
+                                        // $('#animationBox01').show();
+                                        // $('#animationBox02').show();
+                                    } else {
+                                        // $('#animationBox01').hide();
+                                        // $('#animationBox02').hide();
+                                    }
+                                });
+                                // swipe control play/pause
+                                var ctrEvt = function() {
+                                    var $btnCtr2 = $('.visual_wrap .btn_ctr2'),
+                                        st = swiper2.autoplay.running;
+
+                                    function autoPlay() {
+                                        // $btnCtr2.removeClass('play').addClass('play');
+                                        ($btnCtr2.hasClass('play')) ? $(this).removeClass('play'): $btnCtr2.addClass('play');
+                                        swiper2.autoplay.start();
+                                        st = true;
+                                        $btnCtr2.attr('aria-pressed', st);
+                                        console.log('true');
+                                    }
+
+                                    function autoStop() {
+                                        $btnCtr2.removeClass('play');
+                                        swiper2.autoplay.stop();
+                                        st = false;
+                                        $btnCtr2.attr('aria-pressed', st);
+                                        console.log('false');
+                                    }
+
+                                    $btnCtr2.on('click', function() {
+                                        st == false ? autoPlay() : autoStop();
+                                    });
+                                    //init
+                                    $btnCtr2.addClass('play');
+                                }();
+                            } else {
+                                $('.visual_wrap .swiper-button-next').hide();
+                                $('.visual_wrap .swiper-button-prev').hide();
+                                if (arrBgAni[0] == true) {
+                                    $('#animationBox01').show();
+                                    $('#animationBox02').show();
+                                } else {
+                                    $('#animationBox01').hide();
+                                    $('#animationBox02').hide();
+                                }
+                            }
+                        </script>-->
+                    </section>
+
+                </div>
+            </div>
+            <!-- end: 메인배너 area -->
+
+            <div class="cont-wrap">
+                <div class="main_sec_area">
+                    <!-- start: 공지사항 area -->
+                    <div class="main-board-wrap">
+                        <h3>공지사항</h3>
+                        <div class="main_titile_underline"></div>
+                        <ul class="notice-list">
+                            <li>
+                                <a href="" class="title"><span class="notice_tag_seoul">서울</span>데이터안심구역 데이터 수요조사(~10.14)</a>
+                                <em class="date">2022-09-19</em>
+                            </li>
+                            <li>
+                                <a href="링크" class="title"><span class="notice_tag_deajeon">대전</span>2022년 데이터안심구역 분석캠프 프로그램 안내 (9월 모집 : ~9/16)</a>
+                                <em class="date">2022-09-14</em>
+                            </li>
+                            <li>
+                                <a href="" class="title"><span class="notice_tag_seoul">서울</span>2022년 데이터안심구역 분석캠프 일정 안내</a>
+                                <em class="date">2022-08-19</em>
+                            </li>
+                            <li>
+                                <a href="" class="title"><span class="notice_tag_seoul">서울</span>데이터안심구역 데이터 수요조사(~10.14)</a>
+                                <em class="date">2022-09-19</em>
+                            </li>
+                            <li>
+                                <a href="" class="title"><span class="notice_tag_deajeon">대전</span>2022년 데이터안심구역 분석캠프 프로그램 안내 (9월 모집 : ~9/16)</a>
+                                <em class="date">2022-09-14</em>
+                            </li>
+                        </ul>
+                        <a href="/component/bbs/notice/index.do" class="more" title="공지사항 페이지로 이동"><span class="blind">공지사항 </span>더보기</a>
+                    </div>
+                    <!-- end: 공지사항 area -->
+                    <!-- start: 추천데이터 area -->
+                    <div class="main-recommend-wrap">
+                        <h3>추천 데이터</h3>
+                        <button class="refresh" onclick="userTopRefresh()" title="추천 데이터 새로고침"><span class="blind">추천 데이터</span>새로고침</button>
+                        <div class="main_titile_underline"></div>
+                        <ul class="top-list" id="userTopList">
+                            <li><span class="recommend_tag_hot">인기</span><span class="title"><strong>1</strong>고객별소비분석</span><span class="company">BC카드</span></li>
+                            <li><span class="recommend_tag_hot">인기</span><span class="title"><strong>2</strong>업종별매출현황</span><span class="company">BC카드</span></li>
+                            <li><span class="recommend_tag_hot">인기</span><span class="title"><strong>3</strong>지역별매출및이용고객정보</span><span class="company">신한카드</span></li>
+                            <li><span class="recommend_tag_hot">인기</span><span class="title"><strong>4</strong>고객별소비분석</span><span class="company">BC카드</span></li>
+                            <li><span class="recommend_tag_hot">인기</span><span class="title"><strong>5</strong>업종별매출현황</span><span class="company">BC카드</span></li>
+                        </ul>
+                    </div>
+                    <!-- end: 추천데이터 area -->
+                    <!-- start: 알림배너 area -->
+                    <div class="main-banner-wrap">
+                        <h3>알림배너</h3>
+                        <div class="banner_control_box">
+                            <button class="swiper-button-prev"></button>
+                            <div class="swiper-control">
+                                <button type="button" class="btn_ctr3" aria-pressed="true" aria-label="play"></button>
+                            </div>
+                            <button class="swiper-button-next"></button>
+                        </div>
+                        <div class="main_titile_underline"></div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" tabindex="-1">
+                                    <a href="" title="팝업으로 열기" tabindex="-1">
+                                        <img tabindex="-1" src="/static/images/main/banner/banner_info_01.jpg" alt="데이터안심구역 분석캠프 안내" >
+                                    </a>
+                                </div>
+                                <div class="swiper-slide" tabindex="-1">
+                                    <a href="" title="팝업으로 열기" tabindex="-1">
+                                        <img tabindex="-1" src="/static/images/main/banner/banner_info_02.jpg" alt="데이터안심구역 데이터 수요조사" >
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        $("document").ready(function () {
+                            var swiper3 = new Swiper(".main-banner-wrap .swiper-container", {
+                                effect: 'fade',
+                                loop: true,
+                                autoplay: {
+                                    delay: 4000,
+                                    //disableOnInteraction: false,
+                                },
+                                keyboard: {
+                                    enabled: true,
+                                },
+                                pagination: {
+                                    el: '.main-banner-wrap .swiper-pagination',
+                                    clickable: true,
+                                },
+                                navigation: {
+                                    nextEl: '.main-banner-wrap .swiper-button-next',
+                                    prevEl: '.main-banner-wrap .swiper-button-prev',
+                                },
+                            });
+
+                            // swipe control play/pause
+                            var ctrEvt3 = function() {
+                                var $btnCtr3 = $('.main-banner-wrap .btn_ctr3'),
+                                    st3 = swiper3.autoplay.running;
+
+                                function autoPlay() {
+                                    // $btnCtr3.removeClass('play').addClass('play');
+                                    ($btnCtr3.hasClass('play')) ? $(this).removeClass('play'): $btnCtr3.addClass('play');
+                                    swiper3.autoplay.start();
+                                    st3 = true;
+                                    $btnCtr3.attr('aria-pressed', st3);
+                                    //console.log('true');
+                                }
+
+                                function autoStop() {
+                                    $btnCtr3.removeClass('play');
+                                    swiper3.autoplay.stop();
+                                    st3 = false;
+                                    $btnCtr3.attr('aria-pressed', st3);
+                                    //console.log('false');
+                                }
+
+                                $btnCtr3.on('click', function() {
+                                    st3 == false ? autoPlay() : autoStop();
+                                });
+                                //init
+                                $btnCtr3.addClass('play');
+                            }();
+                        });
+                    </script>
+                    <!-- end: 알림배너 area -->
+                </div>
+                <div class="main_sec_area">
+                    <!-- start: 제공 데이터 조회 area -->
+                    <div class="main-data-wrap">
+                        <h3>제공 데이터 조회</h3>
+                        <div class="location_select_box">
+                            <a href="">
+                                <div class="location_btn_select selected">서울센터</div>
+                            </a>
+                            <a href="">
+                                <div class="location_btn_select">대전센터</div>
+                            </a>
+                        </div>
+                        <p class="main_sub_txt">다양한 분야의 미개방 데이터를 안심구역에서 이용할 수 있습니다. 데이터를 열람하시려면 안심구역 이용신청을 해주세요.</p>
+                        <div class="main_titile_underline"></div>
+                        <ul class="data_ic_list">
+                            <li><a href="#" onclick="nextUrl('금융');" style="background:url('/static/images/main/data_list_01.png') 50% 30% no-repeat;background-size:40%;"><span class="txt">금융</span></a></li>
+                            <li><a href="#" onclick="nextUrl('유통');" style="background:url('/static/images/main/data_list_02.png') 50% 30% no-repeat;background-size:40%;"><span class="txt">유통</span></a></li>
+                            <li><a href="#" onclick="nextUrl('통신');" style="background:url('/static/images/main/data_list_03.png') 50% 30% no-repeat;background-size:40%;"><span class="txt">통신</span></a></li>
+                            <li><a href="#" onclick="nextUrl('물류');" style="background:url('/static/images/main/data_list_04.png') 50% 30% no-repeat;background-size:40%;"><span class="txt">물류</span></a></li>
+                            <li><a href="#" onclick="nextUrl('의료');" style="background:url('/static/images/main/data_list_05.png') 50% 30% no-repeat;background-size:40%;"><span class="txt">의료</span></a></li>
+                            <li><a href="#" onclick="nextUrl('문화');" style="background:url('/static/images/main/data_list_06.png') 50% 30% no-repeat;background-size:40%;"><span class="txt">문화</span></a></li>
+                            <li><a href="#" onclick="nextUrl('환경');" style="background:url('/static/images/main/data_list_07.png') 50% 30% no-repeat;background-size:40%;"><span class="txt">환경</span></a></li>
+                            <li><a href="#" onclick="nextUrl('에너지');" style="background:url('/static/images/main/data_list_08.png') 50% 30% no-repeat;background-size:40%;"><span class="txt">에너지</span></a></li>
+                            <li><a href="#" onclick="nextUrl('기업');" style="background:url('/static/images/main/data_list_09.png') 50% 30% no-repeat;background-size:40%;"><span class="txt">기업</span></a></li>
+                            <li><a href="#" onclick="nextUrl('교통');" style="background:url('/static/images/main/data_list_10.png') 50% 30% no-repeat;background-size:40%;"><span class="txt">교통</span></a></li>
+                            <li><a href="#" onclick="nextUrl('행정');" style="background:url('/static/images/main/data_list_11.png') 50% 30% no-repeat;background-size:40%;"><span class="txt">행정</span></a></li>
+                        </ul>
+                        <div class="btn-comm-wrap">
+                            <div class="btn">
+                                <a href="/member/apply/add/data_index.do">안심구역 이용신청</a>
+                            </div>
+                            <div class="btn-link">
+                                <a href="/svc/page/apply/add/index.do">이용절차 안내</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: 제공데이터조회 area -->
+                    <!-- start: 연계기관 분석 플랫폼 area -->
+                    <div class="main-platform-wrap">
+                        <h3>연계기관 분석 플랫폼</h3>
+                        <p class="main_sub_txt">안심구역에서 이용가능한 또 다른 데이터 분석 플랫폼입니다. 데이터를 열람하시려면 연계기관 이용신청을 해주세요.</p>
+                        <div class="main_titile_underline"></div>
+                        <ul class="platform_link_list">
+                            <li>
+                                <a href="">
+                                    <div class="platform_link_title">고용노동데이터<br>분석시스템</div>
+                                    <div class="platform_link_text">바로가기</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <div class="platform_link_title">보건의료<br>빅데이터</div>
+                                    <div class="platform_link_text">바로가기</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <div class="platform_link_title">통계데이터<br>센터</div>
+                                    <div class="platform_link_text">바로가기</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end: 연계기관 분석 플랫폼 area -->
+                    <!-- start: 체험·분석캠프 area -->
+                    <div class="main-camp-wrap">
+                        <h3>체험·분석캠프</h3>
+                        <p class="main_sub_txt">데이터안심구역에서 진행하는 체험·분석캠프에 참가해
+                            보세요.</p>
+                        <div class="main_titile_underline"></div>
+                        <ul class="camp_link_list">
+                            <li class="fir">
+                                <a href="">
+                                    <div class="camp_link_title">체험 프로그램</div>
+                                    <div class="camp_link_text">이용신청하기</div>
+                                </a>
+                            </li>
+                            <li class="sec">
+                                <a href="">
+                                    <div class="camp_link_title">분석캠프</div>
+                                    <div class="camp_link_text">이용신청하기</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end: 체험·분석캠프 area -->
+                </div>
+            </div>
+
+            <div class="cont-full-wrap bg_gray">
+                <div class="main_full_area">
+                    <!-- start: 주요분석사례 area -->
+                    <div class="main-example-wrap">
+                        <h3>주요분석사례</h3>
+                        <p class="main_sub_txt">안심구역에서 제공하는 데이터를 통해 분석한 사례를 소개합니다.</p>
+                        <ul class="example_link_list">
+                            <li>
+                                <a href="">
+                                    <img src="static/images/main/example_ic_01.png" alt="서울시 정신건강 서비스 지원 우선지역 선정 아이콘" />
+                                    <span class="example_list_title">서울시 정신건강 서비스 지원 우선지역 선정</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="static/images/main/example_ic_02.png" alt="텍스트마이닝을 활용한 지적재산권 트렌드 분석 아이콘" />
+                                    <span class="example_list_title">텍스트마이닝을 활용한 지적재산권 트렌드 분석</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="static/images/main/example_ic_03.png" alt="지역 분석을 통한 지역 활성화 요인 도출 및 활성화 후보 지역 선정 아이콘" />
+                                    <span class="example_list_title">지역 분석을 통한 지역 활성화 요인 도출 및 활성화 후보 지역 선정</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="static/images/main/example_ic_04.png" alt="버스노선 개선 및 추가 필요 대상 지역 선정 토대 마련 아이콘" />
+                                    <span class="example_list_title">버스노선 개선 및 추가 필요 대상 지역 선정 토대 마련</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="static/images/main/example_ic_05.png" alt="지역 특성을 고려한 택배 물량 예측 아이콘" />
+                                    <span class="example_list_title">지역 특성을 고려한 택배 물량 예측</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="static/images/main/example_ic_06.png" alt="공영 주차장 추가 후보지역 선정을 위한 분석 아이콘" />
+                                    <span class="example_list_title">공영 주차장 추가 후보지역 선정을 위한 분석</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="static/images/main/example_ic_07.png" alt="카드 고객 군집 분석 아이콘" />
+                                    <span class="example_list_title">카드 고객 군집 분석</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end: 주요분석사례 area -->
+                </div>
+            </div>
+
+            <div class="cont-full-wrap">
+                <div class="main_full_area">
+                    <!-- start: 고객지원센터 area -->
+                    <div class="custom-wrap">
+                        <h3>고객지원센터</h3>
+                        <p class="main_sub_txt">안심구역이나 본 사이트에 대해 궁금한 사항은 고객지원센터를 이용해 주세요.</p>
+                        <ul class="custom_list">
+                            <li class="li05">
+                                <a href="/svc/data/ask_index.do">
+                                    <span>서울센터</span>
+                                </a>
+                            </li>
+                            <li class="li06">
+                                <a href="/svc/data/ask_index.do">
+                                    <span>대전센터</span>
+                                </a>
+                            </li>
+                            <li class="li04">
+                                <a href="/svc/data/ask_index.do">
+                                    <span>데이터 요청</span>
+                                </a>
+                            </li>
+                            <li class="li01">
+                                <a href="/component/bbs/faq/index.do">
+                                    <span>자주 묻는 질문</span>
+                                </a>
+                            </li>
+                            <li class="li02">
+                                <a href="/component/qna/1to1/mine.do">
+                                    <span>1:1 문의</span>
+                                </a>
+                            </li>
+                            <li class="li03">
+                                <a href="/svc/page/support/location.do">
+                                    <span>오시는 길</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end: 고객지원센터 area -->
+                </div>
+            </div>
+
+            <script>
+                $(document).ready(function() {
+                    $('#video_link').on('click', function(ev) {
+                        KDATA.modalLayer.open('', 'video_pop');
+                        // $("#video_iframe")[0].src = "https://www.youtube.com/embed/2IGttgnRqb4?autohide=1&rel=0&cc_load_policy=1&showinfo=0";
+                        //$("#video_iframe")[0].src = "https://www.youtube.com/embed/moFxuzlvCec?autohide=1&rel=0&cc_load_policy=1&showinfo=0"
+                        // $("#video_iframe")[0].src += "&autoplay=1";
+                        ev.preventDefault();
+                    });
+
+                    $('#video_btnclose').on('click', function(ev) {
+                        // $("#video_iframe")[0].src = "";
+                        KDATA.modalLayer.close();
+                        ev.preventDefault();
+                    });
+                })
+
+            </script>
+
+            <div class="layer-popup data-movie focus1_pop" id="video_pop" role="dialog" aria-modal="true" aria-labelledby="video_link">
+                <div class="dimmed"></div>
+                <div class="pop-area type-main" style="overflow:hidden;">
+                    <h3 class="blind">데이터안심구역 소개 동영상 팝업</h3>
+                    <div class="pop-content">
+                        <div class="in-sec">
+                            <iframe id="video_iframe" title="안심구역을 소개합니다" src="./index_files/2IGttgnRqb4.html" allowfullscreen=""></iframe>
+                        </div>
+                        <div class="video-caption-box" tabindex="0">
+                            <p class="caption-txt">
+                                (영상이미지1, 타이틀: 데이터 안심구역. 내용: 다양하고 유용한 분석데이터/안전하고 수준높은 분석시스템/간단하고 편리한 데이터시각화)<br>
+                                다양하고 유용한 분석 테스트를 편리한 분석도구와 수준 높은 사양의 분석 시스템을 통해 <br>
+                                <br>
+                                (영상이미지2, 누구나 이용 가능(연구소/대학 등 기관 &amp; 중소/스타트업 등 기업 &amp; 재직자/학생 등 일반인) → 데이터안심구역 ← 데이터 제공(공공기관&amp;민간기업))<br>
+                                누구나 데이터 분석의 가치와 즐거움을 누릴 수 있는 안전한 분석 공간 데이터 안심구역.<br>
+                                <br>
+                                (영상이미지3, 타이틀: 데이터안심구역 이용방법. 내용: 이용자 → SETP 01. 이용신청 → 신청서작성 → 심의(심사위원단 : 데이터 제공기관 및 다양한 분야의 전문가로 구성) → STEP 02. 자료분석 → 자료 분석 → 분석 결과 반출 신청 → 심의(심사위원단 : 데이터 제공기관 및 다양한 분야의 전문가로 구성) → STEP 03. 분석 자료 다운로드 → 결과 활용 → 이용자)<br>
+                                데이터 안심구역 이용 방법을 알아볼까요?<br>
+                                <br>
+                                (영상이미지4, 데이터안심구역(dsz.kdata.or.kr)의 메인화면에서 안심구역 이용신청 버튼 클릭)<br>
+                                먼저 홈페이지에서 안심구역 이용신청을 선택하고 <br>
+                                <br>
+                                (영상이미지5, 데이터안심구역(dsz.kdata.or.kr) 홈 &gt; 이용신청 &gt; 안심구역 이용신청, STEP2. 신청서작성 페이지에서 신청서 작성. 예시1) 자료이용목적 : 본 연구는 오늘날 증폭된 정보의 생성으로 인한 빅데이터 환경 변화에 주목... 예시2) 공동분석가 선택 팝업창에서 신청자와 함께 안심구역 사용을 신청하는 회원을 선택, 등록 가능 )<br>
+                                (영상이미지6, 데이터안심구역(dsz.kdata.or.kr) 홈 &gt; 나의신청관리 &gt; 상세 페이지. ※화면안내) 신청일: 2019.09.11 / 이용기간: 2019.10.19~2019.10.20 / 상태: 심의완료[승인] / 심의완료일: 2019.09.13 / 소속: 안심구역 주식회사 / 직급: 부장 / 자료이용목적: 본 연구는 오늘날 증폭된 정보의 생성으로 인한 빅데이터(Big Data) 환경 변화에 주목하고, 그에 따른 문화콘텐츠 서비스 활성화에 대한 방안 도출을 연구목적으로 하고 있다. 이에 데이터 시각화에 대한 개념적 접근과 발달 과정에 관한 기본적 토대를 마련하고, 빅데이터를 활용한 지형 변화로 인한 문화콘텐츠 분야는 어떻나 형태로 적용, 서비스되고 있는 지에 대한 현황 조사와 소통 양상에 대해 탐구하고 있다. 이는 결국, 사용자 중심의 서비스 지형 변화의 맥락에 입각하여 소셜 분석과 데이터 마이닝에 따른 개인 맞춤형의 서 ..)<br>
+                                신청서 작성 후 승인이 완료되면 <br>
+                                <br>
+                                (영상이미지7, 데이터안심구역 사무실 이미지) 데이터 안심구역에 직접 방문하여 <br>
+                                <br>
+                                (영상이미지8, 데이터안심구역 대시보드 메인화면. ※화면안내 : 1. 데이터 안심구역 분석 플랫폼 소개 : 데이터 안심구역 분석 플랫폼은 R Studio, Jupyter, Zeppelin, KNIME, 분석 VM 등의 분석 도구와 데이터 안심구역의 데이터를 활용하여 데이터 분석을 수행할 수 있는 서비스 입니다. / 2. 분석자원할당현황 : 분석서버사양, vCPU 16 Core | 메모리 120GB | GPU메모리 16GB(32GB중 16GB사용) / 3. 데이터 반출 현황 : 요청 0건 | 승인 2건 | 반려 0건 / 4. 내가 신청한 데이터: 지역별 가맹점 정보, TB_KED_CEO.dat, 연간&gt;공통&gt;기업정보, 김이박 2019-11-21 18:00:51 | 카드매출정보, TB_KED_NEWCO_MANAGER.dat, 연간&gt;공통&gt;기업정보, 김이박 2019-11-21 18:00:53 | 소비경로정보 TB_KED_NEWCO_USE.dat, 연간&gt;공통&gt;기업정보, 김이박 2019-11-21 18:00:53 / 5. 공유 분석자료 : 식자재유통정보, 공유합니다, 데이터, 김이박 2019-11-28 15:00:35 | 고객소비분석, 공유합니다, 데이터, 김이박 2019-11-20 12:42:44 | 실시간 승하차정보, 공유합니다, 데이터, 김이박 2019-11-20 12:39:02 / 6. (로고 이미지) R Studio, Jupyter, tableau, TeAna Insight)<br>
+                                다양한 분석도구를 통해 데이터를 분석합니다. <br>
+                                <br>
+                                (영상이미지9, 타이틀: Executive Overview - Profitability(All) 내용: Sales $ 1,820,895 | Profit $231,963 | Profit Ratio 12.7% | Profit per Order $59.04 | Sales per Customer $2,313.72 | Avg.Discount 15.71% | Quantity 29,793 | 미국 지도 분포차트에서 Pennsylvania에 마우스 오버 시 나오는 Sales Forecast(판매액 예측) 정보. 1. Consumer 차트 : 2014,2015,2016,2017년도 중에서 2015~2016년도 사이가 약 $3,000로 가장 높았습니다. / 2. Corporate 차트 : 2014,2015,2016,2017년도 중에서 2016년에 약 $1,500로 가장 높았습니다. / 3. Home Office : 2014,2015,2016,2017년도 중에서 2015~2016년도 사이가 약 $1,000로 가장 높았습니다.)<br>
+                                (영상이미지10, Superstore 프로그램 화면. ※화면안내 : average Profit | by City | filter Category to Furniture | sort by most profitable states / sort State in ascending order by sum of Profit / sort State in descending order by sum of Profit / sort State in ascending order by maximum Profit / sort State in descending order by maximum Profit / top State by average Profit)<br>
+                                분석된 결과는 시각화 도구를 통해 확인할 수 있으며 <br>
+                                <br>
+                                (영상이미지11, 데이터안심구역(dsz.kdata.or.kr) 홈 &gt; 나의신청관리 &gt; 상세 페이지. ※화면안내) 신청일: 2019.09.11 이용기간: 2019.10.19~2019.10.20 상태:신청 심의완료예정일: 2019.09.13 / 반출신청, 신청일: 2019.09.11 상태: 심의완료[승인] 심의완료일: 2019.10.20 신청자료:0건 다운로드버튼/ 내용: 소속 서울대학교...)<br>
+                                분석결과는 반출 신청 후 심의가 완료되면 홈페이지를 통해 다운로드 받을 수 있습니다.<br>
+                                <br>
+                                (영상이미지12, 데이터놀이터)<br>
+                                지금까지 몰랐던 데이터 분석의 즐거운 세상, 데이터 놀이터!<br>
+                                <br>
+                                (영상이미지13, 데이터 안심구역 / 과학기술정보통신부, Kdata 한국데이터산업진흥원)
+                            </p>
+                        </div>
+                        <!-- btns_wrap -->
+                        <div class="btns-wrap mt10 mb10">
+                            <a href="javascript:;" class="btns" id="video_btnclose">닫기</a>
+                        </div>
+                        <!--//btns_wrap -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 메인 popup-->
+            <div class="layer-popup" id="main_pop">
+                <div class="dimmed"></div>
+                <div class="pop-area type-main">
+                    <h3 class="blind">메인 팝업 공지</h3>
+                    <div class="pop-content">
+                        <!-- slider_wrap -->
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide box01" id="HomePopup_banner_93be6d16e71e4ce6bdbe210d710e02dd">
+                                    <a href="https://dsz.kdata.or.kr/svc/main/main.do#none" onclick="moveBanner(&quot;https://dsz.kdata.or.kr/component/bbs/notice/detail.do?articleId=BbsArticle4a5e08892cd742728ab362cbd8f1490f&quot;, false);">
+                                        <img src="https://dsz.kdata.or.kr/svc/main/main.do" alt="2022년 데이터안심구역 분석캠프 프로그램 안내">
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="control_wrap">
+                                <!-- Add Pagination -->
+                                <div class="swiper-pagination"></div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-control"><button type="button" class="btnCtr_pop"><span class="blind">메인 팝업 버튼</span></button></div>
+                            </div>
+                            <div class="swiper-button-next swiper-button-white"></div>
+                            <div class="swiper-button-prev swiper-button-white"></div>
+                        </div>
+                        <!--//slider_wrap -->
+                        <!-- btns_wrap -->
+                        <div class="main-pop-btns">
+                            <a href="javascript:;" onclick="controlPopUpCookies(); return false;">오늘 하루 열지 않기</a>
+                            <a href="javascript:;" onclick="KDATA.modalLayer.close(); return false;">닫기</a>
+                        </div>
+                        <!--//btns_wrap -->
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                .pop-area.scroll .pop-content {
+                    top: 1px !important;
+                    left: 0px !important;
+                    right: 0px !important
+                }
+
+            </style>
+
+            <!--<script>
+                var arrHomePopup = [];
+                var homePopup;
+                var popupTimer;
+
+
+                homePopup = {};
+
+                homePopup.id = "HomePopup_banner_93be6d16e71e4ce6bdbe210d710e02dd";
+                homePopup.image = "/component/banner/pc_image.do?bannerId=banner_93be6d16e71e4ce6bdbe210d710e02dd";
+                homePopup.alt = "2022년 데이터안심구역 분석캠프 프로그램 안내";
+
+
+                if ($.isMobile()) {
+                    homePopup.image = "/component/banner/mobile_image.do?bannerId=banner_93be6d16e71e4ce6bdbe210d710e02dd";
+                }
+
+
+                arrHomePopup[arrHomePopup.length] = homePopup;
+
+
+                $(function() {
+                    $("title").html("데이터안심구역 홈");
+
+                    if (arrHomePopup.length > 0) {
+                        var now = new Date();
+                        var strDay = "" + now.getMonth();
+
+                        strDay += now.getDate();
+
+                        if (getCookie("main_pop") == strDay) {
+                            KDATA.modalLayer.close();
+                        } else {
+                            for (var ii = 0; ii < arrHomePopup.length; ii++) {
+                                homePopup = arrHomePopup[ii];
+
+                                if (ii == 0) {
+                                    // 첫번 째 팝업 이미지 인 경우 로딩이 완료 되면 팝업 위치 조정
+                                    $('#' + homePopup.id + ' img').attr("src", homePopup.image).load(function() {
+                                        KDATA.modalLayer.open('', 'main_pop');
+                                    });
+                                } else {
+                                    $('#' + homePopup.id + ' img').attr("src", homePopup.image);
+                                }
+                            }
+
+                            if (arrHomePopup.length > 1) {
+                                var swiper_pop = new Swiper('#main_pop .swiper-container', {
+                                    //spaceBetween: 3000,
+                                    effect: 'fade',
+                                    loop: true,
+                                    autoplay: {
+                                        delay: 3000,
+                                        disableOnInteraction: false,
+                                    },
+                                    pagination: {
+                                        el: '#main_pop .swiper-pagination',
+                                        clickable: true,
+                                    },
+                                    navigation: {
+                                        nextEl: '#main_pop .swiper-button-next',
+                                        prevEl: '#main_pop .swiper-button-prev',
+                                    },
+                                });
+                                // swipe control play/pause
+                                var ctrEvtpop = function() {
+                                    var $btnCtr_pop = $('#main_pop .btnCtr_pop'),
+                                        st = swiper_pop.autoplay.running;
+
+                                    function autoPlay() {
+                                        $btnCtr_pop.removeClass('play').addClass('play');
+                                        swiper_pop.autoplay.start();
+                                        st = true;
+                                        console.log('true');
+                                    }
+
+                                    function autoStop() {
+                                        $btnCtr_pop.removeClass('play');
+                                        swiper_pop.autoplay.stop();
+                                        st = false;
+                                        console.log('false');
+                                    }
+
+                                    $btnCtr_pop.on('click', function() {
+                                        st == false ? autoPlay() : autoStop();
+                                    });
+                                    //init
+                                    $btnCtr_pop.addClass('play');
+                                }();
+                            } else {
+                                $('#main_pop .swiper-button-next').hide();
+                                $('#main_pop .swiper-button-prev').hide();
+                            }
+                        }
+                    }
+                });
+
+                function controlPopUpCookies() {
+                    var now = new Date();
+                    var strDay = "" + now.getMonth();
+                    strDay += now.getDate();
+                    setCookie("main_pop", strDay, "1");
+                    KDATA.modalLayer.close();
+                }
+
+                //활용가이드 간단  패럴랙스 적용
+                function update() {
+                    var pos = $(window).scrollTop();
+                    var velocity = 0.4;
+                    //console.log(pos);
+                    if (pos > 1600) {
+                        $('.guide_wrap').each(function() {
+                            //console.log(pos);
+                            var height = $(this).height() + 1000;
+                            //console.log(Math.round((height - pos) * velocity));
+                            var math = Math.round((height - pos) * velocity);
+                            // if(math < -215){
+                            //    $(this).css('background-position', '50% ' + math + 'px');
+                            // }
+                            $(this).css('background-position', '50% ' + math + 'px');
+                        });
+                    }
+                };
+
+                $(window).bind('scroll', update);
+
+            </script>-->
+            <!-- //메인 popup-->
+
+        </div>
+        <!-- end: contents area -->
+
+        <!--footer area-->
+        <div id="footer">
+
+            <link rel="stylesheet" href="/static/css/jquery.mCustomScrollbar.min.css">
+
+            <!--footer upper-->
+            <div class="foot-upper -renew">
+                <a href="/" class="logo" aria-label="메인으로 이동"><img src="/static/images/common/logo_footer.png" alt="K-data 한국데이터산업진흥원 로고"></a>
+                <ul>
+                    <li><a href="/svc/page/policy/privacy.do" class="fw-bold">개인정보처리방침</a></li>
+                    <li><a href="/svc/page/policy/terms_of_use.do">이용약관</a></li>
+                    <li><a href="/svc/page/policy/marketing.do" class="brnone-r">마케팅정보수신동의</a></li>
+                    <li><a href="javascript:;" onclick="KDATA.modalLayer.open($(this),'ffo_popup','890px')" class="brnone-r">이메일 무단수집거부</a></li>
+                    <li class="snslogo -mo-ver">
+                        <a href="https://blog.naver.com/datasafetyzone" target="_blank" title="새창열림">
+                            <img src="/static/images/common/ico_blog.png" alt="blog">
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCE9mJaf0hEWw7rtkyG3p7Nw" target="_blank" title="새창열림">
+                            <img src="/static/images/common/ico_youtube.png" alt="youtube">
+                        </a>
+                        <a title="pdf 파일보기" class="webmark" href="/static/pdf/web-accessibility-auth.pdf" target="_blank">
+                            <img src="/static/images/common/walogo.png" class="wa" alt="(사)한국장애인단체총연합회 한국웹접근성인증평가원 웹 접근성 우수사이트 인증마크(WA인증마크)">
+                        </a>
+                    </li>
+                    <li class="sitelist">
+                        <div class="selbox">
+                            <dl>
+                                <dt>
+                                    <!-- 클릭 시 is-open 클래스 추가 -->
+                                    <button class="ft-selbtn" aria-haspopup="listbox" aria-controls="site-listbox" aria-expanded="false">연관사이트</button>
+                                </dt>
+                                <dd class="is-selsub">
+                                    <div class="scroll_sitelist mCustomScrollbar _mCS_1 mCS_no_scrollbar"><div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
+                                        <ul id="site-listbox" role="listbox">
+                                            <li role="none">
+                                                <a href="http://www.msit.go.kr" target="_blank" title="새창열림" role="option"><span>과학기술정보통신부</span></a>
+                                            </li>
+                                            <li role="none">
+                                                <a href="http://www.kdata.or.kr" target="_blank" title="새창열림" role="option"><span>한국데이터산업진흥원</span></a>
+                                            </li>
+                                            <li role="none">
+                                                <a href="http://www.datastore.or.kr" target="_blank" title="새창열림" role="option"><span>데이터스토어</span></a>
+                                            </li>
+                                            <li role="none">
+                                                <a href="http://data.kostat.go.kr/sbchome/intro.do" target="_blank" title="새창열림" role="option"><span>통계빅데이터센터</span></a>
+                                            </li>
+                                            <li role="none">
+                                                <a href="https://www.hira.or.kr/main.do" target="_blank" title="새창열림" role="option"><span>건강보험심사평가원</span></a>
+                                            </li>
+                                            <li role="none">
+                                                <a href="https://www.car365.go.kr/" target="_blank" title="새창열림" role="option"><span>한국교통안전공단</span></a>
+                                            </li>
+                                        </ul>
+                                        </div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; top: 0px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>
+                                    <button class="ft-selbtn-close" aria-label="close">
+                                        <span class="blind">연관사이트 모음 닫기</span>
+                                    </button>
+                                </dd>
+                            </dl>
+                        </div>
+                    </li>
+                    <li class="snslogo -pc-ver">
+                        <a href="https://blog.naver.com/datasafetyzone" target="_blank" title="새창열림">
+                            <img src="/static/images/common/ico_blog.png" alt="blog">
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCE9mJaf0hEWw7rtkyG3p7Nw" target="_blank" title="새창열림">
+                            <img src="/static/images/common/ico_youtube.png" alt="youtube">
+                        </a>
+                        <a title="pdf 파일보기" class="webmark" href="/static/pdf/web-accessibility-auth.pdf" target="_blank">
+                            <img src="/static/images/common/walogo.png" class="wa" alt="(사)한국장애인단체총연합회 한국웹접근성인증평가원 웹 접근성 우수사이트 인증마크(WA인증마크)">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--//footer upper-->
+            <!--footer lower-->
+            <div class="foot-lower">
+                <div class="infobox">
+                    <address>
+                        <ul>
+                            <li><span>기관명</span><span>한국데이터산업진흥원</span></li>
+                            <li class="line-mo-dpno"><span>원장</span><span>윤혜정</span></li>
+                            <li><span>사업자등록번호</span><span>102-82-08963</span></li>
+                        </ul>
+                        <ul>
+                            <li class="line-mo-dpno"><span class="dpno-mobile">주소</span><span>(04513) 서울시 중구 세종대로9길 42 부영빌딩 7층</span></li>
+                            <li><span>FAX</span><span>02-318-5040</span></li>
+                        </ul>
+                        <ul>
+                            <li><span>사이트 이용문의</span><span class="tel"><a class="jsTel">02-3708-5484</a></span><span>(월~금 09:00 ~ 18:00, 공휴일 제외)</span></li>
+                        </ul>
+                    </address>
+                </div>
+                <div class="copybox">
+                    <span>Copyright © KOREA Data Agency.&nbsp;All rights reserved.</span>
+                </div>
+            </div>
+            <!--//footer lower-->
+
+            <!--이메일 무단수집거부 popup-->
+            <div class="layer-popup" id="ffo_popup">
+                <div class="dimmed"></div>
+                <div class="pop-area email_pop trans_pop">
+                    <h3 class="pop-tit left">이메일 무단수집거부</h3>
+                    <div class="pop-content">
+                        <!-- info_box -->
+                        <div class="info_box">
+                            <div class="email_info"></div>
+                            <p class="txt">
+                                본 웹사이트에 게시된 이메일 주소가 전자우편 수집 프로그램이나 그 밖의 기술적인 장치를 이용하여 무단
+                                으로 수집되는 것을 거부하며, 이를 위반시 정보통신법에 의해 형사처벌됨을 유념하시기 바랍니다.
+                            </p>
+                        </div>
+                        <!--// info_box -->
+                        <!-- law_wrap -->
+                        <div class="law_wrap">
+                            <p class="blue fs18">정보통신망 이용촉진 및 정보보호 등에 관한 법률</p>
+                            <p class="mt10">제74조 (벌칙)</p>
+                            <ul class="gray-79">
+                                <li class="mt10">① 다음 각 호의 어느 하나에 해당하는 자는 1년 이하의 징역 또는 1천만원 이하의 벌금에 처한다. (개정 2012.2.17., 2014.5.28.)</li>
+                                <li>1. 제8조제4항을 위반하여 비슷한 표시를 한 제품을 표시·판매 또는 판매할 목적으로 진열한 자</li>
+                                <li>2. 제44조의7제1항제1호의 규정을 위반하여 음란한 부호·문언·음향·화상 또는 영상을 배포·판매·임대하거나 공공연하게 전시한 자</li>
+                                <li>3. 제44조의7제1항제3호의 규정을 위반하여 공포심이나 불안감을 유발하는 부호·문언·음향·화상 또는 영상을 반복적으로 상대방에게 도달하게 한 자</li>
+                                <li>4. 제50조제5항의 규정을 위반하여 기술적 조치를 한 자</li>
+                                <li>5. 삭제 (2014.5.28)</li>
+                                <li>6. 제50조의8을 위반하여 광고성 정보를 전송한 자</li>
+                                <li>7. 제53조제4항을 위반하여 등록사항의 변경등록 또는 사업의 양도·양수 또는 합병·상속의 신고를 하지 아니한 자</li>
+                                <li class="mt10">② 제1항제3호의 죄는 피해자가 구체적으로 밝힌 의사에 반하여 공소를 제기할 수 없다. [전문개정 2008.6.13 ]</li>
+                            </ul>
+                            <hr class="mt30 gray-79">
+                        </div>
+                        <!--// law_wrap -->
+                        <div class="btns-wrap">
+                            <a href="https://dsz.kdata.or.kr/svc/main/main.do#" class="btns" onclick="KDATA.modalLayer.close(); return false;">닫기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--//이메일 무단수집거부 popup-->
+
+            <!-- 마케팅정보수신동의 popup-->
+            <div class="layer-popup" id="mk_popup">
+                <div class="dimmed"></div>
+                <div class="pop-area email_pop trans_pop">
+                    <h3 class="pop-tit left">마케팅정보수신동의</h3>
+                    <div class="pop-content">
+                        ppt69 참고.
+                        마케팅 정보 수신 동의 내역 내용 전달 요망
+                        <!-- info_box -->
+                        <!-- <div class="info_box">
+                <div class="email_info"></div>
+                <p class="txt">
+                    본 웹사이트에 게시된 이메일 주소가 전자우편 수집 프로그램이나 그 밖의 기술적인 장치를 이용하여 무단
+                    으로 수집되는 것을 거부하며, 이를 위반시 정보통신법에 의해 형사처벌됨을 유념하시기 바랍니다.
+                </p>
+            </div> -->
+                        <!--// info_box -->
+                        <!-- law_wrap -->
+                        <!-- <div class="law_wrap">
+                <p class="blue fs18">정보통신망 이용촉진 및 정보보호 등에 관한 법률</p>
+                <p class="mt10">제74조 (벌칙)</p>
+                <ul class="gray-79">
+                    <li class="mt10">① 다음 각 호의 어느 하나에 해당하는 자는 1년 이하의 징역 또는 1천만원 이하의 벌금에 처한다. (개정 2012.2.17., 2014.5.28.)</li>
+                    <li>1. 제8조제4항을 위반하여 비슷한 표시를 한 제품을 표시·판매 또는 판매할 목적으로 진열한 자</li>
+                    <li>2. 제44조의7제1항제1호의 규정을 위반하여 음란한 부호·문언·음향·화상 또는 영상을 배포·판매·임대하거나 공공연하게 전시한 자</li>
+                    <li>3. 제44조의7제1항제3호의 규정을 위반하여 공포심이나 불안감을 유발하는 부호·문언·음향·화상 또는 영상을 반복적으로 상대방에게 도달하게 한 자</li>
+                    <li>4. 제50조제5항의 규정을 위반하여 기술적 조치를 한 자</li>
+                    <li>5. 삭제 (2014.5.28)</li>
+                    <li>6. 제50조의8을 위반하여 광고성 정보를 전송한 자</li>
+                    <li>7. 제53조제4항을 위반하여 등록사항의 변경등록 또는 사업의 양도·양수 또는 합병·상속의 신고를 하지 아니한 자</li>
+                    <li class="mt10">② 제1항제3호의 죄는 피해자가 구체적으로 밝힌 의사에 반하여 공소를 제기할 수 없다. [전문개정 2008.6.13 ]</li>
+                </ul>
+                <hr class="mt30 gray-79">
+            </div> -->
+                        <!--// law_wrap -->
+                        <div class="btns-wrap">
+                            <a href="https://dsz.kdata.or.kr/svc/main/main.do#" class="btns" onclick="KDATA.modalLayer.close(); return false;">닫기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--// 마케팅정보수신동의 popup-->
+
+            <script>
+                (function($) {
+                    $(window).on("load", function() {
+                        $(".scroll_sitelist").mCustomScrollbar({
+                            /* keyboard default options */
+                            keyboard: {
+                                enable: true,
+                                scrollType: "stepless",
+                                scrollAmount: "auto"
+                            },
+                            scrollButtons: true,
+                        });
+
+                        // 모바일 접속 시, tel link 추가
+                        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
+                        if (isMobile) {
+                            var jsTel = $('.jsTel');
+                            jsTel.map(function(i) {
+                                var $this = $(jsTel[i]);
+                                $this.css('pointer-events', 'all');
+                                $this.attr('href', 'javascript:;');
+                                $this.attr('aria-label', '모바일 기기에서 클릭하면 ' + $this.text() + '로 전화 연결됩니다.');
+                                $this.on("click", function() {
+                                    location.href = 'tel:' + $this.text();
+                                    console.log('tel:' + $this.text());
+                                })
+                            });
+                        }
+                    });
+                })(jQuery);
+
+            </script>
+        </div>
+        <!--//footer area-->
+    </div>
+
+</body>
+
+</html>
