@@ -19,13 +19,14 @@ function aa() {
 function dd () {
 
 }
-let a;
+let a = 0;
 let b;
 let c;
 let d;
 let f;
 let e;
 function test() {
-    let g;
-    let t;
+    let af;
+    let ddd;
+    let b = a
 }
