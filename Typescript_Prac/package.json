@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "nodemon --exec ts-node src/Typescript_first_work.ts",
-    "start": "node src/Typescript_first_work.js , tsc -w"
+    "start": "node src/Typescript_first_work.js"
   },
   "keywords": [],
   "author": "",
