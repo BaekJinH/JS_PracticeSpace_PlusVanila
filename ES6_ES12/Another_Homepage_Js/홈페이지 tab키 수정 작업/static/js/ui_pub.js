@@ -12,6 +12,11 @@
 // or
 /*if (/MSIE 7.*Trident/.test(navigator.userAgent)){document.getElementsByTagName("html")[0].className+="ie-compatible";}*/
 
+// && 곱연산 단축 평가는 두 가지 전부 true여야만 좌측 값 반환
+
+// 변수 KDATA의 값이 있다면 KDATA , 없다면 {} 값 반환
+// 둘 중 하나만 true면 true로 평가되므로 왼쪽 피연산자가 true이면 바로 true를 반환
+// 왼쪽이 true라면 무조건 왼쪽 반환
 var KDATA = KDATA || {};
 var KDATA = {
     init : function() {
