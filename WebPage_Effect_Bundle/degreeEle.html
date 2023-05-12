@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 500px;
+            background-color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: skew(0deg);
+            transition: transform 0.3s ease-out;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        const myDiv = document.getElementById('box');
+
+        document.addEventListener('mousemove', e => {
+            const x = e.clientX;
+            const y = e.clientY;
+
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            const percentX = (x - centerX) / centerX;
+            const percentY = (y - centerY) / centerY;
+
+            const maxDegrees = 10;
+            const degreesX = maxDegrees * percentY;
+            const degreesY = maxDegrees * percentX;
+
+            myDiv.style.transform = `skew(${degreesY}deg, ${degreesX}deg)`;
+        });
+    </script>    
+</body>
+</html>
