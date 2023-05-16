@@ -12,7 +12,9 @@
     <script src="../resources/plugin/jquery-3.7.0.min.js"></script>
     <script src="../resources/plugin/"></script>
     <script src="../resources/js/block.js"></script>
-    <script src="../resources/js/effect.js"></script>
+    <script src="../resources/js/gameCanvas.js" type="module"></script>
+    <script src="../resources/js/interactive.js" type="module"></script>
+    <script src="../resources/js/effect.js" type="module"></script>
 </head>
 <body>
     <!-- load space -->
@@ -22,40 +24,99 @@
     </div>
     <!-- load /> -->
 
-    <!-- <canvas id="canvas"> -->
+    <!-- alert Box -->
+    <div id="alertBox">
+        <img src="../resources/img/warning" alt="" class="warn">
+
+    </div>
+    <!-- alert Box /> -->
+
     <!--  after to load  -->
     <div class="after_load">
-            <div id="wrapper">
-                <header>
-                    <nav>
-                        <div class="homeLogo">
+        <canvas id="canvas">
+
+        </canvas>
+        <!-- floating Text -->
+        <div id="float_wrap">
+
+        </div>
+        <!-- floating Text /> -->
+        <div id="wrapper">
+            <header>
+                <nav>
+                    <div class="homeLogo">
+
+                    </div>
+                    <div class="hambuger" onclick="hambAnimate()">
+                        <span class="hamb_ele top"></span>
+                        <span class="hamb_ele mid"></span>
+                        <span class="hamb_ele bot"></span>
+                    </div>
+                </nav>
+                <!-- 홈페이지에 들어갈 효과 -->
+                <div class="effectBundle">
+                    <div class="floating">
+                        <button class="float_effect_on">Click Here !</button>
+                        <button class="float_effect_off">Off</button>
+                    </div>
+                    <div class="ptCanvas">
+
+                    </div>
+                    <div class="gameBundle">
+                        <div class="text_exact">
 
                         </div>
-                        <div class="hambuger" onclick="hambAnimate()">
-                            <span class="hamb_ele top"></span>
-                            <span class="hamb_ele mid"></span>
-                            <span class="hamb_ele bot"></span>
+                        <div class="loguelike">
+
                         </div>
-                    </nav>
-                </header>
-                <section>
+                        <div class="bounce_ball">
 
-                </section>
-                <article>
+                        </div>
+                    </div>
+                    <div class="interactiveBundle">
+                        <div class="grow_tree">
 
-                </article>
-                <footer>
+                        </div>
+                        <div class="turnOff_light">
 
-                </footer>
-                <div class="category_box">
-                    <ul class="relate_site">
-                        <li><a href="#none">카카오톡</a></li>
-                        <li><a href="#none">트위터</a></li>
-                        <li><a href="#none">인스타</a></li>
-                    </ul>
+                        </div>
+                        <div class="fallen_snow">
+
+                        </div>
+                        <div class="darkSky_starLight">
+
+                        </div>
+                        <div class="sticky_text">
+
+                        </div>
+                        <div class="text_screen">
+
+                        </div>
+                    </div>
                 </div>
+            </header>
+            <section>
+
+            </section>
+            <article>
+
+            </article>
+            <footer>
+
+            </footer>
+            <div class="category_box">
+                <ul class="relate_site">
+                    <li><a href="#none">카카오톡</a></li>
+                    <li><a href="#none">트위터</a></li>
+                    <li><a href="#none">인스타</a></li>
+                </ul>
             </div>
         </div>
-    <!-- </canvas> -->
+
+        <div id="gameZone">
+            <canvas id="gameCanvas">
+            </canvas>
+        </div>
+    </div>
 </body>
 </html>

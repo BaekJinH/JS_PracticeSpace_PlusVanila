@@ -4,8 +4,15 @@
 .loading > p { width:100%; text-align: center;}
 .loading.fade { opacity:0; z-index:-1; }
 /* load /> */
-
 /* after to load /> */
+
+/* in page canvas */
+#canvas { position:absolute; }
+/* in page canvas /> */
+
+/* game canvas */
+#gameCanvas { position:absolute; }
+/* game canvas /> */
 
 /* after load Wrap */
 .after_load { display:none; position:relative; background-color:#252525; width:100%; height:100%; }
@@ -46,4 +53,24 @@ header.fixed_header .hambuger.act_hamb .bot {}
 
 /* header /> */
 
-/* categoryBox */
+
+/* effect bundle */
+
+.floating {}
+
+.ptCanvas {}
+
+.gameBundle {}
+.gameBundle .text_exact {}
+.gameBundle .loguelike {}
+.gameBundle .bounce_ball {}
+
+.interactiveBundle {  }
+.interactiveBundle .grow_tree {  }
+.interactiveBundle .turnOff_light {  }
+.interactiveBundle .fallen_snow {  }
+.interactiveBundle .darkSky_starLight {  }
+.interactiveBundle .sticky_text {  }
+.interactiveBundle .text_screen {  }
+
+/* effect bundle /> */

@@ -1,11 +1,9 @@
 "use strict";
 
-// window.addEventListener('load' , () => {
-//     window.setTimeout( () => {
-//         document.querySelector('.loading').classList.add('fade') ;
-//     } , 1000)
-// })
-// 아래는 DOM 컨텐츠 로드되면 실행 / 위의 주석은 지정한 타임 지나면 자동 실행
+var _gameCanvas = require("./gameCanvas.js");
+
+var _interactive = require("./interactive.js");
+
 document.addEventListener('DOMContentLoaded', function () {
   window.setTimeout(function () {
     document.querySelector('.loading').classList.add('fade');
@@ -94,8 +92,7 @@ document.addEventListener('scroll', function (e) {
 
   var pin_height = document.querySelector("header").offsetHeight;
   var minus_ele = pin_height - 1;
-  var pin_result = pin_height - minus_ele; // pin_height > now_scroll ? pin_height.classList.add('fixed_header') : pin_height.classList.remove('fixed_header')
-
+  var pin_result = pin_height - minus_ele;
   pin_result > now_scroll ? header_removeClass() : header_addClass();
 
   function header_addClass() {
@@ -108,5 +105,59 @@ document.addEventListener('scroll', function (e) {
 
   console.log(pin_result);
   console.log(box_fixedHeight);
+}); // 키보드에서 글자 입력하면 absolute로 플로팅 처리해서 위로 띄우기 -> 해당 코드 완성되면 입력했던 키가 엔터키를 누르기 전까지는 배열로 들어가서 합쳐지도록 만들기 될란지는;
+
+var floatBtn = document.querySelector('.float_effect_on');
+var offBtn = document.querySelector('.float_effect_off');
+var floatWrap = document.querySelector('#float_wrap');
+offBtn.addEventListener('click', function () {
+  floatWrap.classList.remove('floating_on');
+
+  if (!floatWrap.classList.contains('floating_on')) {
+    alert('글자 효과가 제거되었습니다!');
+  }
 });
+floatBtn.addEventListener('click', textFloat);
+
+function textFloat() {
+  floatWrap.classList.add('floating_on');
+  var isKey = false;
+  window.addEventListener('keydown', function (e) {
+    var textArr = [];
+    isKey = true;
+    textArr.push(e.key);
+    console.log(textArr);
+  });
+  window.addEventListener('keyup', function (e) {
+    isKey = false;
+    console.log(isKey);
+  });
+
+  if (isKey) {}
+} // console.log(floatBtn) -- 확인용
+// 홈페이지 효과용 Canvas
+
+
+var ptCanvas = document.querySelector('#canvas');
+var ctx = ptCanvas.getContext('2d');
+ptCanvas.width = window.innerWidth;
+ptCanvas.height = window.innerHeight;
+var isClick = false;
+ptCanvas.addEventListener('click', particleEffect);
+
+function particleEffect() {} // Game Canvas 불러오기
+// 확인용
+
+
+var gameInstance = new _gameCanvas.game();
+console.log(gameInstance); // console.log(module.gmSetting())
+// 인터렉티브 효과들 import 하기
+
+var loadEffect = new _interactive.Interac();
+console.log(loadEffect.growTree());
+console.log(loadEffect.turnOffLight());
+console.log(loadEffect.fallenSnow());
+console.log(loadEffect.darkSkyStarlight());
+console.log(loadEffect.stickyText());
+console.log(loadEffect.textScreen());
 //# sourceMappingURL=effect.dev.js.map

@@ -1,3 +1,9 @@
+import {game} from "./gameCanvas.js"
+import { Interac } from "./interactive.js"
+
+
+// import * as module from "./gameCanvas.js"
+
 // window.addEventListener('load' , () => {
 //     window.setTimeout( () => {
 //         document.querySelector('.loading').classList.add('fade') ;
@@ -118,7 +124,6 @@ document.addEventListener('scroll' , e => {
     let pin_result = pin_height - minus_ele
 
 
-    // pin_height > now_scroll ? pin_height.classList.add('fixed_header') : pin_height.classList.remove('fixed_header')
     pin_result > now_scroll ? header_removeClass() : header_addClass()
 
     function header_addClass () {
@@ -132,3 +137,71 @@ document.addEventListener('scroll' , e => {
     console.log(box_fixedHeight)
 })
 
+// 키보드에서 글자 입력하면 absolute로 플로팅 처리해서 위로 띄우기 -> 해당 코드 완성되면 입력했던 키가 엔터키를 누르기 전까지는 배열로 들어가서 합쳐지도록 만들기 될란지는;
+let floatBtn = document.querySelector('.float_effect_on') ;
+let offBtn = document.querySelector('.float_effect_off') ;
+let floatWrap = document.querySelector('#float_wrap')
+
+offBtn.addEventListener('click' , () => {
+    floatWrap.classList.remove('floating_on')
+    if ( !(floatWrap.classList.contains('floating_on')) ) {
+        alert ( '글자 효과가 제거되었습니다!' )
+    }
+});
+
+floatBtn.addEventListener('click' , textFloat) ;
+
+function textFloat () {
+    floatWrap.classList.add('floating_on')
+    let isKey = false;
+    window.addEventListener('keydown' , e => {
+        let textArr = [] ;
+        isKey = true ;
+        textArr.push(e.key)
+
+        console.log(textArr)
+    })
+    window.addEventListener('keyup' , e => {
+        isKey = false ;
+
+        console.log(isKey)
+    })
+
+    if ( isKey ) {
+
+    }
+}
+// console.log(floatBtn) -- 확인용
+
+
+// 홈페이지 효과용 Canvas
+const ptCanvas = document.querySelector('#canvas')
+const ctx = ptCanvas.getContext('2d')
+ptCanvas.width = window.innerWidth;
+ptCanvas.height = window.innerHeight;
+let isClick = false;
+ptCanvas.addEventListener('click' , particleEffect)
+
+function particleEffect () {
+
+}
+
+
+// Game Canvas 불러오기
+// 확인용
+let gameInstance = new game()
+console.log(gameInstance)
+
+// console.log(module.gmSetting())
+
+
+
+
+// 인터렉티브 효과들 import 하기
+let loadEffect = new Interac
+console.log(loadEffect.growTree())
+console.log(loadEffect.turnOffLight())
+console.log(loadEffect.fallenSnow())
+console.log(loadEffect.darkSkyStarlight())
+console.log(loadEffect.stickyText())
+console.log(loadEffect.textScreen())
