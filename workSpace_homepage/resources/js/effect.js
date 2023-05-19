@@ -1,4 +1,4 @@
-import {game} from "./gameCanvas.js"
+import { game } from "./gameCanvas.js"
 import { Interac } from "./interactive.js"
 
 
@@ -205,3 +205,29 @@ console.log(loadEffect.fallenSnow())
 console.log(loadEffect.darkSkyStarlight())
 console.log(loadEffect.stickyText())
 console.log(loadEffect.textScreen())
+
+
+
+// Modal 창 생성 후 오픈
+let mainMd = document.querySelector('.modal') ;
+console.log(mainMd)
+
+
+
+
+
+
+// 인풋 창 내용 입력 시 모달 창 생성 후 플롯 => 보류
+let mdContents = document.querySelector('.modal_int')
+let otherContents = document.querySelector('input[type=text]')
+
+let mdSet = document.createElement( 'div' )
+mdSet.innerHTML = `
+    <div class="modalInner">
+        <div class="close"></div>
+        <div class="main">
+            <div class="contents"> ${otherContents} </div>
+        </div>
+    </div>
+    `
+console.log(mdSet)
