@@ -17,12 +17,20 @@
     <script src="../resources/js/effect.js" type="module"></script>
 </head>
 <body>
+    <div class="mask"></div>
     <!-- load space -->
     <div class="loading">
         <div></div>
         <p>바닐라 자바스크립트로 작성하기 위해 노력합니다.</p>
     </div>
     <!-- load /> -->
+
+    <!-- modal content wrap -->
+    <div id="modal_area">
+        <button class="modal_close">모달 닫기</button>
+        <div class="modal_inner"></div>
+    </div>
+    <!-- modal /> -->
 
     <!-- alert Box -->
     <div id="alertBox">
@@ -47,10 +55,10 @@
                     <div class="homeLogo">
 
                     </div>
-                    <div class="hambuger" onclick="hambAnimate()">
-                        <span class="hamb_ele top"></span>
+                    <div class="hambuger ">
+                        <!-- <span class="hamb_ele top"></span> -->
                         <span class="hamb_ele mid"></span>
-                        <span class="hamb_ele bot"></span>
+                        <!-- <span class="hamb_ele bot"></span> -->
                     </div>
                 </nav>
                 <!-- 홈페이지에 들어갈 효과 -->
@@ -97,8 +105,12 @@
             </header>
             <section>
                 <article>
-                    <div class="modal">
-                            Test
+                    <button class="open_modal">모달 생성</button>
+                    <div class="modal_base">
+                        <div class="content">
+                            <div class="input_head"> 모달 출력 시 머리 </div>
+                            <div class="input_content">모달 출력 시 컨텐츠</div>
+                        </div>
                     </div>
                 </article>
             </section>
@@ -113,9 +125,9 @@
             </footer>
             <div class="category_box">
                 <ul class="relate_site">
-                    <li><a href="#none">카카오톡</a></li>
-                    <li><a href="#none">트위터</a></li>
-                    <li><a href="#none">인스타</a></li>
+                    <li><a href="#none"></a></li>
+                    <li><a href="#none"></a></li>
+                    <li><a href="#none"></a></li>
                 </ul>
             </div>
         </div>
