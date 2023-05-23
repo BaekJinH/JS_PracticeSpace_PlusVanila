@@ -47,12 +47,30 @@ window.addEventListener('load' , () => {
 })
 
 
-// 햄버거 클래스 토글
+// 햄버거 클래스 토글 + 햄버거 클릭 시 나오는 메뉴
 document.querySelector('.hambuger').addEventListener('click' , () => {
     let hamb = document.querySelector('.hambuger') ;
+    let hambMenu = document.querySelector('.blind_effect') ;
+    hamb.classList.contains('act_hamb') ? hambMenu.classList.remove('on') : hambMenu.classList.add('on')
     hamb.classList.toggle('act_hamb') ;
     hamb.classList.contains('act_hamb') ? hamb.classList.remove('return') : hamb.classList.add('return')
+    hambMenu.classList.contains('on') ? hamb.classList.add('bgOn') : hamb.classList.remove('bgOn')
 })
+
+// 햄버거 서브 메뉴 풀 사이즈로 보기
+let subFull = document.querySelector('.subFull_size') ;
+subFull.addEventListener('click' , e => {
+    let hambMenu = document.querySelector('.blind_effect') ;
+    hambMenu.classList.add('return')
+    // setTimeout( () => {
+    //     hambMenu.classList.remove('return')
+    // },2000)
+    hambMenu.classList.toggle('fullSize_on')
+    if ( hambMenu.classList.contains('fullSize_on') ) {
+
+    }
+})
+
 
 
 // 하단 카테고리 박스 이벤트 + 이펙트 / 돔 컨텐츠 로드 후 2초 지나면 하단 카테고리 생성 후 다시 숨기기
@@ -162,6 +180,7 @@ floatBtn.addEventListener('click' , textFloat) ;
 function textFloat () {
     floatWrap.classList.add('floating_on')
     let isKey = false;
+
     window.addEventListener('keydown' , e => {
         let textArr = [] ;
         isKey = true ;
@@ -171,7 +190,6 @@ function textFloat () {
     })
     window.addEventListener('keyup' , e => {
         isKey = false ;
-
         console.log(isKey)
     })
 
@@ -181,57 +199,113 @@ function textFloat () {
 }
 // console.log(floatBtn) -- 확인용
 
-
-
 // DOM이라 오류 남
 // ptCircle.style.width = ptSize ;
 // ptCircle.style.height = ptSize ;
 // ptCircle.style.backgroundColor = `rgba(${ptColor} + ${ptColor} + ${ptColor} + 0.7)` ;
-// 홈페이지 효과용 Canvas
+// 홈페이지 효과용 Canvas  / 위는 gpt가 보완한 코드 아래는 바닐라 소스 코드 지피티가 짜준 걸로 밑에 코드 보완해서 새롭게 만들기
 
-const ptCanvas = document.querySelector('#canvas')
+const ptCanvas = document.querySelector('#canvas');
 ptCanvas.width = window.innerWidth;
 ptCanvas.height = window.innerHeight;
-const ctx = ptCanvas.getContext('2d')
+const ctx=  ptCanvas.getContext('2d') ;
 ptCanvas.addEventListener('click' , particleEffect)
 
 function particleEffect (e) {
     let pointX = e.clientX;
     let pointY = e.clientY;
     let ptCount = Math.floor(Math.random() * 20) ;
-    let rndNum ;
-    let createPosX = [pointX]
-    let createPosY = [pointY]
-    // Start Drawing Circle
-    for ( let i = 1 ; i < ptCount ; i++) {
-        rndNum = Math.random()
-        pointX += Math.floor(Math.random() * 50 )
-        pointY += Math.floor(Math.random() * 50 )
+    let particles = [] ;
+    let time = 5;
 
-        if ( rndNum <= 0.5 ) {
-            pointX *= -1
-            pointY *= -1
-        }
-        else {
-            pointX
-            pointY
-
-        }
-        createPosX.push(pointX);
-        createPosY.push(pointY);
+    for (let i = 0; i < ptCount; i++) {
         let ptSize = Math.floor(Math.random() * 30);
-        let ptColor = [ Math.floor(Math.random() * 255) , Math.floor(Math.random() * 255) , Math.floor(Math.random() * 255) ] ;
-        ctx.beginPath()
-        ctx.arc(pointX, pointY, ptSize, 0, Math.PI * 2, false) ;
-        ctx.fillStyle = `rgb(${ptColor[0]} , ${ptColor[1]} , ${ptColor[2]})`;
-        ctx.fill()
-        ctx.closePath()
+        let ptColor = [
+          Math.floor(Math.random() * 255),
+          Math.floor(Math.random() * 255),
+          Math.floor(Math.random() * 255)
+        ];
+        let angle = Math.random() * 2 * Math.PI;
+        let distance = Math.random() * 100;
+
+        let particleX = pointX;
+        let particleY = pointY;
+        let speed = Math.random() * 2 + 1;
+
+        particles.push({ x: particleX, y: particleY, size: ptSize, color: ptColor, speed, angle, distance });
+      }
+
+      animateParticles();
+
+    function animateParticles() {
+        ctx.clearRect(0, 0, ptCanvas.width, ptCanvas.height);
+
+        particles.forEach((particle, index) => {
+            particle.x += Math.cos(particle.angle) * particle.speed;
+            particle.y += Math.sin(particle.angle) * particle.speed;
+
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2, false);
+            ctx.fillStyle = `rgb(${particle.color[0]}, ${particle.color[1]}, ${particle.color[2]})`;
+            ctx.fill();
+            ctx.closePath();
+
+            if (particle.x < 0 || particle.x > ptCanvas.width || particle.y < 0 || particle.y > ptCanvas.height) {
+                particles.splice(index, 1);
+            }
+        });
+
+        if (particles.length > 0) {
+            requestAnimationFrame(animateParticles);
+        }
     }
-
-
-    console.log(createPosX , createPosY , rndNum , pointX )
-    // console.log(ptSize , ptCount , pointX , pointY , ctx )
 }
+
+
+// const ptCanvas = document.querySelector('#canvas')
+// ptCanvas.width = window.innerWidth;
+// ptCanvas.height = window.innerHeight;
+// const ctx = ptCanvas.getContext('2d')
+// ptCanvas.addEventListener('click' , particleEffect)
+
+// function particleEffect (e) {
+//     let pointX = e.clientX;
+//     let pointY = e.clientY;
+//     let ptCount = Math.floor(Math.random() * 20) ;
+//     let rndNum ;
+//     let createPosX = [pointX]
+//     let createPosY = [pointY]
+
+//     // Start Drawing Circle
+//     for ( let i = 1 ; i < ptCount ; i++) {
+//         rndNum = Math.random()
+//         pointX += Math.floor(Math.random() * 50 )
+//         pointY += Math.floor(Math.random() * 50 )
+
+//         if ( rndNum <= 0.5 ) {
+//             pointX *= -1
+//             pointY *= -1
+//         }
+//         else {
+//             pointX
+//             pointY
+
+//         }
+//         createPosX.push(pointX);
+//         createPosY.push(pointY);
+//         let ptSize = Math.floor(Math.random() * 30);
+//         let ptColor = [ Math.floor(Math.random() * 255) , Math.floor(Math.random() * 255) , Math.floor(Math.random() * 255) ] ;
+//         ctx.beginPath()
+//         ctx.arc(pointX, pointY, ptSize, 0, Math.PI * 2, false) ;
+//         ctx.fillStyle = `rgb(${ptColor[0]} , ${ptColor[1]} , ${ptColor[2]})`;
+//         ctx.fill()
+//         ctx.closePath()
+//     }
+
+
+//     console.log(createPosX , createPosY , rndNum , pointX )
+//     // console.log(ptSize , ptCount , pointX , pointY , ctx )
+// }
 
 
 // ctx.ptCircle
@@ -239,6 +313,10 @@ function particleEffect (e) {
 //     console.log(e)
 //     ctx.fillStyle = `rgb(${ptColor} , ${ptColor} , ${ptColor}  )`;
 // }
+
+
+
+
 // Game Canvas 불러오기
 // 확인용
 let gameInstance = new game()
@@ -296,8 +374,6 @@ document.querySelector('.open_modal').addEventListener('click' , () => {
 
 
 
-
-
 // 인풋 창 내용 입력 시 모달 창 생성 후 플롯 => 보류
 // let mdContents = document.querySelector('.modal_int')
 // let otherContents = document.querySelector('input[type=text]')
@@ -312,3 +388,55 @@ document.querySelector('.open_modal').addEventListener('click' , () => {
 //     </div>
 //     `
 // console.log(mdSet)
+
+
+
+
+// Vanila Slide 만들기
+
+function vanilaSlide () {
+
+    // Setting
+    const slideWrap = document.querySelector('.slideWrap') ;
+    const slideEl = Array.from(document.querySelectorAll('.slide')) ;
+    const leftBtn = document.querySelector('.slideWrap .left_arrow') ;
+    const rightBtn = document.querySelector('.slideWrap .right_arrow') ;
+    const createEl = document.createElement('div')
+    createEl.classList.add('slide')
+
+    slideEl.push(createEl);
+
+    // console.log('a' , createEl , slideEl)
+}
+
+window.addEventListener('resize' , (e) => {
+    let wSize = window.innerWidth;
+    if ( wSize >= 1025 ) {
+        console.log('1025 >')
+
+    }
+    if ( wSize <= 1024 && wSize >= 425) {
+        console.log('1024 <')
+
+    }
+    if ( wSize < 425) {
+        console.log('425')
+    }
+})
+window.setInterval(vanilaSlide , 3000) ;
+
+
+
+// progress bar
+// let number = document.querySelector('.progress .overlay');
+// let counter = 0;
+// let maxCounter = 100;
+// let loopInterval = setInterval(() => {
+//   if (counter === maxCounter) {
+//     counter = 0;
+//   } else {
+//     counter += 1;
+//   }
+//   number.innerHTML = counter;
+//   drawProgress(number, counter, maxCounter);
+// }, 100);

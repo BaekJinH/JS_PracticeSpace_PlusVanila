@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../resources/css/common.css">
     <link rel="stylesheet" href="../resources/css/main.css">
     <script src="../resources/plugin/jquery-3.7.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/c6f3140d93.js" crossorigin="anonymous"></script>
     <script src="../resources/plugin/"></script>
     <script src="../resources/js/block.js"></script>
     <script src="../resources/js/gameCanvas.js" type="module"></script>
@@ -44,12 +45,14 @@
         <canvas id="canvas">
 
         </canvas>
+
         <!-- floating Text -->
         <div id="float_wrap">
 
         </div>
         <!-- floating Text /> -->
         <div id="wrapper">
+
             <header>
                 <nav>
                     <div class="homeLogo">
@@ -59,6 +62,17 @@
                         <!-- <span class="hamb_ele top"></span> -->
                         <span class="hamb_ele mid"></span>
                         <!-- <span class="hamb_ele bot"></span> -->
+
+                    </div>
+                    <!-- click To Show View -->
+                    <div class="blind_effect">
+                        <ul>
+                            <li class="subFull_size">
+                                <i class="fa-sharp fa-solid fa-exclamation"></i>
+                            </li>
+                            <li></li>
+                            <li></li>
+                        </ul>
                     </div>
                 </nav>
                 <!-- 홈페이지에 들어갈 효과 -->
@@ -105,7 +119,7 @@
             </header>
             <section>
                 <article>
-                    <button class="open_modal">모달 생성</button>
+                    <button class="open_modal" >모달 생성</button>
                     <div class="modal_base">
                         <div class="content">
                             <div class="input_head"> 모달 출력 시 머리 </div>
@@ -115,10 +129,18 @@
                 </article>
             </section>
             <section>
-
+                <div class="slideWrap">
+                    <div class="slideInner">
+                        <div class="slide"></div>
+                        <div class="slide"></div>
+                        <div class="slide"></div>
+                    </div>
+                </div>
             </section>
             <section>
-
+                <div class="progress">
+                    <div class="overlay"></div>
+                </div>
             </section>
             <footer>
 
