@@ -7,7 +7,7 @@
 /* after to load /> */
 
 /* section */
-section { height:400px }
+section { height:auto}
 
 /* section */
 
@@ -27,8 +27,8 @@ section { height:400px }
 
 
 /* categoryBox */
-.category_box { display:flex; width:80px; height:80px; position:fixed; bottom: 10px; right:-100%; transition:all .3s ease-in-out;  align-items: flex-end; justify-content: flex-end; cursor: pointer;}
-.category_box ul { width:80px; height:80px; background-color: #fff; display:flex; align-items: center; justify-content: center; transition: all .3s ease-in; border-radius: 50%; }
+.category_box { display:flex; width:80px; height:80px; position:fixed; bottom: 10px; right:-100%; transition:all .3s ease-in-out;  align-items: flex-end; justify-content: flex-end; }
+.category_box ul { width:80px; height:80px; background-color: #fff; display:flex; align-items: center; justify-content: center; transition: all .3s ease-in; border-radius: 50%; cursor: pointer;}
 .category_box li{ position:absolute; transition: all .2s ease-in; right:10px; bottom:10px; left:auto; top:auto; background-color: #fff; width:45px; height:45px; z-index: -1; overflow: hidden; border-radius: 50%;}
 
 .category_box.fixed_foot { right:10px; }
@@ -46,6 +46,12 @@ section { height:400px }
 
 
 /* header  */
+/* #sticky_head { height:auto; width: 100%; background-color: #fff; position:relative;}
+#sticky_head .logo_line { width:100% ; height:450px; background-color: aqua;}
+#sticky_head nav { width:100%; height:150px; background-color: rosybrown; position: initial}
+#sticky_head nav.sticky_nav { position:fixed; top:0; } */
+
+
 header { width:100%; height:130px; transition: all 0.5s ease;  }
 header nav { height: 100%; }
 header.fixed_header { position:fixed; top:0; background-color:#fff; }
@@ -70,7 +76,7 @@ header.fixed_header .hambuger::before{ background-color:#252525; }
 /* .blind_effect.on li:nth-child(1){ left:40px; top:40px; transition-delay: .5s; }
 .blind_effect.on li:nth-child(2){ left:90px; top:105px; transition-delay: 1s; animation: delay2 .5s 1s forwards;}
 .blind_effect.on li:nth-child(3){ left:160px; top:155px; transition-delay: 1.5s; animation: delay3 .5s 1.5s forwards;} */
-.blind_effect.fullSize_on { width:200vw; height:200vh; transform:translate(-0, -0) scale(10); transition: all 3.3s; transition-delay: 2s;}
+.blind_effect.fullSize_on { width:200vw; height:200vh; transform:translate(-0, -0) scale(10); transition: all 3.3s; transition-delay: 2s; }
 
 .blind_effect.on li:nth-child(1){  animation: delay1 .5s .5s forwards; }
 .blind_effect.on li:nth-child(1):hover i{ font-size:35px;}
@@ -114,9 +120,9 @@ header.fixed_header .hambuger::before{ background-color:#252525; }
         left:160px; top:160px
     }
 }
-.blind_effect.return li:nth-child(1){  animation: delayReturn1 1s  backwards; animation-delay: 1s;}
-.blind_effect.return li:nth-child(2){  animation: delayReturn2 1s  backwards; animation-delay: .5s;}
-.blind_effect.return li:nth-child(3){  animation: delayReturn3 1s  backwards; animation-delay: .1s;}
+.blind_effect.return li:nth-child(1){  animation: delayReturn1 1s  both; animation-delay: 1s;}
+.blind_effect.return li:nth-child(2){  animation: delayReturn2 1s  both; animation-delay: .5s;}
+.blind_effect.return li:nth-child(3){  animation: delayReturn3 1s  both; animation-delay: .1s;}
 @keyframes delayReturn1 {
     0% {
         opacity:1 ;
@@ -126,7 +132,7 @@ header.fixed_header .hambuger::before{ background-color:#252525; }
         opacity:1 ;
     }
     100% {
-        opacity:1 ;
+        opacity:0 ;
         left:100%; top:-50px;
     }
 }
@@ -271,6 +277,11 @@ header .hambuger { height:60px; width:60px;  overflow: hidden; position: relativ
 
 /* effect bundle /> */
 
+
+/* drag */
+.dragWrap { height:100vh; width:100%; position: relative; background-color: #252525;}
+.dragWrap div { width:60px; height:60px; background-color:#fff; position: absolute; top:10%; left:10%; transition: all 0.7s;}
+.dragWrap div:nth-child(2) { width:60px; height:60px; background-color:#fff; position: absolute; top:30%; left:30%; }
 
 /* modal */
 #modal_area { position: absolute; top:50%; left:50%; transform: translate(-50% , -50%);}

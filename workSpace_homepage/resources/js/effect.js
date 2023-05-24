@@ -1,14 +1,26 @@
-import { game } from "./gameCanvas.js"
+// 인스턴스 생성 안 하고 불러오는 방식
+// import { game , logueLike } from "./gameCanvas.js"
+// import { game } from "./gameCanvas.js"
+import * as GameCanvas from "./gameCanvas.js";
 import { Interac } from "./interactive.js"
+
+// 모든 요소 Import 방식 --> 인스턴스 생성도 싫고 Import 시 개별적으로 불러오는 것도 싫다면 전부 불러와 as로 이름을 지정해주자
+// 불러온 파일을 인스턴스 생성 후 변수로 지정하면 된다.
+// let gameInstance = new GameCanvas.game();
+// let logueLikeInstance = new GameCanvas.logueLike();
+
+
+// ---------------------------- <  위는 모듈화한 파일들을 불러오는 예시  /> -------------------------------
 
 
 // import * as module from "./gameCanvas.js"
 
 // window.addEventListener('load' , () => {
-//     window.setTimeout( () => {
-//         document.querySelector('.loading').classList.add('fade') ;
-//     } , 1000)
-// })
+    //     window.setTimeout( () => {
+        //         document.querySelector('.loading').classList.add('fade') ;
+        //     } , 1000)
+        // })
+
 
 
 // 아래는 DOM 컨텐츠 로드되면 실행 / 위의 주석은 지정한 타임 지나면 자동 실행
@@ -17,6 +29,32 @@ document.addEventListener('DOMContentLoaded' , () => {
         document.querySelector('.loading').classList.add('fade')
     })
 })
+
+
+
+
+// Game Canvas 불러오기
+// 확인용
+let gameInstance = new GameCanvas.game();
+let logueLikeInstance = new GameCanvas.lougeLike();
+let puzzleInstance = new GameCanvas.puzzle();
+let chessInstance = new GameCanvas.chess();
+console.log(gameInstance , logueLikeInstance , puzzleInstance , chessInstance)
+
+// console.log(module.gmSetting())
+
+
+
+// 인터렉티브 효과들 import 하기
+let loadEffect = new Interac()
+console.log(loadEffect.growTree())
+console.log(loadEffect.turnOffLight())
+console.log(loadEffect.fallenSnow())
+console.log(loadEffect.darkSkyStarlight())
+console.log(loadEffect.stickyText())
+console.log(loadEffect.textScreen())
+
+
 
 
 // 날짜 가져오기
@@ -90,10 +128,23 @@ function box_eventTime () {
 
 box_eventTime()
 
-    //  카테고리 박스 하위 요소 애니메이션
-function bonuce_animate () {
 
-}
+// 텍스트 자동 증가
+// document.addEventListener('scroll' , () => {
+//     console.log(window.scrollY)
+//     let scOffset = window.scrollY;
+//     let num = 0;
+//     let maxNum = 100 ;
+//     if ( scOffset >= 800 ) {
+//         setInterval( () => {
+//             if ( num <= maxNum ) {
+//                 document.body.innerHTML = num++
+//             }
+
+//         },100)
+//     }
+// })
+
 
 
 // 비동기 처리 방식으로 바꿈. 제이쿼리 $(function()) 을 써도 되지만 자바스크립트로 처리해보고 싶었음
@@ -161,6 +212,25 @@ document.addEventListener('scroll' , e => {
 
     // console.log(box_fixedHeight)
 })
+
+
+// 헤더 안 특정 요소만 sticky 이벤트
+// document.addEventListener('scroll' , e => {
+//     let logLine = document.querySelector('header .logo_line').offsetHeight ;
+//     let nav = document.querySelector('nav');
+//     let navHe = document.querySelector('nav').offsetHeight;
+
+//     if ( window.scrollY >= logLine) {
+//         nav.classList.add('sticky_nav')
+//     }
+//     else {
+//         nav.classList.remove('sticky_nav')
+//     }
+//     nav.classList.contains('sticky_nav') ? document.querySelector('#wrapper').style.paddingTop = navHe + 'px' : document.querySelector('#wrapper').style.paddingTop = 0 + 'px'
+// })
+
+
+
 
 
 // 키보드에서 글자 입력하면 absolute로 플로팅 처리해서 위로 띄우기 -> 해당 코드 완성되면 입력했던 키가 엔터키를 누르기 전까지는 배열로 들어가서 합쳐지도록 만들기 될란지는;
@@ -316,28 +386,6 @@ function particleEffect (e) {
 
 
 
-
-// Game Canvas 불러오기
-// 확인용
-let gameInstance = new game()
-console.log(gameInstance)
-
-// console.log(module.gmSetting())
-
-
-
-
-// 인터렉티브 효과들 import 하기
-let loadEffect = new Interac
-console.log(loadEffect.growTree())
-console.log(loadEffect.turnOffLight())
-console.log(loadEffect.fallenSnow())
-console.log(loadEffect.darkSkyStarlight())
-console.log(loadEffect.stickyText())
-console.log(loadEffect.textScreen())
-
-
-
 // Modal 창 생성 후 오픈 / 목표 -> DOM의 mainMd 안의 컨텐츠를 가져온 후 그걸 그대로 모달로 생성. 모달을 닫으면 컨텐츠 비우기
 
 // // Object.assign 방식
@@ -440,3 +488,48 @@ window.setInterval(vanilaSlide , 3000) ;
 //   number.innerHTML = counter;
 //   drawProgress(number, counter, maxCounter);
 // }, 100);
+
+
+
+
+// 회원가입
+
+
+
+
+
+
+
+
+// drag and drop  -> 마저 수정하기
+
+let mouseEvent = false;
+let dragEl = Array.from(document.querySelectorAll('.dragWrap > div')) ;
+document.addEventListener('mousedown' , e => {
+    mouseEvent = true;
+    dragEl.forEach( ( ele , index) => ele.addEventListener('mousemove' , (e) => {
+        document.addEventListener('mousemove' , e => {
+            let pointX = e.clientX
+            let pointY = e.clientY
+
+            dragEl[index].style.left = pointX + 'px'
+            dragEl[index].style.top = pointY + 'px'
+
+
+            document.addEventListener('mouseup' , e => {
+                mouseEvent = false;
+
+            })
+
+            console.log(index)
+        })
+    }))
+    if ( !(mouseEvent) ) {
+        console.log('a')
+        e.preventDefault()
+    }
+    else {
+
+    }
+})
+

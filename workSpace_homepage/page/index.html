@@ -12,7 +12,7 @@
     <script src="../resources/plugin/jquery-3.7.0.min.js"></script>
     <script src="https://kit.fontawesome.com/c6f3140d93.js" crossorigin="anonymous"></script>
     <script src="../resources/plugin/"></script>
-    <script src="../resources/js/block.js"></script>
+    <script src="../resources/js/block.js" type="module"></script>
     <script src="../resources/js/gameCanvas.js" type="module"></script>
     <script src="../resources/js/interactive.js" type="module"></script>
     <script src="../resources/js/effect.js" type="module"></script>
@@ -39,7 +39,10 @@
 
     </div>
     <!-- alert Box /> -->
-
+    <div class="dragWrap">
+        <div class="drag-item"></div>
+        <div class="drag-item"></div>
+    </div>
     <!--  after to load  -->
     <div class="after_load">
         <canvas id="canvas">
@@ -52,7 +55,10 @@
         </div>
         <!-- floating Text /> -->
         <div id="wrapper">
-
+            <!-- <header id="sticky_head">
+                <div class="logo_line"></div>
+                <nav></nav>
+            </header> -->
             <header>
                 <nav>
                     <div class="homeLogo">
@@ -117,7 +123,21 @@
                     </div>
                 </div>
             </header>
+            <div class="wave_container">
+                <div class="wave1">
+
+                </div>
+                <div class="wave2">
+
+                </div>
+                <div class="wave3">
+
+                </div>
+            </div>
             <section>
+                <article>
+
+                </article>
                 <article>
                     <button class="open_modal" >모달 생성</button>
                     <div class="modal_base">
