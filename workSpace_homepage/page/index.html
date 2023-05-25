@@ -39,15 +39,10 @@
 
     </div>
     <!-- alert Box /> -->
-    <div class="dragWrap">
-        <div class="drag-item"></div>
-        <div class="drag-item"></div>
-    </div>
+
     <!--  after to load  -->
     <div class="after_load">
-        <canvas id="canvas">
 
-        </canvas>
 
         <!-- floating Text -->
         <div id="float_wrap">
@@ -55,11 +50,23 @@
         </div>
         <!-- floating Text /> -->
         <div id="wrapper">
+
+            <!-- canvas wrap !! Import -->
+            <div class="canvasWrap">
+                <canvas id="canvas">
+
+                </canvas>
+                <canvas class="ptCanvas">
+
+                </canvas>
+            </div>
+
+            <!-- canvas wrap /> -->
             <!-- <header id="sticky_head">
                 <div class="logo_line"></div>
                 <nav></nav>
             </header> -->
-            <header>
+            <header style="display:none">
                 <nav>
                     <div class="homeLogo">
 
@@ -83,13 +90,7 @@
                 </nav>
                 <!-- 홈페이지에 들어갈 효과 -->
                 <div class="effectBundle">
-                    <div class="floating">
-                        <button class="float_effect_on">Click Here !</button>
-                        <button class="float_effect_off">Off</button>
-                    </div>
-                    <div class="ptCanvas">
 
-                    </div>
                     <div class="gameBundle">
                         <div class="text_exact">
 
@@ -123,45 +124,72 @@
                     </div>
                 </div>
             </header>
-            <div class="wave_container">
-                <div class="wave1">
+            <div class="container">
+                <div class="wave_container">
+                    <div class="wave1">
 
+                    </div>
+                    <div class="wave2">
+
+                    </div>
+                    <div class="wave3">
+
+                    </div>
                 </div>
-                <div class="wave2">
+                <section class="sec1">
+                    <div class="floating">
+                        <button class="float_effect_on">Click Here !</button>
+                        <button class="float_effect_off">Off</button>
+                    </div>
+                </section>
+                <section class="sec2">
 
-                </div>
-                <div class="wave3">
-
-                </div>
-            </div>
-            <section>
-                <article>
-
-                </article>
-                <article>
-                    <button class="open_modal" >모달 생성</button>
-                    <div class="modal_base">
-                        <div class="content">
-                            <div class="input_head"> 모달 출력 시 머리 </div>
-                            <div class="input_content">모달 출력 시 컨텐츠</div>
+                    <!-- drag -->
+                    <div class="dragWrap">
+                        <div class="drag-item"></div>
+                        <div class="drag-item"></div>
+                    </div>
+                </section>
+                <section class="sec3">
+                    <article>
+                        <button class="open_modal" >모달 생성</button>
+                        <div class="modal_base">
+                            <div class="content">
+                                <div class="input_head"> 모달 출력 시 머리 </div>
+                                <div class="input_content">모달 출력 시 컨텐츠</div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+                <section class="sec4">
+                    <div class="slideWrap">
+                        <div class="slideInner">
+                            <div class="slide"></div>
+                            <div class="slide"></div>
+                            <div class="slide"></div>
                         </div>
                     </div>
-                </article>
-            </section>
-            <section>
-                <div class="slideWrap">
-                    <div class="slideInner">
-                        <div class="slide"></div>
-                        <div class="slide"></div>
-                        <div class="slide"></div>
+                </section>
+                <section class="sec5">
+                    <div class="contentFixed">
+                        <div class="contentInner">
+                            <div class="cardItem"></div>
+                            <div class="cardItem"></div>
+                            <div class="cardItem"></div>
+                        </div>
                     </div>
-                </div>
-            </section>
-            <section>
-                <div class="progress">
-                    <div class="overlay"></div>
-                </div>
-            </section>
+                </section>
+                <section class="sec6">
+                    <div class="progress">
+                        <div class="overlay"></div>
+                    </div>
+                </section>
+                <section class="sec7">
+                    <div class="progress">
+                        <div class="overlay"></div>
+                    </div>
+                </section>
+            </div>
             <footer>
 
             </footer>

@@ -505,6 +505,9 @@ window.setInterval(vanilaSlide , 3000) ;
 
 let mouseEvent = false;
 let dragEl = Array.from(document.querySelectorAll('.dragWrap > div')) ;
+dragEl.forEach((el , index) => {
+
+})
 document.addEventListener('mousedown' , e => {
     mouseEvent = true;
     dragEl.forEach( ( ele , index) => ele.addEventListener('mousemove' , (e) => {
@@ -533,3 +536,45 @@ document.addEventListener('mousedown' , e => {
     }
 })
 
+
+
+
+
+
+
+// 네이버 안내 페이지 카드 효과
+const sec5 = document.querySelector('.sec5');
+const contFixed = sec5.querySelector('.contentFixed')
+const contentInner = sec5.querySelector('.contentInner');
+
+function handleScroll(e) {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const sec5Bottom = sec5.offsetTop + contentInner.offsetHeight;
+    const sec5Hei = sec5.offsetHeight
+    const resHei = sec5Hei + contentInner.offsetHeight
+    // console.log(scrollTop + window.innerHeight , sec5Bottom + sec5Hei)
+    if (scrollTop + window.innerHeight >= sec5Bottom) {
+        // sec5 영역 감지
+        contentInner.style.position = 'sticky' ;
+        contentInner.style.top = 0 + 'px' ;
+        console.log(resHei)
+
+        if (scrollTop + window.innerHeight >= sec5Bottom + sec5Hei + contentInner.offsetHeight) {
+            // 영역 끝에 도달했을 떄
+            // contentInner.style.position = 'initial' ;
+            // contentInner.style.top = 0 + 'px';
+        }
+        else if ( scrollTop + window.innerHeight - contentInner.offsetHeight > sec5Bottom + sec5Hei ) {
+            // 영역 벗어날 때
+        }
+    }
+}
+
+window.addEventListener('scroll', handleScroll);
+
+// let fixedWrap = document.querySelector('.contentFixed') ;
+// let cardItem = document.querySelectorAll('.cardItem') ;
+// let fixEndPoint = document.querySelector('.sec6').offsetTop; ;
+// document.addEventListener('scroll' , e => {
+//     console.log(fixEndPoint)
+// })
