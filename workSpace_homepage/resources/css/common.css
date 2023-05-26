@@ -18,16 +18,17 @@ section { height:auto}
 .sec2 {  }
 .sec3 {  }
 .sec4 {  }
-.sec5 {  width:100%; height:1800px; background-color:lightgoldenrodyellow ;}
+.sec5 {  width:100%; height: auto; background-color:lightgoldenrodyellow ;}
 .sec6 {width:100%; height:900px; background-color: beige; }
 .sec7 { }
 
 /* section */
 
 /* sec5 */
-.sec5 .contentFixed { width:100%; height:100%;  position: relative; }
-.sec5 .contentInner { background-color: #252525; width: 100%; height:300px;  }
-
+.sec5 .contentFixed { width:100%; height:auto;  position: relative; }
+.sec5 .contentInner { background-color: #252525; width: 100%; height:30%;  }
+.sec5 .card_cont { position: relative; height: auto;}
+.sec5 .contentInner .cardItem { height:500px; width:90%; }
 
 /* after load Wrap */
 .after_load { display:none; position:relative; background-color:#252525; width:100%; height:100%; }

@@ -543,38 +543,77 @@ document.addEventListener('mousedown' , e => {
 
 
 // 네이버 안내 페이지 카드 효과
+// 해당 위치 되면 fixed 이용해서 화면 풀페이지로 만든 후 이벤트 실행인 거 같음
 const sec5 = document.querySelector('.sec5');
-const contFixed = sec5.querySelector('.contentFixed')
-const contentInner = sec5.querySelector('.contentInner');
+const contentFixed = sec5.querySelector('.contentFixed')
+const contentInner = document.querySelector('.contentInner');
+contentInner.style.transition = `top 0.3s ease`;
+
 
 function handleScroll(e) {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const sec5Bottom = sec5.offsetTop + contentInner.offsetHeight;
-    const sec5Hei = sec5.offsetHeight
-    const resHei = sec5Hei + contentInner.offsetHeight
-    // console.log(scrollTop + window.innerHeight , sec5Bottom + sec5Hei)
-    if (scrollTop + window.innerHeight >= sec5Bottom) {
-        // sec5 영역 감지
-        contentInner.style.position = 'sticky' ;
-        contentInner.style.top = 0 + 'px' ;
-        console.log(resHei)
+    const sec5Bottom = sec5.offsetTop + sec5.offsetHeight;
+    const cardItems = sec5.querySelectorAll('.cardItem');
+    let totalHeight = 0;
 
-        if (scrollTop + window.innerHeight >= sec5Bottom + sec5Hei + contentInner.offsetHeight) {
-            // 영역 끝에 도달했을 떄
-            // contentInner.style.position = 'initial' ;
-            // contentInner.style.top = 0 + 'px';
-        }
-        else if ( scrollTop + window.innerHeight - contentInner.offsetHeight > sec5Bottom + sec5Hei ) {
-            // 영역 벗어날 때
-        }
+    cardItems.forEach((cardItem) => {
+        totalHeight += cardItem.offsetHeight
+    })
+    contentFixed.style.height = `${totalHeight}px`
+    // contentFixed.style.height = `${screen.availHeight}px` ;
+    // pageYoffset 보고 있는 화면의 Top값
+    console.log(window.pageYOffset)
+    if (scrollTop + window.innerHeight >= sec5Bottom) {
+        contentInner.style.position = 'fixed';
+        contentInner.style.top = 0;
+        // console.log(sec5Bottom , scrollTop + window.innerHeight);
+    } else {
+        contentInner.style.position = 'initial';
     }
 }
 
 window.addEventListener('scroll', handleScroll);
 
-// let fixedWrap = document.querySelector('.contentFixed') ;
-// let cardItem = document.querySelectorAll('.cardItem') ;
-// let fixEndPoint = document.querySelector('.sec6').offsetTop; ;
-// document.addEventListener('scroll' , e => {
-//     console.log(fixEndPoint)
-// })
+
+
+// 아래는 해당 위치 되면 sticky를 부여
+// const sec5 = document.querySelector('.sec5');
+// const contFixed = sec5.querySelector('.contentFixed')
+// const contentInner = sec5.querySelector('.contentInner');
+
+// function handleScroll(e) {
+//     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+//     const sec5Bottom = sec5.offsetTop + contentInner.offsetHeight;
+//     const sec5Hei = sec5.offsetHeight
+//     const resHei = sec5Hei + contentInner.offsetHeight
+//     // console.log(scrollTop + window.innerHeight , sec5Bottom + sec5Hei)
+//     if (scrollTop + window.innerHeight >= sec5Bottom) {
+//         // sec5 영역 감지
+//         contentInner.style.position = 'sticky' ;
+//         contentInner.style.top = 0 + 'px' ;
+//         console.log(resHei)
+
+//         if (scrollTop + window.innerHeight >= sec5Bottom + sec5Hei + contentInner.offsetHeight) {
+//             // 영역 끝에 도달했을 떄
+//             // contentInner.style.position = 'initial' ;
+//             // contentInner.style.top = 0 + 'px';
+//         }
+//         else if ( scrollTop + window.innerHeight - contentInner.offsetHeight > sec5Bottom + sec5Hei ) {
+//             // 영역 벗어날 때
+//         }
+//     }
+// }
+
+// window.addEventListener('scroll', handleScroll);
+
+
+
+// 스크롤 시 인덱스 이동  / -> 풀페이지 만들 때 적용하기
+window.addEventListener('wheel' , e => {
+    let page = 1;
+    let pageLeng = Array.from(document.querySelectorAll('.flContent')) ;
+
+    if (page == pageLeng) {
+        page = 0;
+    }
+})

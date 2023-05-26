@@ -20,45 +20,30 @@ export class game {
     setupCanvas() {
         this.gmCanvas.width = window.innerWidth;
         this.gmCanvas.height = window.innerHeight;
+        this.ctx.clearRect(0 , 0 , this.ptCanvas.width , this.ptCanvas.height);
     }
 
 
     keyDownHandler(event) {
         if ( this.blockCode.includes(event.keyCode) ) {
             event.preventDefault()
-            // console.log(' 새로고침이 잠시 정지됩니다 ! ')
 
         }
-
-
-        // console.log(event.keyCode , event.key)
     }
 
 
     keyUpHandler(event) {
         if ( this.blockCode.includes(event.keyCode) ) {
             event.preventDefault()
-            // console.log(' 새로고침이 잠시 정지됩니다 ! ')
-
         }
-
-
-        // console.log('Export Comp!')
     }
 }
 
 export class lougeLike extends game {
     constructor() {
         super();
-        this.testHandler = this.test.bind(this);
-        document.addEventListener('keydown', this.testHandler);
+        this.ctx.fillStyle = '#fff' ;
     }
-
-    test(event) {
-        console.log('aaa');
-        super.keyDownHandler(event); // 부모 클래스의 keyDownHandler 호출
-    }
-
     setupCanvas() {
         super.setupCanvas();
     }
