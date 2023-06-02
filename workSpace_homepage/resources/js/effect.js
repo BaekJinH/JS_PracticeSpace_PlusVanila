@@ -128,7 +128,6 @@ function box_eventTime () {
 
 box_eventTime()
 
-
 // 텍스트 자동 증가
 // document.addEventListener('scroll' , () => {
 //     console.log(window.scrollY)
@@ -210,6 +209,10 @@ document.addEventListener('scroll' , e => {
         document.querySelector('.category_box').classList.remove('fixed_foot')
     }
 
+    //
+    // if ( !isFixed ) {
+
+    // }
     // console.log(box_fixedHeight)
 })
 

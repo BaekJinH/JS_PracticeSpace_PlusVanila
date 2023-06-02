@@ -20,7 +20,7 @@ export class game {
     setupCanvas() {
         this.gmCanvas.width = window.innerWidth;
         this.gmCanvas.height = window.innerHeight;
-        this.ctx.clearRect(0 , 0 , this.ptCanvas.width , this.ptCanvas.height);
+        this.ctx.clearRect(0 , 0 , this.gmCanvas.width , this.gmCanvas.height);
     }
 
 
