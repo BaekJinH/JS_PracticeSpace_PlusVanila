@@ -545,7 +545,7 @@ document.addEventListener('mousedown' , e => {
 
 
 
-// 네이버 안내 페이지 카드 효과
+// 네이버 안내 페이지 카드 효과 - > 플릭 카드 ?
 // 해당 위치 되면 fixed 이용해서 화면 풀페이지로 만든 후 이벤트 실행인 거 같음
 const sec5 = document.querySelector('.sec5');
 const contentFixed = sec5.querySelector('.contentFixed')

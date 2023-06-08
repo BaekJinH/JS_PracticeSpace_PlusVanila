@@ -52,7 +52,7 @@ export class lougeLike extends game {
 
 class entity extends lougeLike {
     constructor(params) {
-
+        super(game)
     }
 }
 class mons extends entity {
