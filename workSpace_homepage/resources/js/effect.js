@@ -472,6 +472,7 @@ window.addEventListener('resize' , (e) => {
     }
     if ( wSize < 425) {
         console.log('425')
+
     }
 })
 window.setInterval(vanilaSlide , 3000) ;
