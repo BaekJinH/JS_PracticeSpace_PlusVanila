@@ -31,7 +31,77 @@ document.addEventListener('DOMContentLoaded' , () => {
 })
 
 
+// Whale 앱 우클릭 드래그 그림 그리기 / 그리기 인식 -> 인식 후 해당 모양에 맞는 이벤트 실행
+let canvas = document.querySelector('#rightDrag') ;
+const dCtx=  canvas.getContext('2d') ;
 
+let dgPainting = false;
+
+// drag 핸들러 호출
+document.addEventListener('mousedown' , e => {
+    if ((e.button == 2) || (e.which == 3)) {
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+        dCtx.strokeStyle =  "#fff"
+        dCtx.lineWidth =  5 ;
+        dgPainting = true;
+        canvas.style.display = "block"
+        canvas.style.zIndex = 10 ;
+    }
+})
+document.addEventListener('mousemove' , e => {
+    if ((e.button == 2) || (e.which == 3)) {
+        dgPainting = true
+        let pointX = e.offsetX;
+        let pointY = e.offsetY;
+        if(!dgPainting){
+            dCtx.beginPath()
+            dCtx.moveTo(pointX , pointY)
+        }
+        else {
+            dCtx.lineTo(pointX , pointY)
+            dCtx.stroke()
+        }
+    }
+})
+document.addEventListener('mouseup' , e => {
+    if ((e.button == 2) || (e.which == 3)) {
+        dgPainting = false;
+        canvas.width = 0
+        canvas.height = 0
+        canvas.style.display = "none" ;
+        canvas.style.zIndex = 1 ;
+    }
+})
+
+// 선을 부드럽게 하기 위한 line 알고리즘 -> 이해하기
+function drawSmoothLine(x0, y0, x1, y1) {
+    let dx = Math.abs(x1 - x0);
+    let dy = Math.abs(y1 - y0);
+    let sx = x0 < x1 ? 1 : -1;
+    let sy = y0 < y1 ? 1 : -1;
+    let err = dx - dy;
+
+    while (true) {
+        dCtx.lineTo(x0, y0);
+
+        if (x0 === x1 && y0 === y1) {
+            break;
+        }
+
+        let e2 = 2 * err;
+        if (e2 > -dy) {
+            err -= dy;
+            x0 += sx;
+        }
+        if (e2 < dx) {
+            err += dx;
+            y0 += sy;
+        }
+    }
+
+    dCtx.stroke();
+}
 
 // Game Canvas 불러오기
 // 확인용
