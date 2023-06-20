@@ -32,47 +32,82 @@ document.addEventListener('DOMContentLoaded' , () => {
 
 
 // Whale 앱 우클릭 드래그 그림 그리기 / 그리기 인식 -> 인식 후 해당 모양에 맞는 이벤트 실행
-let canvas = document.querySelector('#rightDrag') ;
-const dCtx=  canvas.getContext('2d') ;
-
-let dgPainting = false;
+let lines = [];
+let canvas = document.querySelector('#rightDrag');
+const dCtx = canvas.getContext('2d');
 
 // drag 핸들러 호출
-document.addEventListener('mousedown' , e => {
-    if ((e.button == 2) || (e.which == 3)) {
-        canvas.width = window.innerWidth
-        canvas.height = window.innerHeight
-        dCtx.strokeStyle =  "#fff"
-        dCtx.lineWidth =  5 ;
-        dgPainting = true;
-        canvas.style.display = "block"
-        canvas.style.zIndex = 10 ;
+document.addEventListener('mousedown', e => {
+  if (e.button === 2 || e.which === 3) {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    dCtx.strokeStyle = "#fff";
+    dCtx.lineWidth = 5;
+    canvas.style.display = "block";
+    canvas.style.zIndex = 10;
+
+    // 새로운 선 시작 시 lines 배열 초기화
+    lines = [];
+
+    // 마우스 움직임 이벤트 리스너 추가
+    document.addEventListener('mousemove', handleMouseMove);
+  }
+});
+
+document.addEventListener('mouseup', e => {
+  if (e.button === 2 || e.which === 3) {
+    canvas.style.display = "none";
+    canvas.style.zIndex = 1;
+
+    // 마우스 움직임 이벤트 리스너 제거
+    document.removeEventListener('mousemove', handleMouseMove);
+  }
+});
+
+function handleMouseMove(e) {
+    let pointX = e.offsetX;
+    let pointY = e.offsetY;
+
+    if (lines.length === 0) {
+        dCtx.beginPath();
+        dCtx.moveTo(pointX, pointY);
+    } else {
+        dCtx.lineTo(pointX, pointY);
+        dCtx.stroke();
     }
-})
-document.addEventListener('mousemove' , e => {
-    if ((e.button == 2) || (e.which == 3)) {
-        dgPainting = true
-        let pointX = e.offsetX;
-        let pointY = e.offsetY;
-        if(!dgPainting){
-            dCtx.beginPath()
-            dCtx.moveTo(pointX , pointY)
+
+    lines.push({
+        pointX,
+        pointY,
+        endX: pointX,
+        endY: pointY
+    });
+
+    for (const line of lines) {
+        const { pointX, pointY, endX, endY } = line;
+
+        const directionX = endX - pointX;
+        const directionY = endY - pointY;
+
+        if (directionX > 0) {
+        console.log('선은 오른쪽으로 향합니다.');
+        } else if (directionX < 0) {
+        console.log('선은 왼쪽으로 향합니다.');
+        } else {
+        console.log('선은 수평 방향입니다.');
         }
-        else {
-            dCtx.lineTo(pointX , pointY)
-            dCtx.stroke()
+
+        if (directionY > 0) {
+        console.log('선은 아래로 향합니다.');
+        } else if (directionY < 0) {
+        console.log('선은 위로 향합니다.');
+        } else {
+        console.log('선은 수직 방향입니다.');
         }
     }
-})
-document.addEventListener('mouseup' , e => {
-    if ((e.button == 2) || (e.which == 3)) {
-        dgPainting = false;
-        canvas.width = 0
-        canvas.height = 0
-        canvas.style.display = "none" ;
-        canvas.style.zIndex = 1 ;
-    }
-})
+
+    console.log(lines);
+}
 
 // 선을 부드럽게 하기 위한 line 알고리즘 -> 이해하기
 function drawSmoothLine(x0, y0, x1, y1) {
