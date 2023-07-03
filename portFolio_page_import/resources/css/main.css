@@ -1,0 +1,21 @@
+body { height: 300vh; }
+
+/* intro */
+.load { width: 100vw ; height: 100vh ; background-color:#5b5b5b; color:#fff; }
+
+
+/* header */
+.hambuger { width:80px; height:80px; background:#111; position: relative; cursor: pointer; position: fixed; right: 0}
+.hambuger span { width: 60px; height:5px; background:#fff; display: block; position: absolute; transform: translate(-50% , -50% ); left:50%; transition:all .5s; border-radius: 5px;}
+.hambuger span:nth-child(1) { top:25% }
+.hambuger span:nth-child(2) { top:50% }
+.hambuger span:nth-child(3) { top:75% }
+
+
+
+/* 풀페이지 */
+.fullContainer { display: none; }
+
+
+
+/* footer */
