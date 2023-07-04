@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded' , () => {
 
     // 스크롤
     window.addEventListener('scroll' , function (e) {
-        let currTop = window.scrollY
+        let currTop = window.scrollY ;
         // console.log(currTop)
         // if ( currTop >= otherTop ) {
 
