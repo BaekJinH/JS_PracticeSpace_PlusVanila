@@ -29,6 +29,24 @@ document.addEventListener('DOMContentLoaded' , () => {
 
     // 풀페이지 전환 버튼
     let changeBtn = document.querySelector('.screenChange') ;
+    let body = document.querySelector('body') ;
+    changeBtn.addEventListener('click' , e => {
+        body.classList.add('curtain')
+        setTimeout(() => {
+            body.classList.remove('curtain') ;
+            body.classList.add('fullPage') ;
+            // if ( body.classList.contains('fullPage') ) {
+            //     body.classList.remove('fullPage')
+            // }
+        } , 1000)
+    })
+    // switch (a , b) {
+    //     case 1 :
+    //     break
+    //     case 2 :
+    //     break
+    //     default :
+    // }
 
 
     // 마우스 휠 이벤트

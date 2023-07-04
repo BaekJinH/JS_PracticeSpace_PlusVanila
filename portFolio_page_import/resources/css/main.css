@@ -17,5 +17,12 @@ body { height: 300vh; }
 .fullContainer { display: none; }
 
 
+/* 커튼 효과 */
+body.curtain { overflow:hidden }
+body:before { width: 100%; height: 0%; position: absolute; content:'' ; display: block; z-index: 10; top:0; background-color: #eee; transition: all .5s;}
+body.curtain::before { height:100% ;}
+
+
+body.fullPage .container { display:none; }
 
 /* footer */
