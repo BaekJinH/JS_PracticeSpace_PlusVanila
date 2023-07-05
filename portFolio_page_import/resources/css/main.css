@@ -1,15 +1,52 @@
-body { height: 300vh; }
+/* wrapper */
+
 
 /* intro */
-.load { width: 100vw ; height: 100vh ; background-color:#5b5b5b; color:#fff; }
+.loadingPage { width: 100vw ; height: 100vh ; background-color:#5b5b5b; color:#fff; position:fixed; z-index: 10; display: flex; align-items: center; justify-content: center; font-size:30px ; font-weight:bold; pointer-events: none; }
+.loadingPage .txtEffect { animation: bounce 1s infinite ease-in-out; }
+.loadingPage .txtEffect ~ span { margin-left:5px ; }
+@keyframes bounce {
+    0% {
+        transform: translateY(30px);
+    }
+    40% {
+        transform: translateY(0px);
+
+    }
+    50% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(30px);
+    }
+}
 
 
+/* .colorMemo { #111 , #000 , #764bea } */
 /* header */
-.hambuger { width:80px; height:80px; background:#111; position: relative; cursor: pointer; position: fixed; right: 0}
-.hambuger span { width: 60px; height:5px; background:#fff; display: block; position: absolute; transform: translate(-50% , -50% ); left:50%; transition:all .5s; border-radius: 5px;}
+.hambuger { width:80px; height:80px; background:#252525; position: relative; cursor: pointer; position: fixed; right: 0 ; top:0; z-index: 1;}
+.hambuger span { width: 60px; height:5px; top:50%; background:#fff; display: block; position: absolute; transform: translate(-50% , -50% ); left:50%; transition:all .5s; border-radius: 5px;}
 .hambuger span:nth-child(1) { top:25% }
 .hambuger span:nth-child(2) { top:50% }
 .hambuger span:nth-child(3) { top:75% }
+
+.hambuger.act_hamb span:nth-child(1) {top:50%; }
+.hambuger.act_hamb span:nth-child(2) { left:-100%; opacity:0; }
+.hambuger.act_hamb span:nth-child(3) {top:50%;}
+
+    /* blackPage */
+.blackPager { width: 580px; height: 100vh; position: absolute; background:#252525; left:100%; top:-0%;  }
+/* .blackPager:before { width: 100%; height: 100%; position: absolute; background: inherit; content: ''; left:-50%; bottom:0; transform: rotate(-45deg) ; } */
+
+
+
+/* Normal Contents Pages */
+.section1 { height: 100vh; }
+.section1 .leftInfo { width:30%; height: 100%; display: flex; align-items: flex-end; justify-content:center; flex-flow: column wrap;}
+.section1 .switchEffect { font-size:60px; font-weight: bold; }
+.section1 ul { text-align: center; }
+.section1 ul li { margin-top: 30px; }
+
 
 
 
@@ -24,5 +61,6 @@ body.curtain::before { height:100% ;}
 
 
 body.fullPage .container { display:none; }
+body.fullPage .fullContainer { display:block; }
 
 /* footer */

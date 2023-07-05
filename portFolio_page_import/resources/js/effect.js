@@ -1,11 +1,29 @@
 document.addEventListener('DOMContentLoaded' , () => {
     // 햄버거
-    let hambMenu = document.querySelector('.hambuger')
+    let hambMenu = document.querySelector('.hambuger') ;
     if ( hambMenu ) {
-        hambMenu.addEventListener('click' , () => {
-            hambMenu.classList.add('hambOn')
+        let blackPage = document.querySelector('.blackPager') ;
+        hambMenu.addEventListener('click' , e => {
+            hambMenu.classList.toggle('act_hamb') ;
+            hambMenu.classList.contains('act_hamb') ? hambMenu.classList.remove('return') : hambMenu.classList.add('return')
+
+            console.log(blackPage)
         })
     }
+
+
+    // Canvas 백그라운드 코드를 이해하고 작성할 수 있게 되면 사용하기
+    let canvas = document.querySelector('canvas') ;
+    let ctx = canvas.getContext('2d') ;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    let canvasHei ;
+    let canvasWid ;
+    let bgColor = '#ff6138' ;
+    let animation = [] ;
+    let circles = [];
+
+
 
 
     //  서브 서클
@@ -34,12 +52,22 @@ document.addEventListener('DOMContentLoaded' , () => {
         body.classList.add('curtain')
         setTimeout(() => {
             body.classList.remove('curtain') ;
-            body.classList.add('fullPage') ;
-            // if ( body.classList.contains('fullPage') ) {
-            //     body.classList.remove('fullPage')
+            body.classList.toggle('fullPage') ;
+
+            // if ( body.classList.contains('fullPage')) {
+            //     body.classList.toggle('a')
             // }
         } , 1000)
     })
+
+
+    // function fullPage () {
+
+    // }
+    // function content () {
+
+    // }
+
     // switch (a , b) {
     //     case 1 :
     //     break

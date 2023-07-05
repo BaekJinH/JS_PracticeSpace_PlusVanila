@@ -5,13 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>백진혁 포트폴리오</title>
         <link rel="stylesheet" href="../resources/css/style.css">
+        <!-- <script src="../resources/lib/plugin/anime.es.js"></script> -->
         <script src="https://kit.fontawesome.com/c6f3140d93.js" crossorigin="anonymous"></script>
         <script src="../resources/js/intro.js"></script>
         <!-- <script src="../resources/js/block.js"></script> -->
         <script src="../resources/js/effect.js"></script>
     </head>
     <body>
+        <div class="loadingPage" style="display: none;">
+        </div>
         <div id="wrapper">
+            <canvas id="canvas" style="display: none;"></canvas>
             <header>
                 <nav>
                     <div class="hambuger list">
@@ -19,8 +23,12 @@
                         <span></span>
                         <span></span>
                     </div>
+                    <!-- 종이 접히는 이펙트 -->
+                    <div class="blackPager">
+
+                    </div>
                     <!-- test changeBtn -->
-                    <div class="screenChange" style="width:100px; height: 100px; background:red;">
+                    <div class="screenChange">
 
                     </div>
                     <div class="subCircle">
@@ -29,9 +37,22 @@
                 </nav>
             </header>
             <div class=container>
-                <section class="section1"></section>
-                <section class="section2"></section>
-                <section class="section3"></section>
+                <section class="section1">
+                    <div class="leftInfo">
+                        <h1 class="switchEffect">Test</h1>
+                        <ul>
+                            <li>test Txt</li>
+                            <li>test Txt</li>
+                            <li>test Txt</li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="section2">
+
+                </section>
+                <section class="section3">
+
+                </section>
             </div>
             <div class="fullContainer">
                 <div class="content1 content"></div>
@@ -46,5 +67,36 @@
 
             </footer>
         </div>
+        <script>
+            // 1초로 잡으면 생각보다 이쁘게 나옴
+            // } , 1000 * index)
+            let load = document.querySelector('.loadingPage')
+            let arr = [ 'L'  , 'O' , "A" , 'D' , 'I' , 'N' , 'G' , '!'] ;
+            if ( load ) {
+                arr.forEach( (item, index) => {
+                    let span = document.createElement('span') ;
+                    load.appendChild(span) ;
+                    setTimeout(e => {
+                        span.textContent = item
+                        span.className = 'txtEffect'
+                    } , 100 * index)
+                })
+            }
+            window.addEventListener('load' , () => {
+                let span = Array.from(document.querySelectorAll('.loadingPage span')) ;
+                span.forEach ((item , index) => {
+                    load.removeChild(span[index])
+                })
+                arr = [ 'E' , 'N' , 'D' , '!']
+                arr.forEach( (item, index) => {
+                    let span = document.createElement('span') ;
+                    load.appendChild(span) ;
+                    setTimeout(e => {
+                        span.textContent = item
+                        span.className = 'txtEffect'
+                    } , 100 * index)
+                })
+            })
+        </script>
     </body>
 </html>

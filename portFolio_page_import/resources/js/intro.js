@@ -1,12 +1,15 @@
-// window.addEventListener('load' , () => {
-//     let loadingScreen = document.querySelector('.load') ;
-//     if (loadingScreen) {
-//         alert('Loading screen exists!');
-//         loadingScreen.remove();
-//     } else {
-//         alert('Loading screen does not exist.');
-//     }
-// })
+window.addEventListener('load' , () => {
+    setTimeout(() => {
+        let loadingScreen = document.querySelector('.loadingPage') ;
+        if (loadingScreen) {
+            loadingScreen.remove();
+        } else {
+            alert('Loading screen does not exist.');
+        }
+    } , 2000)
+})
+
+
 
 // (function createLoadingScreen() {
 //     let loadingScreen = document.createElement('div');
