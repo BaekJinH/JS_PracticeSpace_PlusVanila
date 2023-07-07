@@ -1,5 +1,5 @@
 /* wrapper */
-#wrapper { overflow: hidden; width: 100%; position: relative;}
+#wrapper { overflow: hidden; width: 100%; position: relative; scroll-behavior: smooth; }
 
 /* intro */
 .loadingPage { width: 100vw ; height: 100vh ; background-color:#5b5b5b; color:#fff; position:fixed; z-index: 10; display: flex; align-items: center; justify-content: center; font-size:30px ; font-weight:bold; pointer-events: none; }
@@ -37,8 +37,11 @@ header { height: 80px; }
 .hambuger.act_hamb span:nth-child(3) {top:50%;}
 
     /* blackPage */
-.blackPager { width: 200%; height: 100vh; position: absolute; background:#252525; left: 100%; top:-0%; padding-left:6em ; overflow: hidden;}
-.blackPager ul { display: flex; flex-flow:column wrap; height: 100%;  justify-content: center; }
+.blackPager { width: 100%; padding-right:10%; height: 100vh; position: absolute; background:#252525; left: 100%; top:-0%;  overflow: hidden; box-sizing: content-box; }
+/* .blackPager { width: 150%;  height: 100vh; position: absolute; background:#252525; left: 100%; top:-0%;  overflow: hidden; box-sizing: content-box; } */
+/* .blackPager { width: 200%; height: 100vh; position: absolute; background:#252525; left: 100%; top:-0%; padding-left:6em ; overflow: hidden;} */
+/* .blackPager { width: 100%; height: 100vh; position: absolute; background:#252525; left: 100%; top:-0%; padding-left:6em ; overflow: hidden;} */
+.blackPager ul { display: flex; flex-flow:column wrap; height: 100%;  justify-content: center; padding-left:10em ; overflow: hidden;}
 .blackPager li { color:#fff; font-size:24px; font-weight: bold; transform:translateX(-100%) ;}
 .blackPager li ~ li { margin-top:60px;}
 

@@ -10,12 +10,24 @@ document.addEventListener('DOMContentLoaded' , () => {
         targets: blackPage,
         autoplay: false,
         left: ['100%', '0%'],
-        easing: 'easeOutElastic(6, .4)',
-        duration: 4000,
-        complete: function() { // 애니메이션이 끝나면 animating을 false로 변경
-            animating = false;
+        easing: 'easeOutBounce',
+        duration: 1500,
+        elasticity: 0,
+        complete: function() {
+          // 애니메이션이 끝나면 animating을 false로 변경
+          animating = false;
         }
     });
+    // let screenClose = anime({
+    //     targets: blackPage,
+    //     autoplay: false,
+    //     left: ['100%', '0%'],
+    //     easing: 'easeOutElastic(6, .4)',
+    //     duration: 4000,
+    //     complete: function() { // 애니메이션이 끝나면 animating을 false로 변경
+    //         animating = false;
+    //     }
+    // });
     let screenOpen = anime({
         targets: blackPage,
         autoplay: false,
@@ -44,7 +56,8 @@ document.addEventListener('DOMContentLoaded' , () => {
                 bpOn(),
                 (screenClose.paused ? screenClose.play() : null),
                 screenClose.restart(),
-                await new Promise(resolve => setTimeout(resolve, 4000)), // wait for 4 seconds
+                await new Promise(resolve => setTimeout(resolve, 1600)), // wait for 4 seconds
+                document.querySelector('html').style.overflow = 'hidden',
                 (async () => {
                     for (const element of sdTxt) {
                         await new Promise(resolve => setTimeout(() => {
@@ -54,7 +67,7 @@ document.addEventListener('DOMContentLoaded' , () => {
                                 targets: element,
                                 duration: 1000,
                                 autoplay: true,
-                                easing: 'easeInOutQuad',
+                                easing: 'easeInOutBack',
                                 translateX: ['-100%','0%'],
                                 begin: function() {
                                     animating = true;
@@ -82,14 +95,19 @@ document.addEventListener('DOMContentLoaded' , () => {
                                 targets: e,
                                 duration: 500,
                                 autoplay: true,
-                                easing: 'easeInOutQuad',
+                                // easing: 'easeInOutQuad',
+                                easing: 'easeInOutBack',
+                                elasticity: 100,
                                 translateX: ['0%', '100%'],
                             });
                             resolve();
                         }, i * 100));
                     }, Promise.resolve());
+                    await new Promise(resolve => setTimeout(resolve, 300));
                     (screenOpen.paused ? screenOpen.play() : null),
-                    screenOpen.restart()
+                    screenOpen.restart() ;
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    document.querySelector('html').style.overflow = 'auto' ;
                 })()
             );
         });
@@ -105,6 +123,8 @@ document.addEventListener('DOMContentLoaded' , () => {
         blackPage.classList.remove('bpOn');
         blackPage.classList.add('bpReturn');
     }
+
+    // 햄버거 관련 효과 끝
 
 
 

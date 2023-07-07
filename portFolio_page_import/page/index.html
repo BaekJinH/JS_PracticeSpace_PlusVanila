@@ -77,6 +77,7 @@
             let load = document.querySelector('.loadingPage')
             let arr = [ 'L'  , 'O' , "A" , 'D' , 'I' , 'N' , 'G' , '!'] ;
             if ( load ) {
+                document.querySelector('html').style.overflow = 'hidden';
                 arr.forEach( (item, index) => {
                     let span = document.createElement('span') ;
                     load.appendChild(span) ;
