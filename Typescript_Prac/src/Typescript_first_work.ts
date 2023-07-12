@@ -8,7 +8,6 @@ let obj2: { name: string, age: number} = {
     name: 'hoho',
     age: 22
 };
-
 function add(a: number, b: number): number {
     return a+b;
     }

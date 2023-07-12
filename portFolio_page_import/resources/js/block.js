@@ -32,7 +32,6 @@ window.addEventListener('keydown' , e => {
     if (e.defaultPrevented) {
         return
     }
-
     let isHandle = false
 
     // 단축키 개발자 도구 블락 -> 마찬가지로 끝나면 블락 풀기
