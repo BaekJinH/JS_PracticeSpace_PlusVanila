@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded' , () => {
     let hambMenu = document.querySelector('.hambuger');
     let blackPage = document.querySelector('.blackPager');
     let animating = false;
-    let sdTxt = Array.from(document.querySelectorAll('.blackPager li'));
+    let sdTxt = Array.from(document.querySelectorAll('.blackPager > ul li'));
 
     // animeJs
     let screenClose = anime({
@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded' , () => {
         targets: blackPage,
         autoplay: false,
         left: ['0%', '100%'],
-        easing: 'easeInOutBack',
-        duration: 1000,
+        easing: 'easeInQuart',
+        duration: 800,
         begin: function() { // 애니메이션이 시작하면 animating을 true로 변경
             animating = true;
         },
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded' , () => {
                             resolve();
                         }, i * 100));
                     }, Promise.resolve());
-                    await new Promise(resolve => setTimeout(resolve, 300));
+                    await new Promise(resolve => setTimeout(resolve, 10));
                     (screenOpen.paused ? screenOpen.play() : null),
                     screenOpen.restart() ;
                     await new Promise(resolve => setTimeout(resolve, 1000));
@@ -131,103 +131,103 @@ document.addEventListener('DOMContentLoaded' , () => {
 
 
 
-    // Canvas 백그라운드 코드를 이해하고 작성할 수 있게 되면 사용하기
-    let canvas = document.querySelector('canvas') ;
-    let ctx = canvas.getContext('2d') ;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    let canvasHei ;
-    let canvasWid ;
-    let bgColor = '#ff6138' ;
-    let animation = [] ;
-    let circles = [];
+    // // Canvas 백그라운드 코드를 이해하고 작성할 수 있게 되면 사용하기
+    // let canvas = document.querySelector('canvas') ;
+    // let ctx = canvas.getContext('2d') ;
+    // canvas.width = window.innerWidth;
+    // canvas.height = window.innerHeight;
+    // let canvasHei ;
+    // let canvasWid ;
+    // let bgColor = '#ff6138' ;
+    // let animation = [] ;
+    // let circles = [];
 
 
 
 
-    //  서브 서클
-    let circle = document.querySelector('.subCircle')
-    if ( circle ) {
-        circle.addEventListener('click' , (e) => {
+    // //  서브 서클
+    // let circle = document.querySelector('.subCircle')
+    // if ( circle ) {
+    //     circle.addEventListener('click' , (e) => {
 
-        })
-    }
-
-
-    // 스크롤
-    window.addEventListener('scroll' , function (e) {
-        let currTop = window.scrollY ;
-        // console.log(currTop)
-        // if ( currTop >= otherTop ) {
-
-        // }
-    })
-
-
-    // 풀페이지 전환 버튼
-    let changeBtn = document.querySelector('.screenChange') ;
-    let body = document.querySelector('body') ;
-    changeBtn.addEventListener('click' , e => {
-        body.classList.add('curtain')
-        setTimeout(() => {
-            body.classList.remove('curtain') ;
-            body.classList.toggle('fullPage') ;
-
-            // if ( body.classList.contains('fullPage')) {
-            //     body.classList.toggle('a')
-            // }
-        } , 1000)
-    })
-
-
-    // function fullPage () {
-
-    // }
-    // function content () {
-
-    // }
-
-    // switch (a , b) {
-    //     case 1 :
-    //     break
-    //     case 2 :
-    //     break
-    //     default :
+    //     })
     // }
 
 
-    // 마우스 휠 이벤트
-    window.addEventListener('mousewheel' , e => {
-        if (e.deltaY > 0) {
-            let scroll = window.innerHeight;
-            window.scrollTo({
-                // top: scroll,
-                behavior: "smooth" ,
-            });
-            console.log(scroll);
-        }
-        else {
+    // // 스크롤
+    // window.addEventListener('scroll' , function (e) {
+    //     let currTop = window.scrollY ;
+    //     // console.log(currTop)
+    //     // if ( currTop >= otherTop ) {
 
-        }
-    })
+    //     // }
+    // })
 
 
-    // 풀페이지
-    const contentLeng = Array.from(document.querySelectorAll('.fullContainer > .content'));
-    contentLeng.forEach(el => {
-        let dot = document.createElement('div') ;
-        let scroll = window.scrollY ;
-        dot.className = 'dot' ;
-        document.querySelector('.dotCont').appendChild(dot);
+    // // 풀페이지 전환 버튼
+    // let changeBtn = document.querySelector('.screenChange') ;
+    // let body = document.querySelector('body') ;
+    // changeBtn.addEventListener('click' , e => {
+    //     body.classList.add('curtain')
+    //     setTimeout(() => {
+    //         body.classList.remove('curtain') ;
+    //         body.classList.toggle('fullPage') ;
 
-        dot.addEventListener('click' , function (e) {
+    //         // if ( body.classList.contains('fullPage')) {
+    //         //     body.classList.toggle('a')
+    //         // }
+    //     } , 1000)
+    // })
 
-        })
-    });
+
+    // // function fullPage () {
+
+    // // }
+    // // function content () {
+
+    // // }
+
+    // // switch (a , b) {
+    // //     case 1 :
+    // //     break
+    // //     case 2 :
+    // //     break
+    // //     default :
+    // // }
+
+
+    // // 마우스 휠 이벤트
+    // window.addEventListener('mousewheel' , e => {
+    //     if (e.deltaY > 0) {
+    //         let scroll = window.innerHeight;
+    //         window.scrollTo({
+    //             // top: scroll,
+    //             behavior: "smooth" ,
+    //         });
+    //         console.log(scroll);
+    //     }
+    //     else {
+
+    //     }
+    // })
+
+
+    // // 풀페이지
+    // const contentLeng = Array.from(document.querySelectorAll('.fullContainer > .content'));
+    // contentLeng.forEach(el => {
+    //     let dot = document.createElement('div') ;
+    //     let scroll = window.scrollY ;
+    //     dot.className = 'dot' ;
+    //     document.querySelector('.dotCont').appendChild(dot);
+
+    //     dot.addEventListener('click' , function (e) {
+
+    //     })
+    // });
 
 
 
-    // 테마 색 반전
+    // // 테마 색 반전
 
 
 

@@ -4,9 +4,10 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build": "webpack --mode production",
     "clean": "tsc --build --clean",
-    "dev": "webpack serve"
+    "dev": "webpack --mode development",
+    "start": "webpack-dev-server --mode development --hot"
   },
   "author": "",
   "license": "ISC",

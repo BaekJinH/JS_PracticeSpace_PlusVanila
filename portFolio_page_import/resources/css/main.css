@@ -26,7 +26,7 @@
 /* header */
 header { height: 80px; }
 
-.hambuger { width:80px; height:80px; background:#252525; position: relative; cursor: pointer; position: fixed; right: 0 ; top:0; z-index: 1; overflow: hidden;}
+.hambuger { width:80px; height:80px; background:#252525; position: relative; cursor: pointer; position: fixed; right: 0 ; top:0; z-index: 1; overflow: hidden; z-index: 11;}
 .hambuger span { width: 60px; height:5px; top:50%; background:#fff; display: block; position: absolute; transform: translate(-50% , -50% ); left:50%; transition:all .5s; border-radius: 5px;}
 .hambuger span:nth-child(1) { top:25% }
 .hambuger span:nth-child(2) { top:50% }
@@ -37,22 +37,23 @@ header { height: 80px; }
 .hambuger.act_hamb span:nth-child(3) {top:50%;}
 
     /* blackPage */
-.blackPager { width: 100%; padding-right:10%; height: 100vh; position: absolute; background:#252525; left: 100%; top:-0%;  overflow: hidden; box-sizing: content-box; }
+.blackPager { width: 100%;  height: 100vh; position: absolute; background:#252525; left: 100%; top:-0%;  overflow: hidden; box-sizing: content-box; z-index: 10;}
 /* .blackPager { width: 150%;  height: 100vh; position: absolute; background:#252525; left: 100%; top:-0%;  overflow: hidden; box-sizing: content-box; } */
 /* .blackPager { width: 200%; height: 100vh; position: absolute; background:#252525; left: 100%; top:-0%; padding-left:6em ; overflow: hidden;} */
 /* .blackPager { width: 100%; height: 100vh; position: absolute; background:#252525; left: 100%; top:-0%; padding-left:6em ; overflow: hidden;} */
 .blackPager > ul { display: flex; flex-flow:column wrap; height: 100%;  justify-content: center; padding-left:15% ; overflow: hidden;}
-.blackPager > ul > li { color:#fff; font-size:24px; font-weight: bold; transform:translateX(-100%) ;}
+.blackPager > ul > li {  font-size:24px; font-weight: bold; transform:translateX(-100%) ;}
 .blackPager > ul > li ~ li { margin-top:60px;}
+.blackPager > ul a { color:#fff; }
 
 /*  -- categorytype Image  */
-.blackPager .imgContainer {  }
-.blackPager .imgViewer {  }
-.blackPager .imgViewer ul {  }
-.blackPager .imgViewer li {  }
-.blackPager .imgViewer li:nth-child(1) {  }
-.blackPager .imgViewer li:nth-child(2) {  }
-.blackPager .imgViewer li:nth-child(3) {  }
+.blackPager .imgContainer { width: 50%; height: 100%; position:absolute; right:0; top:0;  display: flex; justify-content: center; align-items: center;}
+.blackPager .imgViewer { height: 300px; width: 300px; overflow: hidden; }
+.blackPager .imgViewer ul { width: 100%; height: auto; display: flex; flex-flow: column wrap; justify-content: center; }
+.blackPager .imgViewer li { width: 300px ; height: 300px;  }
+.blackPager .imgViewer li:nth-child(1) { background:rgb(211, 239, 255) }
+.blackPager .imgViewer li:nth-child(2) { background:lightgreen }
+.blackPager .imgViewer li:nth-child(3) { background:lightgrey }
 
 
 /* Normal Contents Pages */
