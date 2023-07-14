@@ -2,7 +2,7 @@
 #wrapper { overflow: hidden; width: 100%; position: relative; scroll-behavior: smooth; }
 
 /* intro */
-.loadingPage { width: 100vw ; height: 100vh ; background-color:#5b5b5b; color:#fff; position:fixed; z-index: 10; display: flex; align-items: center; justify-content: center; font-size:30px ; font-weight:bold; pointer-events: none; }
+.loadingPage { width: 100vw ; height: 100vh ; background-color:#5b5b5b; color:#fff; position:fixed; z-index: 12; display: flex; align-items: center; justify-content: center; font-size:30px ; font-weight:bold; pointer-events: none; }
 .loadingPage .txtEffect { animation: bounce 1s infinite ease-in-out; }
 .loadingPage .txtEffect ~ span { margin-left:5px ; }
 @keyframes bounce {

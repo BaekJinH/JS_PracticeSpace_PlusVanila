@@ -47,24 +47,27 @@ document.addEventListener('DOMContentLoaded', function (event) {
         return ele;
     }
     // Canvas Click Particle Effect
-    var canvas = document.querySelector('#canvas');
-    // Typescript 의 Null 반환을 위해 사용 ( 옵셔널 체이닝 미 사용 )
-    if (!canvas) {
-        return;
-    }
-    var ctx = canvas.getContext('2d');
-    var canvasHei;
-    var canvasWid;
-    var bgColor = '#ff6138';
-    var animation = [];
-    ;
-    var numb = Math.floor(Math.random() * 20);
-    var circles = [];
-    var r = Math.floor(Math.random() * 255);
-    var g = Math.floor(Math.random() * 255);
-    var b = Math.floor(Math.random() * 255);
-    canvas.addEventListener('click', function (e) {
-        circles.push({ radius: 50, color: [r, g, b] });
+    var partEffBtn = queryElement('.partBtn');
+    partEffBtn === null || partEffBtn === void 0 ? void 0 : partEffBtn.addEventListener('click', function (e) {
+        var canvas = document.querySelector('#canvas');
+        // Typescript 의 Null 반환을 위해 사용 ( 옵셔널 체이닝 미 사용 )
+        if (!canvas) {
+            return;
+        }
+        var ctx = canvas.getContext('2d');
+        var canvasHei;
+        var canvasWid;
+        var bgColor = '#ff6138';
+        var animation = [];
+        ;
+        var numb = Math.floor(Math.random() * 20);
+        var circles = [];
+        var r = Math.floor(Math.random() * 255);
+        var g = Math.floor(Math.random() * 255);
+        var b = Math.floor(Math.random() * 255);
+        canvas.addEventListener('click', function (e) {
+            circles.push({ radius: 50, color: [r, g, b] });
+        });
     });
     // Click To Open Big Circle
     var circle = queryElement('.subCircle');
@@ -153,4 +156,64 @@ document.addEventListener('DOMContentLoaded', function (event) {
             console.log(dot);
         });
     });
+    // Default Canvas Circle Wave
+    var canvas = document.querySelector('#circleWave');
+    var ctx = canvas === null || canvas === void 0 ? void 0 : canvas.getContext('2d');
+    var canvasHei;
+    var canvasWid;
+    var bgColor;
+    var animations = []; // Animation이라는 타입은 가정입니다. 실제 타입으로 바꿔주세요.
+    var circles = []; // Circle이라는 타입은 가정입니다. 실제 타입으로 바꿔주세요.
+    var rdNum = Math.floor(Math.random() * 255);
+    var colorPicker = (function () {
+        var colors = [rdNum, rdNum, rdNum];
+        var idx = 0;
+        function next() {
+            idx = idx++ < colors.length - 1 ? idx : 0;
+            return colors[idx];
+        }
+        function current() {
+            return colors[idx];
+        }
+        return {
+            next: next,
+            current: current
+        };
+    })();
+    function removeAnimation(animation) {
+        var idx = animations.indexOf(animation);
+        if (idx > -1) {
+            animations.splice(idx, 1);
+        }
+    }
+    function calcPageFillRadius(x, y) {
+        var wd = Math.max(x - 0, canvasWid - x);
+        var hi = Math.max(y - 0, canvasHei - y);
+        return Math.sqrt(Math.pow(wd, 2) + Math.pow(hi, 2));
+    }
+    function addClickListeners() {
+        document.addEventListener('touchstart', handleEvent);
+        document.addEventListener('mousedown', handleEvent);
+    }
+    function handleEvent(e) {
+        var currentColor = colorPicker.current();
+        var nextColor = colorPicker.next();
+        var targetR;
+        var rippleSize = Math.min(200, (canvasWid * .4));
+        var minCoverDuration = 750;
+        if ('touches' in e) {
+            e.preventDefault();
+            var touchEvent = e.touches[0];
+            targetR = calcPageFillRadius(touchEvent.clientX, touchEvent.clientY);
+        }
+        else {
+            targetR = calcPageFillRadius(e.pageX, e.pageY);
+            var pageFill = new Circle({
+                x: e.pageX,
+                y: e.pageY,
+                r: 0,
+                fill: nextColor
+            });
+        }
+    }
 });

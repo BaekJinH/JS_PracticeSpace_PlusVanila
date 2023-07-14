@@ -8,15 +8,16 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://kit.fontawesome.com/c6f3140d93.js" crossorigin="anonymous"></script>
         <script src="../resources/js/intro.js"></script>
-        <!-- <script src="../resources/js/block.js"></script> -->
+        <script src="../resources/js/block.js"></script>
         <script src="../resources/js/effect.js"></script>
         <script src="../resources/ts/jsComp/notPlugTs.js"></script>
     </head>
     <body>
-        <div class="loadingPage" style="display: none;">
+        <div class="loadingPage">
         </div>
         <div id="wrapper">
             <canvas id="canvas" style="display: none;"></canvas>
+            <canvas id="circleWave" style="display: none;"></canvas>
             <header>
                 <nav>
                     <div class="hambuger list default">
@@ -27,7 +28,7 @@
                     <!-- 종이 접히는 이펙트 -->
                     <div class="blackPager">
                         <ul>
-                            <li><a href="#none">Test cont</a></li>
+                            <li><a href="#none" class="partBtn">Test cont</a></li>
                             <li><a href="#none">Test cont</a></li>
                             <li><a href="#none">Test cont</a></li>
                         </ul>
