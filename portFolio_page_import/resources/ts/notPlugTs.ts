@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded' , (event : Event) => {
 
 
 
-    // Default Canvas Circle Wave
+    // Default Canvas Circle Wave -- animeJs 필요 바닐라로 작성할지 타입으로 작성할지 생각요함
     let canvas = document.querySelector<HTMLCanvasElement>('#circleWave');
     let ctx: CanvasRenderingContext2D | null | undefined = canvas?.getContext('2d');
     let canvasHei: number;
@@ -205,7 +205,8 @@ document.addEventListener('DOMContentLoaded' , (event : Event) => {
                 x: e.pageX ,
                 y: e.pageY ,
                 r: 0,
-                fill: nextColor
+                fill: nextColor,
+
             })
         }
     }

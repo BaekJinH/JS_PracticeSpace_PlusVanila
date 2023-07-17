@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             console.log(dot);
         });
     });
-    // Default Canvas Circle Wave
+    // Default Canvas Circle Wave -- animeJs 필요 바닐라로 작성할지 타입으로 작성할지 생각요함
     var canvas = document.querySelector('#circleWave');
     var ctx = canvas === null || canvas === void 0 ? void 0 : canvas.getContext('2d');
     var canvasHei;

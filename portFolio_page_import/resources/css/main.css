@@ -24,8 +24,7 @@
 
 /* .colorMemo { #111 , #000 , #764bea } */
 /* header */
-header { height: 80px; }
-
+header { height: 100px; background:#eee; }
 .hambuger { width:80px; height:80px; background:#252525; position: relative; cursor: pointer; position: fixed; right: 0 ; top:0; z-index: 1; overflow: hidden; z-index: 11;}
 .hambuger span { width: 60px; height:5px; top:50%; background:#fff; display: block; position: absolute; transform: translate(-50% , -50% ); left:50%; transition:all .5s; border-radius: 5px;}
 .hambuger span:nth-child(1) { top:25% }

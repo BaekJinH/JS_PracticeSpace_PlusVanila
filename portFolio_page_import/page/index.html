@@ -8,12 +8,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://kit.fontawesome.com/c6f3140d93.js" crossorigin="anonymous"></script>
         <script src="../resources/js/intro.js"></script>
-        <script src="../resources/js/block.js"></script>
+        <script src="../resources/js/notTs.js"></script>
+        <!-- <script src="../resources/js/block.js"></script> -->
         <script src="../resources/js/effect.js"></script>
         <script src="../resources/ts/jsComp/notPlugTs.js"></script>
     </head>
     <body>
-        <div class="loadingPage">
+        <div class="loadingPage" style="display: none;">
         </div>
         <div id="wrapper">
             <canvas id="canvas" style="display: none;"></canvas>
@@ -43,7 +44,7 @@
                         </div>
                     </div>
                     <!-- test changeBtn -->
-                    <div class="screenChange" style="background:red; width:200px; height:200px; position:absolute; top:0; z-index: 1;">
+                    <div class="screenChange" style="background:red; width:100px; height:100px; position:absolute; top:0; z-index: 1;">
 
                     </div>
                     <div class="subCircle">
@@ -52,6 +53,7 @@
                 </nav>
             </header>
             <div class=container>
+                <!-- 처음 큰 화면으로 Hello 보여준 후 스크롤 시 굴러가면서 옆 사이드에 붙기 -->
                 <section class="section1">
                     <div class="leftInfo">
                         <h1 class="switchEffect">Welcome!</h1>
