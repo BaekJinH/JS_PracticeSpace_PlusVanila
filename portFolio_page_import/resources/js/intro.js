@@ -10,15 +10,3 @@ window.addEventListener('load' , () => {
     } , 2000)
 })
 
-
-
-// (function createLoadingScreen() {
-//     let loadingScreen = document.createElement('div');
-//     loadingScreen.className = 'load';
-
-//     loadingScreen.innerHTML = `
-//         <div class='introText'>감사합니다.</div>
-//     `;
-
-//     document.body.appendChild(loadingScreen);
-// })();
