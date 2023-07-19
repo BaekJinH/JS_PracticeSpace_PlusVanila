@@ -140,11 +140,8 @@ function drawSmoothLine(x0, y0, x1, y1) {
 
 // Game Canvas 불러오기
 // 확인용
-let gameInstance = new GameCanvas.game();
-let logueLikeInstance = new GameCanvas.lougeLike();
-let puzzleInstance = new GameCanvas.puzzle();
-let chessInstance = new GameCanvas.chess();
-console.log(gameInstance , logueLikeInstance , puzzleInstance , chessInstance)
+let gameInstances = ['game', 'lougeLike', 'puzzle', 'chess'].map(className => new GameCanvas[className]());
+console.log(gameInstances )
 
 // console.log(module.gmSetting())
 
@@ -152,12 +149,10 @@ console.log(gameInstance , logueLikeInstance , puzzleInstance , chessInstance)
 
 // 인터렉티브 효과들 import 하기
 let loadEffect = new Interac()
-console.log(loadEffect.growTree())
-console.log(loadEffect.turnOffLight())
-console.log(loadEffect.fallenSnow())
-console.log(loadEffect.darkSkyStarlight())
-console.log(loadEffect.stickyText())
-console.log(loadEffect.textScreen())
+let effects = ['growTree', 'turnOffLight', 'fallenSnow', 'darkSkyStarlight', 'stickyText', 'textScreen'].map(effect => loadEffect[effect]());
+
+// 배포 단계에서는 이 부분을 주석 처리하거나 삭제하는 것이 좋습니다.
+console.log(effects);
 
 
 

@@ -108,10 +108,10 @@ document.addEventListener('DOMContentLoaded' , (event : Event) => {
     window.addEventListener('wheel', (e: WheelEvent) => {
         if ( e.deltaY > 0 ) {
             let scroll: number = window.innerHeight ;
-            window.scrollTo ({
-                top : scroll,
-                behavior: "smooth" ,
-            });
+            // window.scrollTo ({
+            //     top : scroll,
+            //     behavior: "smooth" ,
+            // });
         }
         else {
 

@@ -136,10 +136,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
     window.addEventListener('wheel', function (e) {
         if (e.deltaY > 0) {
             var scroll = window.innerHeight;
-            window.scrollTo({
-                top: scroll,
-                behavior: "smooth"
-            });
+            // window.scrollTo ({
+            //     top : scroll,
+            //     behavior: "smooth" ,
+            // });
         }
         else {
         }
