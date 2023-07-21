@@ -14,11 +14,6 @@ window.addEventListener('DOMContentLoaded' , () => {
         else {
             scrollUp( variabList )
         }
-
-        if ( variabList.sclY >= 200 && variabList.spinCc.classList.contains('spinCc') ) {
-
-        }
-
     } ;
 
     const scrollDown = function scrollDown(variabList) {
@@ -29,8 +24,9 @@ window.addEventListener('DOMContentLoaded' , () => {
         // variabList.spinCc.style.left = '0%' ;
     }
     const scrollUp = function scrollUp(variabList) {
-        variabList.spinCc.classList.remove('spinCc')
-
+        if ( variabList.sclY <= 200 ) {
+            variabList.spinCc.classList.remove('spinCc')
+        }
         // variabList.spinCc.style.transform = ' rotate(1080deg) translateX(-50%) scale(1)' ;
         // variabList.spinCc.style.left = '50%' ;
     }
@@ -52,7 +48,32 @@ window.addEventListener('DOMContentLoaded' , () => {
         let bgColor = '#ff6138' ;
         let animation = [] ;
         let circles = [];
+        let randomTotal = [ Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255) ];
 
+
+        let colorPicker = (function () {
+            let colors = `rgb( ${randomTotal[0]} , ${randomTotal[1]} , ${randomTotal[2]} )`  ;
+            let idx = 0;
+
+            function next () {
+                idx = idx ++ < colors.length - 1 ? idx : 0;
+                return colors[idx] ;
+            }
+            function current () {
+                return colors[idx]
+            }
+            return {
+                next: next,
+                current: current
+            }
+        })() ;
+
+        function removeAnimation ( x , y ) {
+            let idx = animation.indexOf(animation) ;
+            if ( idx > -1 ) {
+                animation.splice( idx , 1 )
+            }
+        }
     }
 
     document.querySelector('canvas').addEventListener('click' , waveEft);

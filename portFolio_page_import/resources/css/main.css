@@ -33,7 +33,7 @@
 
 /* .colorMemo { #111 , #000 , #764bea } */
 /* header */
-header { height: 80px; position: fixed; width: 100%;}
+header { height: 80px; position: fixed; width: 100%; z-index: 10;}
 .hambuger { width:80px; height:80px; background:#252525; position: relative; cursor: pointer; position: fixed; right: 0 ; top:0; z-index: 1; overflow: hidden; z-index: 11;}
 .hambuger span { width: 60px; height:5px; top:50%; background:#fff; display: block; position: absolute; transform: translate(-50% , -50% ); left:50%; transition:all .5s; border-radius: 5px; }
 .hambuger span:nth-child(1) { top:25% }
@@ -46,7 +46,7 @@ header { height: 80px; position: fixed; width: 100%;}
 
 
 
-.fixSpinCc {     position: absolute; background:#252525; border-radius: 50%; width: 80px; height: 80px; color: #fff; transform: translateX(-50%); z-index: 999; top:0%; left: 50%; width: min(13.7777777778vw,124px); height: min(13.7777777778vw,124px); -webkit-transition: left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; transition: left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; transition: transform .5s,left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1); transition: transform .5s,left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; pointer-events: none; }
+.fixSpinCc {     position: absolute; background:#252525; border-radius: 50%; width: 80px; height: 80px; color: #fff; transform: translateX(-50%); z-index: 9; top:0%; left: 50%; width: min(13.7777777778vw,124px); height: min(13.7777777778vw,124px); -webkit-transition: left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; transition: left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; transition: transform .5s,left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1); transition: transform .5s,left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; pointer-events: none; }
 .fixSpinCc.spinCc { position: fixed; -webkit-transform: scale(0.48) rotate(1080deg); transform: translateX(-50%) scale(0.48) rotate(1080deg); left:min(5vw , 60px); top: 0; pointer-events: auto; }
 /* left 값 px말고 min(1.1111111111vw,10px); 이 방식으로도 변경해보기*/
 /* position: fixed; transition:transform .5s,left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; top:0; left:50%; transform:translateX(-50%) ; background:#252525; border-radius: 50%; width: 80px; height: 80px; color: #fff; } */
@@ -55,28 +55,40 @@ header { height: 80px; position: fixed; width: 100%;}
 
 
 /* blackPage */
-.blackPager { width: 100%;  height: 100vh; position: absolute; background:#252525; left: 100%; top:-0%;  overflow: hidden; box-sizing: content-box; z-index: 10;}
-.blackPager > ul { display: flex; flex-flow:column wrap; height: 100%;  justify-content: center; padding-left:15% ; overflow: hidden;}
+.blackPager { width: 100%;  height: 100vh; position: absolute; background:#252525; left: 100%; top:0%;  overflow: hidden; box-sizing: content-box; z-index: 10;}
+.blackPager > ul { display: flex; flex-flow:column wrap; height: 100%;  justify-content: center; padding-left:calc(min(10vw , 60px)) ; overflow: hidden;}
 .blackPager > ul > li {  font-size:24px; font-weight: bold; transform:translateX(-100%) ;}
 .blackPager > ul > li ~ li { margin-top:60px;}
 .blackPager > ul a { color:#fff; }
 
 /*  -- categorytype Image  */
-.blackPager .imgContainer { width: 50%; height: 100%; position:absolute; right:0; top:0;  display: flex; justify-content: center; align-items: center;}
-.blackPager .imgViewer { height: 300px; width: 300px; overflow: hidden; }
+.blackPager .imgContainer { width: calc(min(45vw,600px)); height: 100%; position:absolute; right:calc(min(5vw , 100px)); top:0;  display: flex; justify-content: center; align-items: center;}
+.blackPager .imgViewer { height: 300px; width: 100%; overflow: hidden; }
 .blackPager .imgViewer ul { width: 100%; height: auto; display: flex; flex-flow: column wrap; justify-content: center; }
-.blackPager .imgViewer li { width: 300px ; height: 300px;  }
+.blackPager .imgViewer li { width: 100% ; height: 300px;  }
 .blackPager .imgViewer li:nth-child(1) { background:rgb(211, 239, 255) }
 .blackPager .imgViewer li:nth-child(2) { background:lightgreen }
 .blackPager .imgViewer li:nth-child(3) { background:lightgrey }
 
 
 /* Normal Contents Pages */
-.section1 { height: 120vh; }
-.section1 .leftInfo { width:30%; height: 100%; display: flex; align-items: flex-end; justify-content:center; flex-flow: column wrap;}
+.section1 { height: 100vh; display: flex; align-items: center; justify-content: center; flex-flow:column wrap}
+.section1 .profile { display: block; width: calc(min(50% , 500px)); position: relative;}
+.section1 .leftInfo { width:100%; height: auto; display: flex; align-items: center; justify-content:center; flex-flow: column wrap;}
 .section1 .switchEffect { font-size:60px; font-weight: bold;  }
 .section1 ul { text-align: center; }
 .section1 ul li { margin-top: 30px;  }
+
+
+.section1 .blobPro { animation: blob 11s linear infinite; }
+@keyframes blob {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 
 
