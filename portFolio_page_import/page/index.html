@@ -8,9 +8,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://kit.fontawesome.com/c6f3140d93.js" crossorigin="anonymous"></script>
         <script src="../resources/js/intro.js"></script>
+        <script src="../resources/js/effect.js"></script>
         <script src="../resources/js/notTs.js"></script>
         <!-- <script src="../resources/js/block.js"></script> -->
-        <script src="../resources/js/effect.js"></script>
         <!-- <script src="../resources/ts/jsComp/notPlugTs.js"></script> -->
     </head>
     <body>
@@ -84,17 +84,44 @@
                         <span></span>
                         <span></span>
                     </div>
+                    <div class="sideCircle choiceSide">
+                        <ul>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <!-- 컨셉에 맞는 사이드 블럭 -->
+                    <div class="bloomSide">
+
+                    </div>
+
+                    <!-- 컨셉과 맞지 않는 사이드 블럭 -->
                     <!-- 종이 접히는 이펙트 -->
                     <div class="blackPager">
                         <ul>
-                            <li><a href="#none" class="partBtn">Test cont</a></li>
+                            <li><a href="#none" class="partBtn">테마</a></li>
                             <li><a href="#none">Test cont</a></li>
                             <li><a href="#none">Test cont</a></li>
                         </ul>
                         <div class="imgContainer">
                             <div class="imgViewer">
                                 <ul>
-                                    <li></li>
+                                    <li>
+                                        <svg height="0" width="0">
+                                            <defs>
+                                            <clipPath id="sunmoon_clip" clipPathUnits="objectBoundingBox">
+                                                <path d="M.29 0A.29.29 0 1 1 0 .29V1h1V0H.29z"></path>
+                                            </clipPath>
+                                            </defs>
+                                            <defs>
+                                            <filter id="blob">
+                                                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+                                                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 30 -12" result="blob"></feColorMatrix>
+                                            </filter>
+                                            </defs>
+                                        </svg>
+                                        <div id="sunmoon"></div>
+                                    </li>
                                     <li></li>
                                     <li></li>
                                 </ul>
@@ -150,6 +177,11 @@
                     </div>
                     <div class="leftInfo">
                         <h1 class="switchEffect">Welcome!</h1>
+                        <button class="nextBtn">
+                            다음 섹션이동
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="324" height="324" viewBox="0 0 24 24" id="arrow-downward"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"></path></svg> -->
+                            <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 32 32" id="down-arrow"><path d="M16 22a2 2 0 0 1-1.41-.59l-10-10a2 2 0 0 1 2.82-2.82L16 17.17l8.59-8.58a2 2 0 0 1 2.82 2.82l-10 10A2 2 0 0 1 16 22Z"></path></svg>
+                        </button>
                     </div>
                 </section>
                 <section class="section2">

@@ -1,37 +1,5 @@
 window.addEventListener('DOMContentLoaded' , () => {
-    // Scroll Spin Ball
-    function sclBall (e) {
-        const variabList = {
-            spinCc: document.querySelector('.fixSpinCc') ,
-            scrollRecog: e.deltaY ,
-            sclY: window.scrollY || document.documentElement.scrollTop,
-        }
 
-
-        if ( variabList.scrollRecog > 0 ) {
-            scrollDown( variabList )
-        }
-        else {
-            scrollUp( variabList )
-        }
-    } ;
-
-    const scrollDown = function scrollDown(variabList) {
-        variabList.spinCc.classList.add('spinCc')
-
-        // variabList.spinCc.style.transform = ' rotate(1080deg) scale(.5)' ;
-        // variabList.spinCc.style.transition = 'all .5s' ;
-        // variabList.spinCc.style.left = '0%' ;
-    }
-    const scrollUp = function scrollUp(variabList) {
-        if ( variabList.sclY <= 200 ) {
-            variabList.spinCc.classList.remove('spinCc')
-        }
-        // variabList.spinCc.style.transform = ' rotate(1080deg) translateX(-50%) scale(1)' ;
-        // variabList.spinCc.style.left = '50%' ;
-    }
-
-    document.addEventListener('wheel' , sclBall)
 
 
     // Scroll Spin Ball />
@@ -129,12 +97,16 @@ window.addEventListener('DOMContentLoaded' , () => {
         let dot = document.createElement('div') ;
         let scroll = window.scrollY ;
         dot.className = `dot` ;
-        document.querySelector('.dotCont').appendChild(dot);
+        if ( document.querySelector('.dotCont') ) {
+            document.querySelector('.dotCont').appendChild(dot);
+
+        }
+        else {
+            throw `${document.querySelector('.dotCont')} Not Find`
+        }
 
     });
 
-
-    // // 테마 색 반전
 
 })
 

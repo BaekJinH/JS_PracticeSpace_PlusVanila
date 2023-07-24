@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+  --transition: 0.75s ease;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  margin: 0;
+  transition: background-position var(--transition);
+  background: linear-gradient(#5d9cec 0vh, #2d6bbc 100vh, #111 200vh, #555 300vh) fixed;
+  background-size: auto 300vh;
+  background-position-y: -200vh;
+}
+body.day {
+  background-position-y: 0vh;
+}
+body #sunmoon {
+  position: relative;
+  width: clamp(100px, 50vmin, 300px);
+  aspect-ratio: 1;
+  border-radius: 100%;
+  overflow: hidden;
+  filter: url("#blob");
+}
+body #sunmoon:before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -30%;
+  width: 172%;
+  height: 172%;
+  background: #fff3d8;
+  transition: var(--transition);
+  -webkit-clip-path: url(#sunmoon_clip);
+          clip-path: url(#sunmoon_clip);
+}
+body #sunmoon.sun:before {
+  top: -72%;
+  left: -72%;
+  background: #ffce54;
+}
+    </style>
+</head>
+<body>
+
+<svg height="0" width="0" style="position:fixed;">
+    <defs>
+      <clipPath id="sunmoon_clip" clipPathUnits="objectBoundingBox">
+        <path d="M.29 0A.29.29 0 1 1 0 .29V1h1V0H.29z"></path>
+      </clipPath>
+    </defs>
+    <defs>
+      <filter id="blob">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 30 -12" result="blob"></feColorMatrix>
+      </filter>
+    </defs>
+  </svg>
+  <div id="sunmoon"></div>
+  <script>
+    document.body.addEventListener('click', () => {
+  document.body.classList.toggle('day');
+  document.getElementById('sunmoon').classList.toggle('sun');
+});
+  </script>
+</body>
+</html>

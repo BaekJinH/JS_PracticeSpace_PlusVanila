@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded' , () => {
           animating = false;
         }
     });
+
+
     // let screenClose = anime({
     //     targets: blackPage,
     //     autoplay: false,
@@ -43,9 +45,29 @@ document.addEventListener('DOMContentLoaded' , () => {
     });
 
 
+    // 사이드 메뉴 개별 스크립트 이펙트
+    // // 테마 색 반전
+    let sunMoon = document.querySelector('#sunmoon')
+
+    let isScrollDisabled = false;
+    let preventScroll = function (e) {
+        e.preventDefault();
+    };
+
     if (hambMenu) {
+
+        let listToImg = document.querySelector('.imgContainer');
         blackPage.style.left = `100%`;
         hambMenu.addEventListener('click', async e => {
+            if (isScrollDisabled) {
+                // 스크롤 막기 이벤트 리스너를 제거하여 스크롤을 다시 활성화합니다.
+                window.removeEventListener('wheel', preventScroll, { passive: false });
+                isScrollDisabled = false;
+            } else {
+                // 스크롤 막기 이벤트 리스너를 추가하여 스크롤을 막습니다.
+                window.addEventListener('wheel', preventScroll, { passive: false });
+                isScrollDisabled = true;
+            }
             if (animating) return;
             animating = true;
             hambMenu.classList.toggle('act_hamb');
@@ -79,11 +101,15 @@ document.addEventListener('DOMContentLoaded' , () => {
                             resolve();
                         }, sdTxt.indexOf(element) * 100));
                     }
-                })()
+                })(),
+                await new Promise(resolve => setTimeout(resolve, 1800)),
+                listToImg.classList.add('calcWrap'),
+                setInterval( () => { sunMoon.classList.toggle('sun') ; }, 3000)
             ) :
             (
                 hambMenu.classList.add('return'),
                 bpOff(),
+                listToImg.classList.remove('calcWrap'),
                 await new Promise(resolve => setTimeout(resolve, 500)),
                 (async () => {
                     await sdTxt.reduce(async (prevPromise, e, i) => {
@@ -127,7 +153,42 @@ document.addEventListener('DOMContentLoaded' , () => {
     // 햄버거 관련 효과 끝
 
 
+    // Scroll Spin Ball
+    function sclBall (e) {
+        if (isScrollDisabled) {
+            return;
+        }
+        const variabList = {
+            spinCc: document.querySelector('.fixSpinCc') ,
+            scrollRecog: e.deltaY ,
+            sclY: window.scrollY || document.documentElement.scrollTop,
+        }
 
+
+        if ( variabList.scrollRecog > 0 ) {
+            scrollDown( variabList )
+        }
+        else {
+            scrollUp( variabList )
+        }
+    } ;
+
+    const scrollDown = function scrollDown(variabList) {
+        variabList.spinCc.classList.add('spinCc')
+
+        // variabList.spinCc.style.transform = ' rotate(1080deg) scale(.5)' ;
+        // variabList.spinCc.style.transition = 'all .5s' ;
+        // variabList.spinCc.style.left = '0%' ;
+    }
+    const scrollUp = function scrollUp(variabList) {
+        if ( variabList.sclY <= 200 ) {
+            variabList.spinCc.classList.remove('spinCc')
+        }
+        // variabList.spinCc.style.transform = ' rotate(1080deg) translateX(-50%) scale(1)' ;
+        // variabList.spinCc.style.left = '50%' ;
+    }
+
+    document.addEventListener('wheel' , sclBall)
 
 
 
