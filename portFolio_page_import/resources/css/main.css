@@ -2,7 +2,7 @@
     --defaultTheme : #123;
     --blackTheme : #123;
 }
-
+html {  scroll-behavior: smooth;  }
 
 /* intro */
 .loadingPage { width: 100vw ; height: 100vh ; background-color:#5b5b5b; color:#fff; position:fixed; z-index: 12; display: flex; align-items: center; justify-content: center; font-size:30px ; font-weight:bold; pointer-events: none; }
@@ -28,30 +28,32 @@
 
 
 /* wrapper + newView */
-#wrapper { overflow: hidden; width: 100%; position: relative; scroll-behavior: smooth;  }
+#wrapper { overflow: hidden; width: 100%; position: relative; }
 .container { position: relative; }
 
 /* .colorMemo { #111 , #000 , #764bea } */
 /* header */
 header { height: 80px; position: fixed; width: 100%; z-index: 10;}
-.hambuger { width:80px; height:80px; background:#252525; position: relative; cursor: pointer; position: fixed; right: 0 ; top:0; z-index: 1; overflow: hidden; z-index: 11;}
-.hambuger span { width: 60px; height:5px; top:50%; background:#fff; display: block; position: absolute; transform: translate(-50% , -50% ); left:50%; transition:all .5s; border-radius: 5px; }
-.hambuger span:nth-child(1) { top:25% }
-.hambuger span:nth-child(2) { top:50% }
-.hambuger span:nth-child(3) { top:75% }
 
-.hambuger.act_hamb span:nth-child(1) {top:50%; }
-.hambuger.act_hamb span:nth-child(2) { left:-100%; opacity:0; }
-.hambuger.act_hamb span:nth-child(3) {top:50%; }
+.sideCircle { width: 200px; height: 200px; position: fixed; top:0%; right: 0%; border-radius: 50%; transform: translate(50% , -50%); z-index: 20; background-color: #fff;}
+.sideCircle .menuTrig { position: absolute; bottom:0; left: 0; width: 70px; aspect-ratio: 1; transform: translate(50% , -50%) rotate(-45deg); cursor: pointer;  z-index: 2; display: flex; align-items: center; justify-content: center; font-size:35px; }
+.sideCircle .subMenu {  width: 200%; height: 200%;  position: absolute; top: -100px; right:-100px; z-index: 1; border-radius:50% ;transition:all .5s ;  transform: scale(0.1) rotate(150deg); overflow: hidden;}
+.sideCircle .subMenu.opMenu {   position: absolute;   transform: scale(1) rotate(0deg) ; }
+.sideCircle .subMenu li { overflow: hidden; }
+.sideCircle .subMenu .bloom { background:transparent; position: absolute; top: 0; right: 0px; width: 50%; height: 50%; transform-origin: 0% 100%; transform: rotate(225deg) skewY(320deg)}
+.sideCircle .subMenu .default { background: transparent; position: absolute; top: 0; right:0; width: 50%; height: 50%; transform-origin: 0% 100%; transform: rotate(170deg) skewY(325deg); }
+.sideCircle .subMenu li .placeholder { position: absolute; right: 0%; padding-top: 1.5em; width: 200%; height: 200%; text-align: center; transform: skewY(40deg) rotate(23deg); }
+.sideCircle .subMenu .default .placeholder { transform: skewY(35deg) rotate(30deg); }
+.sideCircle .subMenu li .placeholder .iconContainer { display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; }
+.sideCircle .subMenu li .upside { transform:rotate(-180deg) }
+.sideCircle .subMenu .button { font-size: 2.3em; background-color: transparent; border: none; color: #392338; cursor: pointer; }
+.sideCircle .subMenu .button.bkTheme { color:#fff; }
 
 
-
-.fixSpinCc {     position: absolute; background:#252525; border-radius: 50%; width: 80px; height: 80px; color: #fff; transform: translateX(-50%); z-index: 9; top:0%; left: 50%; width: min(13.7777777778vw,124px); height: min(13.7777777778vw,124px); -webkit-transition: left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; transition: left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; transition: transform .5s,left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1); transition: transform .5s,left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; pointer-events: none; }
-.fixSpinCc.spinCc { position: fixed; -webkit-transform: scale(0.48) rotate(1080deg); transform: translateX(-50%) scale(0.48) rotate(1080deg); left:min(5vw , 60px); top: 0; pointer-events: auto; }
-/* left 값 px말고 min(1.1111111111vw,10px); 이 방식으로도 변경해보기*/
-/* position: fixed; transition:transform .5s,left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; top:0; left:50%; transform:translateX(-50%) ; background:#252525; border-radius: 50%; width: 80px; height: 80px; color: #fff; } */
-/* .fixSpinCc  { position: fixed; transition:transform .5s,left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; top:0; left:50%; transform:translateX(-50%) ; background:#252525; border-radius: 50%; width: 80px; height: 80px; color: #fff; }
-.fixSpinCc.spinCc { position: fixed; -webkit-transform: scale(0.48) rotate(1080deg); transform: scale(0.48) rotate(1080deg); left: min(1.1111111111vw,10px); top: 0; margin-top: min(1.1111111111vw,10px);  pointer-events: auto;} */
+.container.wrapOn { display: flex; flex-flow:row-reverse nowrap; }
+/* bloomPage */
+.bloomSide {  height: 100%; transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1); background-color: #eee; }
+.bloomSide.open { position: static; width:clamp( 500px, calc(50vw - 200px), 300px ); }
 
 
 /* blackPage */
@@ -77,6 +79,28 @@ header { height: 80px; position: fixed; width: 100%; z-index: 10;}
 .blackPager #sunmoon { position: relative; width: clamp(200px, calc(50vw - 200px), 400px); aspect-ratio: 1; border-radius: 100%; overflow: hidden; filter: url("#blob"); }
 .blackPager #sunmoon:before { content: ""; position: absolute; top: -20%; left: -30%; width: 172%; height: 172%; background: #fff3d8; transition: all .75s ease-in-out; -webkit-clip-path: url(#sunmoon_clip); path: url(#sunmoon_clip);}
 .blackPager #sunmoon.sun:before { top: -72%; left: -72%; background: #ffce54; }
+
+
+
+
+/* .hambuger { width:80px; height:80px; background:#252525; position: relative; cursor: pointer; position: fixed; right: 0 ; top:0; z-index: 1; overflow: hidden; z-index: 11;}
+.hambuger span { width: 60px; height:5px; top:50%; background:#fff; display: block; position: absolute; transform: translate(-50% , -50% ); left:50%; transition:all .5s; border-radius: 5px; }
+.hambuger span:nth-child(1) { top:25% }
+.hambuger span:nth-child(2) { top:50% }
+.hambuger span:nth-child(3) { top:75% }
+
+.hambuger.act_hamb span:nth-child(1) {top:50%; }
+.hambuger.act_hamb span:nth-child(2) { left:-100%; opacity:0; }
+.hambuger.act_hamb span:nth-child(3) {top:50%; }
+ */
+
+
+.fixSpinCc {     position: absolute; background:#252525; border-radius: 50%; width: 80px; height: 80px; color: #fff; transform: translateX(-50%); z-index: 9; top:0%; left: 50%; width: min(13.7777777778vw,124px); height: min(13.7777777778vw,124px); -webkit-transition: left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; transition: left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; transition: transform .5s,left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1); transition: transform .5s,left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; pointer-events: none; }
+.fixSpinCc.spinCc { position: fixed; -webkit-transform: scale(0.48) rotate(1080deg); transform: translateX(-50%) scale(0.48) rotate(1080deg); left:min(5vw , 60px); top: 0; pointer-events: auto; }
+/* left 값 px말고 min(1.1111111111vw,10px); 이 방식으로도 변경해보기*/
+/* position: fixed; transition:transform .5s,left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; top:0; left:50%; transform:translateX(-50%) ; background:#252525; border-radius: 50%; width: 80px; height: 80px; color: #fff; } */
+/* .fixSpinCc  { position: fixed; transition:transform .5s,left .5s,margin-top .5s cubic-bezier(0.3, 0, 0.28, 1),-webkit-transform .5s; top:0; left:50%; transform:translateX(-50%) ; background:#252525; border-radius: 50%; width: 80px; height: 80px; color: #fff; }
+.fixSpinCc.spinCc { position: fixed; -webkit-transform: scale(0.48) rotate(1080deg); transform: scale(0.48) rotate(1080deg); left: min(1.1111111111vw,10px); top: 0; margin-top: min(1.1111111111vw,10px);  pointer-events: auto;} */
 
 
 
@@ -146,7 +170,7 @@ section .nextBtn svg:after { content:''; }
 
 
 /* Normal Contents Pages */
-.section1 { height: 100vh; display: flex; align-items: center; justify-content: center; flex-flow:column wrap}
+.section1 { width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; flex-flow:column wrap}
 .section1 .profile { display: block; width: calc(min(50% , 500px)); position: relative;}
 .section1 .leftInfo { width:100%; height: auto; display: flex; align-items: center; justify-content:center; flex-flow: column wrap;}
 .section1 .switchEffect { font-size:60px; font-weight: bold;  }
@@ -154,7 +178,7 @@ section .nextBtn svg:after { content:''; }
 .section1 ul li { margin-top: 30px;  }
 
 
-.section1 .profile { filter: drop-shadow(2px 4px 6px black); }
+.section1 .profile { filter: drop-shadow(1px 1px 1px black); }
 .section1 .profile svg{ animation: blob 100s linear infinite; }
 @keyframes blob {
     from {

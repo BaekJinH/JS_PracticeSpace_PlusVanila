@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded' , () => {
     // 햄버거
     let hambMenu = document.querySelector('.hambuger');
+    let bloom = document.querySelector('.bloomList') ;
+    let bloomSide = document.querySelector('.bloomSide');
     let blackPage = document.querySelector('.blackPager');
     let animating = false;
     let sdTxt = Array.from(document.querySelectorAll('.blackPager > ul li'));
+    let trig = document.querySelector('.menuTrig');
+    let opMenu = document.querySelector('.subMenu') ;
 
     // animeJs
     let screenClose = anime({
@@ -44,6 +48,35 @@ document.addEventListener('DOMContentLoaded' , () => {
         }
     });
 
+    // 메뉴 트리거
+    let btns = Array.from(document.querySelectorAll('.button'))
+    if ( trig ) {
+        trig.addEventListener('click' , e => {
+            opMenu.classList.toggle('opMenu')
+            if ( hambMenu.classList.contains('act_hamb') ) {
+                btns.forEach( el => {
+                    el.classList.add('bkTheme')
+                })
+                hambMenu.click() ;
+            }
+            if ( bloom.classList.contains('open') ) {
+                bloom.click() ;
+            }
+        })
+    }
+
+    // 꽃 배경 사이드 바
+    if ( bloom ) {
+        bloom.addEventListener('click' , e => {
+            bloomSide.classList.toggle('open') ;
+            bloomSide.classList.contains('open') ?
+            (document.querySelector('.container').classList.add('wrapOn'))
+            :
+            (document.querySelector('.container').classList.remove('wrapOn'))
+        })
+    }
+
+
 
     // 사이드 메뉴 개별 스크립트 이펙트
     // // 테마 색 반전
@@ -53,6 +86,7 @@ document.addEventListener('DOMContentLoaded' , () => {
     let preventScroll = function (e) {
         e.preventDefault();
     };
+
 
     if (hambMenu) {
 
@@ -73,6 +107,9 @@ document.addEventListener('DOMContentLoaded' , () => {
             hambMenu.classList.toggle('act_hamb');
             hambMenu.classList.contains('act_hamb') ?
             (
+                btns.forEach( el => {
+                    el.classList.add('bkTheme')
+                }),
                 hambMenu.classList.remove('default'),
                 hambMenu.classList.remove('return'),
                 bpOn(),
@@ -108,6 +145,9 @@ document.addEventListener('DOMContentLoaded' , () => {
             ) :
             (
                 hambMenu.classList.add('return'),
+                btns.forEach( el => {
+                    el.classList.remove('bkTheme')
+                }),
                 bpOff(),
                 listToImg.classList.remove('calcWrap'),
                 await new Promise(resolve => setTimeout(resolve, 500)),

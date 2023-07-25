@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>백진혁 포트폴리오</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="../resources/css/style.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://kit.fontawesome.com/c6f3140d93.js" crossorigin="anonymous"></script>
@@ -75,24 +76,46 @@
               </button>
         </div>
         <div id="wrapper">
+            <div class="bloomSide">
+
+            </div>
             <canvas id="canvas" style="display: none;"></canvas>
             <canvas id="circleWave" style="display: none;"></canvas>
             <header>
                 <nav>
-                    <div class="hambuger list default">
+                    <!-- <div class="hambuger list default">
                         <span></span>
                         <span></span>
                         <span></span>
-                    </div>
+                    </div> -->
                     <div class="sideCircle choiceSide">
                         <ul>
-                            <li></li>
-                            <li></li>
+                            <li class="menuTrig">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </li>
+                            <ul class="subMenu">
+                                <li class="bloom">
+                                    <div class="placeholder">
+                                        <div class="upside">
+                                            <a href="#none" class="button bloomList">
+                                                <!-- 클릭 아이콘 -->
+                                                <i class="fa fa-user"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="default ">
+                                    <div class="placeholder">
+                                        <div class="upside">
+                                            <a href="#none" class="button hambuger">
+                                                <!-- 클릭 아이콘 -->
+                                                <i class="fa-solid fa-bars"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </ul>
-                    </div>
-                    <!-- 컨셉에 맞는 사이드 블럭 -->
-                    <div class="bloomSide">
-
                     </div>
 
                     <!-- 컨셉과 맞지 않는 사이드 블럭 -->
@@ -142,6 +165,7 @@
             </header>
 
             <div class="container" >
+                <!-- 컨셉에 맞는 사이드 블럭 -->
                 <!-- 처음 큰 화면으로 Hello 보여준 후 스크롤 시 굴러가면서 옆 사이드에 붙기 -->
 
                 <section class="section1">
