@@ -117,20 +117,19 @@ window.addEventListener('DOMContentLoaded' , () => {
     let section2 = document.querySelector('.section2');
     let section2Height = section2.getBoundingClientRect().height;
 
-
-    observer.observe(section2);
     const io = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          // 관찰 대상이 viewport 안에 들어온 경우 'tada' 클래스를 추가
+            console.log(entries) ;
+            // 관찰 대상이 viewport 안에 들어온 경우 'tada' 클래스를 추가
             if (entry.intersectionRatio > 0) {
                 entry.target.classList.add('tada');
             }
-          // 그 외의 경우 'tada' 클래스 제거
+            // 그 외의 경우 'tada' 클래스 제거
             else {
                 entry.target.classList.remove('tada');
             }
         })
-    })
+    }, { rootMargin: '0px' , threshold: 0.0 }) ;
     io.observe(section2)
 })
 
