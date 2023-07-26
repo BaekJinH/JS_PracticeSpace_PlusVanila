@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded' , () => {
     let btns = Array.from(document.querySelectorAll('.button'))
     if ( trig ) {
         trig.addEventListener('click' , e => {
+            clearInterval(sunMoonAnimation),
             opMenu.classList.toggle('opMenu')
             if ( hambMenu.classList.contains('act_hamb') ) {
                 btns.forEach( el => {
@@ -59,24 +60,41 @@ document.addEventListener('DOMContentLoaded' , () => {
                 })
                 hambMenu.click() ;
             }
-            if ( bloom.classList.contains('open') ) {
-                bloom.click() ;
+            if ( bloomSide.classList.contains('open') ) {
+                bloomSide.classList.remove('open')
+                document.querySelector('#wrapper').classList.remove('wrapOn') ;
+                document.querySelector('.spinWrap').classList.remove('spinfix') ;
+                bloomSide.click() ;
             }
         })
     }
 
     // 꽃 배경 사이드 바
     if ( bloom ) {
-        bloom.addEventListener('click' , e => {
+        bloom.addEventListener('click' , async  e => {
+            clearInterval(sunMoonAnimation);
+            if ( blackPage.classList.contains('bpOn') ) {
+                await new Promise(resolve => {
+                    hambMenu.click();
+                    setTimeout(resolve, 3000); // wait for the blackPage to close
+                });
+            }
             bloomSide.classList.toggle('open') ;
             bloomSide.classList.contains('open') ?
-            (document.querySelector('.container').classList.add('wrapOn'))
+            (
+                document.querySelector('#wrapper').classList.add('wrapOn') ,
+                document.querySelector('.spinWrap').classList.add('spinfix')
+            )
             :
-            (document.querySelector('.container').classList.remove('wrapOn'))
+            (
+                document.querySelector('#wrapper').classList.remove('wrapOn') ,
+                document.querySelector('.spinWrap').classList.remove('spinfix')
+            )
+
         })
     }
 
-
+    let sunMoonAnimation;
 
     // 사이드 메뉴 개별 스크립트 이펙트
     // // 테마 색 반전
@@ -93,6 +111,12 @@ document.addEventListener('DOMContentLoaded' , () => {
         let listToImg = document.querySelector('.imgContainer');
         blackPage.style.left = `100%`;
         hambMenu.addEventListener('click', async e => {
+            if ( bloomSide.classList.contains('open') ) {
+                await new Promise(resolve => {
+                    bloom.click();
+                    setTimeout(resolve, 1600); // wait for the bloomSide to close
+                });
+            }
             if (isScrollDisabled) {
                 // 스크롤 막기 이벤트 리스너를 제거하여 스크롤을 다시 활성화합니다.
                 window.removeEventListener('wheel', preventScroll, { passive: false });
@@ -141,9 +165,10 @@ document.addEventListener('DOMContentLoaded' , () => {
                 })(),
                 await new Promise(resolve => setTimeout(resolve, 1800)),
                 listToImg.classList.add('calcWrap'),
-                setInterval( () => { sunMoon.classList.toggle('sun') ; }, 3000)
+                sunMoonAnimation = setInterval( () => { sunMoon.classList.toggle('sun') ; }, 3000)
             ) :
             (
+                clearInterval(sunMoonAnimation),
                 hambMenu.classList.add('return'),
                 btns.forEach( el => {
                     el.classList.remove('bkTheme')
@@ -227,7 +252,6 @@ document.addEventListener('DOMContentLoaded' , () => {
         // variabList.spinCc.style.transform = ' rotate(1080deg) translateX(-50%) scale(1)' ;
         // variabList.spinCc.style.left = '50%' ;
     }
-
     document.addEventListener('wheel' , sclBall)
 
 

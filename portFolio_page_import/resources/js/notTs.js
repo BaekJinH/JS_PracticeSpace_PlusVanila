@@ -108,8 +108,40 @@ window.addEventListener('DOMContentLoaded' , () => {
     });
 
 
+    let sections = Array.from(document.querySelectorAll('section')) ;
+    sections.forEach( e => {
+        e.style.height = window.innerHeight + 'px'
+    })
+
+    // section2 스킬 프로그레스 파트
+    let section2 = document.querySelector('.section2');
+    let section2Height = section2.getBoundingClientRect().height;
+
+
+    observer.observe(section2);
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          // 관찰 대상이 viewport 안에 들어온 경우 'tada' 클래스를 추가
+            if (entry.intersectionRatio > 0) {
+                entry.target.classList.add('tada');
+            }
+          // 그 외의 경우 'tada' 클래스 제거
+            else {
+                entry.target.classList.remove('tada');
+            }
+        })
+    })
+    io.observe(section2)
 })
 
+    // let observer = new IntersectionObserver(function(entries) {
+    //     if(entries[0].isIntersecting) {
+    //         section2.style.position = 'fixed';
+    //     }
+    //     else {
+    //         section2.style.position = 'relative';
+    //     }
+    // }, { rootMargin: `-${section2Height}px 0px 0px 0px`, threshold: 1.0 });
 
 
 // sclBall 안에 모든 걸 넣어놓고 관리 -> 사실 이게 괜찮아 보이기는 함 일단 메모
