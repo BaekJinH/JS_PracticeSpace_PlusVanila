@@ -196,12 +196,13 @@ section .nextBtn svg:after { content:''; }
 }
 
 
-.section2 { height: 100vh; }
+.section2 {  }
+.section2.innerView {  }
 .section2 .left {  }
 .section2 .right {  }
 
 
-.section3 { height: 200vh; }
+.section3 {  }
 
 /* 풀페이지 */
 .fullContainer { display: none; }

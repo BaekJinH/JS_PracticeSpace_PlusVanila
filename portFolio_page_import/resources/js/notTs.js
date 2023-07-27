@@ -114,25 +114,54 @@ window.addEventListener('DOMContentLoaded' , () => {
     })
 
     // section2 스킬 프로그레스 파트
-    let section2 = document.querySelector('.section2');
-    let section2Height = section2.getBoundingClientRect().height;
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', function() {
+        const section2 = document.querySelector('.section2');
+        const section2Rect = section2.getBoundingClientRect();
+
+        // 아래로 스크롤할 때
+        if (lastScroll <= window.pageYOffset) {
+            if (section2Rect.top <= 0 && section2Rect.bottom > 0) {
+                section2.classList.add('innerView');
+            } else {
+                section2.classList.remove('innerView');
+            }
+        }
+        // 위로 스크롤할 때
+        else {
+            if (section2Rect.top <= 0 && section2Rect.bottom > 0) {
+                section2.classList.add('innerView');
+            } else {
+                section2.classList.remove('innerView');
+            }
+        }
+
+        // 스크롤 위치 업데이트
+        lastScroll = window.pageYOffset;
+    });
 
 
-    const io = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            console.log(entries) ;
-            // 관찰 대상이 viewport 안에 들어온 경우 'tada' 클래스를 추가
-            if (entry.intersectionRatio > 0) {
-                entry.target.classList.add('tada');
-            }
-            // 그 외의 경우 'tada' 클래스 제거
-            else {
-                entry.target.classList.remove('tada');
-            }
-        })
-    }, { rootMargin: '0px' , threshold: 0.0 }) ;
-    io.observe(section2)
 })
+
+    // let section2 = document.querySelector('.section2');
+    // let section2Height = section2.getBoundingClientRect().height;
+
+
+// const io = new IntersectionObserver(entries => {
+//     entries.forEach(entry => {
+//         console.log(entries) ;
+//         // 관찰 대상이 viewport 안에 들어온 경우 'tada' 클래스를 추가
+//         if (entry.intersectionRatio > 0) {
+//             entry.target.classList.add('tada');
+//         }
+//         // 그 외의 경우 'tada' 클래스 제거
+//         else {
+//             entry.target.classList.remove('tada');
+//         }
+//     })
+// }, { rootMargin: '0px' , threshold: 0.0 }) ;
+// io.observe(section2)
 
     // let observer = new IntersectionObserver(function(entries) {
     //     if(entries[0].isIntersecting) {
