@@ -117,6 +117,7 @@ window.addEventListener('DOMContentLoaded' , () => {
     let section2 = document.querySelector('.section2');
     let section2Height = section2.getBoundingClientRect().height;
 
+
     const io = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             console.log(entries) ;

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section:nth-child(1) { background-color: aliceblue; }
+        section:nth-child(2) { background-color: aqua; }
+        section:nth-child(3) { background-color: azure; }
+    </style>
+</head>
+<body>
+    <section></section>
+    <section class="section2"></section>
+    <section></section>
+    <script>
+
+    let sections = Array.from(document.querySelectorAll('section')) ;
+    sections.forEach( e => {
+        e.style.height = window.innerHeight + 'px'
+    })
+
+    // section2 스킬 프로그레스 파트
+    let section2 = document.querySelector('.section2');
+    let section2Height = section2.getBoundingClientRect().height;
+
+
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            console.log(entries) ;
+            // 관찰 대상이 viewport 안에 들어온 경우 'tada' 클래스를 추가
+            if (entry.intersectionRatio > 0) {
+                entry.target.classList.add('tada');
+            }
+            // 그 외의 경우 'tada' 클래스 제거
+            else {
+                entry.target.classList.remove('tada');
+            }
+        })
+    }, { rootMargin: '0px' , threshold: 0.0 }) ;
+    io.observe(section2)
+    </script>
+</body>
+</html>
