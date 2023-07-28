@@ -142,6 +142,48 @@ window.addEventListener('DOMContentLoaded' , () => {
     });
 
 
+
+    // LastPage 전환 효과
+    const triggerPage = document.querySelector('.container');
+    const last = document.querySelectorAll('.lastPage');
+
+    // 컨테이너 끝에 더미 요소 추가
+    const dummy = document.createElement('div');
+    dummy.style.height = '1px';
+    triggerPage.appendChild(dummy);
+
+    const callback = (entries, observer) => {
+        entries.forEach(async (entry) => {
+            if (entry.isIntersecting) {
+                // document.querySelector('html').style.overflow = 'hidden';
+                triggerPage.classList.add('pageEnd');
+                last.forEach(el => el.classList.add('trasEft'));
+                await new Promise (resolve => setTimeout(resolve , 2800));
+                // document.querySelector('html').style.overflow = 'auto';
+            } else {
+                triggerPage.classList.remove('pageEnd');
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(callback, { threshold: 1.0 });
+
+    // 더미 요소 관찰 시작
+    observer.observe(dummy);
+
+    // lastPage에 대한 별도의 observer
+    const lastPageCallback = (entries, observer) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+                last.forEach(el => el.classList.remove('trasEft'));
+            }
+        });
+    };
+
+    const lastPageObserver = new IntersectionObserver(lastPageCallback, { threshold: 0 });
+
+    last.forEach(el => lastPageObserver.observe(el));
+
 })
 
     // let section2 = document.querySelector('.section2');

@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "-webkit-mask-position",
+          "-webkit-mask-repeat",
+          "-webkit-mask-size"
+        ]
+      }
+    ]
+  }
+}
