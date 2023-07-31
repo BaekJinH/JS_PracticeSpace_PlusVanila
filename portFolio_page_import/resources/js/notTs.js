@@ -142,7 +142,6 @@ window.addEventListener('DOMContentLoaded' , () => {
     });
 
 
-
     // LastPage 전환 효과
     const triggerPage = document.querySelector('.container');
     const last = document.querySelectorAll('.lastPage');
