@@ -1,3 +1,5 @@
+const { resolve } = require("../../webpack.config.cjs");
+
 window.addEventListener('DOMContentLoaded' , () => {
 
 
@@ -183,6 +185,17 @@ window.addEventListener('DOMContentLoaded' , () => {
 
     last.forEach(el => lastPageObserver.observe(el));
 
+
+
+    // 마우스 클릭 드래그 ( 네이버 웨일 프로그램 기능 )
+    let isMouseDown = false;
+    let startX , startY ;
+
+    document.body.addEventListener('mousedown' , function ( e ) {
+        isMouseDown = true;
+        startX = e.clientX;
+        startY = e.clientY;
+    })
 })
 
     // let section2 = document.querySelector('.section2');
