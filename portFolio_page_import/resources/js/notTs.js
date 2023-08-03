@@ -1,5 +1,3 @@
-const { resolve } = require("../../webpack.config.cjs");
-
 window.addEventListener('DOMContentLoaded' , () => {
 
 
