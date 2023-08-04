@@ -1,11 +1,5 @@
 window.addEventListener('DOMContentLoaded' , () => {
-
-
-
-    // Scroll Spin Ball />
-
-
-    // // Canvas 백그라운드 코드를 이해하고 작성할 수 있게 되면 사용하기
+    // // Canvas 백그라운드 -> 코드를 이해하고 작성할 수 있게 되면 사용하기
     const waveEft = function (e ) {
         let canvas = document.querySelector('canvas') ;
         let ctx = canvas.getContext('2d') ;
@@ -34,6 +28,7 @@ window.addEventListener('DOMContentLoaded' , () => {
                 next: next,
                 current: current
             }
+
         })() ;
 
         function removeAnimation ( x , y ) {
@@ -45,8 +40,6 @@ window.addEventListener('DOMContentLoaded' , () => {
     }
 
     document.querySelector('canvas').addEventListener('click' , waveEft);
-
-
 
     // //  서브 서클
     let circle = document.querySelector('.subCircle')
@@ -104,16 +97,46 @@ window.addEventListener('DOMContentLoaded' , () => {
         else {
             throw `${document.querySelector('.dotCont')} Not Find`
         }
-
     });
 
 
+    // SVG Profile Hover Animation
+    let bloobNav = document.querySelector('.bloobNav') ;
+    function bloobOver () {
+        bloobNav.classList.add('a')
+    } ;
+
+    function bloobLeave () {
+        bloobNav.classList.remove('a')
+    } ;
+
+    document.querySelector('.profile path').addEventListener('mouseover' , bloobOver ) ;
+    document.querySelector('.profile path').addEventListener('mouseleave' , bloobLeave ) ;
+
+
+    // section2 스킬 프로그레스 파트
+    // section 뷰 height
     let sections = Array.from(document.querySelectorAll('section')) ;
     sections.forEach( e => {
         e.style.height = window.innerHeight + 'px'
     })
+    window.addEventListener('resize' , () => {
+        if ( sections ) {
+            try {
+                sections.forEach( e => {
+                    e.style.height = window.innerHeight + 'px'
+                })
+            }
+            catch ( err ) {
 
-    // section2 스킬 프로그레스 파트
+            }
+        }
+        else {
+
+        }
+
+    })
+
     let lastScroll = 0;
 
     window.addEventListener('scroll', function() {
@@ -186,14 +209,20 @@ window.addEventListener('DOMContentLoaded' , () => {
 
 
     // 마우스 클릭 드래그 ( 네이버 웨일 프로그램 기능 )
-    let isMouseDown = false;
-    let startX , startY ;
 
-    document.body.addEventListener('mousedown' , function ( e ) {
+
+    function whaleEft (e) {
+        let isMouseDown = false;
+        let startX , startY ;
+
         isMouseDown = true;
         startX = e.clientX;
         startY = e.clientY;
-    })
+    }
+
+    document.addEventListener('mousedown' , whaleEft)
+
+
 })
 
     // let section2 = document.querySelector('.section2');
