@@ -12,9 +12,8 @@ window.addEventListener('DOMContentLoaded' , () => {
         let circles = [];
         let randomTotal = [ Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255) ];
 
-
         let colorPicker = (function () {
-            let colors = `rgb( ${randomTotal[0]} , ${randomTotal[1]} , ${randomTotal[2]} )`  ;
+            let randomRGB = `rgb ( ${new Array(3).fill().map( e => Math.random() * 255).join(",")} )`
             let idx = 0;
 
             function next () {
