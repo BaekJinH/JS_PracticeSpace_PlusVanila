@@ -1,3 +1,5 @@
+const { default: addToCartDOM } = require("../../../ES6_ES12/JS_Basic_Two/29-comfy-store/final/src/cart/addToCartDOM");
+
 window.addEventListener('DOMContentLoaded' , () => {
     // // Canvas 백그라운드 -> 코드를 이해하고 작성할 수 있게 되면 사용하기
     const waveEft = function (e ) {
@@ -176,11 +178,9 @@ window.addEventListener('DOMContentLoaded' , () => {
     const callback = (entries, observer) => {
         entries.forEach(async (entry) => {
             if (entry.isIntersecting) {
-                // document.querySelector('html').style.overflow = 'hidden';
                 triggerPage.classList.add('pageEnd');
                 last.forEach(el => el.classList.add('trasEft'));
                 await new Promise (resolve => setTimeout(resolve , 2800));
-                // document.querySelector('html').style.overflow = 'auto';
             } else {
                 triggerPage.classList.remove('pageEnd');
             }
@@ -189,7 +189,7 @@ window.addEventListener('DOMContentLoaded' , () => {
 
     const observer = new IntersectionObserver(callback, { threshold: 1.0 });
 
-    // 더미 요소 관찰 시작
+    // 더미 요소 관찰
     observer.observe(dummy);
 
     // lastPage에 대한 별도의 observer
@@ -208,18 +208,42 @@ window.addEventListener('DOMContentLoaded' , () => {
 
 
     // 마우스 클릭 드래그 ( 네이버 웨일 프로그램 기능 )
-
-
-    function whaleEft (e) {
+    !(function () {
         let isMouseDown = false;
-        let startX , startY ;
+        let startX,startY ;
 
-        isMouseDown = true;
-        startX = e.clientX;
-        startY = e.clientY;
-    }
+        document.body.addEventListener('mousedown' , e => {
+            isMouseDown = true;
+            startX = e.clientX;
+            startY = e.clientY;
+        }) ;
 
-    document.addEventListener('mousedown' , whaleEft)
+        document.body.addEventListener('mousemove' , e => {
+            if ( isMouseDown ) {
+
+            }
+        }) ;
+
+        document.body.addEventListener('mouseup' , e => {
+            if ( isMouseDown ) {
+                const endX = e.clientX ;
+                const endY = e.clientY ;
+
+                const directionX = endX - startX ;
+                const directionY = endY - startY ;
+
+                if ( Math.abs(directionY) > Math.abs(directionX) ) {
+                    if ( directionY > 0 ) {
+
+                    }
+                }
+                else {
+                    // 좌우
+                }
+                isMouseDown = false;
+            }
+        })
+    })() ;
 
 
 })
