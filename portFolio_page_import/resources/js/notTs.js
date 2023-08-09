@@ -1,5 +1,3 @@
-const { default: addToCartDOM } = require("../../../ES6_ES12/JS_Basic_Two/29-comfy-store/final/src/cart/addToCartDOM");
-
 window.addEventListener('DOMContentLoaded' , () => {
     // // Canvas 백그라운드 -> 코드를 이해하고 작성할 수 있게 되면 사용하기
     const waveEft = function (e ) {
@@ -115,55 +113,86 @@ window.addEventListener('DOMContentLoaded' , () => {
     document.querySelector('.profile path').addEventListener('mouseleave' , bloobLeave ) ;
 
 
+
+
     // section2 스킬 프로그레스 파트
     // section 뷰 height
-    let sections = Array.from(document.querySelectorAll('section')) ;
-    sections.forEach( e => {
-        e.style.height = window.innerHeight + 'px'
-    })
-    window.addEventListener('resize' , () => {
-        if ( sections ) {
-            try {
-                sections.forEach( e => {
-                    e.style.height = window.innerHeight + 'px'
-                })
-            }
-            catch ( err ) {
+    !(function () {
+        let sections = Array.from(document.querySelectorAll('section'));
+        let skList = Array.from(document.querySelectorAll('.section2 .right li'));
+        let leftSkList = Array.from(document.querySelectorAll('.left .progsList li')) ;
+        let excepSection = document.querySelector('.section2');
 
+        // section1 nextbtn 클릭 시 section2 Top이 뷰포트 헤드로 가게
+        const nxtBtn = document.querySelector('#down-arrow') ;
+
+        nxtBtn.addEventListener('click' , e => {
+            window.scrollTo({behavior:'smooth' , top:excepSection.offsetTop })
+        })
+
+
+        skList.forEach(e => {
+            e.style.height = window.innerHeight + 'px';
+        });
+
+        sections.filter(section => section !== excepSection).forEach(e => {
+            e.style.height = window.innerHeight + 'px';
+        });
+
+        window.addEventListener('resize', () => {
+            sections.filter(section => section !== excepSection).forEach(e => {
+                e.style.height = window.innerHeight + 'px';
+            });
+        });
+
+        const skArray = Array.from(document.querySelectorAll('.skillPart .right li'));
+        let currentLiIndex = 0;
+        let isScrolling = false;
+
+        skArray[currentLiIndex].classList.add('current');
+        leftSkList[currentLiIndex].classList.add('current');
+
+        function moveToLi(index) {
+            if (index >= 0 && index < skArray.length) {
+                // right li에 대한 클래스 제거 및 추가
+                skArray[currentLiIndex].classList.remove('current');
+                skArray[index].classList.add('current');
+
+                // left li에 대한 클래스 제거 및 추가
+                leftSkList[currentLiIndex].classList.remove('current');
+                leftSkList[index].classList.add('current');  // index를 사용하도록 수정
+
+                const targetTop = skArray[index].getBoundingClientRect().top + window.pageYOffset;
+
+                window.scrollTo({ top: targetTop, behavior: 'smooth' });
+                currentLiIndex = index;
             }
         }
-        else {
 
-        }
+        window.addEventListener('wheel', function (e) {
+            if (isScrolling) return;
 
-    })
+            const section2 = document.querySelector('.section2');
+            const section2Rect = section2.getBoundingClientRect();
 
-    let lastScroll = 0;
+            if (section2Rect.top <= 0 && section2Rect.bottom >= window.innerHeight) {
+                isScrolling = true;
 
-    window.addEventListener('scroll', function() {
-        const section2 = document.querySelector('.section2');
-        const section2Rect = section2.getBoundingClientRect();
+                if (e.deltaY > 0 && currentLiIndex < skArray.length - 1) {
+                    moveToLi(currentLiIndex + 1);
+                } else if (e.deltaY < 0 && currentLiIndex > 0) {
+                    moveToLi(currentLiIndex - 1);
+                }
 
-        // 아래로 스크롤할 때
-        if (lastScroll <= window.pageYOffset) {
-            if (section2Rect.top <= 0 && section2Rect.bottom > 0) {
-                section2.classList.add('innerView');
-            } else {
-                section2.classList.remove('innerView');
+                e.preventDefault();
+
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 500);
             }
-        }
-        // 위로 스크롤할 때
-        else {
-            if (section2Rect.top <= 0 && section2Rect.bottom > 0) {
-                section2.classList.add('innerView');
-            } else {
-                section2.classList.remove('innerView');
-            }
-        }
+        }, { passive: false });
+    })();
 
-        // 스크롤 위치 업데이트
-        lastScroll = window.pageYOffset;
-    });
 
 
     // LastPage 전환 효과
