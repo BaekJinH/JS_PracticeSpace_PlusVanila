@@ -179,7 +179,8 @@ section .nextBtn svg:after { content:''; }
 
 /* Normal Contents Pages */
 .section1 { width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; flex-flow:column wrap; background:#eee;}
-.section1 .profile { display: block; width: calc(min(50% , 500px)); position: relative;}
+.section1 .profile { display: block; width: calc(min(50% , 500px)); position: relative; transition: all .5s; transition:cubic-bezier(0.975, -0.005, 0, 1.02); transform:scale(1) }
+.section1 .profile.scale { transform:scale(1.5) }
 .section1 .leftInfo { width:100%; height: auto; display: flex; align-items: center; justify-content:center; flex-flow: column wrap;}
 .section1 .switchEffect { font-size:60px; font-weight: bold;  }
 .section1 ul { text-align: center; }
@@ -199,7 +200,7 @@ section .nextBtn svg:after { content:''; }
 
 
 /* section2 */
-.section2 { position: relative; transform: scale(1); display: flex; height: auto; }
+.section2 { position: relative; display: flex; height: auto; }
 .section2 .left { position:sticky; width: 40%; height: 100vh; top:0;}
 .section2 .right { height: auto; width: 60%; }
 .section2 > div { transition:all .5s cubic-bezier(0.975, -0.005, 0, 1.02);  }

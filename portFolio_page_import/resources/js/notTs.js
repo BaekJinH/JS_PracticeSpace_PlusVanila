@@ -1,7 +1,35 @@
 window.addEventListener('DOMContentLoaded' , () => {
+    document.addEventListener('mousemove ' , ( e ) => {
+        e.preventDefault() ;
+    },
+    isPassive() ? {
+        capture: false,
+        passive: false,
+    }:
+        false
+    );
+
+    function isPassive () {
+        let supportPasiiveOption = false;
+
+        try {
+            addEventListener (
+                "test" ,
+                null ,
+                Object, defineProperty({} , "passive" , {
+                    get: function () {
+                        supportPasiiveOption = true
+                    }
+                })
+            )
+        } catch ( e ) {}
+        return supportPasiiveOption ;
+    }
+
+
     // // Canvas 백그라운드 -> 코드를 이해하고 작성할 수 있게 되면 사용하기
     const waveEft = function (e ) {
-        let canvas = document.querySelector('canvas') ;
+        let canvas = document.querySelector('#canvas') ;
         let ctx = canvas.getContext('2d') ;
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -18,10 +46,11 @@ window.addEventListener('DOMContentLoaded' , () => {
 
             function next () {
                 idx = idx ++ < colors.length - 1 ? idx : 0;
+                console.log(randomRGB) ;
                 return colors[idx] ;
             }
             function current () {
-                return colors[idx]
+                return colors[idx] ;
             }
             return {
                 next: next,
@@ -29,7 +58,6 @@ window.addEventListener('DOMContentLoaded' , () => {
             }
 
         })() ;
-
         function removeAnimation ( x , y ) {
             let idx = animation.indexOf(animation) ;
             if ( idx > -1 ) {
@@ -38,28 +66,10 @@ window.addEventListener('DOMContentLoaded' , () => {
         }
     }
 
-    document.querySelector('canvas').addEventListener('click' , waveEft);
-
-    // //  서브 서클
-    let circle = document.querySelector('.subCircle')
-    if ( circle ) {
-        circle.addEventListener('click' , (e) => {
-
-        })
-    }
+    document.querySelector('#canvas').addEventListener('click' , waveEft);
 
 
-    // // 스크롤
-    window.addEventListener('scroll' , function (e) {
-        let currTop = window.scrollY ;
-        // console.log(currTop)
-        // if ( currTop >= otherTop ) {
-
-        // }
-    })
-
-
-    // // 풀페이지 전환 버튼
+    // 풀페이지 전환 버튼
     function transScreen (  ) {
         let changeBtn = document.querySelector('.screenChange') ;
         let body = document.querySelector('body') ;
@@ -100,13 +110,13 @@ window.addEventListener('DOMContentLoaded' , () => {
 
 
     // SVG Profile Hover Animation
-    let bloobNav = document.querySelector('.bloobNav') ;
+    let bbPath = document.querySelector('.profile path') ;
     function bloobOver () {
-        bloobNav.classList.add('a')
+        bbPath.classList.add('scale')
     } ;
 
     function bloobLeave () {
-        bloobNav.classList.remove('a')
+        bbPath.classList.remove('scale')
     } ;
 
     document.querySelector('.profile path').addEventListener('mouseover' , bloobOver ) ;
@@ -194,7 +204,6 @@ window.addEventListener('DOMContentLoaded' , () => {
     })();
 
 
-
     // LastPage 전환 효과
     const triggerPage = document.querySelector('.container');
     const last = document.querySelectorAll('.lastPage');
@@ -235,11 +244,12 @@ window.addEventListener('DOMContentLoaded' , () => {
     last.forEach(el => lastPageObserver.observe(el));
 
 
-
     // 마우스 클릭 드래그 ( 네이버 웨일 프로그램 기능 )
     !(function () {
         let isMouseDown = false;
         let startX,startY ;
+        let pathColor = `#333333` ;
+
 
         document.body.addEventListener('mousedown' , e => {
             isMouseDown = true;
@@ -267,7 +277,9 @@ window.addEventListener('DOMContentLoaded' , () => {
                     }
                 }
                 else {
-                    // 좌우
+                    if  ( directionX > 0 ) {
+
+                    }
                 }
                 isMouseDown = false;
             }
