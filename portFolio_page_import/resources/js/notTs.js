@@ -1,3 +1,4 @@
+
 window.addEventListener('DOMContentLoaded' , () => {
     document.addEventListener('mousemove ' , ( e ) => {
         e.preventDefault() ;
@@ -28,7 +29,7 @@ window.addEventListener('DOMContentLoaded' , () => {
 
 
     // // Canvas 백그라운드 -> 코드를 이해하고 작성할 수 있게 되면 사용하기
-    const waveEft = function (e ) {
+    const waveEft = function ( e ) {
         let canvas = document.querySelector('#canvas') ;
         let ctx = canvas.getContext('2d') ;
         canvas.width = window.innerWidth;
@@ -42,6 +43,7 @@ window.addEventListener('DOMContentLoaded' , () => {
 
         let colorPicker = (function () {
             let randomRGB = `rgb ( ${new Array(3).fill().map( e => Math.random() * 255).join(",")} )`
+            console.log(randomRGB)
             let idx = 0;
 
             function next () {
@@ -58,6 +60,7 @@ window.addEventListener('DOMContentLoaded' , () => {
             }
 
         })() ;
+
         function removeAnimation ( x , y ) {
             let idx = animation.indexOf(animation) ;
             if ( idx > -1 ) {
@@ -132,13 +135,23 @@ window.addEventListener('DOMContentLoaded' , () => {
         let skList = Array.from(document.querySelectorAll('.section2 .right li'));
         let leftSkList = Array.from(document.querySelectorAll('.left .progsList li')) ;
         let excepSection = document.querySelector('.section2');
-
+        let detailSk = {
+            html: 70,
+            css: 70,
+            js: 50,
+            ts: 10,
+            jq: 60,
+            vue: 20,
+        };
+        let arrIdx = 0;
         // section1 nextbtn 클릭 시 section2 Top이 뷰포트 헤드로 가게
         const nxtBtn = document.querySelector('#down-arrow') ;
 
         nxtBtn.addEventListener('click' , e => {
-            window.scrollTo({behavior:'smooth' , top:excepSection.offsetTop })
-        })
+            window.scrollTo({behavior:'smooth' , top:excepSection.offsetTop }) ;
+            const skillKeys = Object.keys(detailSk[0]);
+            console.log(skillKeys[0], detailSk[0][skillKeys[0]]);
+        }) ;
 
 
         skList.forEach(e => {
@@ -164,6 +177,9 @@ window.addEventListener('DOMContentLoaded' , () => {
 
         function moveToLi(index) {
             if (index >= 0 && index < skArray.length) {
+                const skillKeys = Object.keys(detailSk);  // detailSk의 모든 속성 이름을 배열로 가져옵니다.
+                console.log(skillKeys[index], detailSk[skillKeys[index]]);
+
                 // right li에 대한 클래스 제거 및 추가
                 skArray[currentLiIndex].classList.remove('current');
                 skArray[index].classList.add('current');
@@ -186,6 +202,11 @@ window.addEventListener('DOMContentLoaded' , () => {
             const section2Rect = section2.getBoundingClientRect();
 
             if (section2Rect.top <= 0 && section2Rect.bottom >= window.innerHeight) {
+                if (currentLiIndex === 0 && !isScrolling) {
+                    const skillKeys = Object.keys(detailSk);
+                    console.log(skillKeys[currentLiIndex], detailSk[skillKeys[currentLiIndex]]);
+                }
+
                 isScrolling = true;
 
                 if (e.deltaY > 0 && currentLiIndex < skArray.length - 1) {
@@ -246,10 +267,13 @@ window.addEventListener('DOMContentLoaded' , () => {
 
     // 마우스 클릭 드래그 ( 네이버 웨일 프로그램 기능 )
     !(function () {
+        let cs = document.querySelector('#pathCanvas') ;
         let isMouseDown = false;
         let startX,startY ;
         let pathColor = `#333333` ;
-
+        let pathWd = `3` ;
+        let round = `50` ;
+        let time = 0;
 
         document.body.addEventListener('mousedown' , e => {
             isMouseDown = true;
@@ -285,7 +309,6 @@ window.addEventListener('DOMContentLoaded' , () => {
             }
         })
     })() ;
-
 
 })
 
