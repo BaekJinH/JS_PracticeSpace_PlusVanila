@@ -135,6 +135,14 @@ window.addEventListener('DOMContentLoaded' , () => {
         let skList = Array.from(document.querySelectorAll('.section2 .right li'));
         let leftSkList = Array.from(document.querySelectorAll('.left .progsList li')) ;
         let excepSection = document.querySelector('.section2');
+        // const detailSk = new Map(Object.entries({
+        //     html: 70,
+        //     css: 70,
+        //     js: 50,
+        //     ts: 10,
+        //     jq: 60,
+        //     vue: 20,
+        // }))
         let detailSk = {
             html: 70,
             css: 70,
