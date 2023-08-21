@@ -52,7 +52,7 @@ header { height: 80px; position: fixed; width: 100%; z-index: 10;}
 
 
 /* wrapper + newView */
-.container { position: relative; background: linear-gradient(180deg , #ffe5ec ,#ffc2d1, #ffb3c6 , #ff8fab , #fb6f92) }
+.container { position: relative; /* background: linear-gradient(180deg , #ffe5ec ,#ffc2d1, #ffb3c6 , #ff8fab , #fb6f92) */ }
 /* section2 sticky 때문에 overflow 빼야 함 */
 /* #wrapper { transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);  overflow: hidden; width: 100%; position: relative;} */
 #wrapper { transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);  width: 100%; position: relative;}
@@ -199,29 +199,41 @@ section .nextBtn svg:after { content:''; }
 }
 
 
-/* section2 */
-.section2 { position: relative; display: flex; height: auto; }
-.section2 .left { position:sticky; width: 40%; height: 100vh; top:0;}
-.section2 .right { height: auto; width: 60%; }
-.section2 > div { transition:all .5s cubic-bezier(0.975, -0.005, 0, 1.02);  }
-.section2 .left ul { display: flex; flex-flow: column wrap; justify-content: center; }
-.section2 .left ul li { width: 100%; max-width:450px; display: flex; flex-flow:row wrap; }
-.section2 .right ul { display: flex; flex-flow:column wrap; width: 100%;  }
+/* introduce */
+.introduce { display: flex; }
+.introduce > div { flex: 1 33% ; display: flex; flex-flow: column wrap;  }
+.introduce ul li  { opacity: 0 ; background:black; width:100px; height: 100px; }
+/* introduce /> */
+
+
+/* skillpart */
+.skillpart { position: relative; display: flex; height: auto; }
+.skillpart .right { height: auto; width: 60%; }
+.skillpart .right ul { display: flex; flex-flow:column wrap; width: 100%;  }
+.skillpart > div { transition:all .5s cubic-bezier(0.975, -0.005, 0, 1.02);  }
+
+.skillpart .left { position:sticky; width: 40%; height: 100vh; top:0;}
+.skillpart .progsList { display: flex; flex-flow: column wrap; justify-content: center; }
+.skillpart .progsList li { width: 100%; max-width:450px; display: flex; flex-flow:row wrap; position: relative; transition:all .3s;}
+.skillpart .progsList li span { position: relative; transition:all .3s; }
+.skillpart .progsList li span:after { content:'' ; display: block; position: absolute; top:100%; left:0; width: 0%; height: 3px; background:#123; border-radius: 50px;  transition:all .3s;}
+.skillpart .progsList li.current span:after {  width: 100%;   }
+.skillpart .progsList li.current .bar { width: 0; transition: all 1s ease-in-out; background-color: #123; }
 
 /* test */
-.section2 .right ul li:nth-child(1) { background-color:#252525 ; }
-.section2 .right ul li:nth-child(2) { background-color:#5b5b5b ; }
-.section2 .right ul li:nth-child(3) { background-color:antiquewhite ; }
-.section2 .right ul li:nth-child(4) { background-color:chartreuse ; }
-.section2 .right ul li:nth-child(5) { background-color:antiquewhite ; }
-.section2 .right ul li:nth-child(6) { background-color:aqua ; }
+.skillpart .right ul li:nth-child(1) { background-color:#252525 ; }
+.skillpart .right ul li:nth-child(2) { background-color:#5b5b5b ; }
+.skillpart .right ul li:nth-child(3) { background-color:antiquewhite ; }
+.skillpart .right ul li:nth-child(4) { background-color:chartreuse ; }
+.skillpart .right ul li:nth-child(5) { background-color:antiquewhite ; }
+.skillpart .right ul li:nth-child(6) { background-color:aqua ; }
 
 
 
-.section2.innerView { display: flex; }
-.section2.innerView .left{ width: clamp(35%, calc(50vw - 200px), 40%) ; }
-.section2.innerView .right{ width: 100%;}
-.section2.innerView .right li {  }
+.skillpart.innerView { display: flex; }
+.skillpart.innerView .left{ width: clamp(35%, calc(50vw - 200px), 40%) ; }
+.skillpart.innerView .right{ width: 100%;}
+
 /* section2 /> */
 
 
@@ -234,7 +246,7 @@ section .nextBtn svg:after { content:''; }
 /* .container.pageEnd { animation:oldPage 2.8s cubic-bezier(0.975, -0.005, 0, 1.02) forwards; } */
 
 
-.lastPage { width: 100%;  height: 300vh; overflow: hidden; position: relative;}
+.lastPage { width: 100%;  height: 100vh; overflow: hidden; position: relative;}
 .lastPage .svgImg { width: 100%; height: 100vh; animation:unset ; position: absolute; }
 .lastPage svg { width: 100%; height: 100%; }
 

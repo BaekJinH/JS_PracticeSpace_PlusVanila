@@ -1,4 +1,3 @@
-
 window.addEventListener('DOMContentLoaded' , () => {
     document.addEventListener('mousemove ' , ( e ) => {
         e.preventDefault() ;
@@ -127,14 +126,60 @@ window.addEventListener('DOMContentLoaded' , () => {
 
 
 
+    // introduce
+    !(function () {
+        const introduce = document.querySelector('.introduce');
+        const fadeParent = Array.from(document.querySelectorAll('.introduce > div:not(.animeProf)'));
+        let fadeEle = [];
 
-    // section2 스킬 프로그레스 파트
+        fadeParent.forEach(parent => {
+            const lis = Array.from(parent.querySelectorAll('li'));
+            fadeEle = fadeEle.concat(lis);
+        });
+
+        fadeEle.forEach(ele => {
+            ele.style.opacity = 0;
+        });
+
+        const fadeIn = (element, delay) => {
+            setTimeout(() => {
+                element.style.opacity = 1;
+                element.style.transition = 'all 1s ease-in-out';
+            }, delay);
+        };
+
+        const callback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    fadeEle.forEach((ele, idx) => {
+                        fadeIn(ele, idx * 300);
+                    });
+                }
+            });
+        };
+
+
+        const observerOptions = {
+            threshold: 0.85,
+            rootMargin: '0px 0px -50px 0px',
+        };
+
+        const observer = new IntersectionObserver(callback, observerOptions);
+        observer.observe(introduce);
+    })();
+
+
+    // introduce />
+
+
+
+    // skillpart 스킬 프로그레스 파트
     // section 뷰 height
     !(function () {
         let sections = Array.from(document.querySelectorAll('section'));
-        let skList = Array.from(document.querySelectorAll('.section2 .right li'));
+        let skList = Array.from(document.querySelectorAll('.skillPart .right li'));
         let leftSkList = Array.from(document.querySelectorAll('.left .progsList li')) ;
-        let excepSection = document.querySelector('.section2');
+        let excepSection = document.querySelector('.skillPart');
         // const detailSk = new Map(Object.entries({
         //     html: 70,
         //     css: 70,
@@ -144,21 +189,21 @@ window.addEventListener('DOMContentLoaded' , () => {
         //     vue: 20,
         // }))
         let detailSk = {
-            html: 70,
-            css: 70,
-            js: 50,
-            ts: 10,
-            jq: 60,
-            vue: 20,
+            skHtml: 70,
+            skCss: 70,
+            skJs: 50,
+            skTs: 10,
+            skJq: 60,
+            skVue: 20,
         };
-        let arrIdx = 0;
-        // section1 nextbtn 클릭 시 section2 Top이 뷰포트 헤드로 가게
+        let count = 0;
+        // section1 nextbtn 클릭 시 skillpart Top이 뷰포트 헤드로 가게
         const nxtBtn = document.querySelector('#down-arrow') ;
 
         nxtBtn.addEventListener('click' , e => {
             window.scrollTo({behavior:'smooth' , top:excepSection.offsetTop }) ;
-            const skillKeys = Object.keys(detailSk[0]);
-            console.log(skillKeys[0], detailSk[0][skillKeys[0]]);
+            const skillKeys = Object.keys(detailSk);
+            console.log(skillKeys[0], detailSk[skillKeys[0]]);
         }) ;
 
 
@@ -186,6 +231,11 @@ window.addEventListener('DOMContentLoaded' , () => {
         function moveToLi(index) {
             if (index >= 0 && index < skArray.length) {
                 const skillKeys = Object.keys(detailSk);  // detailSk의 모든 속성 이름을 배열로 가져옵니다.
+                const currentSkillKey = skillKeys[index];
+                const currentSkillValue = detailSk[currentSkillKey];
+                const currentBar = document.querySelector(`.left .progsList .${currentSkillKey} .bar`);
+
+                currentBar.style.width = currentSkillValue + "%";
                 console.log(skillKeys[index], detailSk[skillKeys[index]]);
 
                 // right li에 대한 클래스 제거 및 추가
@@ -206,10 +256,10 @@ window.addEventListener('DOMContentLoaded' , () => {
         window.addEventListener('wheel', function (e) {
             if (isScrolling) return;
 
-            const section2 = document.querySelector('.section2');
-            const section2Rect = section2.getBoundingClientRect();
+            const skillpart = document.querySelector('.skillPart');
+            const skillpartRect = skillpart.getBoundingClientRect();
 
-            if (section2Rect.top <= 0 && section2Rect.bottom >= window.innerHeight) {
+            if (skillpartRect.top <= 0 && skillpartRect.bottom >= window.innerHeight) {
                 if (currentLiIndex === 0 && !isScrolling) {
                     const skillKeys = Object.keys(detailSk);
                     console.log(skillKeys[currentLiIndex], detailSk[skillKeys[currentLiIndex]]);
@@ -320,8 +370,8 @@ window.addEventListener('DOMContentLoaded' , () => {
 
 })
 
-    // let section2 = document.querySelector('.section2');
-    // let section2Height = section2.getBoundingClientRect().height;
+    // let skillpart = document.querySelector('.skillpart');
+    // let skillpartHeight = skillpart.getBoundingClientRect().height;
 
 
 // const io = new IntersectionObserver(entries => {
@@ -337,16 +387,16 @@ window.addEventListener('DOMContentLoaded' , () => {
 //         }
 //     })
 // }, { rootMargin: '0px' , threshold: 0.0 }) ;
-// io.observe(section2)
+// io.observe(skillpart)
 
     // let observer = new IntersectionObserver(function(entries) {
     //     if(entries[0].isIntersecting) {
-    //         section2.style.position = 'fixed';
+    //         skillpart.style.position = 'fixed';
     //     }
     //     else {
-    //         section2.style.position = 'relative';
+    //         skillpart.style.position = 'relative';
     //     }
-    // }, { rootMargin: `-${section2Height}px 0px 0px 0px`, threshold: 1.0 });
+    // }, { rootMargin: `-${skillpartHeight}px 0px 0px 0px`, threshold: 1.0 });
 
 
 // sclBall 안에 모든 걸 넣어놓고 관리 -> 사실 이게 괜찮아 보이기는 함 일단 메모
