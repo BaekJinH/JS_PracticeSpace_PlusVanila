@@ -5,6 +5,10 @@
 
 html {  scroll-behavior: smooth; }
 
+body::-webkit-scrollbar { width: 15px; }
+body::-webkit-scrollbar-thumb  { background: rgb(228, 162, 175); border-radius: 50px; }
+body::-webkit-scrollbar-track  { background: rgba(220, 20, 60, .1) ; }
+
 /* intro */
 .loadingPage { width: 100vw ; height: 100vh ; background-color:#5b5b5b; color:#fff; position:fixed; z-index: 12; display: flex; align-items: center; justify-content: center; font-size:30px ; font-weight:bold; pointer-events: none; }
 .loadingPage .txtEffect { animation: bounce 1s infinite ease-in-out; }
@@ -202,37 +206,37 @@ section .nextBtn svg:after { content:''; }
 /* introduce */
 .introduce { display: flex; }
 .introduce > div { flex: 1 33% ; display: flex; flex-flow: column wrap;  }
-.introduce ul li  { opacity: 0 ; background:black; width:100px; height: 100px; }
+.introduce ul li  { opacity: 0 ; background:black; width:100px; height: 100px; transform:translateX(100px) }
 /* introduce /> */
 
 
 /* skillpart */
-.skillpart { position: relative; display: flex; height: auto; }
-.skillpart .right { height: auto; width: 60%; }
-.skillpart .right ul { display: flex; flex-flow:column wrap; width: 100%;  }
-.skillpart > div { transition:all .5s cubic-bezier(0.975, -0.005, 0, 1.02);  }
+.skillPart { position: relative; display: flex; height: auto; }
+.skillPart .right { height: auto; width: 60%; }
+.skillPart .right ul { display: flex; flex-flow:column wrap; width: 100%;  }
+.skillPart > div { transition:all .5s cubic-bezier(0.975, -0.005, 0, 1.02);  }
 
-.skillpart .left { position:sticky; width: 40%; height: 100vh; top:0;}
-.skillpart .progsList { display: flex; flex-flow: column wrap; justify-content: center; }
-.skillpart .progsList li { width: 100%; max-width:450px; display: flex; flex-flow:row wrap; position: relative; transition:all .3s;}
-.skillpart .progsList li span { position: relative; transition:all .3s; }
-.skillpart .progsList li span:after { content:'' ; display: block; position: absolute; top:100%; left:0; width: 0%; height: 3px; background:#123; border-radius: 50px;  transition:all .3s;}
-.skillpart .progsList li.current span:after {  width: 100%;   }
-.skillpart .progsList li.current .bar { width: 0; transition: all 1s ease-in-out; background-color: #123; }
+.skillPart .left { position:sticky; width: 40%; height: 100vh; top:0;}
+.skillPart .progsList { display: flex; flex-flow: column wrap; justify-content: center; }
+.skillPart .progsList li { width: 100%; max-width:450px; display: flex; flex-flow:row wrap; position: relative; transition:all .3s;}
+.skillPart .progsList li span { position: relative; transition:all .3s; }
+.skillPart .progsList li span:after { content:'' ; display: block; position: absolute; top:100%; left:0; width: 0%; height: 3px; background:#123; border-radius: 50px;  transition:all .3s;}
+.skillPart .progsList li.current span:after {  width: 100%;   }
+.skillPart .progsList li.current .bar { width: 0; transition: all 1s ease-in-out; background-color: #123; }
 
 /* test */
-.skillpart .right ul li:nth-child(1) { background-color:#252525 ; }
-.skillpart .right ul li:nth-child(2) { background-color:#5b5b5b ; }
-.skillpart .right ul li:nth-child(3) { background-color:antiquewhite ; }
-.skillpart .right ul li:nth-child(4) { background-color:chartreuse ; }
-.skillpart .right ul li:nth-child(5) { background-color:antiquewhite ; }
-.skillpart .right ul li:nth-child(6) { background-color:aqua ; }
+.skillPart .right ul li:nth-child(1) { background-color:#252525 ; }
+.skillPart .right ul li:nth-child(2) { background-color:#5b5b5b ; }
+.skillPart .right ul li:nth-child(3) { background-color:antiquewhite ; }
+.skillPart .right ul li:nth-child(4) { background-color:chartreuse ; }
+.skillPart .right ul li:nth-child(5) { background-color:antiquewhite ; }
+.skillPart .right ul li:nth-child(6) { background-color:aqua ; }
 
 
 
-.skillpart.innerView { display: flex; }
-.skillpart.innerView .left{ width: clamp(35%, calc(50vw - 200px), 40%) ; }
-.skillpart.innerView .right{ width: 100%;}
+.skillPart.innerView { display: flex; }
+.skillPart.innerView .left{ width: clamp(35%, calc(50vw - 200px), 40%) ; }
+.skillPart.innerView .right{ width: 100%;}
 
 /* section2 /> */
 

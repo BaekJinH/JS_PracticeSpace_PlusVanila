@@ -131,7 +131,21 @@ window.addEventListener('DOMContentLoaded' , () => {
         const introduce = document.querySelector('.introduce');
         const fadeParent = Array.from(document.querySelectorAll('.introduce > div:not(.animeProf)'));
         let fadeEle = [];
+        let content = `새로운 것을 추구하는 개발자입니다. :)`;
+        let text = document.querySelector('.typeWriter');
+        let txtIdx = 0;
+        let typingInterval;  // setInterval을 저장할 변수
 
+        // 타이핑 효과
+        function typing() {
+            if (txtIdx >= content.length) {
+                text.textContent = '';
+                txtIdx = 0;
+            }
+            text.textContent += content[txtIdx++];
+        }
+
+        // fade 효과 관련 스크립트
         fadeParent.forEach(parent => {
             const lis = Array.from(parent.querySelectorAll('li'));
             fadeEle = fadeEle.concat(lis);
@@ -145,19 +159,29 @@ window.addEventListener('DOMContentLoaded' , () => {
             setTimeout(() => {
                 element.style.opacity = 1;
                 element.style.transition = 'all 1s ease-in-out';
+                element.style.transform = `translateX(0px)`;
             }, delay);
         };
 
         const callback = (entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    if (!typingInterval) {
+                        typingInterval = setInterval(typing, 200);
+                    }
                     fadeEle.forEach((ele, idx) => {
                         fadeIn(ele, idx * 300);
                     });
+                } else {
+                    if (typingInterval) {
+                        clearInterval(typingInterval);
+                        typingInterval = null;
+                        text.textContent = '' ;
+                        txtIdx = 0;
+                    }
                 }
             });
         };
-
 
         const observerOptions = {
             threshold: 0.85,
@@ -167,6 +191,7 @@ window.addEventListener('DOMContentLoaded' , () => {
         const observer = new IntersectionObserver(callback, observerOptions);
         observer.observe(introduce);
     })();
+
 
 
     // introduce />
