@@ -96,8 +96,8 @@ window.addEventListener('DOMContentLoaded' , () => {
 
 
     // // 풀페이지
-    const contentLeng = Array.from(document.querySelectorAll('.fullContainer > .content'));
-    contentLeng.forEach((el , index ) => {
+    const CONTENT_LENG = Array.from(document.querySelectorAll('.fullContainer > .content'));
+    CONTENT_LENG.forEach((el , index ) => {
         let dot = document.createElement('div') ;
         let scroll = window.scrollY ;
         dot.className = `dot` ;
@@ -128,8 +128,8 @@ window.addEventListener('DOMContentLoaded' , () => {
 
     // introduce
     !(function () {
-        const introduce = document.querySelector('.introduce');
-        const fadeParent = Array.from(document.querySelectorAll('.introduce > div:not(.animeProf)'));
+        const INTRODUCE = document.querySelector('.introduce');
+        const FADE_EFFECT = Array.from(document.querySelectorAll('.introduce > div:not(.animeProf)'));
         let fadeEle = [];
         let content = `새로운 것을 추구하는 개발자입니다. :)`;
         let text = document.querySelector('.typeWriter');
@@ -146,9 +146,9 @@ window.addEventListener('DOMContentLoaded' , () => {
         }
 
         // fade 효과 관련 스크립트
-        fadeParent.forEach(parent => {
-            const lis = Array.from(parent.querySelectorAll('li'));
-            fadeEle = fadeEle.concat(lis);
+        FADE_EFFECT.forEach(parent => {
+            const LIS = Array.from(parent.querySelectorAll('li'));
+            fadeEle = fadeEle.concat(LIS);
         });
 
         fadeEle.forEach(ele => {
@@ -187,9 +187,8 @@ window.addEventListener('DOMContentLoaded' , () => {
             threshold: 0.85,
             rootMargin: '0px 0px -50px 0px',
         };
-
         const observer = new IntersectionObserver(callback, observerOptions);
-        observer.observe(introduce);
+        observer.observe(INTRODUCE);
     })();
 
 
@@ -205,14 +204,6 @@ window.addEventListener('DOMContentLoaded' , () => {
         let skList = Array.from(document.querySelectorAll('.skillPart .right li'));
         let leftSkList = Array.from(document.querySelectorAll('.left .progsList li')) ;
         let excepSection = document.querySelector('.skillPart');
-        // const detailSk = new Map(Object.entries({
-        //     html: 70,
-        //     css: 70,
-        //     js: 50,
-        //     ts: 10,
-        //     jq: 60,
-        //     vue: 20,
-        // }))
         let detailSk = {
             skHtml: 70,
             skCss: 70,
@@ -222,6 +213,23 @@ window.addEventListener('DOMContentLoaded' , () => {
             skVue: 20,
         };
         let count = 0;
+        const SKILL_IMG = [
+            {
+                bg: `background:url()` ,
+            },
+            {
+                bg: `background:url()` ,
+            },
+            {
+                bg: `background:url()` ,
+            },
+            {
+                bg: `background:url()` ,
+            },
+            {
+                bg: `background:url()` ,
+            },
+        ]
         // section1 nextbtn 클릭 시 skillpart Top이 뷰포트 헤드로 가게
         const nxtBtn = document.querySelector('#down-arrow') ;
 
@@ -308,6 +316,56 @@ window.addEventListener('DOMContentLoaded' , () => {
     })();
 
 
+    // WORK_LIST / section4
+    !(function () {
+        const OBSERV_SECTION = document.querySelector('.workList') ;
+        const WORK_LIST = [
+            {
+                url:'',
+                bg:'background:url()',
+                source:'',
+                client:'',
+                descript:'',
+                date:'2023-02',
+            },
+            {
+                url:'',
+                bg:'background:url()',
+                source:'',
+                client:'',
+                descript:'',
+                date:'',
+            },
+            {
+                url:'',
+                bg:'background:url()',
+                source:'',
+                client:'',
+                descript:'',
+                date:'',
+            },
+            {
+                url:'',
+                bg:'background:url()',
+                source:'',
+                client:'',
+                descript:'',
+                date:'',
+            },
+            {
+                url:'',
+                bg:'background:url()',
+                source:'',
+                client:'',
+                descript:'',
+                date:'',
+            },
+        ] ;
+        const LIST_ELE = Array.from(document.querySelectorAll('')) ;
+
+    })() ;
+
+
     // LastPage 전환 효과
     const triggerPage = document.querySelector('.container');
     const last = document.querySelectorAll('.lastPage');
@@ -392,6 +450,7 @@ window.addEventListener('DOMContentLoaded' , () => {
             }
         })
     })() ;
+
 
 })
 
