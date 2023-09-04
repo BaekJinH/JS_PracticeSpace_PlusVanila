@@ -1,4 +1,10 @@
 window.addEventListener('DOMContentLoaded' , () => {
+    // 리팩토링해서 DOM 밖으로 빼기
+    // initMouseMove();
+    // initCanvas();
+    // initScreenChange();
+
+
     document.addEventListener('mousemove ' , ( e ) => {
         e.preventDefault() ;
     },
@@ -361,28 +367,28 @@ window.addEventListener('DOMContentLoaded' , () => {
                 date:'',
             },
         ] ;
-        const LIST_ELE = Array.from(document.querySelectorAll('')) ;
+        // const LIST_ELE = Array.from(document.querySelectorAll('')) ;
 
     })() ;
 
 
     // LastPage 전환 효과
-    const triggerPage = document.querySelector('.container');
-    const last = document.querySelectorAll('.lastPage');
+    const TRIGGERPAGE = document.querySelector('.container');
+    const LAST = document.querySelectorAll('.lastPage');
 
     // 컨테이너 끝에 더미 요소 추가
-    const dummy = document.createElement('div');
-    dummy.style.height = '1px';
-    triggerPage.appendChild(dummy);
+    const DUMMY = document.createElement('div');
+    DUMMY.style.height = '1px';
+    TRIGGERPAGE.appendChild(DUMMY);
 
     const callback = (entries, observer) => {
         entries.forEach(async (entry) => {
             if (entry.isIntersecting) {
-                triggerPage.classList.add('pageEnd');
-                last.forEach(el => el.classList.add('trasEft'));
+                TRIGGERPAGE.classList.add('pageEnd');
+                LAST.forEach(el => el.classList.add('trasEft'));
                 await new Promise (resolve => setTimeout(resolve , 2800));
             } else {
-                triggerPage.classList.remove('pageEnd');
+                TRIGGERPAGE.classList.remove('pageEnd');
             }
         });
     };
@@ -390,30 +396,30 @@ window.addEventListener('DOMContentLoaded' , () => {
     const observer = new IntersectionObserver(callback, { threshold: 1.0 });
 
     // 더미 요소 관찰
-    observer.observe(dummy);
+    observer.observe(DUMMY);
 
     // lastPage에 대한 별도의 observer
     const lastPageCallback = (entries, observer) => {
         entries.forEach((entry) => {
             if (!entry.isIntersecting) {
-                last.forEach(el => el.classList.remove('trasEft'));
+                LAST.forEach(el => el.classList.remove('trasEft'));
             }
         });
     };
 
     const lastPageObserver = new IntersectionObserver(lastPageCallback, { threshold: 0 });
 
-    last.forEach(el => lastPageObserver.observe(el));
+    LAST.forEach(el => lastPageObserver.observe(el));
 
 
     // 마우스 클릭 드래그 ( 네이버 웨일 프로그램 기능 )
     !(function () {
-        let cs = document.querySelector('#pathCanvas') ;
+        const CS = document.querySelector('#pathCanvas') ;
+        const PATHCOLOR = `#333333` ;
+        const PATHWIDTh = `3` ;
+        const ROUND = `50` ;
         let isMouseDown = false;
         let startX,startY ;
-        let pathColor = `#333333` ;
-        let pathWd = `3` ;
-        let round = `50` ;
         let time = 0;
 
         document.body.addEventListener('mousedown' , e => {
@@ -430,11 +436,11 @@ window.addEventListener('DOMContentLoaded' , () => {
 
         document.body.addEventListener('mouseup' , e => {
             if ( isMouseDown ) {
-                const endX = e.clientX ;
-                const endY = e.clientY ;
+                let endX = e.clientX ;
+                let endY = e.clientY ;
 
-                const directionX = endX - startX ;
-                const directionY = endY - startY ;
+                let directionX = endX - startX ;
+                let directionY = endY - startY ;
 
                 if ( Math.abs(directionY) > Math.abs(directionX) ) {
                     if ( directionY > 0 ) {
@@ -450,8 +456,6 @@ window.addEventListener('DOMContentLoaded' , () => {
             }
         })
     })() ;
-
-
 })
 
     // let skillpart = document.querySelector('.skillpart');
