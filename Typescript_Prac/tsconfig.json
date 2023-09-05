@@ -16,5 +16,5 @@
         "alwaysStrict": true
     },
     "exclude": ["node_modules"],
-    "include": ["src","*", "src/Typescript_first_work.ts", "src/Typescript_first_work.ts"]
+    "include": ["src","*", "src/typescript/Typescript_first_work.ts", "src/typescript/Typescript_first_work.ts"]
 }

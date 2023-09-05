@@ -1,0 +1,53 @@
+#wrap {
+  background-color: #282c34;
+  font-size: calc(10px + 1vmin);
+  color: white;
+}
+
+#header {
+  margin: 0 auto;
+  width: 1300px;
+}
+#header .App-header .side {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+}
+#header .App-header .side .App-logo {
+  height: 100%;
+  pointer-events: none;
+}
+#header .App-header .side .hamb {
+  height: 100%;
+  width: 80px;
+  background: #fff;
+  position: relative;
+}
+#header .App-header .side .hamb div {
+  width: calc(100% - 5px);
+  height: 8px;
+  background: #252525;
+  border-radius: 15px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#header .App-header .side .hamb .top {
+  top: 20%;
+}
+#header .App-header .side .hamb .mid {
+  top: 50%;
+}
+#header .App-header .side .hamb .bot {
+  top: 80%;
+}
+
+#container {
+  width: 1300px;
+  margin: 0 auto;
+}
+
+#footer {
+  width: 1300px;
+  margin: 0 auto;
+}
