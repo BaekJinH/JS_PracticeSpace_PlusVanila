@@ -1,6 +1,11 @@
+:root[data-dark=true] {
+  --color_title: #fff;
+  --color_background:#252525;
+}
+
 #wrap {
   background-color: #282c34;
-  font-size: calc(10px + 1vmin);
+  font-size: 1.4rem;
   color: white;
 }
 
@@ -8,22 +13,13 @@
   margin: 0 auto;
   width: 1300px;
 }
-#header .App-header .side {
-  height: 60px;
-  display: flex;
-  justify-content: center;
-}
-#header .App-header .side .App-logo {
-  height: 100%;
-  pointer-events: none;
-}
-#header .App-header .side .hamb {
+#header .App-header .topAside .hamb {
   height: 100%;
   width: 80px;
   background: #fff;
   position: relative;
 }
-#header .App-header .side .hamb div {
+#header .App-header .topAside .hamb > div {
   width: calc(100% - 5px);
   height: 8px;
   background: #252525;
@@ -32,19 +28,48 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-#header .App-header .side .hamb .top {
+#header .App-header .topAside .hamb .top {
   top: 20%;
 }
-#header .App-header .side .hamb .mid {
+#header .App-header .topAside .hamb .mid {
   top: 50%;
 }
-#header .App-header .side .hamb .bot {
+#header .App-header .topAside .hamb .bot {
   top: 80%;
+}
+#header .App-header .search {
+  height: 156px;
+  display: flex;
+  justify-content: center;
+}
+#header .App-header .search .App-logo {
+  height: 100%;
+  pointer-events: none;
+}
+#header .App-header .search .search {
+  border: 1px solid #2dc42d;
+  border-radius: 20px;
+}
+#header .App-header .search .search form input::-webkit-input-placeholder {
+  color: #fff;
+  font-size: 1.2rem;
 }
 
 #container {
   width: 1300px;
   margin: 0 auto;
+  display: flex;
+}
+#container #mainSection {
+  width: 830px;
+}
+#container #newstand .logoList a {
+  padding: 18px 0;
+  display: block;
+  text-align: center;
+}
+#container #newstand .logoList img {
+  height: 30px;
 }
 
 #footer {

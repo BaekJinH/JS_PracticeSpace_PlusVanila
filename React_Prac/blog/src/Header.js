@@ -1,7 +1,8 @@
-import logo from './logo.svg';
+import React, { useRef, useState} from 'react';
+import logo from './image/logo.png' ;
+import btnList from './data/searchData.json' ;
 import './css/App.css';
 import './css/reset.css';
-import React, { useRef, useState} from 'react';
 
 function Header() {
     const [active, setActive] = useState(false);
@@ -17,17 +18,41 @@ function Header() {
         }
     }
 
+    const divClasses = ['top' , 'mid' , 'bot'] ;
+
     return (
         <div id='header'>
             <header className="App-header" >
-                <ul className="side">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    {/* <li className={active ? `active hamb` : `hamb`} ref={liRef} onClick={hambHandle}>
-                        <div className="top"></div>
-                        <div className="mid"></div>
-                        <div className="bot"></div>
-                    </li> */}
+                <ul className='topAside'>
+                    <li className={active ? `active hamb` : `hamb`} ref={liRef} onClick={hambHandle}>
+                        {divClasses.map(cls => <div key={cls} className={cls}></div>)}
+                    </li>
+                    <li className='pay'>
+                        <a href=""></a>
+                    </li>
                 </ul>
+                <div className="search">
+                    <img src={logo} className="App-logo" alt="logo" />
+                    <form action="" id='searchForm' method='get'>
+                        <fieldset>
+                            <input type="text" />
+                        </fieldset>
+                    </form>
+                    <button type='submit'>
+                    </button>
+                </div>
+                <div className="otherBtn">
+                    <ul>
+                        {btnList.map((item,index)=>(
+                            <li key={index} className={"btn_"+item.className}>
+                                <a href={item.href} rel="noopener noreferrer" target={item.isBlank}>
+                                    {item.a}
+                                    
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </header>
         </div>
     );
