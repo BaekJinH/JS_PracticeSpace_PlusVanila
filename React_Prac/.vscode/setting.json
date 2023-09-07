@@ -10,9 +10,9 @@
     "eslint.alwaysShowStatus": true,
     "files.autoSave": "onFocusChange",
     "emmet.syntaxProfiles": {
-      "javascript": "jsx"
-    },
-    "emmet.includeLanguages": {
-      "javascript": "html"
-    }
+        "javascript": "jsx"
+      },
+      "emmet.includeLanguages": {
+        "javascript": "html"
+      }
   }
