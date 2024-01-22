@@ -1,0 +1,331 @@
+@charset "utf-8";
+
+/*############### variable ###############*/
+:root {
+  /* --primary-color: #; */
+  /* --sub-color: #; */
+  /* --point-color: #; */
+}
+
+/* font style */
+/* 
+@font-face {
+    font-family:''; font-style: normal; font-weight: 0;
+    src:url(../fonts/.eot);
+    src:url(../fonts/.eot?#iefix) format(‘embedded-opentype’),
+        url(../fonts/.woff) format(‘woff’),
+        url(../fonts/.ttf) format('truetype'),
+        url(../fonts/.otf) format('opentype');
+} 
+*/
+
+/*############### common ###############*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  font-family: sans-serif;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+section,
+nav,
+article,
+aside,
+header,
+footer {
+  display: block;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+img {
+  vertical-align: top;
+}
+i,
+address {
+  font-style: normal;
+}
+
+input {
+  padding: 0 10px;
+  border: 1px solid #ddd;
+}
+textarea {
+  resize: none;
+}
+select {
+  padding: 0 35px 0 10px;
+  border: 1px solid #ddd;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-size: 10px;
+}
+select::-ms-expand {
+  display: none;
+}
+input[type='submit'],
+input[type='button'],
+button {
+  cursor: pointer;
+}
+.disabled {
+  cursor: no-drop;
+}
+
+/* checkbox */
+input[type='checkbox'] {
+  position: absolute;
+  margin: -1px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 0 0, 0 0);
+}
+input[type='checkbox'] + label {
+  position: relative;
+}
+input[type='checkbox'] + label:before {
+  content: '';
+  border: 1px solid #000;
+}
+input[type='checkbox'] + label:after {
+  content: '';
+}
+input[type='checkbox']:checked + label {
+}
+input[type='checkbox']:focus + label:before {
+  border: 1px solid #000;
+}
+
+/* radio */
+input[type='radio'] {
+  position: absolute;
+  margin: -1px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 0 0, 0 0);
+}
+input[type='radio'] + label {
+  position: relative;
+}
+input[type='radio'] + label:before {
+  content: '';
+  border: 1px solid #000;
+}
+input[type='radio'] + label:after {
+  content: '';
+}
+input[type='radio']:checked + label {
+}
+input[type='radio']:focus + label:before {
+  border: 1px solid #000;
+}
+
+/* placeholder */
+input[type='text']::-webkit-input-placeholder {
+  color: #777;
+}
+input[type='text']:-ms-input-placeholder {
+  color: #777;
+}
+input[type='text']::placeholder {
+  color: #777;
+}
+
+.MAT10 {
+  margin-top: 10px !important;
+}
+.MAT20 {
+  margin-top: 20px !important;
+}
+.MAT30 {
+  margin-top: 30px !important;
+}
+.MAT40 {
+  margin-top: 40px !important;
+}
+.MAT50 {
+  margin-top: 50px !important;
+}
+.MAT60 {
+  margin-top: 60px !important;
+}
+
+.MAB10 {
+  margin-bottom: 10px !important;
+}
+.MAB20 {
+  margin-bottom: 20px !important;
+}
+.MAB30 {
+  margin-bottom: 30px !important;
+}
+.MAB40 {
+  margin-bottom: 40px !important;
+}
+.MAB50 {
+  margin-bottom: 50px !important;
+}
+.MAB60 {
+  margin-bottom: 60px !important;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 1400px;
+}
+
+/* 웹접근성 */
+.sr-only {
+  position: absolute;
+  left: -9999px;
+  margin: 0 !important;
+  width: 1px;
+  height: 1px;
+  line-height: 0;
+  font-size: 0;
+  overflow: hidden;
+}
+.web-acc {
+  position: absolute;
+  margin: -1px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 0 0, 0 0);
+}
+
+/* swiper */
+.swiper_wrap {
+  position: relative;
+  height: 100%;
+}
+.swiper_wrap .swiper-container {
+  position: static;
+}
+
+/* skip Nav */
+#skipNav {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+#skipNav a {
+  display: block;
+  margin-bottom: -1px;
+  height: 1px;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+#skipNav a:hover,
+#skipNav a:focus,
+#skipNav a:active {
+  display: block;
+  padding: 3px 0;
+  height: 35px;
+  background: none repeat scroll 0 0 #333;
+}

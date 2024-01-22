@@ -1,3 +1,5 @@
+import './default.css';
+import './Common.css';
 import './Main.css';
 import { Header, Footer, Section } from './Common';
 

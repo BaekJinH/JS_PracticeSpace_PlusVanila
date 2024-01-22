@@ -1,0 +1,23 @@
+header {
+  .head_top {
+    display: flex;
+  }
+  .head_bot {
+    display: flex;
+  }
+}
+main {
+}
+footer {
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 1400px;
+}
+
+@media (max-width: 1400px) {
+  .wrapper {
+    width: 100%;
+  }
+}
