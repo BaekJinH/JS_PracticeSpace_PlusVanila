@@ -1,0 +1,45 @@
+:root {
+  --def-background-color: #fff;
+  --def-text-color: #000;
+
+  --dark-background-color: #252525;
+  --dark-text-color: #fff;
+}
+
+body.light {
+  background: var(--def-background-color);
+  color: var(--def-text-color);
+  * {
+    background: var(--def-background-color);
+    color: var(--def-text-color);
+  }
+}
+
+body.dark {
+  background: var(--dark-background-color);
+  color: var(--dark-text-color);
+  * {
+    background: var(--dark-background-color);
+    color: var(--dark-text-color);
+  }
+}
+
+body {
+  transition: background-color 0.3s linear;
+  * {
+    transition: background-color 0.3s linear;
+  }
+}
+
+.router_testArea {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+// .modal {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// }

@@ -2,61 +2,51 @@
   {
     "className": "mail",
     "a": "메일",
-    "href": "#none",
-    "isBlank": "_self"
+    "href": "#none"
   },
   {
     "className": "cafe",
     "a": "카페",
-    "href": "#none",
-    "isBlank": "_self"
+    "href": "#none"
   },
   {
     "className": "blog",
     "a": "블로그",
-    "href": "#none",
-    "isBlank": "_self"
+    "href": "#none"
   },
   {
     "className": "shop",
     "a": "쇼핑",
-    "href": "#none",
-    "isBlank": "_self"
+    "href": "#none"
   },
   {
     "className": "news",
     "a": "뉴스",
-    "href": "#none",
-    "isBlank": "_self"
+    "href": "#none"
   },
   {
     "className": "socie",
     "a": "증권",
-    "href": "#none",
-    "isBlank": "_self"
+    "href": "#none"
   },
   {
     "className": "house",
     "a": "부동산",
-    "href": "#none",
-    "isBlank": "_self"
+    "href": "#none"
   },
   {
     "className": "map",
     "a": "지도",
-    "href": "#none",
-    "isBlank": "_self"
+    "href": "#none"
   },
   {
     "className": "webtoon",
     "a": "웹툰",
-    "href": "#none",
-    "isBlank": "_self"
+    "href": "#none"
   },
   {
     "className": "other",
     "a": "기타",
-    "href": "#none",
-    "isBlank": "_blank"
+    "href": "#none"
   }
 ]

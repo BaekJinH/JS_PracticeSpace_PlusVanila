@@ -15,7 +15,11 @@
     "Typescript_Prac": true,
     "node_modules": true,
     "portFolio_page_import": true,
-    "WebPage_Effect_Bundle": true
+    "WebPage_Effect_Bundle": true,
+    "**/*.json": false,
+    "workSpace_homepage": true,
+    ".hintrc": true,
+    "포폴에 추가해야 할 효과 메모.txt": true
   },
   "explorerExclude.backup": {},
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -23,7 +27,7 @@
   "editor.insertSpaces": true,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "javascript.format.enable": false,
   "eslint.alwaysShowStatus": true,
