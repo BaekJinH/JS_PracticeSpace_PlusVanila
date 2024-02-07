@@ -1,7 +1,7 @@
 import React from 'react';
 import ModalData from './data/modal_data.json';
 
-function Modal({ modal, setModal }) {
+function Modal({ modal, setModal, value }) {
   return (
     <div className="test">
       {modal && (
@@ -10,7 +10,7 @@ function Modal({ modal, setModal }) {
             모달 닫기
           </button>
           <div className="inner_wrap">
-            <p className="content" />
+            <p className="content">{modal}</p>
           </div>
         </div>
       )}

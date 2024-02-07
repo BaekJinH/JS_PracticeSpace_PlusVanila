@@ -16,6 +16,8 @@ export function Header() {
   useEffect(() => {
     const currentTheme = localStorage.getItem('theme') || 'light';
     document.body.classList.remove('dark', 'light');
+    document.querySelector('html').classList.remove('dark', 'light');
+    document.querySelector('html').classList.add(currentTheme);
     document.body.classList.add(currentTheme);
   }, [isTheme]);
 
