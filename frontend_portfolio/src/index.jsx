@@ -3,7 +3,7 @@ import './Common.css';
 import './Main.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-// BrouserRouter 가 기본 Router 이름이지만 as => alias를 사용하여 Router라는 이름으로 바꿈.
+// BrouserRouter 가 기본 Router 이름이지만 as => alias(별칭)를 사용하여 Router라는 이름으로 바꿈.
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import ThemeEvent from './ThemeEvent.jsx';
