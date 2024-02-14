@@ -1,14 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import linkList from './data/sample.json';
+
 import homeLink from './data/home_link.json';
 
 export function Header() {
-  const [isClick, setIsClick] = useState(false);
-  function clickEvent(e) {
-    setIsClick(!isClick);
-  }
-
   const [isTheme, setIsTheme] = useState(
     localStorage.getItem('theme') === 'dark',
   );
@@ -43,23 +38,7 @@ export function Header() {
             <button onClick={toggleTheme}>테마 변경</button>
           </div>
         </div>
-        <div className="head_bot">
-          <div className="alarm_box">
-            <a className="alarm" href="#none" onClick={clickEvent}>
-              알림
-            </a>
-            <ul
-              className="alram_list"
-              style={{ display: isClick ? 'block' : 'none' }}
-            >
-              {linkList.map((item, index) => (
-                <li key={index} className={`alram_${item.className}`}>
-                  <a href={item.href}>{item.a}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <div className="head_bot" />
       </div>
     </header>
   );

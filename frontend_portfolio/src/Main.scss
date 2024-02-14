@@ -37,6 +37,18 @@ body {
   gap: 10px;
 }
 
+.App {
+  .alram_list {
+    flex-flow: column wrap;
+    gap: 10px;
+    margin-bottom: 5px;
+
+    > li {
+      flex: 1 100;
+    }
+  }
+}
+
 // .modal {
 //   position: absolute;
 //   top: 50%;

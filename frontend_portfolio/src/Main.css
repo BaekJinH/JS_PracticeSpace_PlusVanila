@@ -35,3 +35,12 @@ body * {
   align-items: center;
   gap: 10px;
 }
+
+.App .alram_list {
+  flex-flow: column wrap;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+.App .alram_list > li {
+  flex: 1 100;
+}
