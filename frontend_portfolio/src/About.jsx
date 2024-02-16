@@ -1,42 +1,34 @@
 import React, { useState } from 'react';
-import linkList from './data/sample.json';
 
 function About() {
-  const [isClick, setIsClick] = useState(false);
-  function clickEvent(e) {
-    setIsClick(!isClick);
-  }
+  const [todos, setTodos] = useState([]);
+  const [inputValue, setInputValue] = useState('');
 
-  const [isContent, setIsContent] = useState('');
+  const handleKeyDown = e => {
+    if (e.key === 'Enter' && inputValue.trim() !== '') {
+      setTodos([...todos, inputValue]);
+      setInputValue('');
+    }
+  };
+
+  const handleChange = e => {
+    setInputValue(e.target.value);
+  };
 
   return (
     <div>
-      <div className="alarm_box">
-        <a className="alarm" href="#none" onClick={clickEvent}>
-          알림
-        </a>
-        <ul
-          className="alram_list"
-          style={{ display: isClick ? 'flex' : 'none' }}
-        >
-          {linkList.map((item, index) => (
-            <li key={index} className={`alram_${item.className}`}>
-              <a href={item.href}>{item.a}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
       <div className="todo_list_box">
         <h4 className="ttl">오늘 할 일</h4>
-        <ul className="todo_list" />
+        <ul className="todo_list">
+          {todos.map((todo, index) => (
+            <li key={index}>{todo}</li>
+          ))}
+        </ul>
         <input
           type="text"
-          name="listWrt"
-          id="listWrt"
-          onClick={e => {
-            if (e.keyCode === 13 && setIsContent) {
-            }
-          }}
+          value={inputValue} // input의 value를 inputValue 상태와 동기화
+          onKeyDown={handleKeyDown}
+          onChange={handleChange}
         />
       </div>
     </div>
