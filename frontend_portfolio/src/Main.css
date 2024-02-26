@@ -44,3 +44,11 @@ body * {
 .App .alram_list > li {
   flex: 1 100;
 }
+.App .todo_list_box form {
+  display: flex;
+  gap: 10px;
+}
+.App .todo_list_box .todo_el {
+  display: flex;
+  gap: 5px;
+}

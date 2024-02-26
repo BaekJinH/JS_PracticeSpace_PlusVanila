@@ -29,15 +29,17 @@ function AddTodo({ addTodo }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={e => setInputValue(e.target.value)}
-        placeholder="Add a new todo"
-      />
-      <button type="submit">Add</button>
-    </form>
+    <div className="todo_wrap">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={e => setInputValue(e.target.value)}
+          placeholder="해야할 일을 입력하세요"
+        />
+        <button type="submit">Add</button>
+      </form>
+    </div>
   );
 }
 

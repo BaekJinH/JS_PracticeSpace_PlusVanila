@@ -47,6 +47,18 @@ body {
       flex: 1 100;
     }
   }
+
+  .todo_list_box {
+    form {
+      display: flex;
+      gap: 10px;
+    }
+
+    .todo_el {
+      display: flex;
+      gap: 5px;
+    }
+  }
 }
 
 // .modal {
