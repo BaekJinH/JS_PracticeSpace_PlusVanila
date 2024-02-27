@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 function AddTodo({ addTodo }) {
   const [inputValue, setInputValue] = useState('');
+  // todos의 초기 상태를 빈 배열로 설정
+  const [todos, setTodos] = useState([]);
 
   const handleSubmit = async e => {
     e.preventDefault(); // 폼 제출에 의한 페이지 새로고침 방지
@@ -18,6 +20,7 @@ function AddTodo({ addTodo }) {
 
       if (response.ok) {
         const newTodo = await response.json();
+        setTodos(prevTodos => [...prevTodos, newTodo]); // 현재 상태에 새 Todo 항목 추가
         console.log('Todo added:', newTodo);
         setInputValue(''); // 입력 필드 초기화
       } else {
