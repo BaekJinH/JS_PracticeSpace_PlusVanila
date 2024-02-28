@@ -38,7 +38,7 @@ function AddTodo({ onAddTodo }) {
           onChange={e => setInputValue(e.target.value)}
           placeholder="해야할 일을 입력하세요"
         />
-        <button type="submit">Add</button>
+        <button>Add</button>
       </form>
     </div>
   );
@@ -50,7 +50,8 @@ function TodoList({ todos, onRemoveTodo }) {
     <ul>
       {todos.map(todo => (
         <li key={todo.id} className="todo_el">
-          {todo.title}
+          <span>{todo.id} : </span>
+          <span>{todo.title}</span>
           <button onClick={() => onRemoveTodo(todo.id)}>Remove Button</button>
         </li>
       ))}
@@ -78,7 +79,7 @@ function TodoApp() {
   const removeTodo = async id => {
     const isConfirm = window.confirm('정말 삭제하시겠습니까?');
     if (!isConfirm) {
-      return;
+      return false;
     }
 
     const response = await fetch(`http://localhost:4000/todos/${id}`, {
@@ -87,6 +88,7 @@ function TodoApp() {
 
     if (response.ok) {
       setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
+      console.log(`${id} : Delete !`);
     } else {
       console.error(response.statusText);
     }

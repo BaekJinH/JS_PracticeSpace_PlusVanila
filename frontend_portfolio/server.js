@@ -4,7 +4,6 @@ const PORT = 4000;
 
 const cors = require('cors');
 app.use(cors()); // CORS 문제를 해결하기 위해 모든 출처에서의 요청을 허용
-
 app.use(express.json()); // JSON 형식의 요청 본문을 파싱하기 위한 미들웨어 설정
 
 // Todo 항목을 저장할 배열

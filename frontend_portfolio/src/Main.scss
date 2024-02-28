@@ -59,6 +59,36 @@ body {
       gap: 5px;
     }
   }
+
+  .store_wrap {
+    > ul {
+      margin: 20px 0;
+      display: flex;
+      flex-flow: wrap;
+      gap: 20px;
+      > li {
+        flex: 1 30%;
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        padding: 20px;
+
+        &:hover {
+        }
+
+        .btn_count {
+          display: flex;
+          gap: 10px;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+
+  .pymt_wrap {
+    display: flex;
+    gap: 10px;
+  }
 }
 
 // .modal {
