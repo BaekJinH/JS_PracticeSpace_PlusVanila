@@ -8,10 +8,16 @@ app.use(express.json()); // JSON 형식의 요청 본문을 파싱하기 위한 
 
 // Todo 항목을 저장할 배열
 const todos = [];
+// 스토어의 항목을 저장할 배열
+const articles = [];
 
 // 모든 Todo 항목을 제공하는 GET 요청 처리
 app.get('/todos', (req, res) => {
   res.json(todos);
+});
+
+app.get('/articles', (req, res) => {
+  res.json(articles);
 });
 
 let currentId = 0;
@@ -37,6 +43,36 @@ app.delete('/todos/:id', (req, res) => {
   if (todoIndex > -1) {
     // 해당하는 Todo 항목이 배열에 존재한다면
     todos.splice(todoIndex, 1); // 해당 인덱스의 Todo 항목을 배열에서 삭제
+    res.status(200).json({
+      message: `Todo with id ${id} deleted successfully.`,
+    });
+  } else {
+    res.status(404).send('Todo not found'); // 해당하는 Todo 항목이 없는 경우 404 오류 응답
+  }
+});
+
+app.post('/articles', (req, res) => {
+  const {
+    title
+  } = req.body; // 요청 본문에서 title을 추출
+  const article = {
+    id: currentId++,
+    title,
+  }; // 새 Todo 객체 생성
+  articles.push(article); // Todo 배열에 추가
+  res.status(201).json(article); // 생성된 Todo 항목 반환
+});
+
+app.delete('/articles/:id', (req, res) => {
+  const {
+    id
+  } = req.params;
+  const articleIndex = articles.findIndex(
+    article => article.id === parseInt(id, 10),
+  ); // 삭제할 Todo 항목의 인덱스를 찾음
+  if (articleIndex > -1) {
+    // 해당하는 Todo 항목이 배열에 존재한다면
+    todos.splice(articleIndex, 1); // 해당 인덱스의 Todo 항목을 배열에서 삭제
     res.status(200).json({
       message: `Todo with id ${id} deleted successfully.`,
     });
