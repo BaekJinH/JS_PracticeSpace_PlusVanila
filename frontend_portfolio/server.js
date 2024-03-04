@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 const app = express();
 const PORT = 4000;
 
@@ -8,6 +9,7 @@ app.use(express.json()); // JSON 형식의 요청 본문을 파싱하기 위한 
 
 // Todo 항목을 저장할 배열
 const todos = [];
+
 // 스토어의 항목을 저장할 배열
 const articles = [];
 
@@ -17,7 +19,18 @@ app.get('/todos', (req, res) => {
 });
 
 app.get('/articles', (req, res) => {
-  res.json(articles);
+  fs.readFile('./src/data/article.json', 'utf8', (err, data) => {
+    if (err) {
+      res.status(500).send('Error reading from file');
+      return;
+    }
+    try {
+      const articles = JSON.parse(data);
+      res.json(articles);
+    } catch (error) {
+      res.status(500).send('Error parsing JSON');
+    }
+  });
 });
 
 let currentId = 0;
@@ -52,15 +65,31 @@ app.delete('/todos/:id', (req, res) => {
 });
 
 app.post('/articles', (req, res) => {
-  const {
-    title
-  } = req.body; // 요청 본문에서 title을 추출
-  const article = {
-    id: currentId++,
-    title,
-  }; // 새 Todo 객체 생성
-  articles.push(article); // Todo 배열에 추가
-  res.status(201).json(article); // 생성된 Todo 항목 반환
+  const newArticle = req.body; // 클라이언트로부터 새 기사 받기
+  fs.readFile('./src/data/article.json', 'utf8', (err, data) => {
+    if (err) {
+      res.status(500).send('Error reading from file');
+      return;
+    }
+    try {
+      const articles = JSON.parse(data);
+      articles.push(newArticle); // 새 기사 추가
+      fs.writeFile(
+        './src/data/article.json',
+        JSON.stringify(articles, null, 2),
+        'utf8',
+        writeErr => {
+          if (writeErr) {
+            res.status(500).send('Error writing to file');
+            return;
+          }
+          res.status(201).send('Article added');
+        },
+      );
+    } catch (parseErr) {
+      res.status(500).send('Error parsing JSON');
+    }
+  });
 });
 
 app.delete('/articles/:id', (req, res) => {
