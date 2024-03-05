@@ -1,5 +1,4 @@
 import React from 'react';
-import ModalData from './data/modal_data.json';
 
 // 다른 컴포넌트에서 값을 받아올 때에는 해당 컴포넌트에서 설정한 prop를 받아와야만 가능함
 function Modal({ modal, setModal, content }) {

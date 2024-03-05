@@ -10,6 +10,8 @@ function About() {
         <TodoList />
       </div>
       <Link to="/About/Store">스토어 바로가기</Link>
+      <br />
+      <Link to="/About/Search">검색 바로가기</Link>
     </div>
   );
 }

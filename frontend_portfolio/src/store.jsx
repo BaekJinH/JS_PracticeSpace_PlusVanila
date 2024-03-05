@@ -2,7 +2,18 @@ import React, { useState, useEffect } from 'react';
 import StoreEl from './data/article.json';
 
 function Store() {
-  const [itemCounts, setItemCounts] = useState({});
+  const [itemCounts, setItemCounts] = useState(() => {
+    const savedCounts = localStorage.getItem('itemCounts');
+    try {
+      if (savedCounts) {
+        return JSON.parse(savedCounts);
+      }
+    } catch (error) {
+      console.error('Error itemCounts', error);
+      return {};
+    }
+    return {};
+  });
   const [total, setTotal] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -15,6 +26,7 @@ function Store() {
       const itemCount = itemCounts[index] || 0;
       return acc + item.price * itemCount;
     }, 0);
+    localStorage.setItem('itemCounts', JSON.stringify(itemCounts));
 
     setTotal(newTotal);
     setTotalPrice(newPrice);
