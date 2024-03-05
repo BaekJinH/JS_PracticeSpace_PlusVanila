@@ -45,13 +45,6 @@ function Search() {
   return (
     <div>
       <form onSubmit={e => e.preventDefault()}>
-        <select>
-          <option value="">옵션 1</option>
-          <option value="">옵션 2</option>
-          <option value="">옵션 3</option>
-          <option value="">옵션 4</option>
-        </select>
-        <br />
         <label htmlFor="srh_input">검색 : </label>
         <input
           type="text"
