@@ -14,6 +14,14 @@ function Scroll() {
       // setImgArr(getData);
     });
   });
+
+  return (
+    <div className="inf_scroll">
+      <ul>
+        <li />
+      </ul>
+    </div>
+  );
 }
 
 export default Scroll;
