@@ -74,3 +74,9 @@ body * {
   display: flex;
   gap: 10px;
 }
+.App .search_wrap li a > strong {
+  color: rgb(255, 241, 52);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 700;
+}

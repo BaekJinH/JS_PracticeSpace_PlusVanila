@@ -22,13 +22,18 @@ function Search() {
   const [articles, setArticles] = useState([]);
   const debouncedSearchTerm = useDebounce(inputValue, 0);
 
+  let length = 15;
+
   async function fetchNews(keyword) {
     try {
       // AXIOS ERROR 429는 내가 수정할 수 없는 에러임. 요청이 많아 API 측에서 발생하는 에러
       const response = await axios.get(
         `https://newsapi.org/v2/top-headlines?country=kr&q=${keyword}&category=business&apiKey=3dd9ead215164d0fb32606a08d17a1d8`,
       );
-      setArticles(response.data.articles);
+      const filteredArticles = response.data.articles.filter(article =>
+        article.title.toLowerCase().includes(keyword.toLowerCase()),
+      );
+      setArticles(filteredArticles);
     } catch (err) {
       console.error(err);
     }
@@ -42,8 +47,16 @@ function Search() {
     }
   }, [debouncedSearchTerm]);
 
+  const highlightMatch = title => {
+    if (!inputValue) {
+      return title;
+    }
+    const regex = new RegExp(inputValue, 'gi');
+    return title.replace(regex, match => `<strong>${match}</strong>`);
+  };
+
   return (
-    <div>
+    <div className="search_wrap">
       <form onSubmit={e => e.preventDefault()}>
         <label htmlFor="srh_input">검색 : </label>
         <input
@@ -57,9 +70,18 @@ function Search() {
       <ul>
         {articles.map(article => (
           <li key={article.url}>
-            <a href={article.url} target="_blank" rel="noopener noreferrer">
-              {article.title}
-            </a>
+            <a
+              href={article.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              dangerouslySetInnerHTML={{
+                __html:
+                  article.title.length > length
+                    ? highlightMatch(article.title.substr(0, length - 2)) +
+                      '...'
+                    : highlightMatch(article.title),
+              }}
+            />
           </li>
         ))}
       </ul>
