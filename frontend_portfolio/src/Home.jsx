@@ -6,7 +6,7 @@ function Home() {
   const [content, setContent] = useState('');
 
   return (
-    <>
+    <div className="">
       {/* 해당 값을 다른 컴포넌트로 넘길 때 컴포넌트를 불러오는 곳에 상태값을 꼭 넣어주기 */}
       <Modal modal={modal} setModal={setModal} content={content} />
       <button className="open_modal" onClick={() => setModal(true)}>
@@ -19,7 +19,7 @@ function Home() {
         id="inp_modal_content"
         onChange={e => setContent(e.target.value)}
       />
-    </>
+    </div>
   );
 }
 

@@ -40,11 +40,7 @@ function Search() {
   }
 
   useEffect(() => {
-    if (debouncedSearchTerm) {
-      fetchNews(debouncedSearchTerm);
-    } else {
-      setArticles([]);
-    }
+    debouncedSearchTerm ? fetchNews(debouncedSearchTerm) : setArticles([]);
   }, [debouncedSearchTerm]);
 
   const highlightMatch = title => {

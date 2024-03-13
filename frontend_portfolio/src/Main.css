@@ -36,6 +36,22 @@ body * {
   gap: 10px;
 }
 
+.App header {
+  position: relative;
+}
+.App header .head_top {
+  display: flex;
+  justify-content: center;
+}
+.App header .head_top nav > ul {
+  display: flex;
+  gap: 10px;
+}
+.App header .other {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 .App .alram_list {
   flex-flow: column wrap;
   gap: 10px;

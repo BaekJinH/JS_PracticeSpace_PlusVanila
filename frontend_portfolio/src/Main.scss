@@ -38,6 +38,29 @@ body {
 }
 
 .App {
+  // Header
+  header {
+    position: relative;
+    .head_top {
+      display: flex;
+      justify-content: center;
+      nav {
+        > ul {
+          display: flex;
+          gap: 10px;
+        }
+      }
+    }
+
+    .other {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+  // Header />
+
+  // Content
   .alram_list {
     flex-flow: column wrap;
     gap: 10px;
@@ -102,6 +125,7 @@ body {
       }
     }
   }
+  // Content />
 }
 
 // .modal {

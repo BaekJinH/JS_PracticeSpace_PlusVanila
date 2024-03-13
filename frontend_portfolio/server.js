@@ -37,9 +37,7 @@ let currentId = 0;
 
 // 새 Todo 항목을 생성하는 POST 요청 처리
 app.post('/todos', (req, res) => {
-  const {
-    title
-  } = req.body; // 요청 본문에서 title을 추출
+  const { title } = req.body; // 요청 본문에서 title을 추출
   const todo = {
     id: currentId++,
     title,
@@ -49,9 +47,7 @@ app.post('/todos', (req, res) => {
 });
 
 app.delete('/todos/:id', (req, res) => {
-  const {
-    id
-  } = req.params;
+  const { id } = req.params;
   const todoIndex = todos.findIndex(todo => todo.id === parseInt(id, 10)); // 삭제할 Todo 항목의 인덱스를 찾음
   if (todoIndex > -1) {
     // 해당하는 Todo 항목이 배열에 존재한다면
@@ -93,9 +89,7 @@ app.post('/articles', (req, res) => {
 });
 
 app.delete('/articles/:id', (req, res) => {
-  const {
-    id
-  } = req.params;
+  const { id } = req.params;
   const articleIndex = articles.findIndex(
     article => article.id === parseInt(id, 10),
   ); // 삭제할 Todo 항목의 인덱스를 찾음

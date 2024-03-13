@@ -26,7 +26,22 @@ export function Header() {
     <header>
       <div className="wrapper">
         <div className="head_top">
-          <h1>로고 위치</h1>
+          <nav>
+            <ul>
+              <li>
+                <a href="#section1">섹션1 이동</a>
+              </li>
+              <li>
+                <a href="#section2">섹션2 이동</a>
+              </li>
+              <li>
+                <a href="#section3">섹션3 이동</a>
+              </li>
+              <li>
+                <a href="#section4">섹션4 이동</a>
+              </li>
+            </ul>
+          </nav>
           <div className="other">
             <a href="#none">
               <ul>
