@@ -2,11 +2,11 @@ import React from 'react';
 import { Header, Footer, Section } from './Common';
 import { Routes, Route } from 'react-router-dom';
 import Main from './Home';
-import About from './About';
+import About from '../About';
 import Store from './store';
 import Search from './search';
 import Scroll from './scroll.jsx';
-import NotFound from './NotFound';
+import NotFound from '../NotFound';
 
 function App() {
   return (

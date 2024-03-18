@@ -6,7 +6,7 @@ function AddTodo({ addTodo }) {
   const [todos, setTodos] = useState([]);
 
   const handleSubmit = async e => {
-    e.preventDefault(); // 폼 제출에 의한 페이지 새로고침 방지
+    e.preventDefault(); // 폼 제출 에 의한 페이지 새로고침 방지
     if (!inputValue.trim()) return; // 입력값이 비어있으면 추가하지 않음
 
     try {

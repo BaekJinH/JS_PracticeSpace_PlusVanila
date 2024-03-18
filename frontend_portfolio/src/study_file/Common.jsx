@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import Introduce from './introduce';
+import homeLink from '../data/home_link.json';
 
 export function Header() {
   const [isTheme, setIsTheme] = useState(
@@ -63,7 +63,17 @@ export function Section() {
   return (
     <main>
       <div className="wrapper">
-        <Introduce />
+        <section />
+        <div className="router_testArea">
+          {homeLink.map((item, index) => (
+            <Link to={item.href} key={index}>
+              {item.text}
+            </Link>
+          ))}
+          {/* <Link to="/">Test Home</Link>
+          <Link to="/about">Test About</Link> */}
+        </div>
+        <section />
       </div>
     </main>
   );
