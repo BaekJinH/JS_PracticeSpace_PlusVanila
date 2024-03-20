@@ -38,61 +38,70 @@ body * {
 
 .App header {
   position: relative;
+  border-bottom: 1px solid #eee;
 }
 .App header .head_top {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 60px;
 }
 .App header .head_top nav > ul {
   display: flex;
-  gap: 10px;
+  gap: 20px;
+}
+.App header .head_top nav > ul a {
+  position: relative;
+  transition: all 0.3s;
+}
+.App header .head_top nav > ul a:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 1px;
 }
 .App header .other {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
 }
-.App .alram_list {
-  flex-flow: column wrap;
-  gap: 10px;
-  margin-bottom: 5px;
+.App header .other .change_theme {
+  font-size: 0;
+  background: var(--dark-background-color);
+  aspect-ratio: 1;
+  width: 40px;
 }
-.App .alram_list > li {
-  flex: 1 100;
-}
-.App .todo_list_box form {
+.App .intro_sf .int_wrap {
   display: flex;
-  gap: 10px;
 }
-.App .todo_list_box .todo_el {
-  display: flex;
-  gap: 5px;
+.App .intro_sf .int_wrap > div {
+  flex: 1;
 }
-.App .store_wrap > ul {
-  margin: 20px 0;
+.App .intro_sf .left .profile {
+  max-width: 320px;
+  aspect-ratio: 1/1.3;
+  background-color: #eee;
+}
+.App .intro_sf .right .info {
   display: flex;
   flex-flow: wrap;
-  gap: 20px;
 }
-.App .store_wrap > ul > li {
-  flex: 1 30%;
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  padding: 20px;
+.App .intro_sf .right .info > li {
+  flex: 1 100%;
 }
-.App .store_wrap > ul > li .btn_count {
-  display: flex;
-  gap: 10px;
-  justify-content: space-between;
+@media (max-width: 1400px) {
+  .App .wrapper {
+    width: 100%;
+  }
 }
-.App .pymt_wrap {
-  display: flex;
-  gap: 10px;
-}
-.App .search_wrap li a > strong {
-  color: rgb(255, 241, 52);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  font-weight: 700;
+@media (max-width: 720px) {
+  .App header .head_top {
+    padding: 0 15px;
+    justify-content: flex-start;
+  }
+  .App header .other {
+    right: 15px;
+  }
 }

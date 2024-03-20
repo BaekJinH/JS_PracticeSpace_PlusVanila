@@ -1,3 +1,5 @@
+@import './utils';
+
 :root {
   --def-background-color: #fff;
   --def-text-color: #000;
@@ -41,91 +43,99 @@ body {
   // Header
   header {
     position: relative;
+    border-bottom: 1px solid #eee;
     .head_top {
       display: flex;
       justify-content: center;
+      align-items: center;
+      height: 60px;
       nav {
         > ul {
           display: flex;
-          gap: 10px;
+          gap: 20px;
+
+          a {
+            position: relative;
+            transition: all 0.3s;
+
+            &:before {
+              content: '';
+              position: absolute;
+              display: block;
+              width: 100%;
+              height: 1px;
+            }
+          }
         }
       }
     }
 
     .other {
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+
+      .change_theme {
+        font-size: 0;
+        background: var(--dark-background-color);
+        aspect-ratio: 1;
+        width: 40px;
+      }
     }
   }
   // Header />
 
   // Content
-  .alram_list {
-    flex-flow: column wrap;
-    gap: 10px;
-    margin-bottom: 5px;
-
-    > li {
-      flex: 1 100;
-    }
-  }
-
-  .todo_list_box {
-    form {
+  .intro_sf {
+    .int_wrap {
       display: flex;
-      gap: 10px;
-    }
 
-    .todo_el {
-      display: flex;
-      gap: 5px;
-    }
-  }
-
-  .store_wrap {
-    > ul {
-      margin: 20px 0;
-      display: flex;
-      flex-flow: wrap;
-      gap: 20px;
-      > li {
-        flex: 1 30%;
-        display: flex;
-        flex-flow: column wrap;
-        align-items: center;
-        padding: 20px;
-
-        &:hover {
-        }
-
-        .btn_count {
-          display: flex;
-          gap: 10px;
-          justify-content: space-between;
-        }
+      > div {
+        flex: 1;
       }
     }
-  }
 
-  .pymt_wrap {
-    display: flex;
-    gap: 10px;
-  }
+    .left {
+      .profile {
+        max-width: 320px;
+        aspect-ratio: 1/1.3;
+        background-color: #eee;
+      }
+    }
 
-  .search_wrap {
-    li {
-      a {
-        > strong {
-          color: rgb(255, 241, 52);
-          text-decoration: underline;
-          text-underline-offset: 3px;
-          font-weight: 700;
+    .right {
+      .info {
+        display: flex;
+        flex-flow: wrap;
+
+        > li {
+          flex: 1 100%;
         }
       }
     }
   }
   // Content />
+
+  @include laptop {
+    .wrapper {
+      width: 100%;
+    }
+  }
+  @include tablet {
+    header {
+      .head_top {
+        padding: 0 15px;
+        justify-content: flex-start;
+      }
+
+      .other {
+        right: 15px;
+      }
+    }
+  }
+  @include mobile {
+  }
 }
 
 // .modal {
@@ -133,4 +143,69 @@ body {
 //   top: 50%;
 //   left: 50%;
 //   transform: translate(-50%, -50%);
+// }
+
+// .alram_list {
+//   flex-flow: column wrap;
+//   gap: 10px;
+//   margin-bottom: 5px;
+
+//   > li {
+//     flex: 1 100;
+//   }
+// }
+
+// .todo_list_box {
+//   form {
+//     display: flex;
+//     gap: 10px;
+//   }
+
+//   .todo_el {
+//     display: flex;
+//     gap: 5px;
+//   }
+// }
+
+// .store_wrap {
+//   > ul {
+//     margin: 20px 0;
+//     display: flex;
+//     flex-flow: wrap;
+//     gap: 20px;
+//     > li {
+//       flex: 1 30%;
+//       display: flex;
+//       flex-flow: column wrap;
+//       align-items: center;
+//       padding: 20px;
+
+//       &:hover {
+//       }
+
+//       .btn_count {
+//         display: flex;
+//         gap: 10px;
+//         justify-content: space-between;
+//       }
+//     }
+//   }
+// }
+
+// .pymt_wrap {
+//   display: flex;
+//   gap: 10px;
+// }
+
+// .search_wrap {
+//   li {
+//     a {
+//       > strong {
+//         color: rgb(255, 241, 52);
+//         text-decoration: underline;
+//         text-underline-offset: 3px;
+//         font-weight: 700;
+//       }
+//     }
+//   }
 // }

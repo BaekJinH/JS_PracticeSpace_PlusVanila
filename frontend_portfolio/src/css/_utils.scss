@@ -1,0 +1,22 @@
+// 모바일
+$breakpoint-mobile: 425px;
+// 태블릿
+$breakpoint-tablet: 720px;
+// 노트북
+$breakpoint-laptop: 1400px;
+
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media (max-width: $breakpoint-laptop) {
+    @content;
+  }
+}

@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Introduce from './introduce';
+import PagingRolling from './paging';
+import CodeSkills from './codeSkill';
 
 export function Header() {
   const [isTheme, setIsTheme] = useState(
@@ -50,7 +52,9 @@ export function Header() {
                 <li />
               </ul>
             </a>
-            <button onClick={toggleTheme}>테마 변경</button>
+            <button onClick={toggleTheme} className="change_theme">
+              테마 변경
+            </button>
           </div>
         </div>
         <div className="head_bot" />
@@ -64,6 +68,8 @@ export function Section() {
     <main>
       <div className="wrapper">
         <Introduce />
+        <PagingRolling />
+        <CodeSkills />
       </div>
     </main>
   );
