@@ -7,28 +7,71 @@ function PointerEvent() {
   useEffect(() => {
     const cursorDiv = document.createElement('div');
     cursorDiv.style.position = 'absolute';
-    cursorDiv.style.pointerEvents = 'none'; // 이 div를 마우스 이벤트의 대상으로 삼지 않음
-    cursorDiv.style.width = '20px'; // 적당한 크기 설정
-    cursorDiv.style.height = '20px';
-    cursorDiv.style.borderRadius = '50%'; // 원형으로 표시
-    cursorDiv.style.backgroundColor = 'red'; // 쉽게 식별할 수 있는 색으로 설정
-    cursorDiv.style.zIndex = '1000'; // 다른 요소 위에 표시되도록 높은 z-index 설정
-    document.body.appendChild(cursorDiv); // body에 div 추가
+    cursorDiv.style.pointerEvents = 'none';
+    cursorDiv.style.width = '20px';
+    cursorDiv.style.aspectRatio = '1';
+    cursorDiv.style.borderRadius = '50%';
+    cursorDiv.style.backgroundColor = 'red';
+    cursorDiv.style.transform = 'translate(-50% , -50%)';
+    cursorDiv.style.transition = 'all 0.3s ease-out';
+    cursorDiv.style.zIndex = '1000';
+    document.body.appendChild(cursorDiv);
+
+    let frameId = null;
 
     const area = areaRef.current;
     const moveCursor = e => {
-      const areaRect = area.getBoundingClientRect();
-      cursorDiv.style.left = `${e.pageX - areaRect.left}px`;
-      cursorDiv.style.top = `${e.pageY - areaRect.top}px`;
+      const updataePosition = () => {
+        const rect = area.getBoundingClientRect();
+        const cX = e.clientX - rect.left;
+        const cY = e.clientY - rect.top;
+
+        cursorDiv.style.left = `${e.pageX}px`;
+        cursorDiv.style.top = `${e.pageY}px`;
+
+        // 1번
+        if (cX >= 200 && cX <= 400 && cY >= 100 && cY <= 300) {
+          // 2번
+        } else if (cX) {
+          // 3번
+        } else if (0) {
+          // 4번
+        } else if (0) {
+          // 5번
+        } else if (0) {
+          // 6번
+        } else if (0) {
+          // 7번
+        } else if (0) {
+          // 8번
+        } else if (0) {
+        }
+      };
+
+      if (frameId) {
+        cancelAnimationFrame(frameId);
+      }
+
+      frameId = requestAnimationFrame(updataePosition);
+    };
+
+    const clickCursor = e => {
+      const rect = area.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      console.log(`X 좌표 : ${x}px, Y 좌표: ${y}px`);
     };
 
     if (area) {
+      area.addEventListener('click', clickCursor);
       area.addEventListener('mousemove', moveCursor);
     }
 
     return () => {
       if (area) {
         area.removeEventListener('mousemove', moveCursor);
+        area.removeEventListener('click', clickCursor);
       }
       document.body.removeChild(cursorDiv); // 컴포넌트 언마운트 시 div 제거
     };
