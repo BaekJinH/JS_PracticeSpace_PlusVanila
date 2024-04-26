@@ -2,7 +2,9 @@
 // import { game , logueLike } from "./gameCanvas.js"
 // import { game } from "./gameCanvas.js"
 import * as GameCanvas from "./gameCanvas.js";
-import { Interac } from "./interactive.js"
+import {
+    Interac
+} from "./interactive.js"
 
 // 모든 요소 Import 방식 --> 인스턴스 생성도 싫고 Import 시 개별적으로 불러오는 것도 싫다면 전부 불러와 as로 이름을 지정해주자
 // 불러온 파일을 인스턴스 생성 후 변수로 지정하면 된다.
@@ -16,16 +18,16 @@ import { Interac } from "./interactive.js"
 // import * as module from "./gameCanvas.js"
 
 // window.addEventListener('load' , () => {
-    //     window.setTimeout( () => {
-        //         document.querySelector('.loading').classList.add('fade') ;
-        //     } , 1000)
-        // })
+//     window.setTimeout( () => {
+//         document.querySelector('.loading').classList.add('fade') ;
+//     } , 1000)
+// })
 
 
 
 // 아래는 DOM 컨텐츠 로드되면 실행 / 위의 주석은 지정한 타임 지나면 자동 실행
-document.addEventListener('DOMContentLoaded' , () => {
-    window.setTimeout( ()=> {
+document.addEventListener('DOMContentLoaded', () => {
+    window.setTimeout(() => {
         document.querySelector('.loading').classList.add('fade')
     })
 })
@@ -38,30 +40,30 @@ const dCtx = canvas.getContext('2d');
 
 // drag 핸들러 호출
 document.addEventListener('mousedown', e => {
-  if (e.button === 2 || e.which === 3) {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    dCtx.strokeStyle = "#fff";
-    dCtx.lineWidth = 5;
-    canvas.style.display = "block";
-    canvas.style.zIndex = 10;
+    if (e.button === 2 || e.which === 3) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        dCtx.strokeStyle = "#fff";
+        dCtx.lineWidth = 5;
+        canvas.style.display = "block";
+        canvas.style.zIndex = 10;
 
-    // 새로운 선 시작 시 lines 배열 초기화
-    lines = [];
+        // 새로운 선 시작 시 lines 배열 초기화
+        lines = [];
 
-    // 마우스 움직임 이벤트 리스너 추가
-    document.addEventListener('mousemove', handleMouseMove);
-  }
+        // 마우스 움직임 이벤트 리스너 추가
+        document.addEventListener('mousemove', handleMouseMove);
+    }
 });
 
 document.addEventListener('mouseup', e => {
-  if (e.button === 2 || e.which === 3) {
-    canvas.style.display = "none";
-    canvas.style.zIndex = 1;
+    if (e.button === 2 || e.which === 3) {
+        canvas.style.display = "none";
+        canvas.style.zIndex = 1;
 
-    // 마우스 움직임 이벤트 리스너 제거
-    document.removeEventListener('mousemove', handleMouseMove);
-  }
+        // 마우스 움직임 이벤트 리스너 제거
+        document.removeEventListener('mousemove', handleMouseMove);
+    }
 });
 
 function handleMouseMove(e) {
@@ -84,25 +86,30 @@ function handleMouseMove(e) {
     });
 
     for (const line of lines) {
-        const { pointX, pointY, endX, endY } = line;
+        const {
+            pointX,
+            pointY,
+            endX,
+            endY
+        } = line;
 
         const directionX = endX - pointX;
         const directionY = endY - pointY;
 
         if (directionX > 0) {
-        console.log('선은 오른쪽으로 향합니다.');
+            console.log('선은 오른쪽으로 향합니다.');
         } else if (directionX < 0) {
-        console.log('선은 왼쪽으로 향합니다.');
+            console.log('선은 왼쪽으로 향합니다.');
         } else {
-        console.log('선은 수평 방향입니다.');
+            console.log('선은 수평 방향입니다.');
         }
 
         if (directionY > 0) {
-        console.log('선은 아래로 향합니다.');
+            console.log('선은 아래로 향합니다.');
         } else if (directionY < 0) {
-        console.log('선은 위로 향합니다.');
+            console.log('선은 위로 향합니다.');
         } else {
-        console.log('선은 수직 방향입니다.');
+            console.log('선은 수직 방향입니다.');
         }
     }
 
@@ -141,7 +148,7 @@ function drawSmoothLine(x0, y0, x1, y1) {
 // Game Canvas 불러오기
 // 확인용
 let gameInstances = ['game', 'lougeLike', 'puzzle', 'chess'].map(className => new GameCanvas[className]());
-console.log(gameInstances )
+console.log(gameInstances)
 
 // console.log(module.gmSetting())
 
@@ -165,7 +172,7 @@ console.log(dateCompile)
 
 
 //  로딩 페이지 클래스 감지
-function viewChange ( ) {
+function viewChange() {
     const isLoad = true;
     const loadPage = document.querySelector('.loading')
     const visualPage = document.querySelector('.after_load')
@@ -174,37 +181,36 @@ function viewChange ( ) {
     if (hasClass) {
         visualPage.classList.add('active')
         console.log(hasClass)
-    }
-    else {
+    } else {
         visualPage.classList.remove('active')
     }
 }
 
-window.addEventListener('load' , () => {
+window.addEventListener('load', () => {
     viewChange()
 })
 
 
 // 햄버거 클래스 토글 + 햄버거 클릭 시 나오는 메뉴
-document.querySelector('.hambuger').addEventListener('click' , () => {
-    let hamb = document.querySelector('.hambuger') ;
-    let hambMenu = document.querySelector('.blind_effect') ;
+document.querySelector('.hambuger').addEventListener('click', () => {
+    let hamb = document.querySelector('.hambuger');
+    let hambMenu = document.querySelector('.blind_effect');
     hamb.classList.contains('act_hamb') ? hambMenu.classList.remove('on') : hambMenu.classList.add('on')
-    hamb.classList.toggle('act_hamb') ;
+    hamb.classList.toggle('act_hamb');
     hamb.classList.contains('act_hamb') ? hamb.classList.remove('return') : hamb.classList.add('return')
     hambMenu.classList.contains('on') ? hamb.classList.add('bgOn') : hamb.classList.remove('bgOn')
 })
 
 // 햄버거 서브 메뉴 풀 사이즈로 보기
-let subFull = document.querySelector('.subFull_size') ;
-subFull.addEventListener('click' , e => {
-    let hambMenu = document.querySelector('.blind_effect') ;
+let subFull = document.querySelector('.subFull_size');
+subFull.addEventListener('click', e => {
+    let hambMenu = document.querySelector('.blind_effect');
     hambMenu.classList.add('return')
     // setTimeout( () => {
     //     hambMenu.classList.remove('return')
     // },2000)
     hambMenu.classList.toggle('fullSize_on')
-    if ( hambMenu.classList.contains('fullSize_on') ) {
+    if (hambMenu.classList.contains('fullSize_on')) {
 
     }
 })
@@ -212,13 +218,13 @@ subFull.addEventListener('click' , e => {
 
 
 // 하단 카테고리 박스 이벤트 + 이펙트 / 돔 컨텐츠 로드 후 2초 지나면 하단 카테고리 생성 후 다시 숨기기
-function box_eventTime () {
-    document.addEventListener('DOMContentLoaded' , e => {
-        window.setTimeout( () => {
+function box_eventTime() {
+    document.addEventListener('DOMContentLoaded', e => {
+        window.setTimeout(() => {
             document.querySelector('.category_box').classList.add('fixed_foot')
-            window.setTimeout( () => {
+            window.setTimeout(() => {
                 document.querySelector('.category_box').classList.remove('fixed_foot')
-                if ( document.querySelector('header').classList.contains('fixed_header') ) {
+                if (document.querySelector('header').classList.contains('fixed_header')) {
                     document.querySelector('.category_box').classList.add('fixed_foot')
                 }
             }, 5000)
@@ -266,26 +272,26 @@ box_eventTime()
 
 
 // openEffect()
-function openEffect () {
+function openEffect() {
     const moveBox = document.querySelector('.category_box');
-    moveBox.addEventListener('mouseover' , e => {
+    moveBox.addEventListener('mouseover', e => {
         console.log('a')
         document.querySelector('.category_box').classList.add('open_box')
     })
-    moveBox.addEventListener('mouseleave' , e => {
+    moveBox.addEventListener('mouseleave', e => {
         console.log('b')
         document.querySelector('.category_box').classList.remove('open_box')
 
     })
 }
 
-document.addEventListener('DOMContentLoaded' , openEffect)
+document.addEventListener('DOMContentLoaded', openEffect)
 
 
 //  헤더 현재 스크롤 위치 이벤트
-document.addEventListener('scroll' , e => {
+document.addEventListener('scroll', e => {
     // 다 만들고 isFixed 이용해서 리팩토링 하기
-    let isFixed = false ;
+    let isFixed = false;
     let now_scroll = window.scrollY
 
     // 하단 카테고리 박스가 어느 위치에서 나올지 위치 값
@@ -300,11 +306,12 @@ document.addEventListener('scroll' , e => {
     pin_result > now_scroll ? header_removeClass() : header_addClass()
 
 
-    function header_addClass () {
+    function header_addClass() {
         document.querySelector('header').classList.add('fixed_header')
         document.querySelector('.category_box').classList.add('fixed_foot')
     }
-    function header_removeClass () {
+
+    function header_removeClass() {
         document.querySelector('header').classList.remove('fixed_header')
         document.querySelector('.category_box').classList.remove('fixed_foot')
     }
@@ -337,36 +344,36 @@ document.addEventListener('scroll' , e => {
 
 
 // 키보드에서 글자 입력하면 absolute로 플로팅 처리해서 위로 띄우기 -> 해당 코드 완성되면 입력했던 키가 엔터키를 누르기 전까지는 배열로 들어가서 합쳐지도록 만들기 될란지는;
-let floatBtn = document.querySelector('.float_effect_on') ;
-let offBtn = document.querySelector('.float_effect_off') ;
+let floatBtn = document.querySelector('.float_effect_on');
+let offBtn = document.querySelector('.float_effect_off');
 let floatWrap = document.querySelector('#float_wrap')
 
-offBtn.addEventListener('click' , () => {
+offBtn.addEventListener('click', () => {
     floatWrap.classList.remove('floating_on')
-    if ( !(floatWrap.classList.contains('floating_on')) ) {
-        alert ( '글자 효과가 제거되었습니다!' )
+    if (!(floatWrap.classList.contains('floating_on'))) {
+        alert('글자 효과가 제거되었습니다!')
     }
 });
 
-floatBtn.addEventListener('click' , textFloat) ;
+floatBtn.addEventListener('click', textFloat);
 
-function textFloat () {
+function textFloat() {
     floatWrap.classList.add('floating_on')
     let isKey = false;
 
-    window.addEventListener('keydown' , e => {
-        let textArr = [] ;
-        isKey = true ;
+    window.addEventListener('keydown', e => {
+        let textArr = [];
+        isKey = true;
         textArr.push(e.key)
 
         console.log(textArr)
     })
-    window.addEventListener('keyup' , e => {
-        isKey = false ;
+    window.addEventListener('keyup', e => {
+        isKey = false;
         console.log(isKey)
     })
 
-    if ( isKey ) {
+    if (isKey) {
 
     }
 }
@@ -381,22 +388,22 @@ function textFloat () {
 const ptCanvas = document.querySelector('#canvas');
 ptCanvas.width = window.innerWidth;
 ptCanvas.height = window.innerHeight;
-const ctx=  ptCanvas.getContext('2d') ;
-ptCanvas.addEventListener('click' , particleEffect)
+const ctx = ptCanvas.getContext('2d');
+ptCanvas.addEventListener('click', particleEffect)
 
-function particleEffect (e) {
+function particleEffect(e) {
     let pointX = e.clientX;
     let pointY = e.clientY;
-    let ptCount = Math.floor(Math.random() * 20) ;
-    let particles = [] ;
+    let ptCount = Math.floor(Math.random() * 20);
+    let particles = [];
     let time = 5;
 
     for (let i = 0; i < ptCount; i++) {
         let ptSize = Math.floor(Math.random() * 30);
         let ptColor = [
-          Math.floor(Math.random() * 255),
-          Math.floor(Math.random() * 255),
-          Math.floor(Math.random() * 255)
+            Math.floor(Math.random() * 255),
+            Math.floor(Math.random() * 255),
+            Math.floor(Math.random() * 255)
         ];
         let angle = Math.random() * 2 * Math.PI;
         let distance = Math.random() * 100;
@@ -405,10 +412,18 @@ function particleEffect (e) {
         let particleY = pointY;
         let speed = Math.random() * 2 + 1;
 
-        particles.push({ x: particleX, y: particleY, size: ptSize, color: ptColor, speed, angle, distance });
-      }
+        particles.push({
+            x: particleX,
+            y: particleY,
+            size: ptSize,
+            color: ptColor,
+            speed,
+            angle,
+            distance
+        });
+    }
 
-      animateParticles();
+    animateParticles();
 
     function animateParticles() {
         ctx.clearRect(0, 0, ptCanvas.width, ptCanvas.height);
@@ -507,15 +522,15 @@ function particleEffect (e) {
 // // modal 생성 테스트용 다 만들어지면 onclick으로 뺴버리기
 
 
-let mainMd = document.querySelector('.modal_base') ;
-let baseContent = mainMd.innerHTML ;
+let mainMd = document.querySelector('.modal_base');
+let baseContent = mainMd.innerHTML;
 
-let modalWrap = document.querySelector('#modal_area') ;
-let modalIn = document.querySelector('#modal_area .modal_inner') ;
-document.querySelector('.open_modal').addEventListener('click' , () => {
+let modalWrap = document.querySelector('#modal_area');
+let modalIn = document.querySelector('#modal_area .modal_inner');
+document.querySelector('.open_modal').addEventListener('click', () => {
     modalIn.innerHTML = `
         ${baseContent}
-    ` ;
+    `;
 
     modalWrap.style.zIndex = 1
     // document.body.style.overflow = hidden;
@@ -545,13 +560,13 @@ document.querySelector('.open_modal').addEventListener('click' , () => {
 
 // Vanila Slide 만들기
 
-function vanilaSlide () {
+function vanilaSlide() {
 
     // Setting
-    const slideWrap = document.querySelector('.slideWrap') ;
-    const slideEl = Array.from(document.querySelectorAll('.slide')) ;
-    const leftBtn = document.querySelector('.slideWrap .left_arrow') ;
-    const rightBtn = document.querySelector('.slideWrap .right_arrow') ;
+    const slideWrap = document.querySelector('.slideWrap');
+    const slideEl = Array.from(document.querySelectorAll('.slide'));
+    const leftBtn = document.querySelector('.slideWrap .left_arrow');
+    const rightBtn = document.querySelector('.slideWrap .right_arrow');
     const createEl = document.createElement('div')
     createEl.classList.add('slide')
 
@@ -560,22 +575,22 @@ function vanilaSlide () {
     // console.log('a' , createEl , slideEl)
 }
 
-window.addEventListener('resize' , (e) => {
+window.addEventListener('resize', (e) => {
     let wSize = window.innerWidth;
-    if ( wSize >= 1025 ) {
+    if (wSize >= 1025) {
         console.log('1025 >')
 
     }
-    if ( wSize <= 1024 && wSize >= 425) {
+    if (wSize <= 1024 && wSize >= 425) {
         console.log('1024 <')
 
     }
-    if ( wSize < 425) {
+    if (wSize < 425) {
         console.log('425')
 
     }
 })
-window.setInterval(vanilaSlide , 3000) ;
+window.setInterval(vanilaSlide, 3000);
 
 
 
@@ -608,14 +623,14 @@ window.setInterval(vanilaSlide , 3000) ;
 // drag and drop  -> 마저 수정하기
 
 let mouseEvent = false;
-let dragEl = Array.from(document.querySelectorAll('.dragWrap > div')) ;
-dragEl.forEach((el , index) => {
+let dragEl = Array.from(document.querySelectorAll('.dragWrap > div'));
+dragEl.forEach((el, index) => {
 
 })
-document.addEventListener('mousedown' , e => {
+document.addEventListener('mousedown', e => {
     mouseEvent = true;
-    dragEl.forEach( ( ele , index) => ele.addEventListener('mousemove' , (e) => {
-        document.addEventListener('mousemove' , e => {
+    dragEl.forEach((ele, index) => ele.addEventListener('mousemove', (e) => {
+        document.addEventListener('mousemove', e => {
             let pointX = e.clientX
             let pointY = e.clientY
 
@@ -623,7 +638,7 @@ document.addEventListener('mousedown' , e => {
             dragEl[index].style.top = pointY + 'px'
 
 
-            document.addEventListener('mouseup' , e => {
+            document.addEventListener('mouseup', e => {
                 mouseEvent = false;
 
             })
@@ -631,11 +646,10 @@ document.addEventListener('mousedown' , e => {
             console.log(index)
         })
     }))
-    if ( !(mouseEvent) ) {
+    if (!(mouseEvent)) {
         console.log('a')
         e.preventDefault()
-    }
-    else {
+    } else {
 
     }
 })
@@ -676,6 +690,7 @@ function handleScroll(e) {
     }
 }
 
+// scroll 이벤트가 아닌 obseve 를 이용해야 함
 window.addEventListener('scroll', handleScroll);
 
 
@@ -713,9 +728,9 @@ window.addEventListener('scroll', handleScroll);
 
 
 // 스크롤 시 인덱스 이동  / -> 풀페이지 만들 때 적용하기
-window.addEventListener('wheel' , e => {
+window.addEventListener('wheel', e => {
     let page = 1;
-    let pageLeng = Array.from(document.querySelectorAll('.flContent')) ;
+    let pageLeng = Array.from(document.querySelectorAll('.flContent'));
 
     if (page == pageLeng) {
         page = 0;
