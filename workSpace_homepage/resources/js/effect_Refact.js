@@ -8,6 +8,10 @@ const VisualEffects = (() => {
   function initializeCanvas() {
     const canvas = document.querySelector('#rightDrag');
     const context = canvas.getContext('2d');
+
+    canvas.clearRect(0, 0, canvas.width, canvas.height);
+    canvas.beginPath()
+
     return {
       canvas,
       context
@@ -44,6 +48,7 @@ const UserInteractions = (() => {
     });
 
     function setupCanvas(canvas, context) {
+      let random = Math.floor(Math.random() * 255);
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       canvas.style.display = "none";
