@@ -26,6 +26,7 @@ const VisualEffects = (() => {
 
 // 사용자 인터랙션을 처리하는 모듈
 const UserInteractions = (() => {
+  const LINE_WIDTH_TIMER = 0;
   let lines = [];
 
   function handleRightClickDraw({
@@ -34,6 +35,13 @@ const UserInteractions = (() => {
   }) {
     document.addEventListener('mousedown', e => {
       if (e.button === 2) { // 오른쪽 클릭
+        setInterval(() => {
+          ++LINE_WIDTH_TIMER;
+        }, 500);
+        if (LINE_WIDTH_TIMER === 6) {
+          LINE_WIDTH_TIMER === 5;
+          return false;
+        }
         canvas.style.display = "block"
         setupCanvas(canvas, context);
         document.addEventListener('mousemove', mouseMoveHandler(context));
@@ -42,6 +50,7 @@ const UserInteractions = (() => {
 
     document.addEventListener('mouseup', e => {
       if (e.button === 2) {
+        LINE_WIDTH_TIMER === 0;
         canvas.style.display = "none";
         document.removeEventListener('mousemove', mouseMoveHandler(context));
       }
@@ -49,11 +58,12 @@ const UserInteractions = (() => {
 
     function setupCanvas(canvas, context) {
       let random = Math.floor(Math.random() * 255);
+
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       canvas.style.display = "none";
-      context.strokeStyle = `${random}`;
-      context.lineWidth = 5;
+      context.strokeStyle = `rgba(${random}, ${random} ,${random} , 1)`;
+      context.lineWidth = LINE_WIDTH_TIMER;
       context.lineCap = "round";
       lines = [];
     }
