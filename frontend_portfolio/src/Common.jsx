@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Introduce from './introduce';
 import PagingRolling from './paging';
 import CodeSkills from './codeSkill';
+import FullPage from './event/fullPage';
 
 export function Header() {
   const [isTheme, setIsTheme] = useState(
@@ -66,6 +67,7 @@ export function Header() {
 export function Section() {
   return (
     <main>
+      <FullPage />
       <div className="wrapper">
         <Introduce />
         <PagingRolling />

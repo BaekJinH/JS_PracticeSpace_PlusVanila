@@ -1,0 +1,180 @@
+@charset "utf-8";
+
+/*------------------------------------------
+Pretendard 메인 폰트
+--------------------------------------------*/
+
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 100;
+  src: url(../css/fonts/Pretendard-Thin.woff) format('woff');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 200;
+  src:
+    url(../css/fonts/Pretendard-ExtraLight.woff) format('woff'),
+    url(../css/fonts/Pretendard-ExtraLight.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 300;
+  src:
+    url(../css/fonts/Pretendard-Light.woff) format('woff'),
+    url(../css/fonts/Pretendard-Light.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url(../css/fonts/Pretendard-Regular.woff) format('woff'),
+    url(../css/fonts/Pretendard-Regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  src:
+    url(../css/fonts/Pretendard-Medium.woff) format('woff'),
+    url(../css/fonts/Pretendard-Medium.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 600;
+  src:
+    url(../css/fonts/Pretendard-SemiBold.woff) format('woff'),
+    url(../css/fonts/Pretendard-SemiBold.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  src:
+    url(../css/fonts/Pretendard-Bold.woff) format('woff'),
+    url(../css/fonts/Pretendard-Bold.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 800;
+  src:
+    url(../css/fonts/Pretendard-ExtraBold.woff) format('woff'),
+    url(../css/fonts/Pretendard-ExtraBold.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 900;
+  src:
+    url(../css/fonts/Pretendard-Black.woff) format('woff'),
+    url(../css/fonts/Pretendard-Black.woff2) format('woff2');
+}
+
+/*------------------------------------------
+나눔고딕 메인 폰트
+--------------------------------------------*/
+
+@font-face {
+  font-family: 'NanumGothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../css/fonts/NanumGothicLight.otf) format('opentype');
+  src: url(../css/fonts/NanumGothicLight.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'NanumGothic';
+  font-style: normal;
+  font-weight: 500;
+  src: url(../css/fonts/NanumGothic.otf) format('opentype');
+  src: url(../css/fonts/NanumGothic.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'NanumGothic';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../css/fonts/NanumGothicBold.otf) format('opentype');
+  src: url(../css/fonts/NanumGothicBold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'NanumGothic';
+  font-style: normal;
+  font-weight: 800;
+  src: url(../css/fonts/NanumGothicExtraBold.otf) format('opentype');
+  src: url(../css/fonts/NanumGothicExtraBold.ttf) format('truetype');
+}
+
+/*------------------------------------------
+나눔명조 메인 폰트
+--------------------------------------------*/
+
+@font-face {
+  font-family: 'NanumM';
+  font-style: normal;
+  font-weight: 500;
+  src: url(../css/fonts/NanumMyeongjo.otf) format('opentype');
+  src: url(../css/fonts/NanumMyeongjo.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'NanumM';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../css/fonts/NanumMyeongjoBold.otf) format('opentype');
+  src: url(../css/fonts/NanumMyeongjoBold.ttf) format('truetype');
+}
+
+/*------------------------------------------
+노토산스 메인 폰트
+--------------------------------------------*/
+@font-face {
+  font-family: 'NotoS';
+  font-style: normal;
+  font-weight: 200;
+  src: url(../css/fonts/NotoSansKR-ExtraLight.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'NotoS';
+  font-style: normal;
+  font-weight: 300;
+  src: url(../css/fonts/NotoSansKR-Light.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'NotoS';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../css/fonts/NotoSansKR-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'NotoS';
+  font-style: normal;
+  font-weight: 500;
+  src: url(../css/fonts/NotoSansKR-Medium.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'NotoS';
+  font-style: normal;
+  font-weight: 600;
+  src: url(../css/fonts/NotoSansKR-SemiBold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'NotoS';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../css/fonts/NotoSansKR-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'NotoS';
+  font-style: normal;
+  font-weight: 800;
+  src: url(../css/fonts/NotoSansKR-ExtraBold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'NotoS';
+  font-style: normal;
+  font-weight: 900;
+  src: url(../css/fonts/NotoSansKR-Black.ttf) format('truetype');
+}

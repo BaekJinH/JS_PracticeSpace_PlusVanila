@@ -24,37 +24,35 @@ export function Header() {
 
   return (
     <header>
-      <div className="wrapper">
-        <div className="head_top">
-          <nav>
+      <div className="head_top">
+        <nav>
+          <ul>
+            <li>
+              <a href="#section1">섹션1 이동</a>
+            </li>
+            <li>
+              <a href="#section2">섹션2 이동</a>
+            </li>
+            <li>
+              <a href="#section3">섹션3 이동</a>
+            </li>
+            <li>
+              <a href="#section4">섹션4 이동</a>
+            </li>
+          </ul>
+        </nav>
+        <div className="other">
+          <a href="#none">
             <ul>
-              <li>
-                <a href="#section1">섹션1 이동</a>
-              </li>
-              <li>
-                <a href="#section2">섹션2 이동</a>
-              </li>
-              <li>
-                <a href="#section3">섹션3 이동</a>
-              </li>
-              <li>
-                <a href="#section4">섹션4 이동</a>
-              </li>
+              <li />
+              <li />
+              <li />
             </ul>
-          </nav>
-          <div className="other">
-            <a href="#none">
-              <ul>
-                <li />
-                <li />
-                <li />
-              </ul>
-            </a>
-            <button onClick={toggleTheme}>테마 변경</button>
-          </div>
+          </a>
+          <button onClick={toggleTheme}>테마 변경</button>
         </div>
-        <div className="head_bot" />
       </div>
+      <div className="head_bot" />
     </header>
   );
 }

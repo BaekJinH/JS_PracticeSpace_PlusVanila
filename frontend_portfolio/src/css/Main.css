@@ -114,6 +114,9 @@ body * {
   width: 100%;
   height: 1px;
 }
+.App header .head_bot {
+  display: flex;
+}
 .App header .other {
   position: absolute;
   top: 50%;
