@@ -1,14 +1,27 @@
-import { useEffect, useRef } from 'react';
+import React, { createContext, useContext, useRef, useEffect } from 'react';
+
+export const SectionContext = createContext();
 
 function FullPage() {
-  const sectionRef = useRef([]);
+  const sections = useContext(SectionContext);
 
-  useEffect(() => {
-    const fullInit = () => {
-      const sections = sectionRef.current;
-    };
-  }, []);
+  useEffect(() => {}, [sections]);
+
   return null;
 }
 
-export default FullPage;
+function SectionProvider({ children }) {
+  const sectionRefs = useRef([
+    React.createRef(),
+    React.createRef(),
+    React.createRef(),
+  ]);
+
+  return (
+    <SectionContext.Provider value={sectionRefs}>
+      {children}
+    </SectionContext.Provider>
+  );
+}
+
+export { FullPage, SectionProvider };

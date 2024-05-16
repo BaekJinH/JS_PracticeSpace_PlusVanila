@@ -1,8 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
+import Project from './data/project.json';
+import { SectionContext } from './FullPage';
+import PointerEventContext from '../event/pointerEventContext';
+import PointerEvent from '../event/cursorPoint';
 
-function Introduce() {
+export function Introduce() {
+  const sectionRefs = useContext(SectionContext);
   return (
-    <div className="intro_sf" id="section1">
+    <section className="intro_sf" id="section1" ref={sectionRefs[0]}>
       <div className="int_wrap">
         <div className="left">
           <div className="profile">
@@ -23,8 +28,6 @@ function Introduce() {
           </ul>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
-
-export default Introduce;

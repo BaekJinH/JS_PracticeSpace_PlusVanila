@@ -1,14 +1,15 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import Project from './data/project.json';
-import PointerEventContext from './event/pointerEventContext';
-import PointerEvent from './event/cursorPoint';
+import PointerEventContext from '../event/pointerEventContext';
+import PointerEvent from '../event/cursorPoint';
+import { SectionContext } from './FullPage';
 
 function Paging() {
   const areaRef = useRef(null);
 
   return (
     <PointerEventContext.Provider value={areaRef}>
-      <div
+      <section
         className="pg_swp"
         id="section2"
         ref={areaRef}
@@ -24,7 +25,7 @@ function Paging() {
             ))}
           </ul>
         </div>
-      </div>
+      </section>
     </PointerEventContext.Provider>
   );
 }
