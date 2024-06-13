@@ -23,6 +23,19 @@
   --red-500: #ef4444;
   --red-700: #b91c1c;
   --brand-purple: #ab68ff;
+
+  // SCSS 변수
+  $imageUrl: '../image/';
+}
+// SCSS Mixin
+@mixin content-txt {
+  font : {
+    size: 18px;
+    weight: 700;
+  }
+  color: #313131;
+
+  position: relative;
 }
 
 body.light {
